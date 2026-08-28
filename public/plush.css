@@ -507,6 +507,8 @@ html.dark .sched-card.current { background: #1e1530; }
 .sc-tiktok::before { background: linear-gradient(90deg,#69C9D0,#010101,#EE1D52); }
 .sc-discord::before { background: #5865f2; }
 .sc-github::before { background: #555; }
+.sc-linkedin::before { background: #0a66c2; }
+.sc-facebook::before { background: #1877f2; }
 .social-icon { font-size: 2.4rem; margin: .5rem 0 .6rem; }
 .social-name { font-weight: 900; font-size: 1rem; color: var(--t-text); }
 .social-handle { font-family: 'Caveat', cursive; font-size: 1.05rem; color: var(--p-blue); margin-top: .2rem; }
@@ -556,6 +558,15 @@ html.dark .newsletter-box { background: linear-gradient(135deg,#1a1228,#131e30);
 .sponsor-cta { background: linear-gradient(135deg,#1a2840,#0d1120); border-radius: 20px; padding: 2.5rem; text-align: center; margin-top: 2.5rem; }
 .sponsor-cta h3 { font-family: 'Caveat', cursive; font-size: 2rem; font-weight: 700; color: #e8edf8; margin-bottom: .5rem; }
 .sponsor-cta p { color: rgba(232,237,248,.6); font-size: .9rem; max-width: 460px; margin: 0 auto .5rem; line-height: 1.65; }
+.pdf-embed {
+  border: 2px solid var(--t-card-border); border-radius: 16px; overflow: hidden;
+  background: var(--t-card-bg); box-shadow: 0 4px 20px rgba(0,0,0,.12);
+  transition: background .35s;
+}
+.pdf-embed iframe {
+  display: block; width: 100%; height: min(85vh, 1100px); border: 0;
+}
+@media (max-width: 640px) { .pdf-embed iframe { height: 70vh; } }
 .tiers-mini { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin: 1rem 0; }
 .tier-mini { text-align: center; padding: .6rem 1rem; border-radius: 12px; background: rgba(255,255,255,.05); border: 1.5px solid rgba(255,255,255,.1); min-width: 90px; }
 .tier-mini-label { font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .5; color: #e8edf8; }
