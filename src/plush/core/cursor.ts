@@ -47,6 +47,26 @@ export function mountCursor(): Cleanup {
   window.setCursor = setCursor;
   setCursor(cursorActive);
 
+  const buttonBindings: Array<{ el: HTMLElement; type: CursorType }> = [];
+  const bind = (id: string, type: CursorType) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const handler = () => setCursor(type);
+    el.addEventListener("click", handler);
+    buttonBindings.push({ el, type });
+    el.dataset.cursorBound = "true";
+    (el as HTMLElement & { __cursorHandler?: () => void }).__cursorHandler = handler;
+  };
+  bind("cursorCat", "cat");
+  bind("cursorBunny", "bunny");
+  bind("cursorBear", "bear");
+  document.querySelectorAll<HTMLElement>(".cursor-btn-off").forEach((el) => {
+    const handler = () => setCursor("none");
+    el.addEventListener("click", handler);
+    (el as HTMLElement & { __cursorHandler?: () => void }).__cursorHandler = handler;
+    buttonBindings.push({ el, type: "none" });
+  });
+
   const onMove = (event: MouseEvent) => {
     if (cursorActive === "none") return;
     cursorEl.style.left = `${event.clientX}px`;
@@ -68,6 +88,13 @@ export function mountCursor(): Cleanup {
   const cleanup = () => {
     delete window.setCursor;
     delete window.__plushCursorCleanup;
+    buttonBindings.forEach(({ el }) => {
+      const bound = el as HTMLElement & { __cursorHandler?: () => void };
+      if (bound.__cursorHandler) {
+        el.removeEventListener("click", bound.__cursorHandler);
+        delete bound.__cursorHandler;
+      }
+    });
     document.removeEventListener("mousemove", onMove);
     document.removeEventListener("mouseleave", hideCursor);
     document.removeEventListener("mouseenter", showCursor);

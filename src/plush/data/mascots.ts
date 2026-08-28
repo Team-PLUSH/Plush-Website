@@ -2,11 +2,11 @@ import type { Mascot } from "../types";
 
 export const MASCOTS: Mascot[] = [
   {
-    name: "Pixel",
+    name: "Pal",
     role: "Coding Cat",
     color: "#a8bede",
     ground: "rgba(168,190,222,0.3)",
-    fact: '"Pixel writes the cleanest code on the team. Main author of the swerve drive base, and yes, she named every variable something cute."',
+    fact: '"Pal writes the cleanest code on the team. Main author of the swerve drive base, and yes, she named every variable something cute."',
     svg: `<svg viewBox="0 0 120 140" width="160" height="187" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="60" cy="132" rx="28" ry="7" fill="#7aa8d4" opacity="0.35"/>
       <path d="M78 100 Q100 95 105 80 Q110 65 95 60" fill="none" stroke="#8ab0d8" stroke-width="7" stroke-linecap="round"/>
@@ -41,11 +41,11 @@ export const MASCOTS: Mascot[] = [
     </svg>`,
   },
   {
-    name: "Bunny",
+    name: "Xaivian",
     role: "Build Bot",
     color: "#bfa8d8",
     ground: "rgba(191,168,216,0.3)",
-    fact: '"Bunny can assemble any mechanism blindfolded. Once fixed a broken intake arm with a zip tie and a prayer — during a match. It held."',
+    fact: '"Xaivian can assemble any mechanism blindfolded. Once fixed a broken intake arm with a zip tie and a prayer — during a match. It held."',
     svg: `<svg viewBox="0 0 120 150" width="160" height="200" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="60" cy="143" rx="28" ry="7" fill="#9a7ec0" opacity="0.35"/>
       <ellipse cx="42" cy="28" rx="9" ry="22" fill="#c8b0e0" stroke="#2c3a58" stroke-width="1.5"/>
@@ -76,11 +76,11 @@ export const MASCOTS: Mascot[] = [
     </svg>`,
   },
   {
-    name: "Bolt",
+    name: "Stuffing",
     role: "Drive Bear",
     color: "#a4c9b0",
     ground: "rgba(164,201,176,0.3)",
-    fact: '"Bolt is undefeated in driver practice. Holds the team record for fewest match penalties and has never — not once — hit the alliance station wall."',
+    fact: '"Stuffing is undefeated in driver practice. Holds the team record for fewest match penalties and has never — not once — hit the alliance station wall."',
     svg: `<svg viewBox="0 0 120 140" width="160" height="187" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="60" cy="133" rx="30" ry="7" fill="#6aaa80" opacity="0.35"/>
       <ellipse cx="60" cy="96" rx="32" ry="34" fill="#b0d0b8"/>

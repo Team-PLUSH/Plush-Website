@@ -88,6 +88,12 @@ body.cursor-bunny #custom-cursor,
 body.cursor-bear #custom-cursor { display: block; }
 
 /* ── THEME TOGGLE ── */
+.nav-actions { display: flex; align-items: center; gap: .6rem; }
+.nav-actions .theme-toggle {
+  position: static; bottom: auto; right: auto;
+  width: 38px; height: 38px; font-size: 1.05rem;
+  box-shadow: none;
+}
 .theme-toggle {
   position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
   width: 48px; height: 48px; border-radius: 50%;
@@ -140,6 +146,7 @@ nav {
   transition: opacity .18s, transform .15s; white-space: nowrap;
 }
 .nav-pill:hover { opacity: .8; transform: scale(1.04); }
+a.nav-pill, a.btn-inv { display: inline-block; text-decoration: none; text-align: center; }
 
 /* ── PAGE SYSTEM ── */
 .page { display: none; animation: pageFadeIn .4s ease both; }

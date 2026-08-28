@@ -9,7 +9,7 @@ function applyTheme(dark: boolean) {
 
 export function mountTheme(): Cleanup {
   const themeBtn = document.getElementById("themeToggle");
-  applyTheme(localStorage.getItem(STORAGE_KEY) !== "light");
+  applyTheme(localStorage.getItem(STORAGE_KEY) === "dark");
 
   if (!themeBtn) return () => {};
 

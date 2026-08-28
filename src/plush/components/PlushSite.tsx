@@ -16,7 +16,7 @@ export function PlushSite() {
         return response.text();
       })
       .then((markup) => {
-        if (live) setHtml(DOMPurify.sanitize(markup));
+        if (live) setHtml(DOMPurify.sanitize(markup, { ADD_ATTR: ["target"] }));
       })
       .catch((error: unknown) => {
         if (live) {

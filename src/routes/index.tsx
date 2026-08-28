@@ -21,9 +21,10 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "stylesheet", href: "/plush.css" },
       { rel: "stylesheet", href: "/plush-extras.css" },
+      { rel: "stylesheet", href: "/plush-scribble-jam.css" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,400&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@500;700&display=swap",
       },
     ],
   }),
