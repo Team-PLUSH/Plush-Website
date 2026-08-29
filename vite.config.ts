@@ -48,6 +48,4 @@ const securityConfig = {
   },
 };
 
-export default defineConfig(
-  securityConfig as unknown as Parameters<typeof defineConfig>[0],
-);
+export default defineConfig(securityConfig as unknown as Parameters<typeof defineConfig>[0]);

@@ -551,6 +551,8 @@ html.dark .newsletter-box { background: linear-gradient(135deg,#1a1228,#131e30);
 .newsletter-text p { font-size: .88rem; color: var(--t-text); opacity: .7; margin-top: .3rem; line-height: 1.55; max-width: 340px; }
 .newsletter-form { display: flex; flex-direction: column; gap: .7rem; flex: 1; min-width: min(260px, 100%); }
 .newsletter-row { display: flex; gap: .6rem; flex-wrap: wrap; }
+/* Honeypot: kept in the layout for bots to find, hidden from people and AT. */
+.newsletter-hp { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .newsletter-consent { display: flex; gap: .5rem; align-items: flex-start; font-size: .74rem; font-weight: 700; color: var(--t-text); opacity: .72; line-height: 1.45; cursor: pointer; }
 .newsletter-consent-box { flex: none; width: 15px; height: 15px; margin-top: .1rem; accent-color: var(--p-purple); cursor: pointer; }
 .newsletter-input { flex: 1; padding: .65rem 1rem; border-radius: 50px; border: 2px solid var(--p-purple); background: var(--t-card-bg); color: var(--t-text); font-family: 'Nunito'; font-size: .88rem; font-weight: 700; outline: none; transition: border-color .18s, background .35s; min-width: min(180px, 100%); }

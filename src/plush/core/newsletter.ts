@@ -19,6 +19,7 @@ function wireForm(form: HTMLFormElement): () => void {
   const input = form.querySelector<HTMLInputElement>(".newsletter-input");
   const button = form.querySelector<HTMLButtonElement>(".newsletter-btn");
   const consent = form.querySelector<HTMLInputElement>(".newsletter-consent-box");
+  const honeypot = form.querySelector<HTMLInputElement>(".newsletter-hp-field");
   const status = ensureStatusEl(form);
 
   const setStatus = (message: string, kind: "ok" | "err" | "pending") => {
@@ -46,7 +47,9 @@ function wireForm(form: HTMLFormElement): () => void {
     setStatus("Signing you up…", "pending");
 
     try {
-      const result = await submitNewsletterSignup({ data: { email } });
+      const result = await submitNewsletterSignup({
+        data: { email, company: honeypot?.value ?? "" },
+      });
 
       if (result.ok) {
         form.reset();
