@@ -1,0 +1,12 @@
+# Team PLUSH / FRC 11740 — security contact
+# https://securitytxt.org/
+
+Contact: mailto:teamplushrobotics@gmail.com
+Expires: 2027-08-28T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://frc11740.ca/.well-known/security.txt
+
+# This is a static marketing website. It stores no visitor accounts and no
+# personal data server-side. If you believe you have found a vulnerability,
+# please email us with details and give us a reasonable chance to respond
+# before any public disclosure. Thank you.

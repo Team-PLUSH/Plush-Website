@@ -6,7 +6,7 @@
     <div class="nav-mark" data-page="home">
       Team PLUSH
     </div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="primaryNav">
       <li><a data-page="about">about</a></li>
       <li><a data-page="team">team</a></li>
       <li><a data-page="robots">robots</a></li>
@@ -14,10 +14,16 @@
       <li><a data-page="values">values</a></li>
       <li><a data-page="socials">socials</a></li>
       <li><a data-page="sponsors">sponsors</a></li>
+      <li class="nav-links-join"><a href="https://forms.gle/GsqnqVu716S4S4QTA" target="_blank" rel="noopener">join us 💜</a></li>
     </ul>
     <div class="nav-actions">
       <a class="nav-pill" href="https://forms.gle/GsqnqVu716S4S4QTA" target="_blank" rel="noopener">join us 💜</a>
       <button class="theme-toggle" id="themeToggle"><span class="icon-moon">🌙</span><span class="icon-sun">☀️</span></button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
     </div>
   </nav>
   <div class="jam-marquee-wrap">
@@ -153,10 +159,10 @@
       <div class="cursor-chooser">
         <p>✦ use as your cursor ✦</p>
         <div class="cursor-btns">
-          <button class="cursor-btn" id="cursorCat" onclick="setCursor('cat')">🐱 Pal</button>
-          <button class="cursor-btn" id="cursorBunny" onclick="setCursor('bunny')">🐰 Xaivian</button>
-          <button class="cursor-btn" id="cursorBear" onclick="setCursor('bear')">🐻 Stuffing</button>
-          <button class="cursor-btn-off" onclick="setCursor('none')">✕ default cursor</button>
+          <button type="button" class="cursor-btn" id="cursorCat">🐱 Pal</button>
+          <button type="button" class="cursor-btn" id="cursorBunny">🐰 Xaivian</button>
+          <button type="button" class="cursor-btn" id="cursorBear">🐻 Stuffing</button>
+          <button type="button" class="cursor-btn-off">✕ default cursor</button>
         </div>
       </div>
     </div>
@@ -247,7 +253,7 @@
   <div class="inner-page">
     <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice"><g opacity=".06"><path d="M50 80 L52 74 L54 80 L60 82 L54 84 L52 90 L50 84 L44 82 Z" fill="#a8bede"/><path d="M980 120 L982 114 L984 120 L990 122 L984 124 L982 130 L980 124 L974 122 Z" fill="#bfa8d8"/><circle cx="500" cy="30" r="5" fill="#a4c9b0"/><path d="M100 500 C100 500 85 488 85 480 C85 474 90 472 94 476 C96.5 478.5 100 482 100 482 C100 482 103.5 478.5 106 476 C110 472 115 474 115 480 C115 488 100 500 100 500Z" fill="#bfa8d8"/></g></svg>
     <div class="wrap">
-      <div class="ruled-title fade"><h2>who we are</h2><div class="rule"></div></div>
+      <div class="ruled-title fade"><h2>what's... Team Plush?</h2><div class="rule"></div></div>
       <div class="about-layout">
         <div class="about-copy fade">
           <p>Team PLUSH is a student-run <em>FIRST Robotics Competition</em> team that believes robotics should feel welcoming, creative, and — yes — a little soft around the edges. We're engineers, artists, programmers, strategists, and humans who genuinely like each other.</p>
@@ -263,11 +269,11 @@
         </div>
         <div>
           <div class="fact-stack fade">
-            <div class="fact-card"><div class="fact-num">2026</div><div class="fact-label">founded April 2026 —<br>our rookie season</div></div>
-            <div class="fact-card"><div class="fact-num">3</div><div class="fact-label">high-school students<br>started the team</div></div>
-            <div class="fact-card"><div class="fact-num">6</div><div class="fact-label">sub-teams, software<br>to scouting</div></div>
-            <div class="fact-card"><div class="fact-num">🌱</div><div class="fact-label">chasing the<br>Rookie All-Star Award</div></div>
-            <div class="fact-card"><div class="fact-num">40–45</div><div class="fact-label">members we're<br>building toward</div></div>
+            <div class="fact-card"><div class="fact-num">2026</div><div class="fact-label">founded<br>april 2026</div></div>
+            <div class="fact-card"><div class="fact-num">3</div><div class="fact-label">high-school<br>co-founders</div></div>
+            <div class="fact-card"><div class="fact-num">4</div><div class="fact-label">sub-teams, software<br>to scouting</div></div>
+            <div class="fact-card"><div class="fact-num">🌱</div><div class="fact-label">regional impact<br>to ottawa</div></div>
+            <div class="fact-card"><div class="fact-num">40–45</div><div class="fact-label">member goal</div></div>
           </div>
           <div style="margin-top:2rem" class="fade">
             <div class="ruled-title"><h2>our journey</h2><div class="rule"></div></div>
@@ -468,46 +474,46 @@
   <div class="page-bar"><a data-page="home">home</a><span>›</span> socials</div>
   <div class="inner-page">
     <div class="wrap">
-      <div class="ruled-title fade"><h2>connect with us</h2><div class="rule"></div></div>
-      <p class="fade" style="font-size:.95rem;opacity:.7;margin-bottom:2rem;">From buildroom updates to match-day hype, we keep our community involved through stories, livestreams, and behind-the-scenes moments.</p>
+      <div class="ruled-title fade"><h2>connect with us!</h2><div class="rule"></div></div>
+      <p class="fade" style="font-size:.95rem;opacity:.7;margin-bottom:2rem;">Find us along our offseason to build season journey here:</p>
       <div class="social-grid">
         <div class="social-card fade sc-instagram">
-          <div class="social-icon">📸</div>
+          <div class="social-icon"><svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Instagram"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
           <div class="social-name">Instagram</div>
           <div class="social-handle">@frc11740</div>
           <div class="social-desc">Build updates, reveal teasers, and photos from the shop.</div>
           <a class="social-btn" href="https://instagram.com/frc11740" target="_blank" rel="noopener">follow</a>
         </div>
         <div class="social-card fade sc-youtube">
-          <div class="social-icon">▶️</div>
+          <div class="social-icon"><svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="YouTube"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></div>
           <div class="social-name">YouTube</div>
           <div class="social-handle">@frc11740</div>
           <div class="social-desc">Robot reveals, match footage, and season recaps.</div>
           <a class="social-btn" href="https://youtube.com/@frc11740" target="_blank" rel="noopener">watch</a>
         </div>
         <div class="social-card fade sc-linkedin">
-          <div class="social-icon">💼</div>
+          <div class="social-icon"><svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="LinkedIn"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
           <div class="social-name">LinkedIn</div>
           <div class="social-handle">@frc11740</div>
           <div class="social-desc">Team news and updates for sponsors and mentors.</div>
           <a class="social-btn" href="https://linkedin.com/company/frc11740" target="_blank" rel="noopener">connect</a>
         </div>
         <div class="social-card fade sc-tiktok">
-          <div class="social-icon">🎵</div>
+          <div class="social-icon"><svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="TikTok"><path fill="currentColor" d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></div>
           <div class="social-name">TikTok</div>
           <div class="social-handle">@frc11740</div>
           <div class="social-desc">Short clips from build days, the pit, and competitions.</div>
           <a class="social-btn" href="https://tiktok.com/@frc11740" target="_blank" rel="noopener">watch</a>
         </div>
         <div class="social-card fade sc-facebook">
-          <div class="social-icon">👥</div>
+          <div class="social-icon"><svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Facebook"><path fill="currentColor" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></div>
           <div class="social-name">Facebook</div>
           <div class="social-handle">@frc11740</div>
           <div class="social-desc">Event announcements and posts for the wider community.</div>
           <a class="social-btn" href="https://facebook.com/frc11740" target="_blank" rel="noopener">follow</a>
         </div>
         <div class="social-card fade sc-twitter">
-          <div class="social-icon">✖️</div>
+          <div class="social-icon"><svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="X"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
           <div class="social-name">X</div>
           <div class="social-handle">@frc11740</div>
           <div class="social-desc">Quick updates during build season and match days.</div>
@@ -520,8 +526,14 @@
           <p>Get the latest build updates, event invites, and sponsor shout-outs delivered straight to your inbox.</p>
         </div>
         <form class="newsletter-form">
-          <input class="newsletter-input" type="email" placeholder="your email" aria-label="Email address">
-          <button class="newsletter-btn" type="submit">subscribe</button>
+          <div class="newsletter-row">
+            <input class="newsletter-input" type="email" placeholder="your email" aria-label="Email address" autocomplete="email">
+            <button class="newsletter-btn" type="submit">subscribe</button>
+          </div>
+          <label class="newsletter-consent">
+            <input class="newsletter-consent-box" type="checkbox">
+            <span>I agree to receive occasional email updates from Team&nbsp;Plush &mdash; PLUSH Robotics (FRC&nbsp;#11740), Ottawa, Ontario. I can unsubscribe at any time using the link in every email.</span>
+          </label>
         </form>
       </div>
     </div>
@@ -615,6 +627,7 @@
       <div class="sponsor-cta fade">
         <h3>become part of the story</h3>
         <p>Want your organization listed here? Email <a href="mailto:teamplushrobotics@gmail.com" style="color:#8fb8ff;font-weight:700;">teamplushrobotics@gmail.com</a> or find us <span style="font-weight:700;">@frc11740</span> everywhere. Sponsor Team PLUSH and join a collaborative robotics journey with youth, innovation, and community at its core.</p>
+        <p style="font-size:.78rem;opacity:.55;margin-top:.8rem;">Team&nbsp;Plush is a not-for-profit but not a registered charity — contributions are not tax-deductible and we do not issue official tax receipts.</p>
       </div>
     </div>
   </div>
@@ -703,6 +716,7 @@
 
         <h3>Sponsorship and contributions</h3>
         <p>Any sponsorship, in-kind contribution, or partnership is governed by a separate written agreement between the sponsor and Team&nbsp;Plush. Information on the Site about sponsorship tiers and benefits is an invitation to discuss, not a binding offer.</p>
+        <p>Team&nbsp;Plush is a not-for-profit organization but is <strong>not a registered charity</strong>. Sponsorships, donations, and in-kind contributions are <strong>not tax-deductible</strong>, and we do not issue official donation receipts for income tax purposes.</p>
 
         <h3>Acceptable use</h3>
         <p>You agree not to use the Site to break any law, to disrupt or attempt to gain unauthorized access to the Site or its hosting infrastructure, or to misrepresent your affiliation with Team&nbsp;Plush.</p>

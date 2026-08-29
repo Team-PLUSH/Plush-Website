@@ -13,7 +13,6 @@ export interface Mascot {
 
 declare global {
   interface Window {
-    setCursor?: (type: CursorType) => void;
     __plushCursorCleanup?: Cleanup;
   }
 }

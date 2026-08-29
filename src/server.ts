@@ -1,21 +1,48 @@
 import "./lib/error-capture";
 
+import { createStartHandler, defaultStreamHandler } from "@tanstack/react-start/server";
+
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import {
+  applySecurityHeaders,
+  createCspNonce,
+  writeHtmlSecurityHeaders,
+} from "./lib/security-headers";
 
-type ServerEntry = {
-  fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
+type StreamHandlerContext = {
+  request: Request;
+  router: {
+    options: { ssr?: { nonce?: string } };
+  };
+  responseHeaders: Headers;
 };
 
-let serverEntryPromise: Promise<ServerEntry> | undefined;
+// TanStack Start's stream handler, wrapped so every SSR document carries a
+// fresh per-request nonce-based Content-Security-Policy plus the rest of the
+// security-header set. The nonce is handed to the router so TanStack stamps it
+// onto the bootstrap <script> tags it emits, and written onto the response
+// headers so the browser accepts exactly those scripts.
+const securedStreamHandler = (ctx: StreamHandlerContext) => {
+  const nonce = createCspNonce();
+  ctx.router.options.ssr = { ...ctx.router.options.ssr, nonce };
+  writeHtmlSecurityHeaders(ctx.responseHeaders, nonce);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return defaultStreamHandler(ctx as any);
+};
 
-async function getServerEntry(): Promise<ServerEntry> {
-  if (!serverEntryPromise) {
-    serverEntryPromise = import("@tanstack/react-start/server-entry").then(
-      (m) => (m.default ?? m) as ServerEntry,
-    );
-  }
-  return serverEntryPromise;
+const startFetch = createStartHandler(
+  securedStreamHandler as Parameters<typeof createStartHandler>[0],
+) as (request: Request, ...rest: unknown[]) => Promise<Response>;
+
+function securityHardenedErrorResponse(status = 500): Response {
+  return applySecurityHeaders(
+    new Response(renderErrorPage(), {
+      status,
+      headers: { "content-type": "text/html; charset=utf-8" },
+    }),
+    createCspNonce(),
+  );
 }
 
 // h3 swallows in-handler throws into a normal 500 Response with body
@@ -29,10 +56,7 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   if (!isH3SwallowedErrorBody(body)) return response;
 
   console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
-  return new Response(renderErrorPage(), {
-    status: 500,
-    headers: { "content-type": "text/html; charset=utf-8" },
-  });
+  return securityHardenedErrorResponse(500);
 }
 
 function isH3SwallowedErrorBody(body: string): boolean {
@@ -44,18 +68,23 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// Guarantee the security headers on every response we return. The SSR success
+// path sets them inside securedStreamHandler; this backstops error responses
+// produced deeper in the stack (e.g. the errorMiddleware in src/start.ts) that
+// never passed through it.
+function ensureSecurityHeaders(response: Response): Response {
+  if (response.headers.has("Content-Security-Policy")) return response;
+  return applySecurityHeaders(response, createCspNonce());
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
-      const handler = await getServerEntry();
-      const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      const response = await startFetch(request, env, ctx);
+      return ensureSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
-      return new Response(renderErrorPage(), {
-        status: 500,
-        headers: { "content-type": "text/html; charset=utf-8" },
-      });
+      return securityHardenedErrorResponse(500);
     }
   },
 };
