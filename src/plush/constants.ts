@@ -21,13 +21,13 @@ export const NEXT_COMPETITION = {
  * Leave formId / emailEntryId blank to keep the form disabled (it will show a
  * friendly notice).
  *
- * CASL record of consent (optional but recommended):
- *  - Add a SECOND short-answer question to the same Google Form, e.g.
- *    "Consent version", and paste its "entry.…" id as `consentEntryId` below.
- *  - The signup then writes `CONSENT_TEXT_VERSION` into that column, so the
- *    linked Sheet holds email + timestamp + which consent wording was shown.
- *  - Leave `consentEntryId` blank and the server still logs a structured
- *    consent record to the function logs as a fallback.
+ * CASL record of consent:
+ *  - `consentEntryId` is the "entry.…" id of a SHORT-ANSWER question on the
+ *    same Google Form (e.g. "Consent version"). The signup writes
+ *    `CONSENT_TEXT_VERSION` into it, so the linked Sheet holds
+ *    email + timestamp + which consent wording was shown.
+ *  - Set it back to "" to disable; the server then only logs a structured
+ *    consent record to the function logs.
  *  - Bump `CONSENT_TEXT_VERSION` (date-stamped) whenever the consent sentence
  *    in public/plush-body.html changes, so old records stay attributable.
  */
@@ -35,7 +35,7 @@ export const NEWSLETTER = {
   formId: "1FAIpQLSccj1YzMS4-YvazJ6B_b123NwAULVr3NMvEiv4BrGa_IqchXA",
   emailEntryId: "entry.1882133048",
   /** entry.… id of the optional "Consent version" form question. Blank = off. */
-  consentEntryId: "",
+  consentEntryId: "entry.1307416685",
 } as const;
 
 /**
