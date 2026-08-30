@@ -48,7 +48,12 @@ function wireForm(form: HTMLFormElement): () => void {
 
     try {
       const result = await submitNewsletterSignup({
-        data: { email, company: honeypot?.value ?? "" },
+        data: {
+          email,
+          company: honeypot?.value ?? "",
+          consent: consent?.checked === true,
+          consentVersion: consent?.dataset.consentVersion ?? "",
+        },
       });
 
       if (result.ok) {

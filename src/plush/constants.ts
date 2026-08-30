@@ -18,12 +18,32 @@ export const NEXT_COMPETITION = {
  *       formId       → the "d/e/AAAA/" segment  (the AAAA part)
  *       emailEntryId → the "entry.1234567890" parameter
  *
- * Leave both blank to keep the form disabled (it will show a friendly notice).
+ * Leave formId / emailEntryId blank to keep the form disabled (it will show a
+ * friendly notice).
+ *
+ * CASL record of consent (optional but recommended):
+ *  - Add a SECOND short-answer question to the same Google Form, e.g.
+ *    "Consent version", and paste its "entry.…" id as `consentEntryId` below.
+ *  - The signup then writes `CONSENT_TEXT_VERSION` into that column, so the
+ *    linked Sheet holds email + timestamp + which consent wording was shown.
+ *  - Leave `consentEntryId` blank and the server still logs a structured
+ *    consent record to the function logs as a fallback.
+ *  - Bump `CONSENT_TEXT_VERSION` (date-stamped) whenever the consent sentence
+ *    in public/plush-body.html changes, so old records stay attributable.
  */
 export const NEWSLETTER = {
   formId: "1FAIpQLSccj1YzMS4-YvazJ6B_b123NwAULVr3NMvEiv4BrGa_IqchXA",
   emailEntryId: "entry.1882133048",
+  /** entry.… id of the optional "Consent version" form question. Blank = off. */
+  consentEntryId: "",
 } as const;
+
+/**
+ * Identifier for the exact consent wording shown next to the signup checkbox.
+ * MUST be bumped (keep it date-stamped) whenever that sentence changes.
+ * Mirrored in the `.newsletter-consent-box[data-consent-version]` attribute.
+ */
+export const CONSENT_TEXT_VERSION = "2026-08-30";
 
 export const BUDDY_LINES = [
   "psst — try the arrow keys on the mascots ↔",

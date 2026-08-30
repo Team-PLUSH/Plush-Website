@@ -2,12 +2,19 @@ import { createServerFn } from "@tanstack/react-start";
 import { getRequestIP } from "@tanstack/react-start/server";
 import { z } from "zod";
 
-import { NEWSLETTER } from "./constants";
+import { CONSENT_TEXT_VERSION, NEWSLETTER } from "./constants";
 
 const signupSchema = z.object({
   email: z.string().trim().toLowerCase().email().max(320),
   // Honeypot: a field hidden from real users. Anything non-empty is a bot.
   company: z.string().max(200).optional().default(""),
+  // CASL: express consent must be affirmative. The client gates on the checkbox
+  // too, but the server is the record of truth — reject anything that isn't a
+  // literal `true`.
+  consent: z.literal(true),
+  // Which consent wording the visitor was shown (from the checkbox's
+  // data-consent-version). Server compares it to CONSENT_TEXT_VERSION.
+  consentVersion: z.string().trim().max(40).optional().default(""),
 });
 
 export type NewsletterResult = { ok: true } | { ok: false; reason: "not-configured" | "rejected" };
@@ -50,12 +57,34 @@ export const submitNewsletterSignup = createServerFn({ method: "POST" })
       return { ok: false, reason: "not-configured" };
     }
 
+    // CASL record of consent. The linked Sheet only stores email + timestamp, so
+    // capture the rest here: log a structured record (visible in the function
+    // logs), and — if a "Consent version" question id is configured — write the
+    // wording version into the Sheet alongside the email so the record is
+    // durable. The server constant is authoritative; note any client mismatch.
+    const consentRecord = {
+      event: "newsletter-consent",
+      at: new Date().toISOString(),
+      consentTextVersion: CONSENT_TEXT_VERSION,
+      clientReportedVersion: data.consentVersion || null,
+      versionMismatch: data.consentVersion !== "" && data.consentVersion !== CONSENT_TEXT_VERSION,
+      // Don't log the raw address; a one-way tag is enough to reconcile a
+      // dispute against the Sheet without spilling PII into log storage.
+      emailDomain: data.email.split("@")[1] ?? null,
+    };
+    console.info(JSON.stringify(consentRecord));
+
+    const body = new URLSearchParams({ [NEWSLETTER.emailEntryId]: data.email });
+    if (NEWSLETTER.consentEntryId) {
+      body.set(NEWSLETTER.consentEntryId, `consent v${CONSENT_TEXT_VERSION}`);
+    }
+
     const response = await fetch(
       `https://docs.google.com/forms/d/e/${encodeURIComponent(NEWSLETTER.formId)}/formResponse`,
       {
         method: "POST",
         headers: { "content-type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ [NEWSLETTER.emailEntryId]: data.email }),
+        body,
         redirect: "manual",
         signal: AbortSignal.timeout(10_000),
       },
