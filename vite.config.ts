@@ -34,6 +34,14 @@ const securityConfig = {
   nitro: {
     routeRules: {
       "/**": { headers: { ...STATIC_ASSET_SECURITY_HEADERS } },
+      // Self-hosted webfonts: unhashed filenames, so cache a week (not
+      // immutable) — a refresh overwrites the file in place.
+      "/fonts/**": {
+        headers: {
+          ...STATIC_ASSET_SECURITY_HEADERS,
+          "Cache-Control": "public, max-age=604800",
+        },
+      },
       // The sponsorship PDF is embedded in a same-origin <iframe> on the
       // sponsors page, so allow same-origin framing but block cross-origin
       // sites from embedding it, and ask the browser to render it inline.

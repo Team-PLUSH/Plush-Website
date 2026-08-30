@@ -88,6 +88,9 @@ export function createCspNonce(): string {
  * CSS during SSR; none of it is attacker-influenced (the fetched body is
  * DOMPurify-sanitised). Style injection without script is not a meaningful
  * escalation here. Revisit if the inline styles are ever moved to classes.
+ *
+ * Fonts: self-hosted from /fonts (see public/fonts.css), so no
+ * fonts.googleapis.com / fonts.gstatic.com allowance is needed.
  */
 export function buildContentSecurityPolicy(nonce: string): string {
   return [
@@ -97,9 +100,9 @@ export function buildContentSecurityPolicy(nonce: string): string {
     "frame-ancestors 'none'",
     "form-action 'self' https://docs.google.com",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob:",
-    "font-src 'self' https://fonts.gstatic.com",
+    "font-src 'self'",
     "connect-src 'self' https://docs.google.com",
     "media-src 'self'",
     "worker-src 'self' blob:",

@@ -23,9 +23,21 @@ export const Route = createFileRoute("/")({
       { rel: "stylesheet", href: "/plush.css" },
       { rel: "stylesheet", href: "/plush-extras.css" },
       { rel: "stylesheet", href: "/plush-scribble-jam.css" },
+      // Self-hosted webfonts — no third-party request, no fonts.googleapis.com.
+      { rel: "stylesheet", href: "/fonts.css" },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:ital,wght@0,400;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@500;700&display=swap",
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/nunito-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/caveat-latin.woff2",
+        crossOrigin: "anonymous",
       },
     ],
   }),
