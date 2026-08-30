@@ -311,7 +311,7 @@ body:has(#page-home.active) .jam-marquee-wrap {
 }
 #page-home .hero-stat-label {
   color: var(--jam-ink);
-  opacity: 0.55;
+  opacity: 0.72;
 }
 
 #page-home .cta-dark,

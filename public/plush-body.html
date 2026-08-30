@@ -1,7 +1,9 @@
 <div id="custom-cursor">🐱</div>
 
-<div class="site-topbar">
-  <nav>
+<a class="skip-link" href="#site-main">Skip to content</a>
+
+<header class="site-topbar">
+  <nav aria-label="Primary">
     <div class="nav-mark" data-page="home">Team PLUSH</div>
     <ul class="nav-links" id="primaryNav">
       <li><a data-page="about">about</a></li>
@@ -19,8 +21,9 @@
       <a class="nav-pill" href="https://forms.gle/GsqnqVu716S4S4QTA" target="_blank" rel="noopener"
         >join us 💜</a
       >
-      <button class="theme-toggle" id="themeToggle">
-        <span class="icon-moon">🌙</span><span class="icon-sun">☀️</span>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <span class="icon-moon" aria-hidden="true">🌙</span
+        ><span class="icon-sun" aria-hidden="true">☀️</span>
       </button>
       <button
         class="nav-toggle"
@@ -50,2170 +53,2228 @@
       <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
     </div>
   </div>
-</div>
+</header>
 
-<!-- HOME PAGE -->
-<div class="page active" id="page-home">
-  <div class="hero">
-    <svg class="hero-bg-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-      <g opacity=".55">
-        <path
-          d="M80 120 L83 113 L86 120 L93 123 L86 126 L83 133 L80 126 L73 123 Z"
-          fill="#bfa8d8"
-        />
-        <path
-          d="M1100 200 L1103 193 L1106 200 L1113 203 L1106 206 L1103 213 L1100 206 L1093 203 Z"
-          fill="#a8bede"
-        />
-        <path
-          d="M200 680 L202 675 L204 680 L209 682 L204 684 L202 689 L200 684 L195 682 Z"
-          fill="#a4c9b0"
-        />
-        <path
-          d="M600 50 L602 45 L604 50 L609 52 L604 54 L602 59 L600 54 L595 52 Z"
-          fill="#bfa8d8"
-        />
-        <path
-          d="M400 160 L402 155 L404 160 L409 162 L404 164 L402 169 L400 164 L395 162 Z"
-          fill="#a4c9b0"
-        />
-        <circle cx="300" cy="100" r="3" fill="#bfa8d8" opacity=".8" />
-        <circle cx="900" cy="180" r="2.5" fill="#a4c9b0" opacity=".8" />
-        <circle cx="750" cy="60" r="3" fill="#a8bede" opacity=".8" />
-        <path
-          d="M380 200 h6 M383 197 v6"
-          stroke="#a4c9b0"
-          stroke-width="1.5"
-          stroke-linecap="round"
-        />
-        <path
-          d="M1020 350 h6 M1023 347 v6"
-          stroke="#bfa8d8"
-          stroke-width="1.5"
-          stroke-linecap="round"
-        />
-      </g>
-      <g transform="translate(30,50)" opacity=".45">
-        <ellipse cx="30" cy="45" rx="25" ry="22" fill="none" stroke="#a8bede" stroke-width="1.5" />
-        <polygon
-          points="10,28 16,10 22,28"
-          fill="none"
-          stroke="#a8bede"
-          stroke-width="1.5"
-          stroke-linejoin="round"
-        />
-        <polygon
-          points="38,28 44,10 50,28"
-          fill="none"
-          stroke="#a8bede"
-          stroke-width="1.5"
-          stroke-linejoin="round"
-        />
-        <circle cx="22" cy="42" r="2.5" fill="#a8bede" />
-        <circle cx="38" cy="42" r="2.5" fill="#a8bede" />
-      </g>
-      <g transform="translate(1100,30)" opacity=".45">
-        <ellipse cx="30" cy="48" rx="22" ry="20" fill="none" stroke="#bfa8d8" stroke-width="1.5" />
-        <ellipse cx="20" cy="22" rx="7" ry="16" fill="none" stroke="#bfa8d8" stroke-width="1.5" />
-        <ellipse cx="40" cy="22" rx="7" ry="16" fill="none" stroke="#bfa8d8" stroke-width="1.5" />
-        <circle cx="23" cy="45" r="2.5" fill="#bfa8d8" />
-        <circle cx="37" cy="45" r="2.5" fill="#bfa8d8" />
-      </g>
-      <g transform="translate(20,680)" opacity=".35">
-        <circle cx="30" cy="30" r="12" fill="none" stroke="#a4c9b0" stroke-width="1.8" />
-        <circle cx="30" cy="30" r="5" fill="none" stroke="#a4c9b0" stroke-width="1.8" />
-        <path
-          d="M30 14v4 M30 42v4 M14 30h4 M42 30h4 M18.1 18.1l2.8 2.8 M39.1 39.1l2.8 2.8 M18.1 41.9l2.8-2.8 M39.1 20.9l2.8-2.8"
-          stroke="#a4c9b0"
-          stroke-width="1.8"
-          stroke-linecap="round"
-        />
-      </g>
-      <g transform="translate(1120,700)" opacity=".4">
-        <path
-          d="M30 42 C30 42 10 28 10 18 C10 10 18 6 24 12 C27 15 30 18 30 18 C30 18 33 15 36 12 C42 6 50 10 50 18 C50 28 30 42 30 42Z"
-          fill="none"
-          stroke="#bfa8d8"
-          stroke-width="1.8"
-        />
-      </g>
-      <g opacity=".2" stroke="#a8bede" stroke-width="1.2" fill="none">
-        <path d="M0 300 h40 v-20 h30 v40 h20" />
-        <circle cx="40" cy="300" r="3" fill="#a8bede" />
-      </g>
-      <g opacity=".2" stroke="#a8bede" stroke-width="1.2" fill="none">
-        <path d="M1200 400 h-40 v-20 h-30 v40 h-20" />
-        <circle cx="1160" cy="400" r="3" fill="#a8bede" />
-      </g>
-      <g class="doodle-critter doodle-bob-a" transform="translate(560,720)" opacity=".5">
-        <path
-          d="M0 40 L6 30 L-6 20 L6 10 L-6 0"
-          fill="none"
-          stroke="#a4c9b0"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <circle cx="-6" cy="-10" r="8" fill="none" stroke="#a4c9b0" stroke-width="1.6" />
-        <path
-          d="M-10 -16 L-14 -22 M-2 -16 L2 -22"
-          stroke="#a4c9b0"
-          stroke-width="1.4"
-          stroke-linecap="round"
-        />
-        <circle cx="-9" cy="-11" r="1" fill="#a4c9b0" />
-        <circle cx="-3" cy="-11" r="1" fill="#a4c9b0" />
-      </g>
-      <g class="doodle-critter doodle-bob-b" transform="translate(970,540)" opacity=".45">
-        <path
-          d="M-20 10 C-28 10 -28 -6 -18 -6 C-16 -16 2 -16 4 -6 C14 -8 16 8 6 10 Z"
-          fill="none"
-          stroke="#bfa8d8"
-          stroke-width="1.6"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M-10 -14 C-10 -28 -2 -28 -3 -16"
-          fill="none"
-          stroke="#bfa8d8"
-          stroke-width="1.6"
-          stroke-linecap="round"
-        />
-        <path
-          d="M2 -14 C2 -30 10 -30 8 -17"
-          fill="none"
-          stroke="#bfa8d8"
-          stroke-width="1.6"
-          stroke-linecap="round"
-        />
-        <circle cx="-6" cy="2" r="1" fill="#bfa8d8" />
-        <circle cx="0" cy="2" r="1" fill="#bfa8d8" />
-      </g>
-      <g
-        class="doodle-critter doodle-sway-c"
-        transform="translate(160,320) rotate(-12)"
-        opacity=".5"
-      >
-        <path
-          d="M0 0 L34 6 L0 14 L6 7 Z"
-          fill="none"
-          stroke="#a8bede"
-          stroke-width="1.6"
-          stroke-linejoin="round"
-        />
-        <circle cx="-16" cy="10" r="6" fill="none" stroke="#a8bede" stroke-width="1.3" />
-        <path
-          d="M-16 4 v-3 M-16 19 v3 M-10 10 h3 M-22 10 h-3"
-          stroke="#a8bede"
-          stroke-width="1.3"
-          stroke-linecap="round"
-        />
-        <circle cx="-28" cy="12" r="2" fill="#a8bede" opacity=".7" />
-      </g>
-    </svg>
-    <div class="hero-wordmark">
-      <div class="smear smear-1"></div>
-      <div class="smear smear-2"></div>
-      <div class="smear smear-3"></div>
-      <span class="jam-doodle jam-doodle-star1" aria-hidden="true">✦</span>
-      <span class="jam-doodle jam-doodle-star2" aria-hidden="true">★</span>
-      <svg
-        class="jam-doodle jam-doodle-arrow"
-        aria-hidden="true"
-        viewBox="0 0 70 50"
-        width="70"
-        height="50"
-        fill="none"
-      >
-        <path
-          d="M4 4c14 2 34 4 40 20 3 8-2 14-10 12"
-          stroke="currentColor"
-          stroke-width="3"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M25 32l9 4-3 10"
-          stroke="currentColor"
-          stroke-width="3"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
+<main id="site-main" tabindex="-1">
+  <h1 class="visually-hidden">Team PLUSH — student-run FRC robotics</h1>
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+    <div class="hero">
+      <svg class="hero-bg-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+        <g opacity=".55">
+          <path
+            d="M80 120 L83 113 L86 120 L93 123 L86 126 L83 133 L80 126 L73 123 Z"
+            fill="#bfa8d8"
+          />
+          <path
+            d="M1100 200 L1103 193 L1106 200 L1113 203 L1106 206 L1103 213 L1100 206 L1093 203 Z"
+            fill="#a8bede"
+          />
+          <path
+            d="M200 680 L202 675 L204 680 L209 682 L204 684 L202 689 L200 684 L195 682 Z"
+            fill="#a4c9b0"
+          />
+          <path
+            d="M600 50 L602 45 L604 50 L609 52 L604 54 L602 59 L600 54 L595 52 Z"
+            fill="#bfa8d8"
+          />
+          <path
+            d="M400 160 L402 155 L404 160 L409 162 L404 164 L402 169 L400 164 L395 162 Z"
+            fill="#a4c9b0"
+          />
+          <circle cx="300" cy="100" r="3" fill="#bfa8d8" opacity=".8" />
+          <circle cx="900" cy="180" r="2.5" fill="#a4c9b0" opacity=".8" />
+          <circle cx="750" cy="60" r="3" fill="#a8bede" opacity=".8" />
+          <path
+            d="M380 200 h6 M383 197 v6"
+            stroke="#a4c9b0"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+          <path
+            d="M1020 350 h6 M1023 347 v6"
+            stroke="#bfa8d8"
+            stroke-width="1.5"
+            stroke-linecap="round"
+          />
+        </g>
+        <g transform="translate(30,50)" opacity=".45">
+          <ellipse
+            cx="30"
+            cy="45"
+            rx="25"
+            ry="22"
+            fill="none"
+            stroke="#a8bede"
+            stroke-width="1.5"
+          />
+          <polygon
+            points="10,28 16,10 22,28"
+            fill="none"
+            stroke="#a8bede"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <polygon
+            points="38,28 44,10 50,28"
+            fill="none"
+            stroke="#a8bede"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <circle cx="22" cy="42" r="2.5" fill="#a8bede" />
+          <circle cx="38" cy="42" r="2.5" fill="#a8bede" />
+        </g>
+        <g transform="translate(1100,30)" opacity=".45">
+          <ellipse
+            cx="30"
+            cy="48"
+            rx="22"
+            ry="20"
+            fill="none"
+            stroke="#bfa8d8"
+            stroke-width="1.5"
+          />
+          <ellipse cx="20" cy="22" rx="7" ry="16" fill="none" stroke="#bfa8d8" stroke-width="1.5" />
+          <ellipse cx="40" cy="22" rx="7" ry="16" fill="none" stroke="#bfa8d8" stroke-width="1.5" />
+          <circle cx="23" cy="45" r="2.5" fill="#bfa8d8" />
+          <circle cx="37" cy="45" r="2.5" fill="#bfa8d8" />
+        </g>
+        <g transform="translate(20,680)" opacity=".35">
+          <circle cx="30" cy="30" r="12" fill="none" stroke="#a4c9b0" stroke-width="1.8" />
+          <circle cx="30" cy="30" r="5" fill="none" stroke="#a4c9b0" stroke-width="1.8" />
+          <path
+            d="M30 14v4 M30 42v4 M14 30h4 M42 30h4 M18.1 18.1l2.8 2.8 M39.1 39.1l2.8 2.8 M18.1 41.9l2.8-2.8 M39.1 20.9l2.8-2.8"
+            stroke="#a4c9b0"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </g>
+        <g transform="translate(1120,700)" opacity=".4">
+          <path
+            d="M30 42 C30 42 10 28 10 18 C10 10 18 6 24 12 C27 15 30 18 30 18 C30 18 33 15 36 12 C42 6 50 10 50 18 C50 28 30 42 30 42Z"
+            fill="none"
+            stroke="#bfa8d8"
+            stroke-width="1.8"
+          />
+        </g>
+        <g opacity=".2" stroke="#a8bede" stroke-width="1.2" fill="none">
+          <path d="M0 300 h40 v-20 h30 v40 h20" />
+          <circle cx="40" cy="300" r="3" fill="#a8bede" />
+        </g>
+        <g opacity=".2" stroke="#a8bede" stroke-width="1.2" fill="none">
+          <path d="M1200 400 h-40 v-20 h-30 v40 h-20" />
+          <circle cx="1160" cy="400" r="3" fill="#a8bede" />
+        </g>
+        <g class="doodle-critter doodle-bob-a" transform="translate(560,720)" opacity=".5">
+          <path
+            d="M0 40 L6 30 L-6 20 L6 10 L-6 0"
+            fill="none"
+            stroke="#a4c9b0"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <circle cx="-6" cy="-10" r="8" fill="none" stroke="#a4c9b0" stroke-width="1.6" />
+          <path
+            d="M-10 -16 L-14 -22 M-2 -16 L2 -22"
+            stroke="#a4c9b0"
+            stroke-width="1.4"
+            stroke-linecap="round"
+          />
+          <circle cx="-9" cy="-11" r="1" fill="#a4c9b0" />
+          <circle cx="-3" cy="-11" r="1" fill="#a4c9b0" />
+        </g>
+        <g class="doodle-critter doodle-bob-b" transform="translate(970,540)" opacity=".45">
+          <path
+            d="M-20 10 C-28 10 -28 -6 -18 -6 C-16 -16 2 -16 4 -6 C14 -8 16 8 6 10 Z"
+            fill="none"
+            stroke="#bfa8d8"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M-10 -14 C-10 -28 -2 -28 -3 -16"
+            fill="none"
+            stroke="#bfa8d8"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+          <path
+            d="M2 -14 C2 -30 10 -30 8 -17"
+            fill="none"
+            stroke="#bfa8d8"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+          <circle cx="-6" cy="2" r="1" fill="#bfa8d8" />
+          <circle cx="0" cy="2" r="1" fill="#bfa8d8" />
+        </g>
+        <g
+          class="doodle-critter doodle-sway-c"
+          transform="translate(160,320) rotate(-12)"
+          opacity=".5"
+        >
+          <path
+            d="M0 0 L34 6 L0 14 L6 7 Z"
+            fill="none"
+            stroke="#a8bede"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <circle cx="-16" cy="10" r="6" fill="none" stroke="#a8bede" stroke-width="1.3" />
+          <path
+            d="M-16 4 v-3 M-16 19 v3 M-10 10 h3 M-22 10 h-3"
+            stroke="#a8bede"
+            stroke-width="1.3"
+            stroke-linecap="round"
+          />
+          <circle cx="-28" cy="12" r="2" fill="#a8bede" opacity=".7" />
+        </g>
       </svg>
-      <span class="word">PLUSH</span>
-    </div>
-    <p class="hero-tagline">
-      live <span class="dot">✦</span> laugh <span class="dot">✦</span> love
-      <span class="dot">✦</span> robotics
-    </p>
-    <p class="hero-subtagline">
-      100% Student-Led Community Team <span class="hero-sub-sep">|</span> Est. April 2026
-    </p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num is-sm is-blue">Rookie</div>
-        <div class="hero-stat-label">year</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num is-sm is-purple">40-45</div>
-        <div class="hero-stat-label">members</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num is-sm is-green">🏆 Goal</div>
-        <div class="hero-stat-label">Rookie All-Star</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num is-sm is-blue">∞</div>
-        <div class="hero-stat-label">Jolliness</div>
-      </div>
-    </div>
-    <div class="hero-ctas">
-      <button class="cta-dark" data-page="team">meet the team</button>
-      <button class="cta-light" data-page="robots">see our robots</button>
-      <button class="cta-light" data-page="schedule">season schedule</button>
-    </div>
-    <div class="sticker-row">
-      <div class="sticker jam-pop">
-        <div class="sticker-art">🐱</div>
-        <div class="sticker-label">Pal</div>
-      </div>
-      <div class="sticker jam-pop">
-        <div class="sticker-art">🐰</div>
-        <div class="sticker-label">Xaivian</div>
-      </div>
-      <div class="sticker jam-pop">
-        <div class="sticker-art">🐻</div>
-        <div class="sticker-label">Stuffing</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOUNDERS MISSION -->
-  <section class="founders-mission-section">
-    <div class="wrap">
-      <div class="ruled-title center">
-        <div class="rule"></div>
-        <h2>founders' mission</h2>
-        <div class="rule"></div>
-      </div>
-      <p class="fade founders-mission-text">Ambitious missions always begin with a simple idea.</p>
-      <p class="fade founders-mission-text">
-        For Team PLUSH, it began with three high school students who believed that STEM could be
-        more than just innovation, but rather a secondary home where young engineers feel welcomed,
-        supported, and inspired one day at a time. Team PLUSH will ALWAYS operate on a student-led
-        basis, with our oldest mentor being 18 years of age.
-      </p>
-      <div class="founders-row fade">
-        <figure class="founder-card">
-          <div class="founder-photo">
-            <img src="/team/eason-yang.png" alt="Eason Yang" loading="lazy" />
-          </div>
-          <figcaption>
-            <span class="founder-name">Eason Yang</span>
-            <span class="founder-school">Merivale HS</span>
-            <span class="founder-class">Class of &rsquo;27</span>
-          </figcaption>
-        </figure>
-        <figure class="founder-card">
-          <div class="founder-photo">
-            <img src="/team/sarmistha-pal.png" alt="Sarmistha Pal" loading="lazy" />
-          </div>
-          <figcaption>
-            <span class="founder-name">Sarmistha Pal</span>
-            <span class="founder-school">John McRae SS</span>
-            <span class="founder-class">Class of &rsquo;27</span>
-          </figcaption>
-        </figure>
-        <figure class="founder-card">
-          <div class="founder-photo">
-            <img src="/team/alvin-ren.png" alt="Alvin Ren" loading="lazy" />
-          </div>
-          <figcaption>
-            <span class="founder-name">Alvin Ren</span>
-            <span class="founder-school">Earl of March SS</span>
-            <span class="founder-class">Class of &rsquo;27</span>
-          </figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- MASCOT CHOOSER -->
-  <section class="mascot-section">
-    <svg class="mascot-bg-svg" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice">
-      <g opacity=".3">
-        <path d="M80 80 L82 74 L84 80 L90 82 L84 84 L82 90 L80 84 L74 82 Z" fill="#a8bede" />
-        <path
-          d="M1100 120 L1102 114 L1104 120 L1110 122 L1104 124 L1102 130 L1100 124 L1094 122 Z"
-          fill="#bfa8d8"
-        />
-        <path
-          d="M600 30 L602 24 L604 30 L610 32 L604 34 L602 40 L600 34 L594 32 Z"
-          fill="#a4c9b0"
-        />
-        <circle cx="150" cy="200" r="3" fill="#bfa8d8" />
-        <circle cx="1050" cy="280" r="3" fill="#a8bede" />
-      </g>
-    </svg>
-    <div class="wrap layer-2">
-      <div class="ruled-title center">
-        <div class="rule"></div>
-        <h2 class="on-dark">meet the mascots</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="mascot-picker">
-        <button class="mascot-arrow" id="mascotLeft">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path
-              d="M26 8 L14 20 L26 32"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <div class="mascot-stage">
-          <div class="mascot-glow" id="mascotGlow"></div>
-          <div class="mascot-figure" id="mascotFigure">
-            <div class="mascot-svg-wrap" id="mascotSvg"></div>
-            <div class="mascot-ground" id="mascotGround"></div>
-            <div class="mascot-name" id="mascotName"></div>
-            <div class="mascot-role" id="mascotRole"></div>
-          </div>
-          <div class="mascot-fact" id="mascotFact"></div>
-        </div>
-        <button class="mascot-arrow" id="mascotRight">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <path
-              d="M14 8 L26 20 L14 32"
-              stroke-width="4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
-      <div class="mascot-dots" id="mascotDots"></div>
-      <div class="cursor-chooser">
-        <p>✦ use as your cursor ✦</p>
-        <div class="cursor-btns">
-          <button type="button" class="cursor-btn" id="cursorCat">🐱 Pal</button>
-          <button type="button" class="cursor-btn" id="cursorBunny">🐰 Xaivian</button>
-          <button type="button" class="cursor-btn" id="cursorBear">🐻 Stuffing</button>
-          <button type="button" class="cursor-btn-off">✕ default cursor</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="track-journey-section season-plans">
-    <div class="wrap">
-      <div class="ruled-title center">
-        <div class="rule"></div>
-        <h2 class="on-dark">season plans</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="season-path fade">
-        <span class="season-marker season-start" aria-hidden="true">▲ start</span>
-        <ol class="season-stops">
-          <svg
-            class="season-trail"
-            viewBox="0 0 400 1000"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="trackGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#a8bede" />
-                <stop offset="50%" stop-color="#bfa8d8" />
-                <stop offset="100%" stop-color="#a4c9b0" />
-              </linearGradient>
-            </defs>
-            <path
-              id="trackPath"
-              class="season-track-path"
-              d="M200 0 C 120 40 48 60 48 125 C 48 240 352 260 352 375 C 352 490 48 510 48 625 C 48 740 352 760 352 875 C 352 950 260 1000 200 1000"
-            />
-          </svg>
-          <li class="season-stop stop-a">
-            <span class="season-node">1</span>
-            <article class="track-card season-card">
-              <span class="track-tag">January · Kickoff</span>
-              <h3 class="track-card-title">Kickoff &amp; Strategy</h3>
-              <p class="track-card-desc">
-                The season opens with FIRST's global game reveal. We read the manual together, break
-                down the field, and decide what kind of robot a rookie PLUSH team can build well.
-              </p>
-            </article>
-          </li>
-          <li class="season-stop stop-b">
-            <span class="season-node">2</span>
-            <article class="track-card season-card">
-              <span class="track-tag">Weeks 1–2 · Design</span>
-              <h3 class="track-card-title">Design &amp; Prototype</h3>
-              <p class="track-card-desc">
-                CAD in Onshape, cardboard-and-wood prototypes, and fast tests. We lock in a design
-                that is simple enough to finish and sturdy enough to compete.
-              </p>
-            </article>
-          </li>
-          <li class="season-stop stop-a">
-            <span class="season-node">3</span>
-            <article class="track-card season-card">
-              <span class="track-tag">Weeks 3–6 · Build</span>
-              <h3 class="track-card-title">Build &amp; Program</h3>
-              <p class="track-card-desc">
-                Fabrication, wiring, and code come together on one robot. Drive practice starts the
-                minute it can move, and every subsystem gets tested until it breaks.
-              </p>
-            </article>
-          </li>
-          <li class="season-stop stop-b">
-            <span class="season-node">4</span>
-            <article class="track-card season-card">
-              <span class="track-tag">March + · Compete</span>
-              <h3 class="track-card-title">Competition</h3>
-              <p class="track-card-desc">
-                Our first regional: qualification matches, pit repairs between rounds, scouting
-                alliance partners, and cheering louder for other teams than for ourselves.
-              </p>
-            </article>
-          </li>
-        </ol>
-        <span class="season-marker season-end" aria-hidden="true">🏆</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="join-section">
-    <svg class="join-bg-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
-      <g fill="white">
-        <path d="M80 80 L83 72 L86 80 L94 83 L86 86 L83 94 L80 86 L72 83 Z" />
-        <path
-          d="M1120 100 L1123 92 L1126 100 L1134 103 L1126 106 L1123 114 L1120 106 L1112 103 Z"
-        />
-        <path d="M600 30 L602 25 L604 30 L609 32 L604 34 L602 39 L600 34 L595 32 Z" />
-        <circle cx="150" cy="200" r="5" fill="none" stroke="white" stroke-width="1.5" />
-        <circle cx="1050" cy="200" r="5" fill="none" stroke="white" stroke-width="1.5" />
-      </g>
-      <g class="doodle-critter doodle-bob-a" transform="translate(300,320)" opacity=".35">
-        <path
-          d="M0 14 C-14 2 -14 -10 -4 -10 C0 -10 0 -6 0 -6 C0 -6 0 -10 4 -10 C14 -10 14 2 0 14Z"
+      <div class="hero-wordmark">
+        <div class="smear smear-1"></div>
+        <div class="smear smear-2"></div>
+        <div class="smear smear-3"></div>
+        <span class="jam-doodle jam-doodle-star1" aria-hidden="true">✦</span>
+        <span class="jam-doodle jam-doodle-star2" aria-hidden="true">★</span>
+        <svg
+          class="jam-doodle jam-doodle-arrow"
+          aria-hidden="true"
+          viewBox="0 0 70 50"
+          width="70"
+          height="50"
           fill="none"
-          stroke="white"
-          stroke-width="1.6"
-        />
-      </g>
-    </svg>
-    <div class="wrap">
-      <div class="join-inner">
-        <span class="join-sticker">no experience needed</span>
-        <h2 class="join-h">come build<br />with <em>us</em></h2>
-        <p class="join-sub">
-          We meet every week. We eat snacks. We argue about the best way to attach a gear — and
-          somehow it always works out.
-        </p>
-        <div class="join-btns">
-          <a
-            class="btn-inv"
-            href="https://forms.gle/GsqnqVu716S4S4QTA"
-            target="_blank"
-            rel="noopener"
-            >apply to join</a
-          >
-          <button class="btn-ghost" data-page="sponsors">sponsor us</button>
-        </div>
+        >
+          <path
+            d="M4 4c14 2 34 4 40 20 3 8-2 14-10 12"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M25 32l9 4-3 10"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="word">PLUSH</span>
       </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-      <li><a data-page="robots">robots</a></li>
-      <li><a data-page="socials">socials</a></li>
-      <li><a data-page="sponsors">sponsors</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- ABOUT PAGE -->
-<div class="page page-about" id="page-about">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> about</div>
-  <div class="inner-page">
-    <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice">
-      <g opacity=".06">
-        <path d="M50 80 L52 74 L54 80 L60 82 L54 84 L52 90 L50 84 L44 82 Z" fill="#a8bede" />
-        <path
-          d="M980 120 L982 114 L984 120 L990 122 L984 124 L982 130 L980 124 L974 122 Z"
-          fill="#bfa8d8"
-        />
-        <circle cx="500" cy="30" r="5" fill="#a4c9b0" />
-        <path
-          d="M100 500 C100 500 85 488 85 480 C85 474 90 472 94 476 C96.5 478.5 100 482 100 482 C100 482 103.5 478.5 106 476 C110 472 115 474 115 480 C115 488 100 500 100 500Z"
-          fill="#bfa8d8"
-        />
-      </g>
-    </svg>
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>what's... Team Plush?</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="about-layout">
-        <div class="about-copy fade">
-          <p>
-            Team PLUSH is a student-run <em>FIRST Robotics Competition</em> team that believes
-            robotics should feel welcoming, creative, and — yes — a little soft around the edges.
-            We're engineers, artists, programmers, strategists, and humans who genuinely like each
-            other.
-          </p>
-          <p>
-            We designed our brand around three pastel mascots on purpose. Walk into most FRC pits
-            and you'll see industrial logos and intimidating robots. We wanted to show that
-            <em>technically excellent and openly friendly</em> aren't opposites.
-          </p>
-          <p>
-            From CAD marathons to community demos to staying up way too late fixing autonomous
-            routines the night before a regional — we do it together.
-          </p>
-          <h3>our sub-teams</h3>
-          <div class="subteam-grid">
-            <div class="subteam-card fade">
-              <div class="subteam-icon">💻</div>
-              <div class="subteam-name">Software</div>
-              <div class="subteam-desc">
-                Java robot code, vision with Limelight, path planning with PathPlanner, and driver
-                dashboards.
-              </div>
-            </div>
-            <div class="subteam-card fade">
-              <div class="subteam-icon">🔧</div>
-              <div class="subteam-name">Mechanical</div>
-              <div class="subteam-desc">
-                CAD in Onshape, fabrication with CNC router and lathe, intake systems, shooter
-                mechanisms.
-              </div>
-            </div>
-            <div class="subteam-card fade">
-              <div class="subteam-icon">📣</div>
-              <div class="subteam-name">Business & Outreach</div>
-              <div class="subteam-desc">
-                Sponsorship decks, community demos, social media, branding, and elementary school
-                workshops.
-              </div>
-            </div>
-            <div class="subteam-card fade">
-              <div class="subteam-icon">🎮</div>
-              <div class="subteam-name">Drive Team</div>
-              <div class="subteam-desc">
-                Two drivers, one human player, one coach — all running on adrenaline and snacks.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="fact-stack fade">
-            <div class="fact-card">
-              <div class="fact-num">2026</div>
-              <div class="fact-label">founded<br />april 2026</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">3</div>
-              <div class="fact-label">high-school<br />co-founders</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">4</div>
-              <div class="fact-label">sub-teams, software<br />to scouting</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">🌱</div>
-              <div class="fact-label">regional impact<br />to ottawa</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">40–45</div>
-              <div class="fact-label">member goal</div>
-            </div>
-          </div>
-          <div class="fade u-mt-2">
-            <div class="ruled-title">
-              <h2>our journey</h2>
-              <div class="rule"></div>
-            </div>
-            <div class="timeline">
-              <div class="tl-item">
-                <div class="tl-dot is-blue"></div>
-                <div class="tl-year">Apr 2026</div>
-                <div class="tl-title">Team Founded</div>
-                <div class="tl-desc">
-                  Three high-school students start Team PLUSH — no robot yet, just a plan and a lot
-                  of borrowed laptops.
-                </div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot is-purple"></div>
-                <div class="tl-year">Summer 2026</div>
-                <div class="tl-title">Building the Team</div>
-                <div class="tl-desc">
-                  Recruiting sub-teams, onboarding student mentors, first sponsor conversations, and
-                  our offseason bot <em>Droplet</em>.
-                </div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot is-green"></div>
-                <div class="tl-year">Fall 2026</div>
-                <div class="tl-title">Outreach &amp; Preseason</div>
-                <div class="tl-desc">
-                  First elementary and middle-school STEM workshops, CAD and Java training, and
-                  community robot demos.
-                </div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot is-blue"></div>
-                <div class="tl-year">Jan 2027</div>
-                <div class="tl-title">First Kickoff</div>
-                <div class="tl-desc">
-                  Our rookie competition season begins. Game reveal, mentor-guided design, and six
-                  weeks to build a robot.
-                </div>
-              </div>
-              <div class="tl-item">
-                <div class="tl-dot is-purple"></div>
-                <div class="tl-year">Spring 2027</div>
-                <div class="tl-title">Rookie Season</div>
-                <div class="tl-desc">
-                  First district events, the judge presentation, and our number-one off-field goal:
-                  the Rookie All-Star Award.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="team">team</a></li>
-      <li><a data-page="robots">robots</a></li>
-      <li><a data-page="values">values</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- TEAM PAGE -->
-<div class="page page-team" id="page-team">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> team</div>
-  <div class="inner-page">
-    <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice">
-      <g opacity=".09">
-        <g transform="translate(40,80)">
-          <ellipse cx="12" cy="18" rx="7" ry="9" fill="#bfa8d8" />
-          <ellipse cx="4" cy="8" rx="4" ry="5" fill="#bfa8d8" />
-          <ellipse cx="20" cy="8" rx="4" ry="5" fill="#bfa8d8" />
-          <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#bfa8d8" />
-          <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#bfa8d8" />
-        </g>
-        <g transform="translate(950,100) rotate(20)">
-          <ellipse cx="12" cy="18" rx="7" ry="9" fill="#a8bede" />
-          <ellipse cx="4" cy="8" rx="4" ry="5" fill="#a8bede" />
-          <ellipse cx="20" cy="8" rx="4" ry="5" fill="#a8bede" />
-          <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#a8bede" />
-          <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#a8bede" />
-        </g>
-        <g transform="translate(80,500) rotate(-15)">
-          <ellipse cx="12" cy="18" rx="7" ry="9" fill="#a4c9b0" />
-          <ellipse cx="4" cy="8" rx="4" ry="5" fill="#a4c9b0" />
-          <ellipse cx="20" cy="8" rx="4" ry="5" fill="#a4c9b0" />
-          <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#a4c9b0" />
-          <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#a4c9b0" />
-        </g>
-      </g>
-    </svg>
-    <div class="wrap">
-      <div class="ruled-title fade u-mb-1-2">
-        <h2 class="is-sm">Co-Captains</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="team-grid u-mb-2-5">
-        <div class="team-card fade">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava">
-            <img src="/team/eason-yang.png" alt="Eason Yang" loading="lazy" />
-          </div>
-          <div class="tc-name">Eason Yang</div>
-          <div class="tc-role">co-captain</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava">
-            <img src="/team/sarmistha-pal.png" alt="Sarmistha Pal" loading="lazy" />
-          </div>
-          <div class="tc-name">Sarmistha Pal</div>
-          <div class="tc-role">co-captain</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava"><img src="/team/alvin-ren.png" alt="Alvin Ren" loading="lazy" /></div>
-          <div class="tc-name">Alvin Ren</div>
-          <div class="tc-role">co-captain</div>
-        </div>
-      </div>
-
-      <div class="ruled-title fade u-mb-1-2">
-        <h2 class="is-sm">Leads</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="team-grid u-mb-2-5">
-        <div class="team-card fade">
-          <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava is-purple">📣</div>
-          <div class="tc-name">Olivia Shen</div>
-          <div class="tc-role">business lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava is-purple">📣</div>
-          <div class="tc-name">Dorothy Shen</div>
-          <div class="tc-role">business lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava is-purple">📣</div>
-          <div class="tc-name">Anthony Cui</div>
-          <div class="tc-role">business lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava is-blue">💻</div>
-          <div class="tc-name">Sean Nie</div>
-          <div class="tc-role">software lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava is-blue">💻</div>
-          <div class="tc-name">TBD</div>
-          <div class="tc-role">software lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava is-blue">💻</div>
-          <div class="tc-name">TBD</div>
-          <div class="tc-role">software lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava is-green">🔧</div>
-          <div class="tc-name">TBD</div>
-          <div class="tc-role">mechanical lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava is-green">🔧</div>
-          <div class="tc-name">TBD</div>
-          <div class="tc-role">mechanical lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava is-green">🔧</div>
-          <div class="tc-name">TBD</div>
-          <div class="tc-role">mechanical lead</div>
-        </div>
-        <div class="team-card fade">
-          <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava is-green">🔧</div>
-          <div class="tc-name">TBD</div>
-          <div class="tc-role">mechanical lead</div>
-        </div>
-      </div>
-
-      <div class="ruled-title fade u-mb-1-2">
-        <h2 class="is-sm">Members</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="team-grid">
-        <div class="team-card fade is-muted">
-          <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava is-purple">📣</div>
-          <div class="tc-name">Business</div>
-          <div class="tc-role">TBD</div>
-        </div>
-        <div class="team-card fade is-muted">
-          <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava is-blue">💻</div>
-          <div class="tc-name">Software</div>
-          <div class="tc-role">TBD</div>
-        </div>
-        <div class="team-card fade is-muted">
-          <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava is-green">🔧</div>
-          <div class="tc-name">Mechanical</div>
-          <div class="tc-role">TBD</div>
-        </div>
-      </div>
-      <div class="fade u-mt-3">
-        <div class="ruled-title u-mb-1-2">
-          <h2 class="is-sm">Mentors</h2>
-          <div class="rule"></div>
-        </div>
-        <div class="mentor-row">
-          <div class="mentor-card">
-            <div class="mentor-top">
-              <div class="mentor-ava">
-                <img src="/team/ryan-zhao.png" alt="Ryan Zhao" loading="lazy" />
-              </div>
-              <div>
-                <div class="mentor-name">Ryan Zhao</div>
-                <div class="mentor-role">First Year University · FRC Alumni</div>
-              </div>
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div class="mentor-top">
-              <div class="mentor-ava is-purple">🎓</div>
-              <div>
-                <div class="mentor-name">Owen Chen</div>
-                <div class="mentor-role">First Year University · FRC Alumni</div>
-              </div>
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div class="mentor-top">
-              <div class="mentor-ava is-blue">🎓</div>
-              <div>
-                <div class="mentor-name">Neo Zheng</div>
-                <div class="mentor-role">First Year University · FRC Alumni</div>
-              </div>
-            </div>
-          </div>
-          <div class="mentor-card">
-            <div class="mentor-top">
-              <div class="mentor-ava">
-                <img src="/team/henry-cai.png" alt="Henry Cai" loading="lazy" />
-              </div>
-              <div>
-                <div class="mentor-name">Henry Cai</div>
-                <div class="mentor-role">First Year University · FRC Alumni</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="robots">robots</a></li>
-      <li><a data-page="values">values</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- ROBOTS PAGE -->
-<div class="page page-robots" id="page-robots">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> robots</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>our robots</h2>
-        <div class="rule"></div>
-      </div>
-      <p class="fade section-intro">
-        Six weeks. Thousands of decisions. One robot. Here's what we're building — and what comes
-        next.
+      <p class="hero-tagline">
+        live <span class="dot">✦</span> laugh <span class="dot">✦</span> love
+        <span class="dot">✦</span> robotics
       </p>
-      <div class="robots-grid">
-        <div class="robot-card fade">
-          <div class="robot-thumb rt-blue">
-            <svg viewBox="0 0 120 120" width="120" height="120">
-              <line
-                x1="60"
-                y1="18"
-                x2="60"
-                y2="32"
-                stroke="#383162"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-              <circle cx="60" cy="15" r="4" fill="#bfa8d8" stroke="#383162" stroke-width="1.5" />
-              <rect
-                x="36"
-                y="32"
-                width="48"
-                height="36"
-                rx="8"
-                fill="#dde6f5"
-                stroke="#383162"
-                stroke-width="2"
-              />
-              <circle cx="50" cy="50" r="6" fill="#fff" stroke="#383162" stroke-width="1.5" />
-              <circle cx="70" cy="50" r="6" fill="#fff" stroke="#383162" stroke-width="1.5" />
-              <circle cx="51" cy="50" r="3" fill="#383162" />
-              <circle cx="71" cy="50" r="3" fill="#383162" />
-              <circle cx="52" cy="49" r="1" fill="#fff" />
-              <circle cx="72" cy="49" r="1" fill="#fff" />
+      <p class="hero-subtagline">
+        100% Student-Led Community Team <span class="hero-sub-sep">|</span> Est. April 2026
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num is-sm is-blue">Rookie</div>
+          <div class="hero-stat-label">year</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num is-sm is-purple">40-45</div>
+          <div class="hero-stat-label">members</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num is-sm is-green">🏆 Goal</div>
+          <div class="hero-stat-label">Rookie All-Star</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num is-sm is-blue">∞</div>
+          <div class="hero-stat-label">Jolliness</div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <button class="cta-dark" data-page="team">meet the team</button>
+        <button class="cta-light" data-page="robots">see our robots</button>
+        <button class="cta-light" data-page="schedule">season schedule</button>
+      </div>
+      <div class="sticker-row">
+        <div class="sticker jam-pop">
+          <div class="sticker-art">🐱</div>
+          <div class="sticker-label">Pal</div>
+        </div>
+        <div class="sticker jam-pop">
+          <div class="sticker-art">🐰</div>
+          <div class="sticker-label">Xaivian</div>
+        </div>
+        <div class="sticker jam-pop">
+          <div class="sticker-art">🐻</div>
+          <div class="sticker-label">Stuffing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOUNDERS MISSION -->
+    <section class="founders-mission-section">
+      <div class="wrap">
+        <div class="ruled-title center">
+          <div class="rule"></div>
+          <h2>founders' mission</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="fade founders-mission-text">
+          Ambitious missions always begin with a simple idea.
+        </p>
+        <p class="fade founders-mission-text">
+          For Team PLUSH, it began with three high school students who believed that STEM could be
+          more than just innovation, but rather a secondary home where young engineers feel
+          welcomed, supported, and inspired one day at a time. Team PLUSH will ALWAYS operate on a
+          student-led basis, with our oldest mentor being 18 years of age.
+        </p>
+        <div class="founders-row fade">
+          <figure class="founder-card">
+            <div class="founder-photo">
+              <img src="/team/eason-yang.png" alt="Eason Yang" loading="lazy" />
+            </div>
+            <figcaption>
+              <span class="founder-name">Eason Yang</span>
+              <span class="founder-school">Merivale HS</span>
+              <span class="founder-class">Class of &rsquo;27</span>
+            </figcaption>
+          </figure>
+          <figure class="founder-card">
+            <div class="founder-photo">
+              <img src="/team/sarmistha-pal.png" alt="Sarmistha Pal" loading="lazy" />
+            </div>
+            <figcaption>
+              <span class="founder-name">Sarmistha Pal</span>
+              <span class="founder-school">John McRae SS</span>
+              <span class="founder-class">Class of &rsquo;27</span>
+            </figcaption>
+          </figure>
+          <figure class="founder-card">
+            <div class="founder-photo">
+              <img src="/team/alvin-ren.png" alt="Alvin Ren" loading="lazy" />
+            </div>
+            <figcaption>
+              <span class="founder-name">Alvin Ren</span>
+              <span class="founder-school">Earl of March SS</span>
+              <span class="founder-class">Class of &rsquo;27</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- MASCOT CHOOSER -->
+    <section class="mascot-section">
+      <svg class="mascot-bg-svg" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice">
+        <g opacity=".3">
+          <path d="M80 80 L82 74 L84 80 L90 82 L84 84 L82 90 L80 84 L74 82 Z" fill="#a8bede" />
+          <path
+            d="M1100 120 L1102 114 L1104 120 L1110 122 L1104 124 L1102 130 L1100 124 L1094 122 Z"
+            fill="#bfa8d8"
+          />
+          <path
+            d="M600 30 L602 24 L604 30 L610 32 L604 34 L602 40 L600 34 L594 32 Z"
+            fill="#a4c9b0"
+          />
+          <circle cx="150" cy="200" r="3" fill="#bfa8d8" />
+          <circle cx="1050" cy="280" r="3" fill="#a8bede" />
+        </g>
+      </svg>
+      <div class="wrap layer-2">
+        <div class="ruled-title center">
+          <div class="rule"></div>
+          <h2 class="on-dark">meet the mascots</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="mascot-picker">
+          <button class="mascot-arrow" id="mascotLeft" type="button" aria-label="Previous mascot">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path
-                d="M50 62 Q60 68 70 62"
-                stroke="#383162"
-                stroke-width="1.8"
-                fill="none"
+                d="M26 8 L14 20 L26 32"
+                stroke-width="4"
                 stroke-linecap="round"
-              />
-              <rect
-                x="30"
-                y="72"
-                width="60"
-                height="34"
-                rx="8"
-                fill="#a8bede"
-                stroke="#383162"
-                stroke-width="2"
-              />
-              <rect
-                x="40"
-                y="80"
-                width="40"
-                height="18"
-                rx="4"
-                fill="#dde6f5"
-                stroke="#383162"
-                stroke-width="1.2"
-              />
-              <circle cx="50" cy="89" r="4" fill="#bfa8d8" stroke="#383162" stroke-width="1" />
-              <circle cx="60" cy="89" r="4" fill="#a4c9b0" stroke="#383162" stroke-width="1" />
-              <circle cx="70" cy="89" r="4" fill="#a8bede" stroke="#383162" stroke-width="1" />
-              <rect
-                x="12"
-                y="74"
-                width="16"
-                height="26"
-                rx="6"
-                fill="#a8bede"
-                stroke="#383162"
-                stroke-width="1.8"
-              />
-              <rect
-                x="92"
-                y="74"
-                width="16"
-                height="26"
-                rx="6"
-                fill="#a8bede"
-                stroke="#383162"
-                stroke-width="1.8"
-              />
-              <rect
-                x="38"
-                y="107"
-                width="16"
-                height="10"
-                rx="4"
-                fill="#a8bede"
-                stroke="#383162"
-                stroke-width="1.5"
-              />
-              <rect
-                x="66"
-                y="107"
-                width="16"
-                height="10"
-                rx="4"
-                fill="#a8bede"
-                stroke="#383162"
-                stroke-width="1.5"
+                stroke-linejoin="round"
               />
             </svg>
+          </button>
+          <div class="mascot-stage">
+            <div class="mascot-glow" id="mascotGlow"></div>
+            <div class="mascot-figure" id="mascotFigure">
+              <div class="mascot-svg-wrap" id="mascotSvg"></div>
+              <div class="mascot-ground" id="mascotGround"></div>
+              <div class="mascot-name" id="mascotName"></div>
+              <div class="mascot-role" id="mascotRole"></div>
+            </div>
+            <div class="mascot-fact" id="mascotFact"></div>
           </div>
-          <div class="robot-body">
-            <div class="robot-header">
-              <div>
-                <div class="robot-year">2027 · Season Bot</div>
-                <div class="robot-name">TBD</div>
-              </div>
-              <span class="tag tag-blue">upcoming</span>
-            </div>
-            <div class="robot-desc">Coming Soon in January 2027!!!</div>
-            <div class="robot-specs">
-              <span class="robot-spec">🦾 Pneumatic Claw</span
-              ><span class="robot-spec">📐 Articulated Arm</span
-              ><span class="robot-spec">🧗 Chain Climber</span
-              ><span class="robot-spec">👁 Vision Tracking</span>
-            </div>
+          <button class="mascot-arrow" id="mascotRight" type="button" aria-label="Next mascot">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path
+                d="M14 8 L26 20 L14 32"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="mascot-dots" id="mascotDots"></div>
+        <div class="cursor-chooser">
+          <p>✦ use as your cursor ✦</p>
+          <div class="cursor-btns">
+            <button type="button" class="cursor-btn" id="cursorCat">🐱 Pal</button>
+            <button type="button" class="cursor-btn" id="cursorBunny">🐰 Xaivian</button>
+            <button type="button" class="cursor-btn" id="cursorBear">🐻 Stuffing</button>
+            <button type="button" class="cursor-btn-off">✕ default cursor</button>
           </div>
         </div>
-        <div class="robot-card fade">
-          <div class="robot-thumb rt-green">
-            <svg viewBox="0 0 120 120" width="120" height="120">
-              <line
-                x1="60"
-                y1="20"
-                x2="60"
-                y2="34"
-                stroke="#383162"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
+      </div>
+    </section>
+
+    <section class="track-journey-section season-plans">
+      <div class="wrap">
+        <div class="ruled-title center">
+          <div class="rule"></div>
+          <h2 class="on-dark">season plans</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="season-path fade">
+          <span class="season-marker season-start" aria-hidden="true">▲ start</span>
+          <ol class="season-stops">
+            <svg
+              class="season-trail"
+              viewBox="0 0 400 1000"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="trackGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#a8bede" />
+                  <stop offset="50%" stop-color="#bfa8d8" />
+                  <stop offset="100%" stop-color="#a4c9b0" />
+                </linearGradient>
+              </defs>
               <path
-                d="M60 20 C55 10 44 8 44 18 C44 24 52 22 60 20Z"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.5"
-              />
-              <path
-                d="M60 20 C65 10 76 8 76 18 C76 24 68 22 60 20Z"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.5"
-              />
-              <rect
-                x="36"
-                y="34"
-                width="48"
-                height="34"
-                rx="8"
-                fill="#d9ece4"
-                stroke="#383162"
-                stroke-width="2"
-              />
-              <rect x="42" y="44" width="36" height="14" rx="5" fill="#383162" />
-              <rect x="44" y="46" width="14" height="10" rx="3" fill="#a4c9b0" opacity=".7" />
-              <rect x="62" y="46" width="14" height="10" rx="3" fill="#a4c9b0" opacity=".7" />
-              <path
-                d="M50 62 Q60 67 70 62"
-                stroke="#383162"
-                stroke-width="1.8"
-                fill="none"
-                stroke-linecap="round"
-              />
-              <rect
-                x="28"
-                y="72"
-                width="64"
-                height="36"
-                rx="8"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="2"
-              />
-              <rect
-                x="8"
-                y="76"
-                width="18"
-                height="12"
-                rx="5"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.8"
-              />
-              <path
-                d="M8 78 C2 74 2 88 8 86"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.5"
-                stroke-linecap="round"
-              />
-              <rect
-                x="94"
-                y="76"
-                width="18"
-                height="22"
-                rx="6"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.8"
-              />
-              <rect
-                x="38"
-                y="80"
-                width="44"
-                height="20"
-                rx="4"
-                fill="#d9ece4"
-                stroke="#383162"
-                stroke-width="1.2"
-              />
-              <rect
-                x="38"
-                y="108"
-                width="16"
-                height="10"
-                rx="4"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.5"
-              />
-              <rect
-                x="66"
-                y="108"
-                width="16"
-                height="10"
-                rx="4"
-                fill="#a4c9b0"
-                stroke="#383162"
-                stroke-width="1.5"
+                id="trackPath"
+                class="season-track-path"
+                d="M200 0 C 120 40 48 60 48 125 C 48 240 352 260 352 375 C 352 490 48 510 48 625 C 48 740 352 760 352 875 C 352 950 260 1000 200 1000"
               />
             </svg>
+            <li class="season-stop stop-a">
+              <span class="season-node">1</span>
+              <article class="track-card season-card">
+                <span class="track-tag">January · Kickoff</span>
+                <h3 class="track-card-title">Kickoff &amp; Strategy</h3>
+                <p class="track-card-desc">
+                  The season opens with FIRST's global game reveal. We read the manual together,
+                  break down the field, and decide what kind of robot a rookie PLUSH team can build
+                  well.
+                </p>
+              </article>
+            </li>
+            <li class="season-stop stop-b">
+              <span class="season-node">2</span>
+              <article class="track-card season-card">
+                <span class="track-tag">Weeks 1–2 · Design</span>
+                <h3 class="track-card-title">Design &amp; Prototype</h3>
+                <p class="track-card-desc">
+                  CAD in Onshape, cardboard-and-wood prototypes, and fast tests. We lock in a design
+                  that is simple enough to finish and sturdy enough to compete.
+                </p>
+              </article>
+            </li>
+            <li class="season-stop stop-a">
+              <span class="season-node">3</span>
+              <article class="track-card season-card">
+                <span class="track-tag">Weeks 3–6 · Build</span>
+                <h3 class="track-card-title">Build &amp; Program</h3>
+                <p class="track-card-desc">
+                  Fabrication, wiring, and code come together on one robot. Drive practice starts
+                  the minute it can move, and every subsystem gets tested until it breaks.
+                </p>
+              </article>
+            </li>
+            <li class="season-stop stop-b">
+              <span class="season-node">4</span>
+              <article class="track-card season-card">
+                <span class="track-tag">March + · Compete</span>
+                <h3 class="track-card-title">Competition</h3>
+                <p class="track-card-desc">
+                  Our first regional: qualification matches, pit repairs between rounds, scouting
+                  alliance partners, and cheering louder for other teams than for ourselves.
+                </p>
+              </article>
+            </li>
+          </ol>
+          <span class="season-marker season-end" aria-hidden="true">🏆</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="join-section">
+      <svg class="join-bg-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+        <g fill="white">
+          <path d="M80 80 L83 72 L86 80 L94 83 L86 86 L83 94 L80 86 L72 83 Z" />
+          <path
+            d="M1120 100 L1123 92 L1126 100 L1134 103 L1126 106 L1123 114 L1120 106 L1112 103 Z"
+          />
+          <path d="M600 30 L602 25 L604 30 L609 32 L604 34 L602 39 L600 34 L595 32 Z" />
+          <circle cx="150" cy="200" r="5" fill="none" stroke="white" stroke-width="1.5" />
+          <circle cx="1050" cy="200" r="5" fill="none" stroke="white" stroke-width="1.5" />
+        </g>
+        <g class="doodle-critter doodle-bob-a" transform="translate(300,320)" opacity=".35">
+          <path
+            d="M0 14 C-14 2 -14 -10 -4 -10 C0 -10 0 -6 0 -6 C0 -6 0 -10 4 -10 C14 -10 14 2 0 14Z"
+            fill="none"
+            stroke="white"
+            stroke-width="1.6"
+          />
+        </g>
+      </svg>
+      <div class="wrap">
+        <div class="join-inner">
+          <span class="join-sticker">no experience needed</span>
+          <h2 class="join-h">come build<br />with <em>us</em></h2>
+          <p class="join-sub">
+            We meet every week. We eat snacks. We argue about the best way to attach a gear — and
+            somehow it always works out.
+          </p>
+          <div class="join-btns">
+            <a
+              class="btn-inv"
+              href="https://forms.gle/GsqnqVu716S4S4QTA"
+              target="_blank"
+              rel="noopener"
+              >apply to join</a
+            >
+            <button class="btn-ghost" data-page="sponsors">sponsor us</button>
           </div>
-          <div class="robot-body">
-            <div class="robot-header">
-              <div>
-                <div class="robot-year">2026 · Offseason Bot</div>
-                <div class="robot-name">Droplet</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+        <li><a data-page="robots">robots</a></li>
+        <li><a data-page="socials">socials</a></li>
+        <li><a data-page="sponsors">sponsors</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div class="page page-about" id="page-about">
+    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> about</div>
+    <div class="inner-page">
+      <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice">
+        <g opacity=".06">
+          <path d="M50 80 L52 74 L54 80 L60 82 L54 84 L52 90 L50 84 L44 82 Z" fill="#a8bede" />
+          <path
+            d="M980 120 L982 114 L984 120 L990 122 L984 124 L982 130 L980 124 L974 122 Z"
+            fill="#bfa8d8"
+          />
+          <circle cx="500" cy="30" r="5" fill="#a4c9b0" />
+          <path
+            d="M100 500 C100 500 85 488 85 480 C85 474 90 472 94 476 C96.5 478.5 100 482 100 482 C100 482 103.5 478.5 106 476 C110 472 115 474 115 480 C115 488 100 500 100 500Z"
+            fill="#bfa8d8"
+          />
+        </g>
+      </svg>
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>what's... Team Plush?</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="about-layout">
+          <div class="about-copy fade">
+            <p>
+              Team PLUSH is a student-run <em>FIRST Robotics Competition</em> team that believes
+              robotics should feel welcoming, creative, and — yes — a little soft around the edges.
+              We're engineers, artists, programmers, strategists, and humans who genuinely like each
+              other.
+            </p>
+            <p>
+              We designed our brand around three pastel mascots on purpose. Walk into most FRC pits
+              and you'll see industrial logos and intimidating robots. We wanted to show that
+              <em>technically excellent and openly friendly</em> aren't opposites.
+            </p>
+            <p>
+              From CAD marathons to community demos to staying up way too late fixing autonomous
+              routines the night before a regional — we do it together.
+            </p>
+            <h3>our sub-teams</h3>
+            <div class="subteam-grid">
+              <div class="subteam-card fade">
+                <div class="subteam-icon">💻</div>
+                <div class="subteam-name">Software</div>
+                <div class="subteam-desc">
+                  Java robot code, vision with Limelight, path planning with PathPlanner, and driver
+                  dashboards.
+                </div>
               </div>
-              <span class="tag tag-green">current</span>
+              <div class="subteam-card fade">
+                <div class="subteam-icon">🔧</div>
+                <div class="subteam-name">Mechanical</div>
+                <div class="subteam-desc">
+                  CAD in Onshape, fabrication with CNC router and lathe, intake systems, shooter
+                  mechanisms.
+                </div>
+              </div>
+              <div class="subteam-card fade">
+                <div class="subteam-icon">📣</div>
+                <div class="subteam-name">Business & Outreach</div>
+                <div class="subteam-desc">
+                  Sponsorship decks, community demos, social media, branding, and elementary school
+                  workshops.
+                </div>
+              </div>
+              <div class="subteam-card fade">
+                <div class="subteam-icon">🎮</div>
+                <div class="subteam-name">Drive Team</div>
+                <div class="subteam-desc">
+                  Two drivers, one human player, one coach — all running on adrenaline and snacks.
+                </div>
+              </div>
             </div>
-            <div class="robot-specs">
-              <span class="robot-spec">⚡ Swerve Drive</span
-              ><span class="robot-spec">📷 Limelight 3</span
-              ><span class="robot-spec">🦾 Roller Intake</span
-              ><span class="robot-spec">🎯 Auto Aim</span>
+          </div>
+          <div>
+            <div class="fact-stack fade">
+              <div class="fact-card">
+                <div class="fact-num">2026</div>
+                <div class="fact-label">founded<br />april 2026</div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-num">3</div>
+                <div class="fact-label">high-school<br />co-founders</div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-num">4</div>
+                <div class="fact-label">sub-teams, software<br />to scouting</div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-num">🌱</div>
+                <div class="fact-label">regional impact<br />to ottawa</div>
+              </div>
+              <div class="fact-card">
+                <div class="fact-num">40–45</div>
+                <div class="fact-label">member goal</div>
+              </div>
+            </div>
+            <div class="fade u-mt-2">
+              <div class="ruled-title">
+                <h2>our journey</h2>
+                <div class="rule"></div>
+              </div>
+              <div class="timeline">
+                <div class="tl-item">
+                  <div class="tl-dot is-blue"></div>
+                  <div class="tl-year">Apr 2026</div>
+                  <div class="tl-title">Team Founded</div>
+                  <div class="tl-desc">
+                    Three high-school students start Team PLUSH — no robot yet, just a plan and a
+                    lot of borrowed laptops.
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot is-purple"></div>
+                  <div class="tl-year">Summer 2026</div>
+                  <div class="tl-title">Building the Team</div>
+                  <div class="tl-desc">
+                    Recruiting sub-teams, onboarding student mentors, first sponsor conversations,
+                    and our offseason bot <em>Droplet</em>.
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot is-green"></div>
+                  <div class="tl-year">Fall 2026</div>
+                  <div class="tl-title">Outreach &amp; Preseason</div>
+                  <div class="tl-desc">
+                    First elementary and middle-school STEM workshops, CAD and Java training, and
+                    community robot demos.
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot is-blue"></div>
+                  <div class="tl-year">Jan 2027</div>
+                  <div class="tl-title">First Kickoff</div>
+                  <div class="tl-desc">
+                    Our rookie competition season begins. Game reveal, mentor-guided design, and six
+                    weeks to build a robot.
+                  </div>
+                </div>
+                <div class="tl-item">
+                  <div class="tl-dot is-purple"></div>
+                  <div class="tl-year">Spring 2027</div>
+                  <div class="tl-title">Rookie Season</div>
+                  <div class="tl-desc">
+                    First district events, the judge presentation, and our number-one off-field
+                    goal: the Rookie All-Star Award.
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="u-mt-3">
-        <div class="ruled-title fade">
-          <h2>the rookie all-star plan</h2>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="team">team</a></li>
+        <li><a data-page="robots">robots</a></li>
+        <li><a data-page="values">values</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- TEAM PAGE -->
+  <div class="page page-team" id="page-team">
+    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> team</div>
+    <div class="inner-page">
+      <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice">
+        <g opacity=".09">
+          <g transform="translate(40,80)">
+            <ellipse cx="12" cy="18" rx="7" ry="9" fill="#bfa8d8" />
+            <ellipse cx="4" cy="8" rx="4" ry="5" fill="#bfa8d8" />
+            <ellipse cx="20" cy="8" rx="4" ry="5" fill="#bfa8d8" />
+            <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#bfa8d8" />
+            <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#bfa8d8" />
+          </g>
+          <g transform="translate(950,100) rotate(20)">
+            <ellipse cx="12" cy="18" rx="7" ry="9" fill="#a8bede" />
+            <ellipse cx="4" cy="8" rx="4" ry="5" fill="#a8bede" />
+            <ellipse cx="20" cy="8" rx="4" ry="5" fill="#a8bede" />
+            <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#a8bede" />
+            <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#a8bede" />
+          </g>
+          <g transform="translate(80,500) rotate(-15)">
+            <ellipse cx="12" cy="18" rx="7" ry="9" fill="#a4c9b0" />
+            <ellipse cx="4" cy="8" rx="4" ry="5" fill="#a4c9b0" />
+            <ellipse cx="20" cy="8" rx="4" ry="5" fill="#a4c9b0" />
+            <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#a4c9b0" />
+            <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#a4c9b0" />
+          </g>
+        </g>
+      </svg>
+      <div class="wrap">
+        <div class="ruled-title fade u-mb-1-2">
+          <h2 class="is-sm">Co-Captains</h2>
           <div class="rule"></div>
         </div>
-        <p class="fade section-intro is-lead">
-          The <em>Rookie All-Star Award</em> is the biggest award a first-year FRC team can win. It
-          goes to the rookie team that's already running like an established one, and the winner
-          moves on to the FIRST Championship. Outside of the robot itself, this is our main goal for
-          the season. Here's the plan.
+        <div class="team-grid u-mb-2-5">
+          <div class="team-card fade">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava">
+              <img src="/team/eason-yang.png" alt="Eason Yang" loading="lazy" />
+            </div>
+            <div class="tc-name">Eason Yang</div>
+            <div class="tc-role">co-captain</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava">
+              <img src="/team/sarmistha-pal.png" alt="Sarmistha Pal" loading="lazy" />
+            </div>
+            <div class="tc-name">Sarmistha Pal</div>
+            <div class="tc-role">co-captain</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava">
+              <img src="/team/alvin-ren.png" alt="Alvin Ren" loading="lazy" />
+            </div>
+            <div class="tc-name">Alvin Ren</div>
+            <div class="tc-role">co-captain</div>
+          </div>
+        </div>
+
+        <div class="ruled-title fade u-mb-1-2">
+          <h2 class="is-sm">Leads</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="team-grid u-mb-2-5">
+          <div class="team-card fade">
+            <div class="tc-stripe tc-purple"></div>
+            <div class="tc-ava is-purple">📣</div>
+            <div class="tc-name">Olivia Shen</div>
+            <div class="tc-role">business lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-purple"></div>
+            <div class="tc-ava is-purple">📣</div>
+            <div class="tc-name">Dorothy Shen</div>
+            <div class="tc-role">business lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-purple"></div>
+            <div class="tc-ava is-purple">📣</div>
+            <div class="tc-name">Anthony Cui</div>
+            <div class="tc-role">business lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava is-blue">💻</div>
+            <div class="tc-name">Sean Nie</div>
+            <div class="tc-role">software lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava is-blue">💻</div>
+            <div class="tc-name">TBD</div>
+            <div class="tc-role">software lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava is-blue">💻</div>
+            <div class="tc-name">TBD</div>
+            <div class="tc-role">software lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-green"></div>
+            <div class="tc-ava is-green">🔧</div>
+            <div class="tc-name">TBD</div>
+            <div class="tc-role">mechanical lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-green"></div>
+            <div class="tc-ava is-green">🔧</div>
+            <div class="tc-name">TBD</div>
+            <div class="tc-role">mechanical lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-green"></div>
+            <div class="tc-ava is-green">🔧</div>
+            <div class="tc-name">TBD</div>
+            <div class="tc-role">mechanical lead</div>
+          </div>
+          <div class="team-card fade">
+            <div class="tc-stripe tc-green"></div>
+            <div class="tc-ava is-green">🔧</div>
+            <div class="tc-name">TBD</div>
+            <div class="tc-role">mechanical lead</div>
+          </div>
+        </div>
+
+        <div class="ruled-title fade u-mb-1-2">
+          <h2 class="is-sm">Members</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="team-grid">
+          <div class="team-card fade is-muted">
+            <div class="tc-stripe tc-purple"></div>
+            <div class="tc-ava is-purple">📣</div>
+            <div class="tc-name">Business</div>
+            <div class="tc-role">TBD</div>
+          </div>
+          <div class="team-card fade is-muted">
+            <div class="tc-stripe tc-blue"></div>
+            <div class="tc-ava is-blue">💻</div>
+            <div class="tc-name">Software</div>
+            <div class="tc-role">TBD</div>
+          </div>
+          <div class="team-card fade is-muted">
+            <div class="tc-stripe tc-green"></div>
+            <div class="tc-ava is-green">🔧</div>
+            <div class="tc-name">Mechanical</div>
+            <div class="tc-role">TBD</div>
+          </div>
+        </div>
+        <div class="fade u-mt-3">
+          <div class="ruled-title u-mb-1-2">
+            <h2 class="is-sm">Mentors</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="mentor-row">
+            <div class="mentor-card">
+              <div class="mentor-top">
+                <div class="mentor-ava">
+                  <img src="/team/ryan-zhao.png" alt="Ryan Zhao" loading="lazy" />
+                </div>
+                <div>
+                  <div class="mentor-name">Ryan Zhao</div>
+                  <div class="mentor-role">First Year University · FRC Alumni</div>
+                </div>
+              </div>
+            </div>
+            <div class="mentor-card">
+              <div class="mentor-top">
+                <div class="mentor-ava is-purple">🎓</div>
+                <div>
+                  <div class="mentor-name">Owen Chen</div>
+                  <div class="mentor-role">First Year University · FRC Alumni</div>
+                </div>
+              </div>
+            </div>
+            <div class="mentor-card">
+              <div class="mentor-top">
+                <div class="mentor-ava is-blue">🎓</div>
+                <div>
+                  <div class="mentor-name">Neo Zheng</div>
+                  <div class="mentor-role">First Year University · FRC Alumni</div>
+                </div>
+              </div>
+            </div>
+            <div class="mentor-card">
+              <div class="mentor-top">
+                <div class="mentor-ava">
+                  <img src="/team/henry-cai.png" alt="Henry Cai" loading="lazy" />
+                </div>
+                <div>
+                  <div class="mentor-name">Henry Cai</div>
+                  <div class="mentor-role">First Year University · FRC Alumni</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="robots">robots</a></li>
+        <li><a data-page="values">values</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- ROBOTS PAGE -->
+  <div class="page page-robots" id="page-robots">
+    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> robots</div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>our robots</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="fade section-intro">
+          Six weeks. Thousands of decisions. One robot. Here's what we're building — and what comes
+          next.
+        </p>
+        <div class="robots-grid">
+          <div class="robot-card fade">
+            <div class="robot-thumb rt-blue">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <line
+                  x1="60"
+                  y1="18"
+                  x2="60"
+                  y2="32"
+                  stroke="#383162"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <circle cx="60" cy="15" r="4" fill="#bfa8d8" stroke="#383162" stroke-width="1.5" />
+                <rect
+                  x="36"
+                  y="32"
+                  width="48"
+                  height="36"
+                  rx="8"
+                  fill="#dde6f5"
+                  stroke="#383162"
+                  stroke-width="2"
+                />
+                <circle cx="50" cy="50" r="6" fill="#fff" stroke="#383162" stroke-width="1.5" />
+                <circle cx="70" cy="50" r="6" fill="#fff" stroke="#383162" stroke-width="1.5" />
+                <circle cx="51" cy="50" r="3" fill="#383162" />
+                <circle cx="71" cy="50" r="3" fill="#383162" />
+                <circle cx="52" cy="49" r="1" fill="#fff" />
+                <circle cx="72" cy="49" r="1" fill="#fff" />
+                <path
+                  d="M50 62 Q60 68 70 62"
+                  stroke="#383162"
+                  stroke-width="1.8"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="30"
+                  y="72"
+                  width="60"
+                  height="34"
+                  rx="8"
+                  fill="#a8bede"
+                  stroke="#383162"
+                  stroke-width="2"
+                />
+                <rect
+                  x="40"
+                  y="80"
+                  width="40"
+                  height="18"
+                  rx="4"
+                  fill="#dde6f5"
+                  stroke="#383162"
+                  stroke-width="1.2"
+                />
+                <circle cx="50" cy="89" r="4" fill="#bfa8d8" stroke="#383162" stroke-width="1" />
+                <circle cx="60" cy="89" r="4" fill="#a4c9b0" stroke="#383162" stroke-width="1" />
+                <circle cx="70" cy="89" r="4" fill="#a8bede" stroke="#383162" stroke-width="1" />
+                <rect
+                  x="12"
+                  y="74"
+                  width="16"
+                  height="26"
+                  rx="6"
+                  fill="#a8bede"
+                  stroke="#383162"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="92"
+                  y="74"
+                  width="16"
+                  height="26"
+                  rx="6"
+                  fill="#a8bede"
+                  stroke="#383162"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="38"
+                  y="107"
+                  width="16"
+                  height="10"
+                  rx="4"
+                  fill="#a8bede"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="66"
+                  y="107"
+                  width="16"
+                  height="10"
+                  rx="4"
+                  fill="#a8bede"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="robot-body">
+              <div class="robot-header">
+                <div>
+                  <div class="robot-year">2027 · Season Bot</div>
+                  <div class="robot-name">TBD</div>
+                </div>
+                <span class="tag tag-blue">upcoming</span>
+              </div>
+              <div class="robot-desc">Coming Soon in January 2027!!!</div>
+              <div class="robot-specs">
+                <span class="robot-spec">🦾 Pneumatic Claw</span
+                ><span class="robot-spec">📐 Articulated Arm</span
+                ><span class="robot-spec">🧗 Chain Climber</span
+                ><span class="robot-spec">👁 Vision Tracking</span>
+              </div>
+            </div>
+          </div>
+          <div class="robot-card fade">
+            <div class="robot-thumb rt-green">
+              <svg viewBox="0 0 120 120" width="120" height="120">
+                <line
+                  x1="60"
+                  y1="20"
+                  x2="60"
+                  y2="34"
+                  stroke="#383162"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M60 20 C55 10 44 8 44 18 C44 24 52 22 60 20Z"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M60 20 C65 10 76 8 76 18 C76 24 68 22 60 20Z"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="36"
+                  y="34"
+                  width="48"
+                  height="34"
+                  rx="8"
+                  fill="#d9ece4"
+                  stroke="#383162"
+                  stroke-width="2"
+                />
+                <rect x="42" y="44" width="36" height="14" rx="5" fill="#383162" />
+                <rect x="44" y="46" width="14" height="10" rx="3" fill="#a4c9b0" opacity=".7" />
+                <rect x="62" y="46" width="14" height="10" rx="3" fill="#a4c9b0" opacity=".7" />
+                <path
+                  d="M50 62 Q60 67 70 62"
+                  stroke="#383162"
+                  stroke-width="1.8"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="28"
+                  y="72"
+                  width="64"
+                  height="36"
+                  rx="8"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="2"
+                />
+                <rect
+                  x="8"
+                  y="76"
+                  width="18"
+                  height="12"
+                  rx="5"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.8"
+                />
+                <path
+                  d="M8 78 C2 74 2 88 8 86"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="94"
+                  y="76"
+                  width="18"
+                  height="22"
+                  rx="6"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.8"
+                />
+                <rect
+                  x="38"
+                  y="80"
+                  width="44"
+                  height="20"
+                  rx="4"
+                  fill="#d9ece4"
+                  stroke="#383162"
+                  stroke-width="1.2"
+                />
+                <rect
+                  x="38"
+                  y="108"
+                  width="16"
+                  height="10"
+                  rx="4"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                />
+                <rect
+                  x="66"
+                  y="108"
+                  width="16"
+                  height="10"
+                  rx="4"
+                  fill="#a4c9b0"
+                  stroke="#383162"
+                  stroke-width="1.5"
+                />
+              </svg>
+            </div>
+            <div class="robot-body">
+              <div class="robot-header">
+                <div>
+                  <div class="robot-year">2026 · Offseason Bot</div>
+                  <div class="robot-name">Droplet</div>
+                </div>
+                <span class="tag tag-green">current</span>
+              </div>
+              <div class="robot-specs">
+                <span class="robot-spec">⚡ Swerve Drive</span
+                ><span class="robot-spec">📷 Limelight 3</span
+                ><span class="robot-spec">🦾 Roller Intake</span
+                ><span class="robot-spec">🎯 Auto Aim</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="u-mt-3">
+          <div class="ruled-title fade">
+            <h2>the rookie all-star plan</h2>
+            <div class="rule"></div>
+          </div>
+          <p class="fade section-intro is-lead">
+            The <em>Rookie All-Star Award</em> is the biggest award a first-year FRC team can win.
+            It goes to the rookie team that's already running like an established one, and the
+            winner moves on to the FIRST Championship. Outside of the robot itself, this is our main
+            goal for the season. Here's the plan.
+          </p>
+
+          <div class="ruled-title fade u-mt-2">
+            <h3>what judges look for, and what we're doing about it</h3>
+            <div class="rule"></div>
+          </div>
+          <div class="awards-grid u-mt-1">
+            <div class="award-card fade">
+              <div class="award-icon">🤝</div>
+              <div class="award-name">Sponsor &amp; Mentor Partnerships</div>
+              <div class="award-event">support network</div>
+              <div class="award-desc">
+                We're going for 20 sponsors across six tiers, with industry mentors working directly
+                with each sub-team. Partners can host a private robot demo at their office.
+              </div>
+            </div>
+            <div class="award-card fade">
+              <div class="award-icon">📣</div>
+              <div class="award-name">Community Outreach</div>
+              <div class="award-event">spreading FIRST</div>
+              <div class="award-desc">
+                At least 6 STEM workshops at local elementary and middle schools, plus 2 or more
+                public robot demos with partners. Most of this happens before our first competition.
+              </div>
+            </div>
+            <div class="award-card fade">
+              <div class="award-icon">♿</div>
+              <div class="award-name">Makers Making Change</div>
+              <div class="award-event">real-world impact</div>
+              <div class="award-desc">
+                20 or more assistive-technology builds for people with disabilities. Each one gets
+                logged and shared back to the Makers Making Change network.
+              </div>
+            </div>
+            <div class="award-card fade">
+              <div class="award-icon">🌍</div>
+              <div class="award-name">Diversity, Equity &amp; Inclusion</div>
+              <div class="award-event">access &amp; culture</div>
+              <div class="award-desc">
+                We want a roster that actually looks like Ottawa, so we recruit underrepresented
+                students into STEM and keep track of how representation changes each year.
+              </div>
+            </div>
+            <div class="award-card fade">
+              <div class="award-icon">♻️</div>
+              <div class="award-name">Sustainability Plan</div>
+              <div class="award-event">long-term plan</div>
+              <div class="award-desc">
+                A written plan for recruiting, funding, and mentoring so the team keeps going after
+                the founders graduate. We're aiming for 45 students by 2027.
+              </div>
+            </div>
+            <div class="award-card fade">
+              <div class="award-icon">🏆</div>
+              <div class="award-name">Robot &amp; FIRST Values</div>
+              <div class="award-event">on the field</div>
+              <div class="award-desc">
+                A working competition robot built in under three months, and a team that treats
+                other teams well in the pits.
+              </div>
+            </div>
+          </div>
+
+          <div class="ruled-title fade u-mt-2-5">
+            <h3>our timeline</h3>
+            <div class="rule"></div>
+          </div>
+          <div class="timeline fade">
+            <div class="tl-item">
+              <div class="tl-dot is-blue"></div>
+              <div class="tl-year">Apr–Sep 2026</div>
+              <div class="tl-title">Team &amp; Sponsor Launch</div>
+              <div class="tl-desc">
+                Release the sponsorship package, lock in founding partners, and finalize FRC 11740
+                registration.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot is-purple"></div>
+              <div class="tl-year">Oct–Dec 2026</div>
+              <div class="tl-title">Outreach Blitz</div>
+              <div class="tl-desc">
+                First classroom workshops and community demos, Makers Making Change builds begin,
+                and bi-monthly newsletter #1 goes out.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot is-green"></div>
+              <div class="tl-year">Jan 2027</div>
+              <div class="tl-title">Kickoff</div>
+              <div class="tl-desc">
+                Game reveal, design reviews with our mentors, and the start of a build that runs
+                under three months.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot is-blue"></div>
+              <div class="tl-year">Feb 2027</div>
+              <div class="tl-title">Build &amp; Document</div>
+              <div class="tl-desc">
+                Weekly build days that sponsors can sit in on. We keep records for the judges:
+                photos, numbers, and an impact log.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot is-purple"></div>
+              <div class="tl-year">Mar 2027</div>
+              <div class="tl-title">First Regional</div>
+              <div class="tl-desc">
+                Hand in the Rookie All-Star materials, give the judge presentation, and aim for a
+                60th-percentile finish.
+              </div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot is-green"></div>
+              <div class="tl-year">Apr 2027</div>
+              <div class="tl-title">Provincials</div>
+              <div class="tl-desc">
+                Winning Rookie All-Star sends us here, in front of 4,000+ people and 30+ Ontario
+                teams.
+              </div>
+            </div>
+          </div>
+
+          <div class="ruled-title fade u-mt-2-5">
+            <h3>what we're tracking</h3>
+            <div class="rule"></div>
+          </div>
+          <div class="fade metric-grid">
+            <div class="fact-card">
+              <div class="fact-num">20</div>
+              <div class="fact-label">founding sponsors<br />across six tiers</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-num">6+</div>
+              <div class="fact-label">school STEM<br />workshops</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-num">2+</div>
+              <div class="fact-label">public robot<br />demo events</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-num">20+</div>
+              <div class="fact-label">Makers Making Change<br />assistive builds</div>
+            </div>
+            <div class="fact-card">
+              <div class="fact-num">3 🏆</div>
+              <div class="fact-label">awards targeted<br />in year one</div>
+            </div>
+          </div>
+
+          <div class="fade accent-card">
+            <div class="accent-card__title">🌱 want your logo on a Rookie All-Star robot?</div>
+            <p class="accent-card__body">
+              We can't do any of this without founding partners. Email
+              <a href="mailto:teamplushrobotics@gmail.com" class="t-link"
+                >teamplushrobotics@gmail.com</a
+              >, find us at <span class="t-b">@frc11740</span>, or
+              <a data-page="sponsors" class="t-link">check out the sponsorship tiers</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+        <li><a data-page="schedule">schedule</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- SCHEDULE PAGE -->
+  <div class="page page-schedule" id="page-schedule">
+    <div class="page-bar">
+      <a data-page="home">home</a><span aria-hidden="true">›</span> schedule
+    </div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>2026/27 season</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="countdown-box fade">
+          <div class="countdown-label">⏱ next competition</div>
+          <div class="countdown-event">🏟 Kickoff — 2026/27 Game Reveal</div>
+          <div class="countdown-nums">
+            <div class="cnum">
+              <div class="cnum-val" id="cdDays">--</div>
+              <div class="cnum-label">days</div>
+            </div>
+            <div class="cnum">
+              <div class="cnum-val" id="cdHours">--</div>
+              <div class="cnum-label">hours</div>
+            </div>
+            <div class="cnum">
+              <div class="cnum-val" id="cdMins">--</div>
+              <div class="cnum-label">mins</div>
+            </div>
+            <div class="cnum">
+              <div class="cnum-val" id="cdSecs">--</div>
+              <div class="cnum-label">secs</div>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-grid fade">
+          <div class="sched-card current">
+            <div class="sched-date">
+              <div class="sched-month">Jan</div>
+              <div class="sched-day">9</div>
+            </div>
+            <div class="sched-info">
+              <div class="sched-name">Kickoff — Game reveal</div>
+              <div class="sched-loc">
+                🏠 School Lab · All hands on deck · start of the build season
+              </div>
+            </div>
+            <span class="sched-badge badge-current">next up!</span>
+          </div>
+          <div class="sched-card upcoming">
+            <div class="sched-date">
+              <div class="sched-month">Mar</div>
+              <div class="sched-day">🏟</div>
+            </div>
+            <div class="sched-info">
+              <div class="sched-name">District Competition #1</div>
+              <div class="sched-loc">📍 Ontario District event · 2.5 days of matches</div>
+            </div>
+            <span class="sched-badge badge-upcoming">upcoming</span>
+          </div>
+          <div class="sched-card upcoming">
+            <div class="sched-date">
+              <div class="sched-month">Mar</div>
+              <div class="sched-day">🏟</div>
+            </div>
+            <div class="sched-info">
+              <div class="sched-name">District Competition #2</div>
+              <div class="sched-loc">📍 Ontario District event · 2.5 days of matches</div>
+            </div>
+            <span class="sched-badge badge-upcoming">upcoming</span>
+          </div>
+          <div class="sched-card upcoming">
+            <div class="sched-date">
+              <div class="sched-month">Apr</div>
+              <div class="sched-day">🍁</div>
+            </div>
+            <div class="sched-info">
+              <div class="sched-name">Provincials — FIRST Ontario Championship</div>
+              <div class="sched-loc">📍 Provincial Championship · if qualified</div>
+            </div>
+            <span class="sched-badge badge-upcoming">upcoming</span>
+          </div>
+          <div class="sched-card upcoming">
+            <div class="sched-date">
+              <div class="sched-month">Apr</div>
+              <div class="sched-day">🌍</div>
+            </div>
+            <div class="sched-info">
+              <div class="sched-name">Worlds — FIRST Championship</div>
+              <div class="sched-loc">📍 Houston, TX · if qualified</div>
+            </div>
+            <span class="sched-badge badge-upcoming">upcoming</span>
+          </div>
+        </div>
+        <div class="fade accent-card is-tight">
+          <div class="accent-card__title">📅 come watch us compete!</div>
+          <p class="accent-card__body">
+            FRC events are free and open to the public. There is nothing quite like watching 150
+            robots compete in a convention center at full speed. We promise you'll have strong
+            opinions about swerve drive by the end of the day.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="robots">robots</a></li>
+        <li><a data-page="socials">socials</a></li>
+        <li><a data-page="about">about</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- VALUES PAGE -->
+  <div class="page page-values" id="page-values">
+    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> values</div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>what we value</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="fade section-intro">
+          Every season we build a robot, but the most important machine we build is the way we work
+          together. These values keep our team moving forward on and off the field.
+        </p>
+        <div class="notebook fade">
+          <div class="notebook-tab">team notebook</div>
+          <div class="notebook-body">
+            <div class="value-row">
+              <div class="value-ltr">B</div>
+              <div>
+                <div class="value-title">Build Boldly</div>
+                <div class="value-desc">
+                  Prototype quickly, test often, and treat every failed iteration as proof that we
+                  are learning faster than anyone else.
+                </div>
+              </div>
+            </div>
+            <div class="value-row">
+              <div class="value-ltr">G</div>
+              <div>
+                <div class="value-title">Gracious Competition</div>
+                <div class="value-desc">
+                  We compete hard, help teams harder, and believe a true win is when both alliances
+                  leave the field better than they arrived.
+                </div>
+              </div>
+            </div>
+            <div class="value-row">
+              <div class="value-ltr">C</div>
+              <div>
+                <div class="value-title">Curiosity First</div>
+                <div class="value-desc">
+                  We ask why as often as how. From software to strategy, every question is an
+                  invitation to learn and improve.
+                </div>
+              </div>
+            </div>
+            <div class="value-row">
+              <div class="value-ltr">S</div>
+              <div>
+                <div class="value-title">Soft Machine</div>
+                <div class="value-desc">
+                  Robots can be tough. Our team culture stays pastel, supportive, and centered
+                  around people before parts.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pillars-grid fade">
+          <div class="pillar-card">
+            <div class="pillar-icon">💡</div>
+            <div class="pillar-name">Innovation</div>
+            <div class="pillar-desc">
+              If it hasn&apos;t been done before, we draw it, CAD it, and build it with confidence.
+            </div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🤝</div>
+            <div class="pillar-name">Community</div>
+            <div class="pillar-desc">
+              Our build space is open to everyone, our outreach is year-round, and we celebrate
+              every local team.
+            </div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">📈</div>
+            <div class="pillar-name">Progress</div>
+            <div class="pillar-desc">
+              Small improvements matter. We track them, share them, and high-five them like the
+              victory they are.
+            </div>
+          </div>
+          <div class="pillar-card">
+            <div class="pillar-icon">🎨</div>
+            <div class="pillar-name">Creativity</div>
+            <div class="pillar-desc">
+              We choose ideas that feel unexpected, useful, and a little bit soft — because the best
+              robots are memorable.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="home">home</a></li>
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- SOCIALS PAGE -->
+  <div class="page page-socials" id="page-socials">
+    <div class="page-bar">
+      <a data-page="home">home</a><span aria-hidden="true">›</span> socials
+    </div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>connect with us!</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="fade section-intro">Find us along our offseason to build season journey here:</p>
+        <div class="social-grid">
+          <div class="social-card fade sc-instagram">
+            <div class="social-icon">
+              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Instagram">
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                />
+              </svg>
+            </div>
+            <div class="social-name">Instagram</div>
+            <div class="social-handle">@frc11740</div>
+            <div class="social-desc">Build updates, reveal teasers, and photos from the shop.</div>
+            <a
+              class="social-btn"
+              href="https://instagram.com/frc11740"
+              target="_blank"
+              rel="noopener"
+              >follow</a
+            >
+          </div>
+          <div class="social-card fade sc-youtube">
+            <div class="social-icon">
+              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="YouTube">
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </div>
+            <div class="social-name">YouTube</div>
+            <div class="social-handle">@frc11740</div>
+            <div class="social-desc">Robot reveals, match footage, and season recaps.</div>
+            <a
+              class="social-btn"
+              href="https://youtube.com/@frc11740"
+              target="_blank"
+              rel="noopener"
+              >watch</a
+            >
+          </div>
+          <div class="social-card fade sc-linkedin">
+            <div class="social-icon">
+              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
+                <path
+                  fill="currentColor"
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </div>
+            <div class="social-name">LinkedIn</div>
+            <div class="social-handle">@frc11740</div>
+            <div class="social-desc">Team news and updates for sponsors and mentors.</div>
+            <a
+              class="social-btn"
+              href="https://linkedin.com/company/frc11740"
+              target="_blank"
+              rel="noopener"
+              >connect</a
+            >
+          </div>
+          <div class="social-card fade sc-tiktok">
+            <div class="social-icon">
+              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="TikTok">
+                <path
+                  fill="currentColor"
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                />
+              </svg>
+            </div>
+            <div class="social-name">TikTok</div>
+            <div class="social-handle">@frc11740</div>
+            <div class="social-desc">Short clips from build days, the pit, and competitions.</div>
+            <a class="social-btn" href="https://tiktok.com/@frc11740" target="_blank" rel="noopener"
+              >watch</a
+            >
+          </div>
+          <div class="social-card fade sc-facebook">
+            <div class="social-icon">
+              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Facebook">
+                <path
+                  fill="currentColor"
+                  d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"
+                />
+              </svg>
+            </div>
+            <div class="social-name">Facebook</div>
+            <div class="social-handle">@frc11740</div>
+            <div class="social-desc">Event announcements and posts for the wider community.</div>
+            <a
+              class="social-btn"
+              href="https://facebook.com/frc11740"
+              target="_blank"
+              rel="noopener"
+              >follow</a
+            >
+          </div>
+          <div class="social-card fade sc-twitter">
+            <div class="social-icon">
+              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="X">
+                <path
+                  fill="currentColor"
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </div>
+            <div class="social-name">X</div>
+            <div class="social-handle">@frc11740</div>
+            <div class="social-desc">Quick updates during build season and match days.</div>
+            <a class="social-btn" href="https://x.com/frc11740" target="_blank" rel="noopener"
+              >follow</a
+            >
+          </div>
+        </div>
+        <div class="newsletter-box fade">
+          <div class="newsletter-text">
+            <h3>stay in the loop</h3>
+            <p>
+              Get the latest build updates, event invites, and sponsor shout-outs delivered straight
+              to your inbox.
+            </p>
+          </div>
+          <form class="newsletter-form">
+            <div class="newsletter-hp" aria-hidden="true">
+              <label
+                >Company<input
+                  class="newsletter-hp-field"
+                  type="text"
+                  name="company"
+                  tabindex="-1"
+                  autocomplete="off"
+              /></label>
+            </div>
+            <div class="newsletter-row">
+              <input
+                class="newsletter-input"
+                type="email"
+                placeholder="your email"
+                aria-label="Email address"
+                autocomplete="email"
+              />
+              <button class="newsletter-btn" type="submit">subscribe</button>
+            </div>
+            <label class="newsletter-consent">
+              <input
+                class="newsletter-consent-box"
+                type="checkbox"
+                data-consent-version="2026-08-30"
+              />
+              <span
+                >I agree to receive occasional email updates from Team&nbsp;Plush &mdash; PLUSH
+                Robotics (FRC&nbsp;#11740), Ottawa, Ontario. I can unsubscribe at any time using the
+                link in every email.</span
+              >
+            </label>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="home">home</a></li>
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- SPONSORS PAGE -->
+  <div class="page page-sponsors" id="page-sponsors">
+    <div class="page-bar">
+      <a data-page="home">home</a><span aria-hidden="true">›</span> sponsors
+    </div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>our sponsors</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="fade section-intro">
+          FRC is powered by people, parts, and partners. As a first-year team, we are still writing
+          our first chapter — here are the ways your organization can help build it. Every tier puts
+          your logo on our website, robot, banner, and team merch.
         </p>
 
         <div class="ruled-title fade u-mt-2">
-          <h3>what judges look for, and what we're doing about it</h3>
+          <h3>our sponsorship package</h3>
           <div class="rule"></div>
         </div>
-        <div class="awards-grid u-mt-1">
-          <div class="award-card fade">
-            <div class="award-icon">🤝</div>
-            <div class="award-name">Sponsor &amp; Mentor Partnerships</div>
-            <div class="award-event">support network</div>
-            <div class="award-desc">
-              We're going for 20 sponsors across six tiers, with industry mentors working directly
-              with each sub-team. Partners can host a private robot demo at their office.
-            </div>
-          </div>
-          <div class="award-card fade">
-            <div class="award-icon">📣</div>
-            <div class="award-name">Community Outreach</div>
-            <div class="award-event">spreading FIRST</div>
-            <div class="award-desc">
-              At least 6 STEM workshops at local elementary and middle schools, plus 2 or more
-              public robot demos with partners. Most of this happens before our first competition.
-            </div>
-          </div>
-          <div class="award-card fade">
-            <div class="award-icon">♿</div>
-            <div class="award-name">Makers Making Change</div>
-            <div class="award-event">real-world impact</div>
-            <div class="award-desc">
-              20 or more assistive-technology builds for people with disabilities. Each one gets
-              logged and shared back to the Makers Making Change network.
-            </div>
-          </div>
-          <div class="award-card fade">
-            <div class="award-icon">🌍</div>
-            <div class="award-name">Diversity, Equity &amp; Inclusion</div>
-            <div class="award-event">access &amp; culture</div>
-            <div class="award-desc">
-              We want a roster that actually looks like Ottawa, so we recruit underrepresented
-              students into STEM and keep track of how representation changes each year.
-            </div>
-          </div>
-          <div class="award-card fade">
-            <div class="award-icon">♻️</div>
-            <div class="award-name">Sustainability Plan</div>
-            <div class="award-event">long-term plan</div>
-            <div class="award-desc">
-              A written plan for recruiting, funding, and mentoring so the team keeps going after
-              the founders graduate. We're aiming for 45 students by 2027.
-            </div>
-          </div>
-          <div class="award-card fade">
-            <div class="award-icon">🏆</div>
-            <div class="award-name">Robot &amp; FIRST Values</div>
-            <div class="award-event">on the field</div>
-            <div class="award-desc">
-              A working competition robot built in under three months, and a team that treats other
-              teams well in the pits.
-            </div>
-          </div>
-        </div>
-
-        <div class="ruled-title fade u-mt-2-5">
-          <h3>our timeline</h3>
-          <div class="rule"></div>
-        </div>
-        <div class="timeline fade">
-          <div class="tl-item">
-            <div class="tl-dot is-blue"></div>
-            <div class="tl-year">Apr–Sep 2026</div>
-            <div class="tl-title">Team &amp; Sponsor Launch</div>
-            <div class="tl-desc">
-              Release the sponsorship package, lock in founding partners, and finalize FRC 11740
-              registration.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot is-purple"></div>
-            <div class="tl-year">Oct–Dec 2026</div>
-            <div class="tl-title">Outreach Blitz</div>
-            <div class="tl-desc">
-              First classroom workshops and community demos, Makers Making Change builds begin, and
-              bi-monthly newsletter #1 goes out.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot is-green"></div>
-            <div class="tl-year">Jan 2027</div>
-            <div class="tl-title">Kickoff</div>
-            <div class="tl-desc">
-              Game reveal, design reviews with our mentors, and the start of a build that runs under
-              three months.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot is-blue"></div>
-            <div class="tl-year">Feb 2027</div>
-            <div class="tl-title">Build &amp; Document</div>
-            <div class="tl-desc">
-              Weekly build days that sponsors can sit in on. We keep records for the judges: photos,
-              numbers, and an impact log.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot is-purple"></div>
-            <div class="tl-year">Mar 2027</div>
-            <div class="tl-title">First Regional</div>
-            <div class="tl-desc">
-              Hand in the Rookie All-Star materials, give the judge presentation, and aim for a
-              60th-percentile finish.
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot is-green"></div>
-            <div class="tl-year">Apr 2027</div>
-            <div class="tl-title">Provincials</div>
-            <div class="tl-desc">
-              Winning Rookie All-Star sends us here, in front of 4,000+ people and 30+ Ontario
-              teams.
-            </div>
-          </div>
-        </div>
-
-        <div class="ruled-title fade u-mt-2-5">
-          <h3>what we're tracking</h3>
-          <div class="rule"></div>
-        </div>
-        <div class="fade metric-grid">
-          <div class="fact-card">
-            <div class="fact-num">20</div>
-            <div class="fact-label">founding sponsors<br />across six tiers</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-num">6+</div>
-            <div class="fact-label">school STEM<br />workshops</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-num">2+</div>
-            <div class="fact-label">public robot<br />demo events</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-num">20+</div>
-            <div class="fact-label">Makers Making Change<br />assistive builds</div>
-          </div>
-          <div class="fact-card">
-            <div class="fact-num">3 🏆</div>
-            <div class="fact-label">awards targeted<br />in year one</div>
-          </div>
-        </div>
-
-        <div class="fade accent-card">
-          <div class="accent-card__title">🌱 want your logo on a Rookie All-Star robot?</div>
-          <p class="accent-card__body">
-            We can't do any of this without founding partners. Email
-            <a href="mailto:teamplushrobotics@gmail.com" class="t-link"
-              >teamplushrobotics@gmail.com</a
-            >, find us at <span class="t-b">@frc11740</span>, or
-            <a data-page="sponsors" class="t-link">check out the sponsorship tiers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-      <li><a data-page="schedule">schedule</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- SCHEDULE PAGE -->
-<div class="page page-schedule" id="page-schedule">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> schedule</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>2026/27 season</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="countdown-box fade">
-        <div class="countdown-label">⏱ next competition</div>
-        <div class="countdown-event">🏟 Kickoff — 2026/27 Game Reveal</div>
-        <div class="countdown-nums">
-          <div class="cnum">
-            <div class="cnum-val" id="cdDays">--</div>
-            <div class="cnum-label">days</div>
-          </div>
-          <div class="cnum">
-            <div class="cnum-val" id="cdHours">--</div>
-            <div class="cnum-label">hours</div>
-          </div>
-          <div class="cnum">
-            <div class="cnum-val" id="cdMins">--</div>
-            <div class="cnum-label">mins</div>
-          </div>
-          <div class="cnum">
-            <div class="cnum-val" id="cdSecs">--</div>
-            <div class="cnum-label">secs</div>
-          </div>
-        </div>
-      </div>
-      <div class="schedule-grid fade">
-        <div class="sched-card current">
-          <div class="sched-date">
-            <div class="sched-month">Jan</div>
-            <div class="sched-day">9</div>
-          </div>
-          <div class="sched-info">
-            <div class="sched-name">Kickoff — Game reveal</div>
-            <div class="sched-loc">
-              🏠 School Lab · All hands on deck · start of the build season
-            </div>
-          </div>
-          <span class="sched-badge badge-current">next up!</span>
-        </div>
-        <div class="sched-card upcoming">
-          <div class="sched-date">
-            <div class="sched-month">Mar</div>
-            <div class="sched-day">🏟</div>
-          </div>
-          <div class="sched-info">
-            <div class="sched-name">District Competition #1</div>
-            <div class="sched-loc">📍 Ontario District event · 2.5 days of matches</div>
-          </div>
-          <span class="sched-badge badge-upcoming">upcoming</span>
-        </div>
-        <div class="sched-card upcoming">
-          <div class="sched-date">
-            <div class="sched-month">Mar</div>
-            <div class="sched-day">🏟</div>
-          </div>
-          <div class="sched-info">
-            <div class="sched-name">District Competition #2</div>
-            <div class="sched-loc">📍 Ontario District event · 2.5 days of matches</div>
-          </div>
-          <span class="sched-badge badge-upcoming">upcoming</span>
-        </div>
-        <div class="sched-card upcoming">
-          <div class="sched-date">
-            <div class="sched-month">Apr</div>
-            <div class="sched-day">🍁</div>
-          </div>
-          <div class="sched-info">
-            <div class="sched-name">Provincials — FIRST Ontario Championship</div>
-            <div class="sched-loc">📍 Provincial Championship · if qualified</div>
-          </div>
-          <span class="sched-badge badge-upcoming">upcoming</span>
-        </div>
-        <div class="sched-card upcoming">
-          <div class="sched-date">
-            <div class="sched-month">Apr</div>
-            <div class="sched-day">🌍</div>
-          </div>
-          <div class="sched-info">
-            <div class="sched-name">Worlds — FIRST Championship</div>
-            <div class="sched-loc">📍 Houston, TX · if qualified</div>
-          </div>
-          <span class="sched-badge badge-upcoming">upcoming</span>
-        </div>
-      </div>
-      <div class="fade accent-card is-tight">
-        <div class="accent-card__title">📅 come watch us compete!</div>
-        <p class="accent-card__body">
-          FRC events are free and open to the public. There is nothing quite like watching 150
-          robots compete in a convention center at full speed. We promise you'll have strong
-          opinions about swerve drive by the end of the day.
+        <p class="fade section-note">
+          The full package — our mission, why partner with us, our 2026&ndash;27 vision, outreach
+          goals, budget, and every tier. Open it below or
+          <a href="/sponsorship-package.pdf" target="_blank" rel="noopener" class="t-link"
+            >view it in a new tab</a
+          >.
         </p>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="robots">robots</a></li>
-      <li><a data-page="socials">socials</a></li>
-      <li><a data-page="about">about</a></li>
-    </ul>
-  </footer>
-</div>
+        <div class="pdf-embed fade">
+          <iframe
+            src="/sponsorship-package.pdf#view=FitH"
+            title="Team PLUSH Sponsorship Package"
+            loading="lazy"
+          ></iframe>
+        </div>
 
-<!-- VALUES PAGE -->
-<div class="page page-values" id="page-values">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> values</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>what we value</h2>
-        <div class="rule"></div>
-      </div>
-      <p class="fade section-intro">
-        Every season we build a robot, but the most important machine we build is the way we work
-        together. These values keep our team moving forward on and off the field.
-      </p>
-      <div class="notebook fade">
-        <div class="notebook-tab">team notebook</div>
-        <div class="notebook-body">
-          <div class="value-row">
-            <div class="value-ltr">B</div>
-            <div>
-              <div class="value-title">Build Boldly</div>
-              <div class="value-desc">
-                Prototype quickly, test often, and treat every failed iteration as proof that we are
-                learning faster than anyone else.
-              </div>
-            </div>
+        <div class="ruled-title fade u-mt-2-5">
+          <h3>sponsorship tiers</h3>
+          <div class="rule"></div>
+        </div>
+        <p class="fade section-note has-gap">
+          Pick the level that fits your organization. Further perks can always be worked out over
+          email.
+        </p>
+        <div class="sponsor-tier tier-title fade">
+          <div class="tier-label">
+            <h3>Title Sponsor</h3>
+            <span class="tier-amount">$5,000+</span>
+            <div class="tier-rule"></div>
           </div>
-          <div class="value-row">
-            <div class="value-ltr">G</div>
-            <div>
-              <div class="value-title">Gracious Competition</div>
-              <div class="value-desc">
-                We compete hard, help teams harder, and believe a true win is when both alliances
-                leave the field better than they arrived.
-              </div>
-            </div>
-          </div>
-          <div class="value-row">
-            <div class="value-ltr">C</div>
-            <div>
-              <div class="value-title">Curiosity First</div>
-              <div class="value-desc">
-                We ask why as often as how. From software to strategy, every question is an
-                invitation to learn and improve.
-              </div>
-            </div>
-          </div>
-          <div class="value-row">
-            <div class="value-ltr">S</div>
-            <div>
-              <div class="value-title">Soft Machine</div>
-              <div class="value-desc">
-                Robots can be tough. Our team culture stays pastel, supportive, and centered around
-                people before parts.
-              </div>
+          <ul class="tier-perks">
+            <li>Private robot demo at your office or company event</li>
+            <li>Invitation to team build days &amp; competition across Ontario</li>
+            <li>
+              Named recognition as Title Sponsor across all social media (LinkedIn, Instagram, X,
+              Facebook, etc.)
+            </li>
+            <li>
+              All lower-tier perks: logo on website, robot, banner &amp; team merch, shout-out at
+              competition playoffs
+            </li>
+          </ul>
+          <div class="tier-slots">
+            <div class="sponsor-card open">
+              <div class="sponsor-logo-placeholder">✨</div>
+              <div class="sponsor-name">your logo here</div>
+              <div class="slot-label">Open</div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="pillars-grid fade">
-        <div class="pillar-card">
-          <div class="pillar-icon">💡</div>
-          <div class="pillar-name">Innovation</div>
-          <div class="pillar-desc">
-            If it hasn&apos;t been done before, we draw it, CAD it, and build it with confidence.
+        <div class="sponsor-tier tier-diamond fade">
+          <div class="tier-label">
+            <h3>Diamond Sponsor</h3>
+            <span class="tier-amount">$2,500–$4,999</span>
+            <div class="tier-rule"></div>
+          </div>
+          <ul class="tier-perks">
+            <li>Large logo on website, robot, banner &amp; team merch</li>
+            <li>Named recognition as Diamond Sponsor across all social media</li>
+            <li>Priority shout-out at competition playoffs across 30+ Ontario teams</li>
+            <li>
+              Employee mentorship opportunities, meet &amp; greet with team, and invitation to our
+              bi-monthly newsletter
+            </li>
+          </ul>
+          <div class="tier-slots">
+            <div class="sponsor-card open">
+              <div class="sponsor-logo-placeholder">✨</div>
+              <div class="sponsor-name">your logo here</div>
+              <div class="slot-label">Open</div>
+            </div>
           </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🤝</div>
-          <div class="pillar-name">Community</div>
-          <div class="pillar-desc">
-            Our build space is open to everyone, our outreach is year-round, and we celebrate every
-            local team.
+        <div class="sponsor-tier tier-gold fade">
+          <div class="tier-label">
+            <h3>Gold Sponsor</h3>
+            <span class="tier-amount">$1,000–$2,499</span>
+            <div class="tier-rule"></div>
+          </div>
+          <ul class="tier-perks">
+            <li>Medium logo on website, robot, banner &amp; team merch</li>
+            <li>Named recognition as Gold Sponsor across all social media</li>
+            <li>Meet &amp; greet with team, and invitation to our bi-monthly newsletter</li>
+          </ul>
+          <div class="tier-slots">
+            <div class="sponsor-card open">
+              <div class="sponsor-logo-placeholder sm">✨</div>
+              <div class="sponsor-name">your logo here</div>
+              <div class="slot-label">Open</div>
+            </div>
           </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">📈</div>
-          <div class="pillar-name">Progress</div>
-          <div class="pillar-desc">
-            Small improvements matter. We track them, share them, and high-five them like the
-            victory they are.
+        <div class="sponsor-tier tier-silver fade">
+          <div class="tier-label">
+            <h3>Silver Sponsor</h3>
+            <span class="tier-amount">$500–$999</span>
+            <div class="tier-rule"></div>
+          </div>
+          <ul class="tier-perks">
+            <li>Small logo on website, robot, banner &amp; team merch</li>
+            <li>Named recognition as Silver Sponsor across all social media</li>
+            <li>Meet &amp; greet with team, and invitation to our bi-monthly newsletter</li>
+          </ul>
+          <div class="tier-slots">
+            <div class="sponsor-card open">
+              <div class="sponsor-logo-placeholder sm">✨</div>
+              <div class="sponsor-name">your logo here</div>
+              <div class="slot-label">Open</div>
+            </div>
           </div>
         </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🎨</div>
-          <div class="pillar-name">Creativity</div>
-          <div class="pillar-desc">
-            We choose ideas that feel unexpected, useful, and a little bit soft — because the best
-            robots are memorable.
+        <div class="sponsor-tier tier-bronze fade">
+          <div class="tier-label">
+            <h3>Bronze Sponsor</h3>
+            <span class="tier-amount">$300–$499</span>
+            <div class="tier-rule"></div>
+          </div>
+          <ul class="tier-perks">
+            <li>Small logo on website, robot, banner &amp; team merch</li>
+            <li>Named recognition as Bronze Sponsor across all social media</li>
+          </ul>
+          <div class="tier-slots">
+            <div class="sponsor-card open">
+              <div class="sponsor-logo-placeholder sm">✨</div>
+              <div class="sponsor-name">your logo here</div>
+              <div class="slot-label">Open</div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="home">home</a></li>
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- SOCIALS PAGE -->
-<div class="page page-socials" id="page-socials">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> socials</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>connect with us!</h2>
-        <div class="rule"></div>
-      </div>
-      <p class="fade section-intro">Find us along our offseason to build season journey here:</p>
-      <div class="social-grid">
-        <div class="social-card fade sc-instagram">
-          <div class="social-icon">
-            <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Instagram">
-              <path
-                fill="currentColor"
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-              />
-            </svg>
+        <div class="sponsor-tier tier-inkind fade">
+          <div class="tier-label">
+            <h3>In-Kind Sponsor</h3>
+            <span class="tier-amount">tools · parts · space · services</span>
+            <div class="tier-rule"></div>
           </div>
-          <div class="social-name">Instagram</div>
-          <div class="social-handle">@frc11740</div>
-          <div class="social-desc">Build updates, reveal teasers, and photos from the shop.</div>
-          <a class="social-btn" href="https://instagram.com/frc11740" target="_blank" rel="noopener"
-            >follow</a
-          >
-        </div>
-        <div class="social-card fade sc-youtube">
-          <div class="social-icon">
-            <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="YouTube">
-              <path
-                fill="currentColor"
-                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
-              />
-            </svg>
+          <ul class="tier-perks">
+            <li>
+              Contribute build space, electronic tools, hardware parts, subscriptions, or services
+            </li>
+            <li>
+              Perks and recognition scaled to the value of the contribution — let&apos;s talk over
+              email
+            </li>
+          </ul>
+          <div class="tier-slots">
+            <div class="sponsor-card">
+              <div class="sponsor-logo-placeholder sm">🧪</div>
+              <div class="sponsor-name">Canus Plastics</div>
+              <div class="sponsor-desc">
+                Our founding in-kind sponsor — supplies plastic stock and fabrication support for
+                the build.
+              </div>
+            </div>
+            <div class="sponsor-card open">
+              <div class="sponsor-logo-placeholder sm">✨</div>
+              <div class="sponsor-name">your logo here</div>
+              <div class="slot-label">Open</div>
+            </div>
           </div>
-          <div class="social-name">YouTube</div>
-          <div class="social-handle">@frc11740</div>
-          <div class="social-desc">Robot reveals, match footage, and season recaps.</div>
-          <a class="social-btn" href="https://youtube.com/@frc11740" target="_blank" rel="noopener"
-            >watch</a
-          >
         </div>
-        <div class="social-card fade sc-linkedin">
-          <div class="social-icon">
-            <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
-              <path
-                fill="currentColor"
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-              />
-            </svg>
-          </div>
-          <div class="social-name">LinkedIn</div>
-          <div class="social-handle">@frc11740</div>
-          <div class="social-desc">Team news and updates for sponsors and mentors.</div>
-          <a
-            class="social-btn"
-            href="https://linkedin.com/company/frc11740"
-            target="_blank"
-            rel="noopener"
-            >connect</a
-          >
-        </div>
-        <div class="social-card fade sc-tiktok">
-          <div class="social-icon">
-            <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="TikTok">
-              <path
-                fill="currentColor"
-                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
-              />
-            </svg>
-          </div>
-          <div class="social-name">TikTok</div>
-          <div class="social-handle">@frc11740</div>
-          <div class="social-desc">Short clips from build days, the pit, and competitions.</div>
-          <a class="social-btn" href="https://tiktok.com/@frc11740" target="_blank" rel="noopener"
-            >watch</a
-          >
-        </div>
-        <div class="social-card fade sc-facebook">
-          <div class="social-icon">
-            <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Facebook">
-              <path
-                fill="currentColor"
-                d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"
-              />
-            </svg>
-          </div>
-          <div class="social-name">Facebook</div>
-          <div class="social-handle">@frc11740</div>
-          <div class="social-desc">Event announcements and posts for the wider community.</div>
-          <a class="social-btn" href="https://facebook.com/frc11740" target="_blank" rel="noopener"
-            >follow</a
-          >
-        </div>
-        <div class="social-card fade sc-twitter">
-          <div class="social-icon">
-            <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="X">
-              <path
-                fill="currentColor"
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </div>
-          <div class="social-name">X</div>
-          <div class="social-handle">@frc11740</div>
-          <div class="social-desc">Quick updates during build season and match days.</div>
-          <a class="social-btn" href="https://x.com/frc11740" target="_blank" rel="noopener"
-            >follow</a
-          >
-        </div>
-      </div>
-      <div class="newsletter-box fade">
-        <div class="newsletter-text">
-          <h3>stay in the loop</h3>
+        <div class="sponsor-cta fade">
+          <h3>become part of the story</h3>
           <p>
-            Get the latest build updates, event invites, and sponsor shout-outs delivered straight
-            to your inbox.
+            Want your organization listed here? Email
+            <a href="mailto:teamplushrobotics@gmail.com" class="t-link-light"
+              >teamplushrobotics@gmail.com</a
+            >
+            or find us <span class="t-b">@frc11740</span> everywhere. Sponsor Team PLUSH and join a
+            collaborative robotics journey with youth, innovation, and community at its core.
+          </p>
+          <p class="fineprint">
+            Team&nbsp;Plush is a not-for-profit but not a registered charity — contributions are not
+            tax-deductible and we do not issue official tax receipts.
           </p>
         </div>
-        <form class="newsletter-form">
-          <div class="newsletter-hp" aria-hidden="true">
-            <label
-              >Company<input
-                class="newsletter-hp-field"
-                type="text"
-                name="company"
-                tabindex="-1"
-                autocomplete="off"
-            /></label>
-          </div>
-          <div class="newsletter-row">
-            <input
-              class="newsletter-input"
-              type="email"
-              placeholder="your email"
-              aria-label="Email address"
-              autocomplete="email"
-            />
-            <button class="newsletter-btn" type="submit">subscribe</button>
-          </div>
-          <label class="newsletter-consent">
-            <input
-              class="newsletter-consent-box"
-              type="checkbox"
-              data-consent-version="2026-08-30"
-            />
-            <span
-              >I agree to receive occasional email updates from Team&nbsp;Plush &mdash; PLUSH
-              Robotics (FRC&nbsp;#11740), Ottawa, Ontario. I can unsubscribe at any time using the
-              link in every email.</span
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="home">home</a></li>
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+      </ul>
+    </footer>
+  </div>
+
+  <!-- PRIVACY POLICY PAGE -->
+  <div class="page page-privacy" id="page-privacy">
+    <div class="page-bar">
+      <a data-page="home">home</a><span aria-hidden="true">›</span> privacy
+    </div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>privacy policy</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="legal-prose fade">
+          <p class="legal-updated">Last updated: August 28, 2026</p>
+
+          <p>
+            Team&nbsp;Plush ("PLUSH Robotics", "we", "us", "our") is a student-led, registered
+            non-profit <em>FIRST</em>&nbsp;Robotics Competition team (FRC&nbsp;#11740) based in
+            Ottawa, Ontario, Canada. We are committed to protecting the personal information of
+            everyone who visits <strong>frc11740.ca</strong> (the "Site") or contacts our team.
+          </p>
+
+          <h3>The short version</h3>
+          <p>
+            This is a static, informational website. We do <strong>not</strong> use advertising
+            cookies, analytics trackers, or third-party marketing tools, and we do not build
+            profiles of visitors. We only receive personal information if you choose to send it to
+            us.
+          </p>
+
+          <h3>Information we collect</h3>
+          <ul>
+            <li>
+              <strong>Information you give us directly.</strong> If you email us or complete a form
+              we link to (for example our "Join&nbsp;Us" form, hosted on Google&nbsp;Forms), we
+              receive what you provide — typically your name, email address, school, and your
+              message.
+            </li>
+            <li>
+              <strong>Newsletter sign-ups.</strong> If we offer an email newsletter and you
+              subscribe, we collect your email address and a record of your consent so we can send
+              you team updates. Every newsletter email includes an unsubscribe link.
+            </li>
+            <li>
+              <strong>Basic server logs.</strong> Our hosting provider automatically records
+              standard technical data (such as IP address, browser type, and pages requested) to
+              keep the Site secure and running. We do not use this data to identify individual
+              visitors.
+            </li>
+          </ul>
+          <p>
+            We do not knowingly collect personal information from children through this Site.
+            Information about our student members and event participants (including minors) is
+            collected offline through registration and media-release forms, with parent or guardian
+            consent where required — not through this Site.
+          </p>
+
+          <h3>How we use your information</h3>
+          <ul>
+            <li>To respond to your questions and messages;</li>
+            <li>To process membership, volunteer, and sponsorship inquiries;</li>
+            <li>To send team updates and event invitations you have asked to receive;</li>
+            <li>To keep the Site secure and functioning.</li>
+          </ul>
+          <p>We do not sell, rent, or trade your personal information.</p>
+
+          <h3>Service providers and storage outside Canada</h3>
+          <p>We rely on a small number of trusted providers to operate:</p>
+          <ul>
+            <li>
+              <strong>Vercel&nbsp;Inc.</strong> hosts this Site. Its servers are located in the
+              United States, so the technical data described above may be processed outside Canada
+              and may be accessible to foreign authorities under the laws of that country.
+            </li>
+            <li>
+              <strong>Google&nbsp;LLC</strong> hosts the forms we link to and the email account we
+              use (teamplushrobotics@gmail.com). Information you submit through those tools is also
+              handled under Google's privacy policy.
+            </li>
+          </ul>
+          <p>
+            We ask our providers to protect personal information in a manner consistent with this
+            policy and with Canada's
+            <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA).
+          </p>
+
+          <h3>Your choices and rights</h3>
+          <p>
+            You may ask us to access, correct, or delete the personal information we hold about you,
+            or withdraw your consent to receive emails, at any time. Contact us at
+            <a href="mailto:teamplushrobotics@gmail.com">teamplushrobotics@gmail.com</a> and we will
+            respond within a reasonable time. If you are not satisfied with our response, you may
+            contact the Office of the Privacy Commissioner of Canada at
+            <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a>.
+          </p>
+
+          <h3>Retention</h3>
+          <p>
+            We keep personal information only as long as needed for the purpose it was provided, for
+            our records as a non-profit organization, or as required by law, after which it is
+            deleted or anonymized.
+          </p>
+
+          <h3>Changes to this policy</h3>
+          <p>
+            We may update this policy as our website or activities change. The "last updated" date
+            above will always reflect the current version.
+          </p>
+
+          <h3>Contact</h3>
+          <p>
+            Team&nbsp;Plush — PLUSH Robotics (FRC&nbsp;#11740)<br />Ottawa, Ontario, Canada<br /><a
+              href="mailto:teamplushrobotics@gmail.com"
+              >teamplushrobotics@gmail.com</a
             >
-          </label>
-        </form>
+            &middot; @frc11740
+          </p>
+        </div>
       </div>
     </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="home">home</a></li>
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+      </ul>
+    </footer>
   </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="home">home</a></li>
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-    </ul>
-  </footer>
-</div>
 
-<!-- SPONSORS PAGE -->
-<div class="page page-sponsors" id="page-sponsors">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> sponsors</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>our sponsors</h2>
-        <div class="rule"></div>
-      </div>
-      <p class="fade section-intro">
-        FRC is powered by people, parts, and partners. As a first-year team, we are still writing
-        our first chapter — here are the ways your organization can help build it. Every tier puts
-        your logo on our website, robot, banner, and team merch.
-      </p>
+  <!-- TERMS OF USE PAGE -->
+  <div class="page page-terms" id="page-terms">
+    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> terms</div>
+    <div class="inner-page">
+      <div class="wrap">
+        <div class="ruled-title fade">
+          <h2>terms of use</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="legal-prose fade">
+          <p class="legal-updated">Last updated: August 28, 2026</p>
 
-      <div class="ruled-title fade u-mt-2">
-        <h3>our sponsorship package</h3>
-        <div class="rule"></div>
-      </div>
-      <p class="fade section-note">
-        The full package — our mission, why partner with us, our 2026&ndash;27 vision, outreach
-        goals, budget, and every tier. Open it below or
-        <a href="/sponsorship-package.pdf" target="_blank" rel="noopener" class="t-link"
-          >view it in a new tab</a
-        >.
-      </p>
-      <div class="pdf-embed fade">
-        <iframe
-          src="/sponsorship-package.pdf#view=FitH"
-          title="Team PLUSH Sponsorship Package"
-          loading="lazy"
-        ></iframe>
-      </div>
+          <p>
+            These Terms of Use govern your use of <strong>frc11740.ca</strong> (the "Site"),
+            operated by Team&nbsp;Plush — PLUSH Robotics, a student-led registered non-profit
+            <em>FIRST</em>&nbsp;Robotics Competition team (FRC&nbsp;#11740) in Ottawa, Ontario. By
+            using the Site you agree to these terms. If you do not agree, please do not use the
+            Site.
+          </p>
 
-      <div class="ruled-title fade u-mt-2-5">
-        <h3>sponsorship tiers</h3>
-        <div class="rule"></div>
-      </div>
-      <p class="fade section-note has-gap">
-        Pick the level that fits your organization. Further perks can always be worked out over
-        email.
-      </p>
-      <div class="sponsor-tier tier-title fade">
-        <div class="tier-label">
-          <h3>Title Sponsor</h3>
-          <span class="tier-amount">$5,000+</span>
-          <div class="tier-rule"></div>
+          <h3>Informational purpose</h3>
+          <p>
+            The Site provides general information about our team, our robots, our outreach, and our
+            sponsors. Content may be incomplete, out of date, or forward-looking (for example, goals
+            and projected milestones). The Site is provided on an "as is" and "as available" basis,
+            without warranties of any kind, express or implied.
+          </p>
+
+          <h3>Intellectual property</h3>
+          <ul>
+            <li>
+              Text, graphics, illustrations, and photographs on the Site are owned by
+              Team&nbsp;Plush or used with permission, and may not be reproduced for commercial
+              purposes without our written consent. You are welcome to share links to the Site.
+            </li>
+            <li>
+              <em>FIRST</em>, <em>FRC</em>, <em>FIRST Robotics Competition</em>, and related logos
+              are trademarks of <em>FIRST</em> (For Inspiration and Recognition of Science and
+              Technology) and are used here for identification only.
+            </li>
+            <li>
+              Sponsor names and logos are the property of their respective owners and are displayed
+              with permission under our sponsorship agreements.
+            </li>
+          </ul>
+
+          <h3>Links to other websites</h3>
+          <p>
+            The Site links to third-party services (such as Google&nbsp;Forms and our social media
+            accounts). We are not responsible for the content, policies, or practices of any
+            third-party site, and a link does not imply endorsement.
+          </p>
+
+          <h3>Sponsorship and contributions</h3>
+          <p>
+            Any sponsorship, in-kind contribution, or partnership is governed by a separate written
+            agreement between the sponsor and Team&nbsp;Plush. Information on the Site about
+            sponsorship tiers and benefits is an invitation to discuss, not a binding offer.
+          </p>
+          <p>
+            Team&nbsp;Plush is a not-for-profit organization but is
+            <strong>not a registered charity</strong>. Sponsorships, donations, and in-kind
+            contributions are <strong>not tax-deductible</strong>, and we do not issue official
+            donation receipts for income tax purposes.
+          </p>
+
+          <h3>Acceptable use</h3>
+          <p>
+            You agree not to use the Site to break any law, to disrupt or attempt to gain
+            unauthorized access to the Site or its hosting infrastructure, or to misrepresent your
+            affiliation with Team&nbsp;Plush.
+          </p>
+
+          <h3>Limitation of liability</h3>
+          <p>
+            To the fullest extent permitted by law, Team&nbsp;Plush and its members, mentors,
+            parents, and volunteers will not be liable for any loss or damage arising from your use
+            of, or inability to use, the Site or any linked service.
+          </p>
+
+          <h3>Governing law</h3>
+          <p>
+            These terms are governed by the laws of the Province of Ontario and the federal laws of
+            Canada applicable there. Any dispute will be subject to the courts of Ontario.
+          </p>
+
+          <h3>Changes</h3>
+          <p>
+            We may update these terms from time to time. Continued use of the Site after a change
+            means you accept the updated terms.
+          </p>
+
+          <h3>Contact</h3>
+          <p>
+            <a href="mailto:teamplushrobotics@gmail.com">teamplushrobotics@gmail.com</a> &middot;
+            @frc11740
+          </p>
         </div>
-        <ul class="tier-perks">
-          <li>Private robot demo at your office or company event</li>
-          <li>Invitation to team build days &amp; competition across Ontario</li>
-          <li>
-            Named recognition as Title Sponsor across all social media (LinkedIn, Instagram, X,
-            Facebook, etc.)
-          </li>
-          <li>
-            All lower-tier perks: logo on website, robot, banner &amp; team merch, shout-out at
-            competition playoffs
-          </li>
-        </ul>
-        <div class="tier-slots">
-          <div class="sponsor-card open">
-            <div class="sponsor-logo-placeholder">✨</div>
-            <div class="sponsor-name">your logo here</div>
-            <div class="slot-label">Open</div>
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-tier tier-diamond fade">
-        <div class="tier-label">
-          <h3>Diamond Sponsor</h3>
-          <span class="tier-amount">$2,500–$4,999</span>
-          <div class="tier-rule"></div>
-        </div>
-        <ul class="tier-perks">
-          <li>Large logo on website, robot, banner &amp; team merch</li>
-          <li>Named recognition as Diamond Sponsor across all social media</li>
-          <li>Priority shout-out at competition playoffs across 30+ Ontario teams</li>
-          <li>
-            Employee mentorship opportunities, meet &amp; greet with team, and invitation to our
-            bi-monthly newsletter
-          </li>
-        </ul>
-        <div class="tier-slots">
-          <div class="sponsor-card open">
-            <div class="sponsor-logo-placeholder">✨</div>
-            <div class="sponsor-name">your logo here</div>
-            <div class="slot-label">Open</div>
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-tier tier-gold fade">
-        <div class="tier-label">
-          <h3>Gold Sponsor</h3>
-          <span class="tier-amount">$1,000–$2,499</span>
-          <div class="tier-rule"></div>
-        </div>
-        <ul class="tier-perks">
-          <li>Medium logo on website, robot, banner &amp; team merch</li>
-          <li>Named recognition as Gold Sponsor across all social media</li>
-          <li>Meet &amp; greet with team, and invitation to our bi-monthly newsletter</li>
-        </ul>
-        <div class="tier-slots">
-          <div class="sponsor-card open">
-            <div class="sponsor-logo-placeholder sm">✨</div>
-            <div class="sponsor-name">your logo here</div>
-            <div class="slot-label">Open</div>
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-tier tier-silver fade">
-        <div class="tier-label">
-          <h3>Silver Sponsor</h3>
-          <span class="tier-amount">$500–$999</span>
-          <div class="tier-rule"></div>
-        </div>
-        <ul class="tier-perks">
-          <li>Small logo on website, robot, banner &amp; team merch</li>
-          <li>Named recognition as Silver Sponsor across all social media</li>
-          <li>Meet &amp; greet with team, and invitation to our bi-monthly newsletter</li>
-        </ul>
-        <div class="tier-slots">
-          <div class="sponsor-card open">
-            <div class="sponsor-logo-placeholder sm">✨</div>
-            <div class="sponsor-name">your logo here</div>
-            <div class="slot-label">Open</div>
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-tier tier-bronze fade">
-        <div class="tier-label">
-          <h3>Bronze Sponsor</h3>
-          <span class="tier-amount">$300–$499</span>
-          <div class="tier-rule"></div>
-        </div>
-        <ul class="tier-perks">
-          <li>Small logo on website, robot, banner &amp; team merch</li>
-          <li>Named recognition as Bronze Sponsor across all social media</li>
-        </ul>
-        <div class="tier-slots">
-          <div class="sponsor-card open">
-            <div class="sponsor-logo-placeholder sm">✨</div>
-            <div class="sponsor-name">your logo here</div>
-            <div class="slot-label">Open</div>
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-tier tier-inkind fade">
-        <div class="tier-label">
-          <h3>In-Kind Sponsor</h3>
-          <span class="tier-amount">tools · parts · space · services</span>
-          <div class="tier-rule"></div>
-        </div>
-        <ul class="tier-perks">
-          <li>
-            Contribute build space, electronic tools, hardware parts, subscriptions, or services
-          </li>
-          <li>
-            Perks and recognition scaled to the value of the contribution — let&apos;s talk over
-            email
-          </li>
-        </ul>
-        <div class="tier-slots">
-          <div class="sponsor-card">
-            <div class="sponsor-logo-placeholder sm">🧪</div>
-            <div class="sponsor-name">Canus Plastics</div>
-            <div class="sponsor-desc">
-              Our founding in-kind sponsor — supplies plastic stock and fabrication support for the
-              build.
-            </div>
-          </div>
-          <div class="sponsor-card open">
-            <div class="sponsor-logo-placeholder sm">✨</div>
-            <div class="sponsor-name">your logo here</div>
-            <div class="slot-label">Open</div>
-          </div>
-        </div>
-      </div>
-      <div class="sponsor-cta fade">
-        <h3>become part of the story</h3>
-        <p>
-          Want your organization listed here? Email
-          <a href="mailto:teamplushrobotics@gmail.com" class="t-link-light"
-            >teamplushrobotics@gmail.com</a
-          >
-          or find us <span class="t-b">@frc11740</span> everywhere. Sponsor Team PLUSH and join a
-          collaborative robotics journey with youth, innovation, and community at its core.
-        </p>
-        <p class="fineprint">
-          Team&nbsp;Plush is a not-for-profit but not a registered charity — contributions are not
-          tax-deductible and we do not issue official tax receipts.
-        </p>
       </div>
     </div>
+    <footer>
+      <div class="footer-logo" data-page="home">team plush ⚙️</div>
+      <div class="footer-slogan">live · laugh · love · robotics</div>
+      <nav class="footer-legal" aria-label="Legal">
+        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
+        ><a data-page="terms">Terms</a>
+      </nav>
+      <ul class="footer-links">
+        <li><a data-page="home">home</a></li>
+        <li><a data-page="about">about</a></li>
+        <li><a data-page="team">team</a></li>
+      </ul>
+    </footer>
   </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="home">home</a></li>
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- PRIVACY POLICY PAGE -->
-<div class="page page-privacy" id="page-privacy">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> privacy</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>privacy policy</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="legal-prose fade">
-        <p class="legal-updated">Last updated: August 28, 2026</p>
-
-        <p>
-          Team&nbsp;Plush ("PLUSH Robotics", "we", "us", "our") is a student-led, registered
-          non-profit <em>FIRST</em>&nbsp;Robotics Competition team (FRC&nbsp;#11740) based in
-          Ottawa, Ontario, Canada. We are committed to protecting the personal information of
-          everyone who visits <strong>frc11740.ca</strong> (the "Site") or contacts our team.
-        </p>
-
-        <h3>The short version</h3>
-        <p>
-          This is a static, informational website. We do <strong>not</strong> use advertising
-          cookies, analytics trackers, or third-party marketing tools, and we do not build profiles
-          of visitors. We only receive personal information if you choose to send it to us.
-        </p>
-
-        <h3>Information we collect</h3>
-        <ul>
-          <li>
-            <strong>Information you give us directly.</strong> If you email us or complete a form we
-            link to (for example our "Join&nbsp;Us" form, hosted on Google&nbsp;Forms), we receive
-            what you provide — typically your name, email address, school, and your message.
-          </li>
-          <li>
-            <strong>Newsletter sign-ups.</strong> If we offer an email newsletter and you subscribe,
-            we collect your email address and a record of your consent so we can send you team
-            updates. Every newsletter email includes an unsubscribe link.
-          </li>
-          <li>
-            <strong>Basic server logs.</strong> Our hosting provider automatically records standard
-            technical data (such as IP address, browser type, and pages requested) to keep the Site
-            secure and running. We do not use this data to identify individual visitors.
-          </li>
-        </ul>
-        <p>
-          We do not knowingly collect personal information from children through this Site.
-          Information about our student members and event participants (including minors) is
-          collected offline through registration and media-release forms, with parent or guardian
-          consent where required — not through this Site.
-        </p>
-
-        <h3>How we use your information</h3>
-        <ul>
-          <li>To respond to your questions and messages;</li>
-          <li>To process membership, volunteer, and sponsorship inquiries;</li>
-          <li>To send team updates and event invitations you have asked to receive;</li>
-          <li>To keep the Site secure and functioning.</li>
-        </ul>
-        <p>We do not sell, rent, or trade your personal information.</p>
-
-        <h3>Service providers and storage outside Canada</h3>
-        <p>We rely on a small number of trusted providers to operate:</p>
-        <ul>
-          <li>
-            <strong>Vercel&nbsp;Inc.</strong> hosts this Site. Its servers are located in the United
-            States, so the technical data described above may be processed outside Canada and may be
-            accessible to foreign authorities under the laws of that country.
-          </li>
-          <li>
-            <strong>Google&nbsp;LLC</strong> hosts the forms we link to and the email account we use
-            (teamplushrobotics@gmail.com). Information you submit through those tools is also
-            handled under Google's privacy policy.
-          </li>
-        </ul>
-        <p>
-          We ask our providers to protect personal information in a manner consistent with this
-          policy and with Canada's
-          <em>Personal Information Protection and Electronic Documents Act</em> (PIPEDA).
-        </p>
-
-        <h3>Your choices and rights</h3>
-        <p>
-          You may ask us to access, correct, or delete the personal information we hold about you,
-          or withdraw your consent to receive emails, at any time. Contact us at
-          <a href="mailto:teamplushrobotics@gmail.com">teamplushrobotics@gmail.com</a> and we will
-          respond within a reasonable time. If you are not satisfied with our response, you may
-          contact the Office of the Privacy Commissioner of Canada at
-          <a href="https://www.priv.gc.ca" target="_blank" rel="noopener">priv.gc.ca</a>.
-        </p>
-
-        <h3>Retention</h3>
-        <p>
-          We keep personal information only as long as needed for the purpose it was provided, for
-          our records as a non-profit organization, or as required by law, after which it is deleted
-          or anonymized.
-        </p>
-
-        <h3>Changes to this policy</h3>
-        <p>
-          We may update this policy as our website or activities change. The "last updated" date
-          above will always reflect the current version.
-        </p>
-
-        <h3>Contact</h3>
-        <p>
-          Team&nbsp;Plush — PLUSH Robotics (FRC&nbsp;#11740)<br />Ottawa, Ontario, Canada<br /><a
-            href="mailto:teamplushrobotics@gmail.com"
-            >teamplushrobotics@gmail.com</a
-          >
-          &middot; @frc11740
-        </p>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="home">home</a></li>
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-    </ul>
-  </footer>
-</div>
-
-<!-- TERMS OF USE PAGE -->
-<div class="page page-terms" id="page-terms">
-  <div class="page-bar"><a data-page="home">home</a><span>›</span> terms</div>
-  <div class="inner-page">
-    <div class="wrap">
-      <div class="ruled-title fade">
-        <h2>terms of use</h2>
-        <div class="rule"></div>
-      </div>
-      <div class="legal-prose fade">
-        <p class="legal-updated">Last updated: August 28, 2026</p>
-
-        <p>
-          These Terms of Use govern your use of <strong>frc11740.ca</strong> (the "Site"), operated
-          by Team&nbsp;Plush — PLUSH Robotics, a student-led registered non-profit
-          <em>FIRST</em>&nbsp;Robotics Competition team (FRC&nbsp;#11740) in Ottawa, Ontario. By
-          using the Site you agree to these terms. If you do not agree, please do not use the Site.
-        </p>
-
-        <h3>Informational purpose</h3>
-        <p>
-          The Site provides general information about our team, our robots, our outreach, and our
-          sponsors. Content may be incomplete, out of date, or forward-looking (for example, goals
-          and projected milestones). The Site is provided on an "as is" and "as available" basis,
-          without warranties of any kind, express or implied.
-        </p>
-
-        <h3>Intellectual property</h3>
-        <ul>
-          <li>
-            Text, graphics, illustrations, and photographs on the Site are owned by Team&nbsp;Plush
-            or used with permission, and may not be reproduced for commercial purposes without our
-            written consent. You are welcome to share links to the Site.
-          </li>
-          <li>
-            <em>FIRST</em>, <em>FRC</em>, <em>FIRST Robotics Competition</em>, and related logos are
-            trademarks of <em>FIRST</em> (For Inspiration and Recognition of Science and Technology)
-            and are used here for identification only.
-          </li>
-          <li>
-            Sponsor names and logos are the property of their respective owners and are displayed
-            with permission under our sponsorship agreements.
-          </li>
-        </ul>
-
-        <h3>Links to other websites</h3>
-        <p>
-          The Site links to third-party services (such as Google&nbsp;Forms and our social media
-          accounts). We are not responsible for the content, policies, or practices of any
-          third-party site, and a link does not imply endorsement.
-        </p>
-
-        <h3>Sponsorship and contributions</h3>
-        <p>
-          Any sponsorship, in-kind contribution, or partnership is governed by a separate written
-          agreement between the sponsor and Team&nbsp;Plush. Information on the Site about
-          sponsorship tiers and benefits is an invitation to discuss, not a binding offer.
-        </p>
-        <p>
-          Team&nbsp;Plush is a not-for-profit organization but is
-          <strong>not a registered charity</strong>. Sponsorships, donations, and in-kind
-          contributions are <strong>not tax-deductible</strong>, and we do not issue official
-          donation receipts for income tax purposes.
-        </p>
-
-        <h3>Acceptable use</h3>
-        <p>
-          You agree not to use the Site to break any law, to disrupt or attempt to gain unauthorized
-          access to the Site or its hosting infrastructure, or to misrepresent your affiliation with
-          Team&nbsp;Plush.
-        </p>
-
-        <h3>Limitation of liability</h3>
-        <p>
-          To the fullest extent permitted by law, Team&nbsp;Plush and its members, mentors, parents,
-          and volunteers will not be liable for any loss or damage arising from your use of, or
-          inability to use, the Site or any linked service.
-        </p>
-
-        <h3>Governing law</h3>
-        <p>
-          These terms are governed by the laws of the Province of Ontario and the federal laws of
-          Canada applicable there. Any dispute will be subject to the courts of Ontario.
-        </p>
-
-        <h3>Changes</h3>
-        <p>
-          We may update these terms from time to time. Continued use of the Site after a change
-          means you accept the updated terms.
-        </p>
-
-        <h3>Contact</h3>
-        <p>
-          <a href="mailto:teamplushrobotics@gmail.com">teamplushrobotics@gmail.com</a> &middot;
-          @frc11740
-        </p>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <div class="footer-logo" data-page="home">team plush ⚙️</div>
-    <div class="footer-slogan">live · laugh · love · robotics</div>
-    <nav class="footer-legal">
-      <a data-page="privacy">Privacy</a><span>·</span><a data-page="terms">Terms</a>
-    </nav>
-    <ul class="footer-links">
-      <li><a data-page="home">home</a></li>
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-    </ul>
-  </footer>
-</div>
+</main>

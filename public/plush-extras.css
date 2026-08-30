@@ -642,20 +642,20 @@ html.dark .playground-section {
 }
 .legal-prose p {
   margin-bottom: 0.9rem;
-  opacity: 0.85;
+  color: var(--t-text-muted);
 }
 .legal-prose ul {
   margin: 0 0 0.9rem 1.15rem;
   padding: 0;
-  opacity: 0.85;
+  color: var(--t-text-muted);
 }
 .legal-prose li {
   margin-bottom: 0.4rem;
 }
 .legal-prose a {
-  color: var(--p-blue);
+  color: var(--t-ink-blue);
   font-weight: 700;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .legal-prose a:hover {
   text-decoration: underline;
@@ -663,7 +663,8 @@ html.dark .playground-section {
 .legal-prose .legal-updated {
   font-family: "Caveat", cursive;
   font-size: 1.05rem;
-  opacity: 0.6;
+  color: var(--t-text-muted);
+  opacity: 1;
   margin-bottom: 1.6rem;
 }
 
@@ -677,7 +678,7 @@ html.dark .playground-section {
   font-weight: 700;
   font-size: 0.72rem;
   color: var(--t-footer-text);
-  opacity: 0.55;
+  opacity: 0.8;
   transition: opacity 0.18s;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -688,6 +689,6 @@ html.dark .playground-section {
 }
 .footer-legal span {
   color: var(--t-footer-text);
-  opacity: 0.3;
+  opacity: 0.55;
   font-size: 0.72rem;
 }

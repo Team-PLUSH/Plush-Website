@@ -35,6 +35,18 @@
   --t-footer-text: #1f2342;
   --t-hero-bg: #0d1120;
   --t-hero-text: #e8edf8;
+  /* Text-safe ("ink") pastels — the --p-* pastels fail WCAG AA as text on a
+     light background, so use these wherever a pastel is a text/link colour.
+     All clear AA (>=4.5:1) on #fff and on the #eef3ee body tint. */
+  --t-ink-blue: #3d5c8a;
+  --t-ink-purple: #6a4c94;
+  --t-ink-green: #2e7150;
+  --t-ink-gold: #87590c;
+  --t-ink-bronze: #94551f;
+  --t-ink-silver: #5c6472;
+  /* Muted body text — replaces opacity:0.5–0.6 on --t-text, which dropped
+     below AA. ~5.4:1 on the body tint. */
+  --t-text-muted: #575c6b;
 }
 
 html.dark {
@@ -58,6 +70,14 @@ html.dark {
   --t-footer-text: #c8daf0;
   --t-hero-bg: #070c18;
   --t-hero-text: #e8edf8;
+  /* Lightened ink pastels for dark surfaces (AA on #0d1120 / #1a2235). */
+  --t-ink-blue: #a9c6ef;
+  --t-ink-purple: #d4bcee;
+  --t-ink-green: #93d3ab;
+  --t-ink-gold: #e6b45a;
+  --t-ink-bronze: #d99b6a;
+  --t-ink-silver: #aab2c2;
+  --t-text-muted: #98a1b3;
 }
 
 /* ── RESET ── */
@@ -348,21 +368,19 @@ a.btn-inv {
   border-bottom: 1px solid var(--t-card-border);
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--t-text);
-  opacity: 0.6;
+  color: var(--t-text-muted);
   transition: background 0.35s;
 }
 .page-bar a {
   cursor: pointer;
-  color: var(--p-blue);
-  opacity: 1;
+  color: var(--t-ink-blue);
   text-decoration: none;
 }
 .page-bar a:hover {
   text-decoration: underline;
 }
 .page-bar span {
-  opacity: 0.4;
+  opacity: 0.7;
 }
 
 .fade {
@@ -425,7 +443,7 @@ footer {
   font-family: "Caveat", cursive;
   font-size: 0.95rem;
   color: var(--t-footer-text);
-  opacity: 0.5;
+  opacity: 0.75;
   letter-spacing: 0.04em;
 }
 .footer-links {
@@ -439,7 +457,7 @@ footer {
   font-weight: 700;
   font-size: 0.78rem;
   color: var(--t-footer-text);
-  opacity: 0.55;
+  opacity: 0.8;
   transition: opacity 0.18s;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -622,7 +640,7 @@ footer {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(232, 237, 248, 0.4);
+  color: var(--t-text-muted);
 }
 .sticker-row {
   display: flex;
@@ -1312,7 +1330,7 @@ footer {
 .mentor-role {
   font-family: "Caveat", cursive;
   font-size: 0.95rem;
-  color: var(--p-blue);
+  color: var(--t-ink-blue);
   margin-top: 0.2rem;
 }
 .mentor-bio {
@@ -1532,7 +1550,7 @@ html.dark .sched-card.current {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--p-blue);
+  color: var(--t-ink-blue);
 }
 .sched-day {
   font-family: "Caveat", cursive;
@@ -1549,8 +1567,7 @@ html.dark .sched-card.current {
 }
 .sched-loc {
   font-size: 0.8rem;
-  color: var(--t-text);
-  opacity: 0.6;
+  color: var(--t-text-muted);
   margin-top: 0.15rem;
 }
 .sched-badge {
@@ -1571,7 +1588,7 @@ html.dark .sched-card.current {
 }
 .badge-current {
   background: var(--p-purple);
-  color: #fff;
+  color: #241a33;
 }
 
 /* ── VALUES ── */
@@ -1996,43 +2013,43 @@ html.dark .newsletter-status[data-kind="err"] {
   opacity: 0.3;
 }
 .tier-gold .tier-label h3 {
-  color: #f0b429;
+  color: var(--t-ink-gold);
 }
 .tier-gold .tier-rule {
   background: #f0b429;
 }
 .tier-silver .tier-label h3 {
-  color: #a0a8b8;
+  color: var(--t-ink-silver);
 }
 .tier-silver .tier-rule {
   background: #a0a8b8;
 }
 .tier-bronze .tier-label h3 {
-  color: #c08040;
+  color: var(--t-ink-bronze);
 }
 .tier-bronze .tier-rule {
   background: #c08040;
 }
 .tier-community .tier-label h3 {
-  color: var(--p-green);
+  color: var(--t-ink-green);
 }
 .tier-community .tier-rule {
   background: var(--p-green);
 }
 .tier-title .tier-label h3 {
-  color: var(--p-purple);
+  color: var(--t-ink-purple);
 }
 .tier-title .tier-rule {
   background: var(--p-purple);
 }
 .tier-diamond .tier-label h3 {
-  color: var(--p-blue);
+  color: var(--t-ink-blue);
 }
 .tier-diamond .tier-rule {
   background: var(--p-blue);
 }
 .tier-inkind .tier-label h3 {
-  color: var(--p-green);
+  color: var(--t-ink-green);
 }
 .tier-inkind .tier-rule {
   background: var(--p-green);
@@ -2477,6 +2494,40 @@ html.dark .join-section {
    the pattern they replace; keep this section in sync if the body HTML changes.
    ============================================================================ */
 
+/* screen-reader-only content (visually hidden, still in the a11y tree) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* keyboard skip link — hidden until focused */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  margin: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: var(--t-card-bg);
+  color: var(--t-text);
+  border: 2px solid var(--p-blue);
+  border-radius: 8px;
+  font-weight: 800;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 0.18s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* spacing utilities */
 .u-mt-1 {
   margin-top: 1rem;
@@ -2499,7 +2550,7 @@ html.dark .join-section {
 
 /* inline text run: accent-coloured bold link, and a plain bold span */
 .t-link {
-  color: var(--p-blue);
+  color: var(--t-ink-blue);
   font-weight: 700;
   cursor: pointer;
 }
