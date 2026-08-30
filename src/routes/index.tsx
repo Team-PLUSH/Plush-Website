@@ -13,7 +13,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Team PLUSH — Live · Laugh · Love · Robotics" },
       {
         property: "og:description",
-        content: "Pastel robots, gracious competition, and one very cute plush buddy. Come build with us.",
+        content:
+          "Pastel robots, gracious competition, and one very cute plush buddy. Come build with us.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

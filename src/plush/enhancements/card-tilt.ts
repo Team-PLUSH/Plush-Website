@@ -8,7 +8,9 @@ export function mountCardTilt(): Cleanup {
   nodes.forEach((node) => node.classList.add("tilt-shine"));
 
   const observer = new MutationObserver(() => {
-    document.querySelectorAll<HTMLElement>(CARD_SELECTOR).forEach((node) => node.classList.add("tilt-shine"));
+    document
+      .querySelectorAll<HTMLElement>(CARD_SELECTOR)
+      .forEach((node) => node.classList.add("tilt-shine"));
   });
   observer.observe(document.body, { childList: true, subtree: true });
 

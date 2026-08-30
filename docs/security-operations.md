@@ -23,20 +23,20 @@ Things the code cannot do for you. Work top to bottom; most take a few minutes.
 - [ ] **Code security**: enable Dependabot alerts, Dependabot security updates,
       and **Secret scanning + push protection**.
 - [ ] Confirm **Actions → General → Workflow permissions** is set to
-      *Read repository contents* (the `security.yml` workflow only needs read).
+      _Read repository contents_ (the `security.yml` workflow only needs read).
 
 ## 3. DNS records for `frc11740.ca` (Porkbun / Cloudflare)
 
 No mail is sent from `@frc11740.ca` (the team uses a Gmail address), so lock the
 domain down against email spoofing:
 
-| Type  | Host              | Value                                                                                          |
-|-------|-------------------|----------------------------------------------------------------------------------------------|
-| TXT   | `@`               | `v=spf1 -all`                                                                                 |
-| TXT   | `_dmarc`          | `v=DMARC1; p=reject; adkim=s; aspf=s; fo=1; rua=mailto:teamplushrobotics@gmail.com`           |
-| MX    | `@`               | `0 .`  (RFC 7505 "null MX" — this domain receives no mail)                                     |
-| CAA   | `@`               | `0 issue "letsencrypt.org"`                                                                    |
-| CAA   | `@`               | `0 iodef "mailto:teamplushrobotics@gmail.com"`                                                 |
+| Type | Host     | Value                                                                               |
+| ---- | -------- | ----------------------------------------------------------------------------------- |
+| TXT  | `@`      | `v=spf1 -all`                                                                       |
+| TXT  | `_dmarc` | `v=DMARC1; p=reject; adkim=s; aspf=s; fo=1; rua=mailto:teamplushrobotics@gmail.com` |
+| MX   | `@`      | `0 .` (RFC 7505 "null MX" — this domain receives no mail)                           |
+| CAA  | `@`      | `0 issue "letsencrypt.org"`                                                         |
+| CAA  | `@`      | `0 iodef "mailto:teamplushrobotics@gmail.com"`                                      |
 
 Notes:
 

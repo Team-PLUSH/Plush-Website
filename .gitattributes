@@ -1,0 +1,24 @@
+# Normalise line endings: everything Git detects as text is stored with LF,
+# regardless of the checkout platform. Fixes the CRLF lint noise on Windows.
+* text=auto eol=lf
+
+# Explicitly binary — never touch these.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.eot binary
+*.mp4 binary
+*.webm binary
+*.zip binary
+
+# Lockfiles: keep LF, but treat as generated in diffs.
+package-lock.json -diff
+bun.lock -diff

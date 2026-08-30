@@ -24,7 +24,9 @@ export function mountCursor(): Cleanup {
 
   const setCursor = (type: CursorType) => {
     document.body.classList.remove("cursor-cat", "cursor-bunny", "cursor-bear");
-    document.querySelectorAll<HTMLElement>(".cursor-btn").forEach((btn) => btn.classList.remove("active"));
+    document
+      .querySelectorAll<HTMLElement>(".cursor-btn")
+      .forEach((btn) => btn.classList.remove("active"));
 
     if (type === "none") {
       cursorActive = "none";

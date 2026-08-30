@@ -30,7 +30,10 @@ function updateCountdown() {
   if (event) event.textContent = `🏟 ${NEXT_COMPETITION.eventLabel}`;
 
   setCountdownValue("cdDays", String(Math.floor(diff / 86_400_000)).padStart(2, "0"));
-  setCountdownValue("cdHours", String(Math.floor((diff % 86_400_000) / 3_600_000)).padStart(2, "0"));
+  setCountdownValue(
+    "cdHours",
+    String(Math.floor((diff % 86_400_000) / 3_600_000)).padStart(2, "0"),
+  );
   setCountdownValue("cdMins", String(Math.floor((diff % 3_600_000) / 60_000)).padStart(2, "0"));
   setCountdownValue("cdSecs", String(Math.floor((diff % 60_000) / 1_000)).padStart(2, "0"));
 }

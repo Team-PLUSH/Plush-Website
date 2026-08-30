@@ -22,7 +22,9 @@ function triggerPageFades(page: HTMLElement) {
 }
 
 export function navigate(pageId: string) {
-  document.querySelectorAll<HTMLElement>(".page").forEach((page) => page.classList.remove("active"));
+  document
+    .querySelectorAll<HTMLElement>(".page")
+    .forEach((page) => page.classList.remove("active"));
   document.querySelectorAll<HTMLAnchorElement>(".nav-links a").forEach((link) => {
     link.classList.toggle("active", link.dataset.page === pageId);
   });
@@ -46,7 +48,9 @@ export function mountRouting(): Cleanup {
   document.addEventListener("click", onClick);
 
   const introTimer = window.setTimeout(() => {
-    document.querySelectorAll<HTMLElement>("#page-home .fade").forEach((el) => el.classList.add("in"));
+    document
+      .querySelectorAll<HTMLElement>("#page-home .fade")
+      .forEach((el) => el.classList.add("in"));
   }, 80);
 
   return () => {

@@ -56,32 +56,38 @@ Capital, leaving a trail of future engineers for years to come.
 ## Sponsorship Tiers
 
 ### Title Sponsor — $5,000+
+
 - Private robot demo at your office or company event
 - Invitation to team build days & competition across Ontario
 - Named recognition as Title Sponsor across all social media (LinkedIn, Instagram, X, Facebook, etc.)
 - All lower sponsorship perks apply (logo on website, robot, banner, team merch, shout-out at competition playoffs, etc.)
 
 ### Diamond Sponsor — $2,500–$4,999
+
 - Large logo on website, robot, banner & team merch
 - Named recognition as Diamond Sponsor across all social media
 - Priority shout-out at competition playoffs across 30+ Ontario teams
 - Employee mentorship opportunities, meet & greet with team, and invitation to bi-monthly newsletter
 
 ### Gold Sponsor — $1,000–$2,499
+
 - Medium logo on website, robot, banner & team merch
 - Named recognition as Gold Sponsor across all social media
 - Meet & greet with team, and invitation to bi-monthly newsletter
 
 ### Silver Sponsor — $500–$999
+
 - Small logo on website, robot, banner & team merch
 - Named recognition as Silver Sponsor across all social media
 - Meet & greet with team, and invitation to bi-monthly newsletter
 
 ### Bronze Sponsor — $300–$499
+
 - Small logo on website, robot, banner & team merch
 - Named recognition as Bronze Sponsor across all social media
 
 ### In-Kind Sponsor — Tools, Parts, Build Space, Services
+
 Depending on the importance and value of in-kind sponsors, we'd love to communicate
 perks and benefits through email. Parts include: free build space, electronic tools,
 hardware parts, subscriptions, services, and many more.
