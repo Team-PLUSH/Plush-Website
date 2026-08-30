@@ -31,13 +31,15 @@ changes to harden further:
 
 - [ ] **Activate the durable rate limiter.** The signup fn already prefers an
       Upstash Redis counter (`src/plush/rate-limit.ts`) and falls back to the
-      in-memory window. Provision Upstash Redis via the Vercel Marketplace — it
-      sets `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` and the code
-      picks them up on the next deploy. A Vercel Firewall rate-limit rule on the
-      `_serverFn` path is still worth adding on top.
-- [ ] **CSP violation reporting.** Once any backend endpoint exists, add
-      `report-to` / a `/csp-report` collector so real violations are visible
-      instead of silent.
+      in-memory window. An Upstash store is provisioned; connect it to the
+      project (Production) so its REST URL + token land in the env — the code
+      accepts `UPSTASH_*`, `KV_REST_API_*`, `REDIS_REST_*` or `STORAGE_REST_*`
+      names. A Vercel Firewall rate-limit rule on the `_serverFn` path is still
+      worth adding on top.
+- [ ] **Watch the CSP violation logs after deploy.** Reporting is wired
+      (`report-uri` / `report-to` → `/csp-report`, logged as `csp-violation`).
+      Check the function logs for a day or two post-launch and tighten anything
+      real that shows up.
 - [ ] **CASL unsubscribe.** Every newsletter email needs a working unsubscribe
       link. No sending mechanism is built — pick the tool (Buttondown, Mailchimp,
       Gmail manual) before the first send. Most tools (Buttondown/Mailchimp)
@@ -52,7 +54,9 @@ changes to harden further:
 
 - [ ] Sponsor section: "your logo here / Open" placeholder cards in
       `public/plush-body.html` — swap for real sponsors as they sign.
-- [ ] WCAG 2.1 AA accessibility pass (AODA best practice).
+- [ ] Accessibility: automated pass is clean (see below). Still worth a manual
+      screen-reader + keyboard walkthrough before launch, and check any new
+      components against the same bar.
 
 ## Done (this branch)
 
@@ -81,3 +85,9 @@ changes to harden further:
   Verified across all pages, no CSP violations, no visual change.
 - Durable rate limiter scaffolded: `src/plush/rate-limit.ts` uses Upstash Redis
   when env vars are present, in-memory fallback otherwise (see Security above).
+- CSP violation reporting: `report-uri` / `report-to` → same-origin
+  `/csp-report` handler in `src/server.ts` (logs `csp-violation`, returns 204).
+- Accessibility pass — axe-core (WCAG 2.1 A/AA + best-practice) clean on all 10
+  pages in both themes: `<header>` / `<main>` / `<h1>` landmarks + skip link,
+  icon-button labels, and text-safe "ink" colour tokens replacing pastel-as-
+  text / faint-grey that failed contrast.
