@@ -3,6 +3,7 @@ import { getRequestIP } from "@tanstack/react-start/server";
 import { z } from "zod";
 
 import { CONSENT_TEXT_VERSION, NEWSLETTER } from "./constants";
+import { isRateLimited } from "./rate-limit";
 
 const signupSchema = z.object({
   email: z.string().trim().toLowerCase().email().max(320),
@@ -19,24 +20,6 @@ const signupSchema = z.object({
 
 export type NewsletterResult = { ok: true } | { ok: false; reason: "not-configured" | "rejected" };
 
-// Best-effort in-memory rate limit. Vercel Fluid Compute reuses instances so
-// this catches casual abuse; the durable control is a Vercel Firewall rate-limit
-// rule on the server-function path (see docs/security-operations.md).
-const RATE_LIMIT = { max: 5, windowMs: 60 * 60 * 1000 };
-const hits = new Map<string, number[]>();
-
-function isRateLimited(key: string): boolean {
-  const now = Date.now();
-  const recent = (hits.get(key) ?? []).filter((t) => now - t < RATE_LIMIT.windowMs);
-  recent.push(now);
-  hits.set(key, recent);
-  if (hits.size > 5000) {
-    // Bound memory: drop the oldest keys.
-    for (const k of [...hits.keys()].slice(0, 1000)) hits.delete(k);
-  }
-  return recent.length > RATE_LIMIT.max;
-}
-
 /**
  * Forwards a "stay in the loop" signup to the Google Form whose responses feed
  * the team's Google Sheet. Runs server-side so we can read Google's real status
@@ -51,7 +34,7 @@ export const submitNewsletterSignup = createServerFn({ method: "POST" })
     if (data.company.trim() !== "") return { ok: true };
 
     const ip = getRequestIP({ xForwardedFor: true }) ?? "unknown";
-    if (isRateLimited(ip)) return { ok: false, reason: "rejected" };
+    if (await isRateLimited(ip)) return { ok: false, reason: "rejected" };
 
     if (!NEWSLETTER.formId || !NEWSLETTER.emailEntryId) {
       return { ok: false, reason: "not-configured" };
