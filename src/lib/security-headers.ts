@@ -92,7 +92,16 @@ export function createCspNonce(): string {
  *
  * Fonts: self-hosted from /fonts (see public/fonts.css), so no
  * fonts.googleapis.com / fonts.gstatic.com allowance is needed.
+ *
+ * Reporting: violations are POSTed to the same-origin /csp-report endpoint
+ * (handled in src/server.ts) via both the legacy `report-uri` and the modern
+ * `report-to` / Reporting-Endpoints mechanism.
  */
+
+/** Name of the reporting group; also declared in the Reporting-Endpoints header. */
+export const CSP_REPORT_ENDPOINT = "/csp-report";
+const CSP_REPORT_GROUP = "csp-endpoint";
+
 export function buildContentSecurityPolicy(nonce: string): string {
   return [
     "default-src 'self'",
@@ -110,6 +119,8 @@ export function buildContentSecurityPolicy(nonce: string): string {
     "manifest-src 'self'",
     "frame-src 'self'",
     "upgrade-insecure-requests",
+    `report-uri ${CSP_REPORT_ENDPOINT}`,
+    `report-to ${CSP_REPORT_GROUP}`,
   ].join("; ");
 }
 
@@ -126,6 +137,8 @@ export function writeHtmlSecurityHeaders(headers: Headers, nonce: string): void 
     headers.set(name, value);
   }
   headers.set("Content-Security-Policy", buildContentSecurityPolicy(nonce));
+  // Declare the reporting group the CSP's `report-to` points at.
+  headers.set("Reporting-Endpoints", `${CSP_REPORT_GROUP}="${CSP_REPORT_ENDPOINT}"`);
   // Don't advertise the server implementation.
   headers.delete("X-Powered-By");
   headers.delete("Server");

@@ -3,16 +3,17 @@
 // Two tiers, picked automatically at call time:
 //
 //   1. Durable (preferred) — a fixed-window counter in Upstash Redis, shared
-//      across every function instance and cold start. Active only when BOTH
-//      UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are set.
+//      across every function instance and cold start. Active as soon as a REST
+//      URL + token pair is present in the env (see URL_VARS / TOKEN_VARS below
+//      for the accepted variable names).
 //   2. In-memory fallback — a per-instance sliding window. Best-effort; resets
 //      on cold start and isn't shared between instances.
 //
 // TO ENABLE THE DURABLE LIMITER (no code change needed):
 //   - Provision Upstash Redis via the Vercel Marketplace
-//     (`vercel integration add upstash` / Vercel dashboard → Storage).
-//   - It adds UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN to the project
-//     env automatically. Pull them locally with `vercel env pull`.
+//     (Vercel dashboard → Storage → Create Database → Upstash).
+//   - Connect it to this project (Production). It injects the REST URL + token
+//     env vars automatically; pull them locally with `vercel env pull`.
 //   - Nothing else: this module starts using them on the next deploy.
 //
 // A Vercel Firewall rate-limit rule on the _serverFn path is still worth adding
@@ -40,11 +41,27 @@ function isRateLimitedInMemory(key: string): boolean {
 
 // ---- Tier 1: Upstash Redis fixed window -----------------------------------
 
+// The Upstash/Vercel Marketplace integration names its REST vars differently
+// depending on how it was added — accept every spelling seen in the wild.
+const URL_VARS = [
+  "UPSTASH_REDIS_REST_URL",
+  "KV_REST_API_URL",
+  "REDIS_REST_URL",
+  "STORAGE_REST_URL",
+];
+const TOKEN_VARS = [
+  "UPSTASH_REDIS_REST_TOKEN",
+  "KV_REST_API_TOKEN",
+  "REDIS_REST_TOKEN",
+  "STORAGE_REST_TOKEN",
+];
+
 function upstashConfig(): { url: string; token: string } | null {
   const env = typeof process !== "undefined" ? (process.env ?? {}) : {};
-  const url = env.UPSTASH_REDIS_REST_URL;
-  const token = env.UPSTASH_REDIS_REST_TOKEN;
-  return url && token ? { url, token } : null;
+  const pick = (names: string[]) => names.map((n) => env[n]).find((v) => v && v.trim() !== "");
+  const url = pick(URL_VARS);
+  const token = pick(TOKEN_VARS);
+  return url && token ? { url: url.replace(/\/$/, ""), token } : null;
 }
 
 async function isRateLimitedUpstash(

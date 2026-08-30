@@ -7,6 +7,7 @@ import { renderErrorPage } from "./lib/error-page";
 import {
   applySecurityHeaders,
   createCspNonce,
+  CSP_REPORT_ENDPOINT,
   writeHtmlSecurityHeaders,
 } from "./lib/security-headers";
 
@@ -68,6 +69,44 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+// Collector for Content-Security-Policy violation reports. Browsers POST here
+// via the CSP's `report-uri` (content-type application/csp-report) and the
+// newer Reporting API (`report-to`, content-type application/reports+json).
+// We just log a compact summary so real violations surface in the function
+// logs; the body is read with a hard size cap so it can't be used to flood.
+async function handleCspReport(request: Request): Promise<Response> {
+  const noContent = () => new Response(null, { status: 204 });
+  if (request.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405, headers: { allow: "POST" } });
+  }
+  try {
+    const raw = (await request.text()).slice(0, 8_000);
+    const parsed: unknown = JSON.parse(raw);
+    // report-to sends an array of reports; report-uri sends { "csp-report": {…} }.
+    const reports = Array.isArray(parsed) ? parsed : [parsed];
+    for (const report of reports) {
+      const body =
+        (report as { body?: unknown })?.body ??
+        (report as { "csp-report"?: unknown })?.["csp-report"] ??
+        report;
+      const b = body as Record<string, unknown>;
+      console.warn(
+        JSON.stringify({
+          event: "csp-violation",
+          directive: b["effective-directive"] ?? b["violated-directive"] ?? b.effectiveDirective,
+          blockedUri: b["blocked-uri"] ?? b.blockedURL,
+          documentUri: b["document-uri"] ?? b.documentURL,
+          sourceFile: b["source-file"] ?? b.sourceFile,
+          line: b["line-number"] ?? b.lineNumber,
+        }),
+      );
+    }
+  } catch {
+    // Malformed or oversized payload — ignore, still 204 so the browser stops retrying.
+  }
+  return noContent();
+}
+
 // Guarantee the security headers on every response we return. The SSR success
 // path sets them inside securedStreamHandler; this backstops error responses
 // produced deeper in the stack (e.g. the errorMiddleware in src/start.ts) that
@@ -79,6 +118,9 @@ function ensureSecurityHeaders(response: Response): Response {
 
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    if (new URL(request.url).pathname === CSP_REPORT_ENDPOINT) {
+      return handleCspReport(request);
+    }
     try {
       const response = await startFetch(request, env, ctx);
       return ensureSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
