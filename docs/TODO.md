@@ -1,27 +1,23 @@
 # Team Plush — TODO / pick up here
 
-Last updated: 2026-08-30. Work on branch `site-hardening-newsletter-nav`
-(through commit `9a25588`) — not yet merged to `main`, not pushed.
+Last updated: 2026-08-30. **Branch `site-hardening-newsletter-nav` merged to
+`main` (`ba67f9b`) and pushed — Vercel deploying production.**
 
 ## Needs the user (can't be done in code)
 
-- [ ] **Verify the newsletter Google Form accepts responses without sign-in.**
-      Check `NEWSLETTER.formId` / `emailEntryId` in `src/plush/constants.ts` are
-      correct by submitting the live form once deployed. If it 401s, the form
-      still requires Google sign-in and must be reconfigured.
-- [ ] **Add a "Consent version" question to the Google Form** (short answer),
-      then paste its `entry.…` id into `NEWSLETTER.consentEntryId` in
-      `src/plush/constants.ts`. The signup already sends the value; until the id
-      is set it only lands in the function logs, not the Sheet. Bump
-      `CONSENT_TEXT_VERSION` (and the checkbox's `data-consent-version` in
-      `public/plush-body.html`) whenever the consent sentence changes.
-- [ ] **Replace `public/sponsorship-package.pdf`** with the current version
-      (a normal "Save as PDF" from Chrome is fine). The old one was restored from
-      git history as a stopgap. No code change needed — just overwrite the file.
+- [x] ~~Verify the newsletter Google Form accepts responses without sign-in.~~
+      Confirmed 2026-08-30 (test POST returned 200, no 401).
+- [x] ~~Wire the "Consent version" question.~~ `NEWSLETTER.consentEntryId =
+    entry.1307416685`, tested. Bump `CONSENT_TEXT_VERSION` (and the checkbox's
+      `data-consent-version` in `public/plush-body.html`) whenever the consent
+      sentence changes. → Check the Google Sheet caught the test rows with the
+      version in the right column.
+- [ ] **Replace `public/sponsorship-package.pdf`** with the current 9-page
+      export. Save the file over the old one and commit — no code change. The
+      old stopgap is what's live until then.
 - [ ] **Photo / media release forms** for students (minors → parent/guardian).
       Handled offline per the privacy policy; the actual forms still need to exist.
-- [ ] Decide whether to **push the branch / open a PR / merge to main**
-      (triggers Vercel deploy).
+- [x] ~~Push / merge to main.~~ Done 2026-08-30 (`ba67f9b`).
 
 ## Security — future implementation
 
@@ -29,13 +25,14 @@ Operational steps (accounts, DNS) are tracked in
 [`security-operations.md`](security-operations.md). The items below are code/site
 changes to harden further:
 
-- [ ] **Activate the durable rate limiter.** The signup fn already prefers an
-      Upstash Redis counter (`src/plush/rate-limit.ts`) and falls back to the
-      in-memory window. An Upstash store is provisioned; connect it to the
-      project (Production) so its REST URL + token land in the env — the code
-      accepts `UPSTASH_*`, `KV_REST_API_*`, `REDIS_REST_*` or `STORAGE_REST_*`
-      names. A Vercel Firewall rate-limit rule on the `_serverFn` path is still
-      worth adding on top.
+- [ ] **Activate the durable rate limiter.** The signup fn prefers an Upstash
+      Redis counter (`src/plush/rate-limit.ts`) and falls back to the in-memory
+      window. The Upstash store `upstash-kv-aqua-blanket` is provisioned but not
+      yet connected to the Vercel project — click **Connect to Project** on its
+      Upstash page and pick this project + Production. It exposes
+      `KV_REST_API_URL` / `KV_REST_API_TOKEN`, already in the code's accepted
+      names, so it activates on the next deploy after connecting. A Vercel
+      Firewall rate-limit rule on the `_serverFn` path is still worth adding.
 - [ ] **Watch the CSP violation logs after deploy.** Reporting is wired
       (`report-uri` / `report-to` → `/csp-report`, logged as `csp-violation`).
       Check the function logs for a day or two post-launch and tighten anything
