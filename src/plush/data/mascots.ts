@@ -3,7 +3,7 @@ import type { Mascot } from "../types";
 export const MASCOTS: Mascot[] = [
   {
     name: "Pal",
-    role: "Coding Cat",
+    role: "",
     color: "#a8bede",
     ground: "rgba(168,190,222,0.3)",
     fact: '"Pal writes the cleanest code on the team. Main author of the swerve drive base, and yes, she named every variable something cute."',
@@ -42,7 +42,7 @@ export const MASCOTS: Mascot[] = [
   },
   {
     name: "Xaivian",
-    role: "Build Bot",
+    role: "",
     color: "#bfa8d8",
     ground: "rgba(191,168,216,0.3)",
     fact: '"Xaivian can assemble any mechanism blindfolded. Once fixed a broken intake arm with a zip tie and a prayer — during a match. It held."',
@@ -77,7 +77,7 @@ export const MASCOTS: Mascot[] = [
   },
   {
     name: "Stuffing",
-    role: "Drive Bear",
+    role: "",
     color: "#a4c9b0",
     ground: "rgba(164,201,176,0.3)",
     fact: '"Stuffing is undefeated in driver practice. Holds the team record for fewest match penalties and has never — not once — hit the alliance station wall."',

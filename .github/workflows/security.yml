@@ -1,0 +1,29 @@
+name: security
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # Weekly, so newly-disclosed advisories in unchanged deps still surface.
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: npm audit (fail on high or critical)
+        run: npm audit --audit-level=high
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build

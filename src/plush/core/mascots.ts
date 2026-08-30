@@ -27,6 +27,7 @@ export function mountMascots(): Cleanup {
     nameEl.textContent = mascot.name;
     nameEl.style.color = mascot.color;
     roleEl.textContent = mascot.role;
+    roleEl.style.display = mascot.role ? "" : "none";
     factEl.textContent = mascot.fact;
     factEl.style.borderColor = `${mascot.color}40`;
     glowEl.style.background = `radial-gradient(circle, ${mascot.color}55 0%, transparent 70%)`;

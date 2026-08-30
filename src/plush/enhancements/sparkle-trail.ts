@@ -3,6 +3,8 @@ import type { Cleanup } from "../types";
 export function mountSparkleTrail(): Cleanup {
   const canvas = document.createElement("canvas");
   canvas.id = "plush-sparkle-canvas";
+  // Purely decorative cursor-trail effect — keep it out of the a11y tree.
+  canvas.setAttribute("aria-hidden", "true");
   document.body.appendChild(canvas);
 
   const ctx = canvas.getContext("2d");

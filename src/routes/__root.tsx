@@ -78,10 +78,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Team PLUSH — Live · Laugh · Love · Robotics" },
-      { name: "description", content: "Team PLUSH is a student-run FRC robotics team building bold, pastel robots." },
+      {
+        name: "description",
+        content: "Team PLUSH is a student-run FRC robotics team building bold, pastel robots.",
+      },
       { name: "author", content: "Team PLUSH" },
       { property: "og:title", content: "Team PLUSH — Live · Laugh · Love · Robotics" },
-      { property: "og:description", content: "Pastel robots, gracious competition, and one very cute plush buddy." },
+      {
+        property: "og:description",
+        content: "Pastel robots, gracious competition, and one very cute plush buddy.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:image", content: "/plush-logo.png" },

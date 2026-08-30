@@ -24,7 +24,9 @@ export function mountCursor(): Cleanup {
 
   const setCursor = (type: CursorType) => {
     document.body.classList.remove("cursor-cat", "cursor-bunny", "cursor-bear");
-    document.querySelectorAll<HTMLElement>(".cursor-btn").forEach((btn) => btn.classList.remove("active"));
+    document
+      .querySelectorAll<HTMLElement>(".cursor-btn")
+      .forEach((btn) => btn.classList.remove("active"));
 
     if (type === "none") {
       cursorActive = "none";
@@ -44,7 +46,6 @@ export function mountCursor(): Cleanup {
     localStorage.setItem(STORAGE_KEY, type);
   };
 
-  window.setCursor = setCursor;
   setCursor(cursorActive);
 
   const buttonBindings: Array<{ el: HTMLElement; type: CursorType }> = [];
@@ -86,7 +87,6 @@ export function mountCursor(): Cleanup {
   document.addEventListener("mouseenter", showCursor);
 
   const cleanup = () => {
-    delete window.setCursor;
     delete window.__plushCursorCleanup;
     buttonBindings.forEach(({ el }) => {
       const bound = el as HTMLElement & { __cursorHandler?: () => void };
