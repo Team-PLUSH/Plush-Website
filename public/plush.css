@@ -2470,3 +2470,179 @@ html.dark .join-section {
     font-size: 0.78rem;
   }
 }
+
+/* ============================================================================
+   Utility + component classes extracted from inline style="" attributes in
+   plush-body.html, so the CSP can drop style-src 'unsafe-inline'. Grouped by
+   the pattern they replace; keep this section in sync if the body HTML changes.
+   ============================================================================ */
+
+/* spacing utilities */
+.u-mt-1 {
+  margin-top: 1rem;
+}
+.u-mt-2 {
+  margin-top: 2rem;
+}
+.u-mt-2-5 {
+  margin-top: 2.5rem;
+}
+.u-mt-3 {
+  margin-top: 3rem;
+}
+.u-mb-1-2 {
+  margin-bottom: 1.2rem;
+}
+.u-mb-2-5 {
+  margin-bottom: 2.5rem;
+}
+
+/* inline text run: accent-coloured bold link, and a plain bold span */
+.t-link {
+  color: var(--p-blue);
+  font-weight: 700;
+  cursor: pointer;
+}
+.t-link-light {
+  color: #8fb8ff;
+  font-weight: 700;
+}
+.t-b {
+  font-weight: 700;
+}
+
+/* hero stat number: small size + accent colour variants */
+.hero-stat-num.is-sm {
+  font-size: 1.7rem;
+}
+.hero-stat-num.is-blue {
+  color: var(--p-blue);
+}
+.hero-stat-num.is-purple {
+  color: var(--p-purple);
+}
+.hero-stat-num.is-green {
+  color: var(--p-green);
+}
+
+/* ruled-title tweaks: dark heading, smaller h2, and h3 styled like the h2 */
+.ruled-title h2.on-dark {
+  color: #e8edf8;
+}
+.ruled-title h2.is-sm {
+  font-size: 1.5rem;
+}
+.ruled-title h3 {
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--t-text);
+  white-space: nowrap;
+  margin: 0;
+}
+
+/* timeline dot colour variants (fill + halo) */
+.tl-dot.is-blue {
+  background: var(--p-blue);
+  box-shadow: 0 0 0 2px var(--p-blue);
+}
+.tl-dot.is-purple {
+  background: var(--p-purple);
+  box-shadow: 0 0 0 2px var(--p-purple);
+}
+.tl-dot.is-green {
+  background: var(--p-green);
+  box-shadow: 0 0 0 2px var(--p-green);
+}
+
+/* department avatar colour (team + mentor cards) */
+.tc-ava.is-blue,
+.mentor-ava.is-blue {
+  background: var(--p-blue);
+}
+.tc-ava.is-purple,
+.mentor-ava.is-purple {
+  background: var(--p-purple);
+}
+.tc-ava.is-green,
+.mentor-ava.is-green {
+  background: var(--p-green);
+}
+
+/* dimmed roster card (members-still-recruiting placeholders) */
+.team-card.is-muted {
+  opacity: 0.55;
+}
+
+/* mascot section: full-bleed decorative svg + raised content layer */
+.mascot-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.wrap.layer-2 {
+  position: relative;
+  z-index: 2;
+}
+
+/* section intro / note paragraphs */
+.section-intro {
+  font-size: 0.95rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
+}
+.section-intro.is-lead {
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+  line-height: 1.7;
+}
+.section-note {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin: 0.5rem 0 1rem;
+}
+.section-note.has-gap {
+  margin-bottom: 1.5rem;
+}
+.fineprint {
+  font-size: 0.78rem;
+  opacity: 0.55;
+  margin-top: 0.8rem;
+}
+
+/* metric grid (auto-fit fact cards) */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+/* accent call-out card: bordered panel with a Caveat title + muted body */
+.accent-card {
+  margin-top: 2rem;
+  padding: 1.2rem 1.5rem;
+  background: var(--t-card-bg);
+  border: 2px solid var(--p-blue);
+  border-radius: 14px;
+  transition: background 0.35s;
+}
+.accent-card.is-tight {
+  margin-top: 1.5rem;
+}
+.accent-card__title {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--t-text);
+  margin-bottom: 0.4rem;
+}
+.accent-card__body {
+  font-size: 0.88rem;
+  color: var(--t-text);
+  opacity: 0.7;
+  line-height: 1.6;
+}

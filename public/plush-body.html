@@ -251,19 +251,19 @@
     </p>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num" style="color: var(--p-blue); font-size: 1.7rem">Rookie</div>
+        <div class="hero-stat-num is-sm is-blue">Rookie</div>
         <div class="hero-stat-label">year</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" style="color: var(--p-purple); font-size: 1.7rem">40-45</div>
+        <div class="hero-stat-num is-sm is-purple">40-45</div>
         <div class="hero-stat-label">members</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" style="color: var(--p-green); font-size: 1.7rem">🏆 Goal</div>
+        <div class="hero-stat-num is-sm is-green">🏆 Goal</div>
         <div class="hero-stat-label">Rookie All-Star</div>
       </div>
       <div class="hero-stat">
-        <div class="hero-stat-num" style="color: var(--p-blue); font-size: 1.7rem">∞</div>
+        <div class="hero-stat-num is-sm is-blue">∞</div>
         <div class="hero-stat-label">Jolliness</div>
       </div>
     </div>
@@ -340,18 +340,7 @@
 
   <!-- MASCOT CHOOSER -->
   <section class="mascot-section">
-    <svg
-      style="
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        z-index: 0;
-      "
-      viewBox="0 0 1200 500"
-      preserveAspectRatio="xMidYMid slice"
-    >
+    <svg class="mascot-bg-svg" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice">
       <g opacity=".3">
         <path d="M80 80 L82 74 L84 80 L90 82 L84 84 L82 90 L80 84 L74 82 Z" fill="#a8bede" />
         <path
@@ -366,10 +355,10 @@
         <circle cx="1050" cy="280" r="3" fill="#a8bede" />
       </g>
     </svg>
-    <div class="wrap" style="position: relative; z-index: 2">
+    <div class="wrap layer-2">
       <div class="ruled-title center">
         <div class="rule"></div>
-        <h2 style="color: #e8edf8">meet the mascots</h2>
+        <h2 class="on-dark">meet the mascots</h2>
         <div class="rule"></div>
       </div>
       <div class="mascot-picker">
@@ -421,7 +410,7 @@
     <div class="wrap">
       <div class="ruled-title center">
         <div class="rule"></div>
-        <h2 style="color: #e8edf8">season plans</h2>
+        <h2 class="on-dark">season plans</h2>
         <div class="rule"></div>
       </div>
       <div class="season-path fade">
@@ -652,17 +641,14 @@
               <div class="fact-label">member goal</div>
             </div>
           </div>
-          <div style="margin-top: 2rem" class="fade">
+          <div class="fade u-mt-2">
             <div class="ruled-title">
               <h2>our journey</h2>
               <div class="rule"></div>
             </div>
             <div class="timeline">
               <div class="tl-item">
-                <div
-                  class="tl-dot"
-                  style="background: var(--p-blue); box-shadow: 0 0 0 2px var(--p-blue)"
-                ></div>
+                <div class="tl-dot is-blue"></div>
                 <div class="tl-year">Apr 2026</div>
                 <div class="tl-title">Team Founded</div>
                 <div class="tl-desc">
@@ -671,10 +657,7 @@
                 </div>
               </div>
               <div class="tl-item">
-                <div
-                  class="tl-dot"
-                  style="background: var(--p-purple); box-shadow: 0 0 0 2px var(--p-purple)"
-                ></div>
+                <div class="tl-dot is-purple"></div>
                 <div class="tl-year">Summer 2026</div>
                 <div class="tl-title">Building the Team</div>
                 <div class="tl-desc">
@@ -683,10 +666,7 @@
                 </div>
               </div>
               <div class="tl-item">
-                <div
-                  class="tl-dot"
-                  style="background: var(--p-green); box-shadow: 0 0 0 2px var(--p-green)"
-                ></div>
+                <div class="tl-dot is-green"></div>
                 <div class="tl-year">Fall 2026</div>
                 <div class="tl-title">Outreach &amp; Preseason</div>
                 <div class="tl-desc">
@@ -695,10 +675,7 @@
                 </div>
               </div>
               <div class="tl-item">
-                <div
-                  class="tl-dot"
-                  style="background: var(--p-blue); box-shadow: 0 0 0 2px var(--p-blue)"
-                ></div>
+                <div class="tl-dot is-blue"></div>
                 <div class="tl-year">Jan 2027</div>
                 <div class="tl-title">First Kickoff</div>
                 <div class="tl-desc">
@@ -707,10 +684,7 @@
                 </div>
               </div>
               <div class="tl-item">
-                <div
-                  class="tl-dot"
-                  style="background: var(--p-purple); box-shadow: 0 0 0 2px var(--p-purple)"
-                ></div>
+                <div class="tl-dot is-purple"></div>
                 <div class="tl-year">Spring 2027</div>
                 <div class="tl-title">Rookie Season</div>
                 <div class="tl-desc">
@@ -768,11 +742,11 @@
       </g>
     </svg>
     <div class="wrap">
-      <div class="ruled-title fade" style="margin-bottom: 1.2rem">
-        <h2 style="font-size: 1.5rem">Co-Captains</h2>
+      <div class="ruled-title fade u-mb-1-2">
+        <h2 class="is-sm">Co-Captains</h2>
         <div class="rule"></div>
       </div>
-      <div class="team-grid" style="margin-bottom: 2.5rem">
+      <div class="team-grid u-mb-2-5">
         <div class="team-card fade">
           <div class="tc-stripe tc-blue"></div>
           <div class="tc-ava">
@@ -797,100 +771,100 @@
         </div>
       </div>
 
-      <div class="ruled-title fade" style="margin-bottom: 1.2rem">
-        <h2 style="font-size: 1.5rem">Leads</h2>
+      <div class="ruled-title fade u-mb-1-2">
+        <h2 class="is-sm">Leads</h2>
         <div class="rule"></div>
       </div>
-      <div class="team-grid" style="margin-bottom: 2.5rem">
+      <div class="team-grid u-mb-2-5">
         <div class="team-card fade">
           <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava" style="background: var(--p-purple)">📣</div>
+          <div class="tc-ava is-purple">📣</div>
           <div class="tc-name">Olivia Shen</div>
           <div class="tc-role">business lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava" style="background: var(--p-purple)">📣</div>
+          <div class="tc-ava is-purple">📣</div>
           <div class="tc-name">Dorothy Shen</div>
           <div class="tc-role">business lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava" style="background: var(--p-purple)">📣</div>
+          <div class="tc-ava is-purple">📣</div>
           <div class="tc-name">Anthony Cui</div>
           <div class="tc-role">business lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava" style="background: var(--p-blue)">💻</div>
+          <div class="tc-ava is-blue">💻</div>
           <div class="tc-name">Sean Nie</div>
           <div class="tc-role">software lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava" style="background: var(--p-blue)">💻</div>
+          <div class="tc-ava is-blue">💻</div>
           <div class="tc-name">TBD</div>
           <div class="tc-role">software lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava" style="background: var(--p-blue)">💻</div>
+          <div class="tc-ava is-blue">💻</div>
           <div class="tc-name">TBD</div>
           <div class="tc-role">software lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava" style="background: var(--p-green)">🔧</div>
+          <div class="tc-ava is-green">🔧</div>
           <div class="tc-name">TBD</div>
           <div class="tc-role">mechanical lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava" style="background: var(--p-green)">🔧</div>
+          <div class="tc-ava is-green">🔧</div>
           <div class="tc-name">TBD</div>
           <div class="tc-role">mechanical lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava" style="background: var(--p-green)">🔧</div>
+          <div class="tc-ava is-green">🔧</div>
           <div class="tc-name">TBD</div>
           <div class="tc-role">mechanical lead</div>
         </div>
         <div class="team-card fade">
           <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava" style="background: var(--p-green)">🔧</div>
+          <div class="tc-ava is-green">🔧</div>
           <div class="tc-name">TBD</div>
           <div class="tc-role">mechanical lead</div>
         </div>
       </div>
 
-      <div class="ruled-title fade" style="margin-bottom: 1.2rem">
-        <h2 style="font-size: 1.5rem">Members</h2>
+      <div class="ruled-title fade u-mb-1-2">
+        <h2 class="is-sm">Members</h2>
         <div class="rule"></div>
       </div>
       <div class="team-grid">
-        <div class="team-card fade" style="opacity: 0.55">
+        <div class="team-card fade is-muted">
           <div class="tc-stripe tc-purple"></div>
-          <div class="tc-ava" style="background: var(--p-purple)">📣</div>
+          <div class="tc-ava is-purple">📣</div>
           <div class="tc-name">Business</div>
           <div class="tc-role">TBD</div>
         </div>
-        <div class="team-card fade" style="opacity: 0.55">
+        <div class="team-card fade is-muted">
           <div class="tc-stripe tc-blue"></div>
-          <div class="tc-ava" style="background: var(--p-blue)">💻</div>
+          <div class="tc-ava is-blue">💻</div>
           <div class="tc-name">Software</div>
           <div class="tc-role">TBD</div>
         </div>
-        <div class="team-card fade" style="opacity: 0.55">
+        <div class="team-card fade is-muted">
           <div class="tc-stripe tc-green"></div>
-          <div class="tc-ava" style="background: var(--p-green)">🔧</div>
+          <div class="tc-ava is-green">🔧</div>
           <div class="tc-name">Mechanical</div>
           <div class="tc-role">TBD</div>
         </div>
       </div>
-      <div style="margin-top: 3rem" class="fade">
-        <div class="ruled-title" style="margin-bottom: 1.2rem">
-          <h2 style="font-size: 1.5rem">Mentors</h2>
+      <div class="fade u-mt-3">
+        <div class="ruled-title u-mb-1-2">
+          <h2 class="is-sm">Mentors</h2>
           <div class="rule"></div>
         </div>
         <div class="mentor-row">
@@ -907,7 +881,7 @@
           </div>
           <div class="mentor-card">
             <div class="mentor-top">
-              <div class="mentor-ava" style="background: var(--p-purple)">🎓</div>
+              <div class="mentor-ava is-purple">🎓</div>
               <div>
                 <div class="mentor-name">Owen Chen</div>
                 <div class="mentor-role">First Year University · FRC Alumni</div>
@@ -916,7 +890,7 @@
           </div>
           <div class="mentor-card">
             <div class="mentor-top">
-              <div class="mentor-ava" style="background: var(--p-blue)">🎓</div>
+              <div class="mentor-ava is-blue">🎓</div>
               <div>
                 <div class="mentor-name">Neo Zheng</div>
                 <div class="mentor-role">First Year University · FRC Alumni</div>
@@ -961,7 +935,7 @@
         <h2>our robots</h2>
         <div class="rule"></div>
       </div>
-      <p class="fade" style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 2rem">
+      <p class="fade section-intro">
         Six weeks. Thousands of decisions. One robot. Here's what we're building — and what comes
         next.
       </p>
@@ -1214,41 +1188,23 @@
           </div>
         </div>
       </div>
-      <div style="margin-top: 3rem">
+      <div class="u-mt-3">
         <div class="ruled-title fade">
           <h2>the rookie all-star plan</h2>
           <div class="rule"></div>
         </div>
-        <p
-          class="fade"
-          style="
-            font-size: 0.95rem;
-            opacity: 0.7;
-            margin-bottom: 1.5rem;
-            max-width: 60ch;
-            line-height: 1.7;
-          "
-        >
+        <p class="fade section-intro is-lead">
           The <em>Rookie All-Star Award</em> is the biggest award a first-year FRC team can win. It
           goes to the rookie team that's already running like an established one, and the winner
           moves on to the FIRST Championship. Outside of the robot itself, this is our main goal for
           the season. Here's the plan.
         </p>
 
-        <div class="ruled-title fade" style="margin-top: 2rem">
-          <h3
-            style="
-              font-family: &quot;Caveat&quot;, cursive;
-              font-size: 1.5rem;
-              font-weight: 700;
-              margin: 0;
-            "
-          >
-            what judges look for, and what we're doing about it
-          </h3>
+        <div class="ruled-title fade u-mt-2">
+          <h3>what judges look for, and what we're doing about it</h3>
           <div class="rule"></div>
         </div>
-        <div class="awards-grid" style="margin-top: 1rem">
+        <div class="awards-grid u-mt-1">
           <div class="award-card fade">
             <div class="award-icon">🤝</div>
             <div class="award-name">Sponsor &amp; Mentor Partnerships</div>
@@ -1305,25 +1261,13 @@
           </div>
         </div>
 
-        <div class="ruled-title fade" style="margin-top: 2.5rem">
-          <h3
-            style="
-              font-family: &quot;Caveat&quot;, cursive;
-              font-size: 1.5rem;
-              font-weight: 700;
-              margin: 0;
-            "
-          >
-            our timeline
-          </h3>
+        <div class="ruled-title fade u-mt-2-5">
+          <h3>our timeline</h3>
           <div class="rule"></div>
         </div>
         <div class="timeline fade">
           <div class="tl-item">
-            <div
-              class="tl-dot"
-              style="background: var(--p-blue); box-shadow: 0 0 0 2px var(--p-blue)"
-            ></div>
+            <div class="tl-dot is-blue"></div>
             <div class="tl-year">Apr–Sep 2026</div>
             <div class="tl-title">Team &amp; Sponsor Launch</div>
             <div class="tl-desc">
@@ -1332,10 +1276,7 @@
             </div>
           </div>
           <div class="tl-item">
-            <div
-              class="tl-dot"
-              style="background: var(--p-purple); box-shadow: 0 0 0 2px var(--p-purple)"
-            ></div>
+            <div class="tl-dot is-purple"></div>
             <div class="tl-year">Oct–Dec 2026</div>
             <div class="tl-title">Outreach Blitz</div>
             <div class="tl-desc">
@@ -1344,10 +1285,7 @@
             </div>
           </div>
           <div class="tl-item">
-            <div
-              class="tl-dot"
-              style="background: var(--p-green); box-shadow: 0 0 0 2px var(--p-green)"
-            ></div>
+            <div class="tl-dot is-green"></div>
             <div class="tl-year">Jan 2027</div>
             <div class="tl-title">Kickoff</div>
             <div class="tl-desc">
@@ -1356,10 +1294,7 @@
             </div>
           </div>
           <div class="tl-item">
-            <div
-              class="tl-dot"
-              style="background: var(--p-blue); box-shadow: 0 0 0 2px var(--p-blue)"
-            ></div>
+            <div class="tl-dot is-blue"></div>
             <div class="tl-year">Feb 2027</div>
             <div class="tl-title">Build &amp; Document</div>
             <div class="tl-desc">
@@ -1368,10 +1303,7 @@
             </div>
           </div>
           <div class="tl-item">
-            <div
-              class="tl-dot"
-              style="background: var(--p-purple); box-shadow: 0 0 0 2px var(--p-purple)"
-            ></div>
+            <div class="tl-dot is-purple"></div>
             <div class="tl-year">Mar 2027</div>
             <div class="tl-title">First Regional</div>
             <div class="tl-desc">
@@ -1380,10 +1312,7 @@
             </div>
           </div>
           <div class="tl-item">
-            <div
-              class="tl-dot"
-              style="background: var(--p-green); box-shadow: 0 0 0 2px var(--p-green)"
-            ></div>
+            <div class="tl-dot is-green"></div>
             <div class="tl-year">Apr 2027</div>
             <div class="tl-title">Provincials</div>
             <div class="tl-desc">
@@ -1393,28 +1322,11 @@
           </div>
         </div>
 
-        <div class="ruled-title fade" style="margin-top: 2.5rem">
-          <h3
-            style="
-              font-family: &quot;Caveat&quot;, cursive;
-              font-size: 1.5rem;
-              font-weight: 700;
-              margin: 0;
-            "
-          >
-            what we're tracking
-          </h3>
+        <div class="ruled-title fade u-mt-2-5">
+          <h3>what we're tracking</h3>
           <div class="rule"></div>
         </div>
-        <div
-          class="fade"
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.85rem;
-            margin-top: 1rem;
-          "
-        >
+        <div class="fade metric-grid">
           <div class="fact-card">
             <div class="fact-num">20</div>
             <div class="fact-label">founding sponsors<br />across six tiers</div>
@@ -1437,38 +1349,14 @@
           </div>
         </div>
 
-        <div
-          class="fade"
-          style="
-            margin-top: 2rem;
-            padding: 1.2rem 1.5rem;
-            background: var(--t-card-bg);
-            border: 2px solid var(--p-blue);
-            border-radius: 14px;
-            transition: background 0.35s;
-          "
-        >
-          <div
-            style="
-              font-family: &quot;Caveat&quot;, cursive;
-              font-size: 1.2rem;
-              font-weight: 700;
-              color: var(--t-text);
-              margin-bottom: 0.4rem;
-            "
-          >
-            🌱 want your logo on a Rookie All-Star robot?
-          </div>
-          <p style="font-size: 0.88rem; color: var(--t-text); opacity: 0.7; line-height: 1.6">
+        <div class="fade accent-card">
+          <div class="accent-card__title">🌱 want your logo on a Rookie All-Star robot?</div>
+          <p class="accent-card__body">
             We can't do any of this without founding partners. Email
-            <a
-              href="mailto:teamplushrobotics@gmail.com"
-              style="color: var(--p-blue); font-weight: 700"
+            <a href="mailto:teamplushrobotics@gmail.com" class="t-link"
               >teamplushrobotics@gmail.com</a
-            >, find us at <span style="font-weight: 700">@frc11740</span>, or
-            <a data-page="sponsors" style="color: var(--p-blue); font-weight: 700; cursor: pointer"
-              >check out the sponsorship tiers</a
-            >.
+            >, find us at <span class="t-b">@frc11740</span>, or
+            <a data-page="sponsors" class="t-link">check out the sponsorship tiers</a>.
           </p>
         </div>
       </div>
@@ -1578,29 +1466,9 @@
           <span class="sched-badge badge-upcoming">upcoming</span>
         </div>
       </div>
-      <div
-        class="fade"
-        style="
-          margin-top: 1.5rem;
-          padding: 1.2rem 1.5rem;
-          background: var(--t-card-bg);
-          border: 2px solid var(--p-blue);
-          border-radius: 14px;
-          transition: background 0.35s;
-        "
-      >
-        <div
-          style="
-            font-family: &quot;Caveat&quot;, cursive;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--t-text);
-            margin-bottom: 0.4rem;
-          "
-        >
-          📅 come watch us compete!
-        </div>
-        <p style="font-size: 0.88rem; color: var(--t-text); opacity: 0.7; line-height: 1.6">
+      <div class="fade accent-card is-tight">
+        <div class="accent-card__title">📅 come watch us compete!</div>
+        <p class="accent-card__body">
           FRC events are free and open to the public. There is nothing quite like watching 150
           robots compete in a convention center at full speed. We promise you'll have strong
           opinions about swerve drive by the end of the day.
@@ -1631,7 +1499,7 @@
         <h2>what we value</h2>
         <div class="rule"></div>
       </div>
-      <p class="fade" style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 2rem">
+      <p class="fade section-intro">
         Every season we build a robot, but the most important machine we build is the way we work
         together. These values keep our team moving forward on and off the field.
       </p>
@@ -1738,9 +1606,7 @@
         <h2>connect with us!</h2>
         <div class="rule"></div>
       </div>
-      <p class="fade" style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 2rem">
-        Find us along our offseason to build season journey here:
-      </p>
+      <p class="fade section-intro">Find us along our offseason to build season journey here:</p>
       <div class="social-grid">
         <div class="social-card fade sc-instagram">
           <div class="social-icon">
@@ -1911,33 +1777,20 @@
         <h2>our sponsors</h2>
         <div class="rule"></div>
       </div>
-      <p class="fade" style="font-size: 0.95rem; opacity: 0.7; margin-bottom: 2rem">
+      <p class="fade section-intro">
         FRC is powered by people, parts, and partners. As a first-year team, we are still writing
         our first chapter — here are the ways your organization can help build it. Every tier puts
         your logo on our website, robot, banner, and team merch.
       </p>
 
-      <div class="ruled-title fade" style="margin-top: 2rem">
-        <h3
-          style="
-            font-family: &quot;Caveat&quot;, cursive;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-          "
-        >
-          our sponsorship package
-        </h3>
+      <div class="ruled-title fade u-mt-2">
+        <h3>our sponsorship package</h3>
         <div class="rule"></div>
       </div>
-      <p class="fade" style="font-size: 0.9rem; opacity: 0.7; margin: 0.5rem 0 1rem">
+      <p class="fade section-note">
         The full package — our mission, why partner with us, our 2026&ndash;27 vision, outreach
         goals, budget, and every tier. Open it below or
-        <a
-          href="/sponsorship-package.pdf"
-          target="_blank"
-          rel="noopener"
-          style="color: var(--p-blue); font-weight: 700"
+        <a href="/sponsorship-package.pdf" target="_blank" rel="noopener" class="t-link"
           >view it in a new tab</a
         >.
       </p>
@@ -1949,20 +1802,11 @@
         ></iframe>
       </div>
 
-      <div class="ruled-title fade" style="margin-top: 2.5rem">
-        <h3
-          style="
-            font-family: &quot;Caveat&quot;, cursive;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-          "
-        >
-          sponsorship tiers
-        </h3>
+      <div class="ruled-title fade u-mt-2-5">
+        <h3>sponsorship tiers</h3>
         <div class="rule"></div>
       </div>
-      <p class="fade" style="font-size: 0.9rem; opacity: 0.7; margin: 0.5rem 0 1.5rem">
+      <p class="fade section-note has-gap">
         Pick the level that fits your organization. Further perks can always be worked out over
         email.
       </p>
@@ -2106,14 +1950,13 @@
         <h3>become part of the story</h3>
         <p>
           Want your organization listed here? Email
-          <a href="mailto:teamplushrobotics@gmail.com" style="color: #8fb8ff; font-weight: 700"
+          <a href="mailto:teamplushrobotics@gmail.com" class="t-link-light"
             >teamplushrobotics@gmail.com</a
           >
-          or find us <span style="font-weight: 700">@frc11740</span> everywhere. Sponsor Team PLUSH
-          and join a collaborative robotics journey with youth, innovation, and community at its
-          core.
+          or find us <span class="t-b">@frc11740</span> everywhere. Sponsor Team PLUSH and join a
+          collaborative robotics journey with youth, innovation, and community at its core.
         </p>
-        <p style="font-size: 0.78rem; opacity: 0.55; margin-top: 0.8rem">
+        <p class="fineprint">
           Team&nbsp;Plush is a not-for-profit but not a registered charity — contributions are not
           tax-deductible and we do not issue official tax receipts.
         </p>

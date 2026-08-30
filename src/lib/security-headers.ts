@@ -83,11 +83,12 @@ export function createCspNonce(): string {
  * (which TanStack Start stamps with this nonce) run, plus whatever they choose
  * to load. No host allowlist, no 'unsafe-inline', no 'unsafe-eval'.
  *
- * Styles: 'unsafe-inline' is retained deliberately. The page body is authored
- * HTML with ~60 inline style="" attributes and TanStack may inline critical
- * CSS during SSR; none of it is attacker-influenced (the fetched body is
- * DOMPurify-sanitised). Style injection without script is not a meaningful
- * escalation here. Revisit if the inline styles are ever moved to classes.
+ * Styles: 'self' only — no 'unsafe-inline'. Every stylesheet is a same-origin
+ * <link> (see src/routes/index.tsx); the body HTML no longer carries inline
+ * style="" attributes (they were moved to classes in public/plush.css) and
+ * TanStack Start emits external CSS links, not inline <style> blocks, in the
+ * SSR output. If a build ever inlines critical CSS, give those <style> tags
+ * the request nonce rather than reopening 'unsafe-inline'.
  *
  * Fonts: self-hosted from /fonts (see public/fonts.css), so no
  * fonts.googleapis.com / fonts.gstatic.com allowance is needed.
@@ -100,7 +101,7 @@ export function buildContentSecurityPolicy(nonce: string): string {
     "frame-ancestors 'none'",
     "form-action 'self' https://docs.google.com",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
-    "style-src 'self' 'unsafe-inline'",
+    "style-src 'self'",
     "img-src 'self' data: blob:",
     "font-src 'self'",
     "connect-src 'self' https://docs.google.com",
