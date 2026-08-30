@@ -5,6 +5,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
+    ignore:
+      # Lint-only devdep; upgrade the whole eslint stack deliberately, not piecemeal.
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
     groups:
       # One PR for the low-risk stuff so review stays manageable.
       minor-and-patch:
