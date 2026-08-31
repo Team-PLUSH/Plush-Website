@@ -1341,6 +1341,55 @@ footer {
   line-height: 1.5;
 }
 
+/* fun-fact disclosure on team & mentor cards */
+.team-grid {
+  align-items: start;
+}
+.tc-fact {
+  margin-top: 0.7rem;
+}
+.mentor-fact {
+  margin-top: 0.6rem;
+}
+.tc-fact > summary,
+.mentor-fact > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: "Caveat", cursive;
+  font-size: 1rem;
+  color: var(--t-ink-blue);
+  opacity: 0.8;
+}
+.tc-fact > summary::-webkit-details-marker,
+.mentor-fact > summary::-webkit-details-marker {
+  display: none;
+}
+.tc-fact > summary::after,
+.mentor-fact > summary::after {
+  content: "▾";
+  font-size: 0.7rem;
+  transition: transform 0.2s;
+}
+.tc-fact[open] > summary::after,
+.mentor-fact[open] > summary::after {
+  transform: rotate(180deg);
+}
+.tc-fact > summary:hover,
+.mentor-fact > summary:hover {
+  opacity: 1;
+}
+.tc-fact > p,
+.mentor-fact > p {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--t-text);
+  opacity: 0.7;
+}
+
 /* ── ROBOTS ── */
 .page-robots .inner-page {
   background: var(--t-section-robots);
