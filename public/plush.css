@@ -2232,23 +2232,30 @@ html.dark .newsletter-status[data-kind="err"] {
   margin: 0 auto 0.5rem;
   line-height: 1.65;
 }
-.pdf-embed {
+.pdf-pages {
   border: 2px solid var(--t-card-border);
   border-radius: 16px;
-  overflow: hidden;
   background: var(--t-card-bg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   transition: background 0.35s;
+  max-height: min(85vh, 1100px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
-.pdf-embed iframe {
+.pdf-pages img {
   display: block;
   width: 100%;
-  height: min(85vh, 1100px);
-  border: 0;
+  height: auto;
+  border: 1px solid var(--t-card-border);
+  border-radius: 6px;
 }
 @media (max-width: 640px) {
-  .pdf-embed iframe {
-    height: 70vh;
+  .pdf-pages {
+    max-height: 75vh;
   }
 }
 .tiers-mini {
@@ -2502,9 +2509,6 @@ html.dark .join-section {
   }
   footer {
     padding: 1.2rem 1.1rem;
-  }
-  .pdf-embed iframe {
-    height: 60vh;
   }
 
   .about-layout {
