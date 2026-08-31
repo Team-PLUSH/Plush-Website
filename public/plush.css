@@ -2258,6 +2258,10 @@ html.dark .newsletter-status[data-kind="err"] {
     max-height: 75vh;
   }
 }
+.pdf-download {
+  margin-top: 0.9rem;
+  text-align: center;
+}
 .tiers-mini {
   display: flex;
   gap: 1rem;
