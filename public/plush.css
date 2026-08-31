@@ -2110,28 +2110,6 @@ html.dark .newsletter-status[data-kind="err"] {
   opacity: 0.7;
   white-space: nowrap;
 }
-.tier-perks {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-  gap: 0.5rem 0.5rem;
-  margin: 0;
-  padding: 0;
-}
-.tier-perks li {
-  position: relative;
-  padding-left: 1.3rem;
-  font-size: 0.84rem;
-  color: var(--t-text);
-  opacity: 0.75;
-  line-height: 1.5;
-}
-.tier-perks li::before {
-  content: "✦";
-  position: absolute;
-  left: 0;
-  opacity: 0.5;
-}
 .tier-slots {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
