@@ -573,6 +573,9 @@ body:has(#page-home.active) .jam-marquee-wrap {
 #page-home .season-stop:nth-child(5) .season-node {
   border-color: var(--jam-blue);
 }
+#page-home .season-stop:nth-child(6) .season-node {
+  border-color: var(--jam-green);
+}
 
 #page-home .season-card {
   width: 60%;
