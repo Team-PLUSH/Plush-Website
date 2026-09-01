@@ -811,13 +811,13 @@ body:has(#page-home.active) .jam-marquee-wrap {
   }
 }
 
-/* ── HERO POLAROIDS (flanking the PLUSH wordmark) ── */
+/* ── HERO POLAROIDS (scattered across the top) ── */
 #page-home .polaroid {
   --rot: -4deg;
   position: relative;
-  width: 168px;
+  width: 100%;
   margin: 0;
-  padding: 0.55rem 0.55rem 0;
+  padding: 0.5rem 0.5rem 0;
   background: #fff;
   border: 2.5px solid var(--jam-ink);
   border-radius: 3px;
@@ -830,10 +830,10 @@ body:has(#page-home.active) .jam-marquee-wrap {
 #page-home .polaroid::before {
   content: "";
   position: absolute;
-  top: -11px;
+  top: -10px;
   left: 50%;
-  width: 58px;
-  height: 21px;
+  width: 52px;
+  height: 19px;
   transform: translateX(-50%) rotate(-3deg);
   background: rgba(168, 190, 222, 0.5);
   border: 1px solid rgba(31, 35, 66, 0.14);
@@ -842,105 +842,89 @@ body:has(#page-home.active) .jam-marquee-wrap {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
-  min-height: 120px;
+  min-height: 90px;
   object-fit: cover;
   background: linear-gradient(135deg, #f6d9e6, #d3e6f2);
   border: 1px solid rgba(31, 35, 66, 0.16);
 }
 #page-home .polaroid figcaption {
-  padding: 0.35rem 0.2rem 0.55rem;
+  padding: 0.3rem 0.2rem 0.5rem;
   text-align: center;
   font-family: "Caveat", cursive;
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: var(--jam-ink);
 }
 
-#page-home .polaroid-hero {
+#page-home .polaroid-scatter {
   position: absolute;
-  top: 50%;
-  z-index: 3;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
-#page-home .polaroid-hero-l {
-  --rot: -8deg;
-  right: 100%;
-  margin-right: 2.25rem;
-  transform: translateY(-54%) rotate(var(--rot));
+#page-home .polaroid-scatter .polaroid {
+  position: absolute;
+  width: 138px;
+  pointer-events: auto;
 }
-#page-home .polaroid-hero-r {
-  --rot: 7deg;
-  left: 100%;
-  margin-left: 2.25rem;
-  transform: translateY(-46%) rotate(var(--rot));
-}
-#page-home .polaroid-hero:hover {
-  transform: translateY(-50%) rotate(0deg) scale(1.05);
+#page-home .polaroid-scatter .polaroid:hover {
+  transform: rotate(0deg) scale(1.06);
   box-shadow: 7px 9px 0 rgba(31, 35, 66, 0.22);
+  z-index: 2;
 }
-@media (max-width: 1080px) {
-  #page-home .polaroid-hero {
+#page-home .s-1 {
+  --rot: -8deg;
+  top: 7%;
+  left: 3%;
+}
+#page-home .s-2 {
+  --rot: 6deg;
+  top: 4%;
+  right: 4%;
+}
+#page-home .s-3 {
+  --rot: 5deg;
+  top: 34%;
+  left: 1%;
+}
+#page-home .s-4 {
+  --rot: -7deg;
+  top: 29%;
+  right: 1.5%;
+}
+#page-home .s-5 {
+  --rot: 7deg;
+  bottom: 21%;
+  left: 4%;
+}
+#page-home .s-6 {
+  --rot: -5deg;
+  bottom: 25%;
+  right: 3%;
+}
+#page-home .s-7 {
+  --rot: -4deg;
+  bottom: 5%;
+  left: 13%;
+}
+#page-home .s-8 {
+  --rot: 9deg;
+  bottom: 7%;
+  right: 12%;
+}
+@media (max-width: 1180px) {
+  #page-home .s-3,
+  #page-home .s-4,
+  #page-home .s-7,
+  #page-home .s-8 {
     display: none;
   }
+  #page-home .polaroid-scatter .polaroid {
+    width: 118px;
+  }
 }
-
-/* ── MINI POLAROIDS (sprinkled down the page) ── */
-#page-home .founders-mission-section,
-#page-home .mascot-section,
-#page-home .track-journey-section,
-#page-home .join-section {
-  position: relative;
-}
-#page-home .polaroid-mini {
-  position: absolute;
-  z-index: 1;
-  width: 108px;
-  padding: 0.4rem 0.4rem 0;
-  box-shadow: 4px 5px 0 rgba(31, 35, 66, 0.16);
-}
-#page-home .polaroid-mini::before {
-  width: 42px;
-  height: 16px;
-  top: -8px;
-}
-#page-home .polaroid-mini img {
-  min-height: 84px;
-}
-#page-home .polaroid-mini figcaption {
-  padding: 0.25rem 0.15rem 0.4rem;
-  font-size: 0.9rem;
-}
-#page-home .pm-1 {
-  --rot: 6deg;
-  top: 2.5rem;
-  right: 4%;
-}
-#page-home .pm-2 {
-  --rot: -7deg;
-  top: 2rem;
-  left: 3%;
-}
-#page-home .pm-3 {
-  --rot: 5deg;
-  bottom: 2rem;
-  right: 4%;
-}
-#page-home .pm-4 {
-  --rot: -5deg;
-  top: 5.5rem;
-  left: 3%;
-}
-#page-home .pm-5 {
-  --rot: 7deg;
-  bottom: 4.5rem;
-  right: 4%;
-}
-#page-home .pm-6 {
-  --rot: -6deg;
-  top: 1.75rem;
-  right: 5%;
-}
-@media (max-width: 1080px) {
-  #page-home .polaroid-mini {
+@media (max-width: 820px) {
+  #page-home .polaroid-scatter {
     display: none;
   }
 }
