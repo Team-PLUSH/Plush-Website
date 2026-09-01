@@ -810,3 +810,98 @@ body:has(#page-home.active) .jam-marquee-wrap {
     padding: 0 1.1rem;
   }
 }
+
+/* ── PHOTO WALL (sprinkled polaroids) ── */
+#page-home .polaroid-section {
+  background: linear-gradient(165deg, var(--jam-cream) 0%, var(--jam-cream-2) 100%);
+  border-top: 3px solid var(--jam-ink);
+  border-bottom: 3px solid var(--jam-ink);
+  padding: 3.25rem 1rem 3.75rem;
+  overflow: hidden;
+}
+#page-home .polaroid-band {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem 2rem;
+  max-width: 940px;
+  margin: 0 auto;
+}
+#page-home .polaroid {
+  --rot: -4deg;
+  position: relative;
+  width: 176px;
+  margin: 0;
+  padding: 0.6rem 0.6rem 0;
+  background: #fff;
+  border: 2.5px solid var(--jam-ink);
+  border-radius: 3px;
+  box-shadow: 5px 6px 0 rgba(31, 35, 66, 0.18);
+  transform: rotate(var(--rot));
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+#page-home .polaroid::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 58px;
+  height: 21px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(168, 190, 222, 0.5);
+  border: 1px solid rgba(31, 35, 66, 0.14);
+}
+#page-home .polaroid:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 7px 9px 0 rgba(31, 35, 66, 0.22);
+  z-index: 3;
+}
+#page-home .polaroid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 130px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #f6d9e6, #d3e6f2);
+  border: 1px solid rgba(31, 35, 66, 0.16);
+}
+#page-home .polaroid figcaption {
+  padding: 0.4rem 0.2rem 0.6rem;
+  text-align: center;
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--jam-ink);
+}
+#page-home .polaroid-band .polaroid:nth-child(1) {
+  --rot: -6deg;
+}
+#page-home .polaroid-band .polaroid:nth-child(2) {
+  --rot: 4deg;
+  margin-top: 1.7rem;
+}
+#page-home .polaroid-band .polaroid:nth-child(3) {
+  --rot: -2deg;
+}
+#page-home .polaroid-band .polaroid:nth-child(4) {
+  --rot: 5deg;
+  margin-top: 1.9rem;
+}
+#page-home .polaroid-band .polaroid:nth-child(5) {
+  --rot: -4deg;
+  margin-top: 0.6rem;
+}
+@media (max-width: 620px) {
+  #page-home .polaroid-band {
+    gap: 1.1rem;
+  }
+  #page-home .polaroid,
+  #page-home .polaroid-band .polaroid:nth-child(n) {
+    width: 42vw;
+    --rot: 0deg;
+    margin-top: 0;
+  }
+}
