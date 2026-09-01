@@ -811,29 +811,13 @@ body:has(#page-home.active) .jam-marquee-wrap {
   }
 }
 
-/* ── PHOTO WALL (sprinkled polaroids) ── */
-#page-home .polaroid-section {
-  background: linear-gradient(165deg, var(--jam-cream) 0%, var(--jam-cream-2) 100%);
-  border-top: 3px solid var(--jam-ink);
-  border-bottom: 3px solid var(--jam-ink);
-  padding: 3.25rem 1rem 3.75rem;
-  overflow: hidden;
-}
-#page-home .polaroid-band {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem 2rem;
-  max-width: 940px;
-  margin: 0 auto;
-}
+/* ── HERO POLAROIDS (flanking the PLUSH wordmark) ── */
 #page-home .polaroid {
   --rot: -4deg;
   position: relative;
-  width: 176px;
+  width: 168px;
   margin: 0;
-  padding: 0.6rem 0.6rem 0;
+  padding: 0.55rem 0.55rem 0;
   background: #fff;
   border: 2.5px solid var(--jam-ink);
   border-radius: 3px;
@@ -854,54 +838,47 @@ body:has(#page-home.active) .jam-marquee-wrap {
   background: rgba(168, 190, 222, 0.5);
   border: 1px solid rgba(31, 35, 66, 0.14);
 }
-#page-home .polaroid:hover {
-  transform: rotate(0deg) scale(1.05);
-  box-shadow: 7px 9px 0 rgba(31, 35, 66, 0.22);
-  z-index: 3;
-}
 #page-home .polaroid img {
   display: block;
   width: 100%;
   aspect-ratio: 1 / 1;
-  min-height: 130px;
+  min-height: 120px;
   object-fit: cover;
   background: linear-gradient(135deg, #f6d9e6, #d3e6f2);
   border: 1px solid rgba(31, 35, 66, 0.16);
 }
 #page-home .polaroid figcaption {
-  padding: 0.4rem 0.2rem 0.6rem;
+  padding: 0.35rem 0.2rem 0.55rem;
   text-align: center;
   font-family: "Caveat", cursive;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--jam-ink);
 }
-#page-home .polaroid-band .polaroid:nth-child(1) {
-  --rot: -6deg;
+
+#page-home .polaroid-hero {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
 }
-#page-home .polaroid-band .polaroid:nth-child(2) {
-  --rot: 4deg;
-  margin-top: 1.7rem;
+#page-home .polaroid-hero-l {
+  --rot: -8deg;
+  right: 100%;
+  margin-right: 2.25rem;
+  transform: translateY(-54%) rotate(var(--rot));
 }
-#page-home .polaroid-band .polaroid:nth-child(3) {
-  --rot: -2deg;
+#page-home .polaroid-hero-r {
+  --rot: 7deg;
+  left: 100%;
+  margin-left: 2.25rem;
+  transform: translateY(-46%) rotate(var(--rot));
 }
-#page-home .polaroid-band .polaroid:nth-child(4) {
-  --rot: 5deg;
-  margin-top: 1.9rem;
+#page-home .polaroid-hero:hover {
+  transform: translateY(-50%) rotate(0deg) scale(1.05);
+  box-shadow: 7px 9px 0 rgba(31, 35, 66, 0.22);
 }
-#page-home .polaroid-band .polaroid:nth-child(5) {
-  --rot: -4deg;
-  margin-top: 0.6rem;
-}
-@media (max-width: 620px) {
-  #page-home .polaroid-band {
-    gap: 1.1rem;
-  }
-  #page-home .polaroid,
-  #page-home .polaroid-band .polaroid:nth-child(n) {
-    width: 42vw;
-    --rot: 0deg;
-    margin-top: 0;
+@media (max-width: 1080px) {
+  #page-home .polaroid-hero {
+    display: none;
   }
 }
