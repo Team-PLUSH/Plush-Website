@@ -882,3 +882,65 @@ body:has(#page-home.active) .jam-marquee-wrap {
     display: none;
   }
 }
+
+/* ── MINI POLAROIDS (sprinkled down the page) ── */
+#page-home .founders-mission-section,
+#page-home .mascot-section,
+#page-home .track-journey-section,
+#page-home .join-section {
+  position: relative;
+}
+#page-home .polaroid-mini {
+  position: absolute;
+  z-index: 1;
+  width: 108px;
+  padding: 0.4rem 0.4rem 0;
+  box-shadow: 4px 5px 0 rgba(31, 35, 66, 0.16);
+}
+#page-home .polaroid-mini::before {
+  width: 42px;
+  height: 16px;
+  top: -8px;
+}
+#page-home .polaroid-mini img {
+  min-height: 84px;
+}
+#page-home .polaroid-mini figcaption {
+  padding: 0.25rem 0.15rem 0.4rem;
+  font-size: 0.9rem;
+}
+#page-home .pm-1 {
+  --rot: 6deg;
+  top: 2.5rem;
+  right: 4%;
+}
+#page-home .pm-2 {
+  --rot: -7deg;
+  top: 2rem;
+  left: 3%;
+}
+#page-home .pm-3 {
+  --rot: 5deg;
+  bottom: 2rem;
+  right: 4%;
+}
+#page-home .pm-4 {
+  --rot: -5deg;
+  top: 5.5rem;
+  left: 3%;
+}
+#page-home .pm-5 {
+  --rot: 7deg;
+  bottom: 4.5rem;
+  right: 4%;
+}
+#page-home .pm-6 {
+  --rot: -6deg;
+  top: 1.75rem;
+  right: 5%;
+}
+@media (max-width: 1080px) {
+  #page-home .polaroid-mini {
+    display: none;
+  }
+}

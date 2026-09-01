@@ -1,10 +1,17 @@
-# Home-page hero polaroids
+# Home-page polaroids
 
-`home-1.jpg` (left) and `home-2.jpg` (right) are the two polaroids that
-flank the big **PLUSH** wordmark on the home page (`.polaroid-hero` in
-`plush-body.html`). They only show on screens wider than 1080px.
+Placeholder gradient images for the sprinkled polaroids on the home page.
+Replace each with a real square-ish team photo, same filename (~600–900 px
+JPEG). All polaroids only show on screens wider than 1080px. Update the
+matching `<figcaption>` text in `plush-body.html`.
 
-These are placeholder gradients. Replace each file with a real
-square-ish team photo, keeping the same filename. ~600–900 px, JPEG, a
-few hundred KB each is plenty. Update the `<figcaption>` text in
-`plush-body.html` ("build season", "demo day :)") to match.
+| file | spot | caption |
+|------|------|---------|
+| home-1.jpg | left of the PLUSH wordmark | build season |
+| home-2.jpg | right of the PLUSH wordmark | demo day :) |
+| home-3.jpg | founders' mission (top right) | day one |
+| home-4.jpg | mascots (top left) | mascot day |
+| home-5.jpg | mascots (bottom right) | plush pile |
+| home-6.jpg | season plans (top left) | build night |
+| home-7.jpg | season plans (bottom right) | comp day |
+| home-8.jpg | join section (top right) | the crew |
