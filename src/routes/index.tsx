@@ -1,23 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PlushSite } from "@/plush/components/PlushSite";
+import { ORGANIZATION_JSON_LD, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Team PLUSH — Live · Laugh · Love · Robotics" },
-      {
-        name: "description",
-        content:
-          "Team PLUSH is a student-run FRC robotics team building bold, pastel robots. Meet the crew, our robots, values, schedule, and sponsors.",
-      },
-      { property: "og:title", content: "Team PLUSH — Live · Laugh · Love · Robotics" },
-      {
-        property: "og:description",
-        content:
-          "Pastel robots, gracious competition, and one very cute plush buddy. Come build with us.",
-      },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      // Renders as <script type="application/ld+json">. Tells Google that
+      // frc11740.ca, "Team PLUSH", "FRC 11740" and the six social accounts are
+      // all one organization rather than unrelated strings.
+      { "script:ld+json": ORGANIZATION_JSON_LD },
     ],
     links: [
       { rel: "stylesheet", href: "/plush.css" },

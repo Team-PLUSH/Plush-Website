@@ -1,71 +1,23 @@
-import { useEffect, useRef, useState } from "react";
-import DOMPurify from "dompurify";
+import { useEffect } from "react";
+
 import { initPlushSite } from "@/plush/init";
 
-// DOMPurify strips scripts, event handlers and javascript: URIs by default.
-// This hook additionally forces every link that opens a new tab to also drop
-// its access back to this page (reverse tabnabbing) and never send a referrer.
-let hookInstalled = false;
-function installLinkHardeningHook() {
-  if (hookInstalled || typeof window === "undefined") return;
-  hookInstalled = true;
-  DOMPurify.addHook("afterSanitizeAttributes", (node) => {
-    if (node.tagName === "A" && node.getAttribute("target") === "_blank") {
-      node.setAttribute("rel", "noopener noreferrer");
-    }
-  });
-}
-
-const SANITIZE_CONFIG = {
-  ADD_ATTR: ["target"],
-  // Belt-and-braces: these can never appear in trusted body content.
-  FORBID_TAGS: ["style", "base", "noscript"],
-  FORBID_ATTR: ["ping", "srcset"],
-} satisfies Parameters<typeof DOMPurify.sanitize>[1];
+// The site body is compiled in as a string at build time rather than fetched at
+// runtime, so the full document — team, robots, sponsors, values — is present in
+// the server-rendered HTML that crawlers and link-preview bots receive on the
+// first response. Fetching it in an effect meant the SSR output was an empty
+// div and every word of content depended on JS executing.
+//
+// This is first-party repo content, exactly as trusted as this file, which is
+// why it is no longer put through DOMPurify: it lives in src/ (never served as
+// its own URL), it contains no <script>, no inline style attributes and no
+// event-handler attributes, so it adds nothing the CSP has to allow.
+import bodyHtml from "../content/plush-body.html?raw";
 
 export function PlushSite() {
-  const hostRef = useRef<HTMLDivElement>(null);
-  const [html, setHtml] = useState<string | null>(null);
-  const [loadError, setLoadError] = useState<string | null>(null);
+  // The imperative enhancements (routing, theme, mascots, cursor) query the DOM
+  // directly, so they can only run once the markup is committed on the client.
+  useEffect(() => initPlushSite(), []);
 
-  useEffect(() => {
-    let live = true;
-    installLinkHardeningHook();
-
-    fetch("/plush-body.html")
-      .then((response) => {
-        if (!response.ok) throw new Error(`Failed to load site content (${response.status})`);
-        return response.text();
-      })
-      .then((markup) => {
-        if (live) setHtml(DOMPurify.sanitize(markup, SANITIZE_CONFIG));
-      })
-      .catch((error: unknown) => {
-        if (live) {
-          setLoadError(error instanceof Error ? error.message : "Failed to load site content");
-        }
-      });
-
-    return () => {
-      live = false;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!html || !hostRef.current) return;
-    return initPlushSite();
-  }, [html]);
-
-  if (loadError) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-[#0d1120] px-4 text-center text-[#e8edf8]">
-        <div>
-          <p className="text-lg font-semibold">Team PLUSH could not load</p>
-          <p className="mt-2 text-sm opacity-80">{loadError}</p>
-        </div>
-      </div>
-    );
-  }
-
-  return <div ref={hostRef} dangerouslySetInnerHTML={{ __html: html ?? "" }} />;
+  return <div dangerouslySetInnerHTML={{ __html: bodyHtml }} />;
 }
