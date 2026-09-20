@@ -105,7 +105,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       // Declares frc11740.ca as the one address for this content, so the apex,
       // www and trailing-slash variants can't split ranking signals.
       { rel: "canonical", href: SITE_URL },
+      // Google only uses a search-result favicon that is square with a side
+      // that is a multiple of 48px, so 96 and 192 are the ones it can pick up;
+      // 256 stayed for browsers, which have no such rule.
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", href: "/favicon-96.png", type: "image/png", sizes: "96x96" },
+      { rel: "icon", href: "/favicon-192.png", type: "image/png", sizes: "192x192" },
       { rel: "icon", href: "/favicon-256.png", type: "image/png", sizes: "256x256" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
