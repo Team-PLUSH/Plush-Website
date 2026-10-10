@@ -21,11 +21,12 @@ type StreamHandlerContext = {
 
 // TanStack Start's stream handler, wrapped so every SSR document carries a
 // fresh per-request nonce-based Content-Security-Policy plus the rest of the
-// security-header set. The nonce is handed to the router so TanStack stamps it
-// onto the bootstrap <script> tags it emits, and written onto the response
-// headers so the browser accepts exactly those scripts.
+// security-header set. The nonce is created with the router (src/router.tsx)
+// so TanStack stamps it onto every bootstrap <script> tag it emits, including
+// the hydration scripts it sets up before this handler runs; it is written
+// onto the response headers here so the browser accepts exactly those scripts.
 const securedStreamHandler = (ctx: StreamHandlerContext) => {
-  const nonce = createCspNonce();
+  const nonce = ctx.router.options.ssr?.nonce ?? createCspNonce();
   ctx.router.options.ssr = { ...ctx.router.options.ssr, nonce };
   writeHtmlSecurityHeaders(ctx.responseHeaders, nonce);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
