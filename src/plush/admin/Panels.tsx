@@ -231,7 +231,7 @@ export function Overview({ doc }: { doc: AdminDoc }) {
 
 // ---- Import / backup -----------------------------------------------------
 
-export function ImportPanel({ doc }: { doc: AdminDoc }) {
+export function ImportPanel({ doc, isOwner }: { doc: AdminDoc; isOwner: boolean }) {
   const router = useRouter();
   const [json, setJson] = useState("");
   const [mode, setMode] = useState<"append" | "replace">("append");
@@ -310,15 +310,17 @@ export function ImportPanel({ doc }: { doc: AdminDoc }) {
             />
             Add to what's there
           </label>
-          <label className="flex items-center gap-2">
-            <input
-              type="radio"
-              name="mode"
-              checked={mode === "replace"}
-              onChange={() => setMode("replace")}
-            />
-            Replace the lists in this import
-          </label>
+          {isOwner && (
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="mode"
+                checked={mode === "replace"}
+                onChange={() => setMode("replace")}
+              />
+              Replace the lists in this import
+            </label>
+          )}
         </fieldset>
         {confirmReplace && (
           <p role="alert" className="mt-3 text-sm text-destructive">
@@ -356,13 +358,14 @@ export function ImportPanel({ doc }: { doc: AdminDoc }) {
 // ---- Sign in -------------------------------------------------------------
 
 const LOGIN_MESSAGES: Record<Exclude<LoginResult, { ok: true }>["reason"], string> = {
-  wrong: "That password isn't right.",
+  wrong: "That username or password isn't right.",
   limited: "Too many attempts. Try again in 15 minutes.",
   "not-configured": "The admin password hasn't been set up yet.",
 };
 
 export function LoginForm() {
   const router = useRouter();
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -372,7 +375,7 @@ export function LoginForm() {
     setBusy(true);
     setError(null);
     try {
-      const result = await adminLogin({ data: { password } });
+      const result = await adminLogin({ data: { username, password } });
       if (result.ok) {
         setPassword("");
         await router.invalidate();
@@ -397,7 +400,21 @@ export function LoginForm() {
       <p className="pa-hand mt-1 text-muted-foreground">
         team leads only <span className="pa-star">✦</span> no peeking!
       </p>
-      <label htmlFor="admin-password" className="mt-5 block text-left text-sm font-bold">
+      <label htmlFor="admin-username" className="mt-5 block text-left text-sm font-bold">
+        Username
+      </label>
+      <input
+        id="admin-username"
+        type="text"
+        autoComplete="username"
+        autoCapitalize="none"
+        spellCheck={false}
+        required
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        className="mt-1 w-full px-3 py-2 text-sm"
+      />
+      <label htmlFor="admin-password" className="mt-3 block text-left text-sm font-bold">
         Password
       </label>
       <input
@@ -416,7 +433,7 @@ export function LoginForm() {
       )}
       <button
         type="submit"
-        disabled={busy || password === ""}
+        disabled={busy || password === "" || username.trim() === ""}
         className="pa-btn mt-5 w-full text-sm"
       >
         {busy ? "Checking…" : "Sign in"}

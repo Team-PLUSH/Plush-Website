@@ -49,7 +49,21 @@ type Props<T extends { id: string }> = {
   filters?: Filter<T>[];
   summary?: (rows: T[]) => ReactNode;
   sort?: (a: T, b: T) => number;
+  /** False for viewers: no add / edit / delete buttons (the server refuses them anyway). */
+  canEdit: boolean;
 };
+
+type Stamped = { createdBy?: string; createdAt?: string; updatedBy?: string; updatedAt?: string };
+
+function stampLine(row: Stamped | undefined): string | null {
+  if (!row) return null;
+  const day = (iso?: string) => (iso ? iso.slice(0, 10) : "");
+  const parts = [
+    row.createdBy && `Added by ${row.createdBy} ${day(row.createdAt)}`,
+    row.updatedBy && `last edited by ${row.updatedBy} ${day(row.updatedAt)}`,
+  ].filter(Boolean);
+  return parts.length ? parts.join(" · ") : null;
+}
 
 const optionValue = (o: Option) => (typeof o === "string" ? o : o.value);
 const optionLabel = (o: Option) => (typeof o === "string" ? o : o.label);
@@ -152,16 +166,18 @@ export function RecordTab<T extends { id: string }>(props: Props<T>) {
             <div className="text-sm text-muted-foreground">{props.summary(visible)}</div>
           )}
         </div>
-        <button
-          type="button"
-          onClick={() => {
-            setError(null);
-            setEditing({ id: null, values: props.defaults() });
-          }}
-          className="pa-btn text-sm"
-        >
-          + Add {props.noun}
-        </button>
+        {props.canEdit && (
+          <button
+            type="button"
+            onClick={() => {
+              setError(null);
+              setEditing({ id: null, values: props.defaults() });
+            }}
+            className="pa-btn text-sm"
+          >
+            + Add {props.noun}
+          </button>
+        )}
       </div>
 
       {editing && (
@@ -171,6 +187,11 @@ export function RecordTab<T extends { id: string }>(props: Props<T>) {
           aria-label={editing.id ? `Edit ${props.noun}` : `Add ${props.noun}`}
         >
           <h3 className="pa-title">{editing.id ? `Edit ${props.noun}` : `New ${props.noun}`}</h3>
+          {editing.id && (
+            <p className="text-xs text-muted-foreground">
+              {stampLine(props.rows.find((r) => r.id === editing.id) as Stamped | undefined)}
+            </p>
+          )}
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {props.fields
               .filter((f) => !f.showIf || f.showIf(editing.values))
@@ -254,9 +275,11 @@ export function RecordTab<T extends { id: string }>(props: Props<T>) {
                   {c.label}
                 </th>
               ))}
-              <th className="px-3 py-2">
-                <span className="sr-only">Actions</span>
-              </th>
+              {props.canEdit && (
+                <th className="px-3 py-2">
+                  <span className="sr-only">Actions</span>
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -270,47 +293,49 @@ export function RecordTab<T extends { id: string }>(props: Props<T>) {
                     {c.render(row)}
                   </td>
                 ))}
-                <td className="whitespace-nowrap px-3 py-2 text-right">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setError(null);
-                      setEditing({
-                        id: row.id,
-                        values: toFormValues(row as Record<string, unknown>, props.fields),
-                      });
-                    }}
-                    className="rounded px-2 py-1 text-xs hover:bg-accent"
-                  >
-                    Edit
-                  </button>
-                  {confirmDelete === row.id ? (
+                {props.canEdit && (
+                  <td className="whitespace-nowrap px-3 py-2 text-right">
                     <button
                       type="button"
-                      disabled={busy}
-                      onClick={() =>
-                        void run({ op: "delete", collection: props.collection, id: row.id })
-                      }
-                      className="pa-btn is-danger px-2 py-0.5 text-xs"
+                      onClick={() => {
+                        setError(null);
+                        setEditing({
+                          id: row.id,
+                          values: toFormValues(row as Record<string, unknown>, props.fields),
+                        });
+                      }}
+                      className="rounded px-2 py-1 text-xs hover:bg-accent"
                     >
-                      Confirm delete
+                      Edit
                     </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => setConfirmDelete(row.id)}
-                      className="rounded px-2 py-1 text-xs text-destructive hover:bg-accent"
-                    >
-                      Delete
-                    </button>
-                  )}
-                </td>
+                    {confirmDelete === row.id ? (
+                      <button
+                        type="button"
+                        disabled={busy}
+                        onClick={() =>
+                          void run({ op: "delete", collection: props.collection, id: row.id })
+                        }
+                        className="pa-btn is-danger px-2 py-0.5 text-xs"
+                      >
+                        Confirm delete
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setConfirmDelete(row.id)}
+                        className="rounded px-2 py-1 text-xs text-destructive hover:bg-accent"
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </td>
+                )}
               </tr>
             ))}
             {visible.length === 0 && (
               <tr>
                 <td
-                  colSpan={props.columns.length + 1}
+                  colSpan={props.columns.length + (props.canEdit ? 1 : 0)}
                   className="px-3 py-6 text-center text-muted-foreground"
                 >
                   {props.rows.length === 0

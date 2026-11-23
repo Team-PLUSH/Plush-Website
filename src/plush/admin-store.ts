@@ -28,6 +28,7 @@ import {
   PAYMENT_METHODS,
   RECURRENCE,
 } from "./admin-options";
+import { ACTIVITY_KEY, ACTIVITY_LENGTH, type ActivityEntry } from "./admin-accounts";
 import { upstashPipeline, type UpstashConfig } from "./upstash";
 
 const DOC_KEY = "plush:admin:v1";
@@ -35,8 +36,10 @@ const REV_KEY = "plush:admin:v1:rev";
 const HISTORY_KEY = "plush:admin:v1:history";
 const HISTORY_LENGTH = 50;
 
-// KEYS: doc, rev, history.  ARGV: expected revision, new document.
-// Returns the new revision, or 0 if someone else saved first.
+// KEYS: doc, rev, history, activity.
+// ARGV: expected revision, new document, activity entry ("" for none).
+// Returns the new revision, or 0 if someone else saved first. The activity
+// entry is written in the same step, so the log can't miss or invent a change.
 const COMPARE_AND_SET = `
 local rev = tonumber(redis.call('GET', KEYS[2]) or '0')
 if rev ~= tonumber(ARGV[1]) then return 0 end
@@ -47,6 +50,10 @@ if cur then
 end
 redis.call('SET', KEYS[1], ARGV[2])
 redis.call('SET', KEYS[2], tostring(rev + 1))
+if ARGV[3] ~= '' then
+  redis.call('LPUSH', KEYS[4], ARGV[3])
+  redis.call('LTRIM', KEYS[4], 0, ${ACTIVITY_LENGTH - 1})
+end
 return rev + 1
 `;
 
@@ -216,11 +223,19 @@ export const COLLECTION_LIMITS: Record<Collection, number> = {
   members: 2000,
 };
 
-export type Item = z.output<typeof itemInputSchema> & { id: string };
-export type Order = z.output<typeof orderInputSchema> & { id: string };
-export type Expense = z.output<typeof expenseInputSchema> & { id: string };
-export type Income = z.output<typeof incomeInputSchema> & { id: string };
-export type Member = z.output<typeof memberInputSchema> & { id: string };
+export type Item = z.output<typeof itemInputSchema> & { id: string } & Stamps;
+export type Order = z.output<typeof orderInputSchema> & { id: string } & Stamps;
+export type Expense = z.output<typeof expenseInputSchema> & { id: string } & Stamps;
+export type Income = z.output<typeof incomeInputSchema> & { id: string } & Stamps;
+export type Member = z.output<typeof memberInputSchema> & { id: string } & Stamps;
+
+/** Who added / last changed a row; set by the server, never by the browser. */
+export type Stamps = {
+  createdBy?: string;
+  createdAt?: string;
+  updatedBy?: string;
+  updatedAt?: string;
+};
 
 export type AdminDoc = {
   updatedAt: string | null;
@@ -270,6 +285,7 @@ export class AdminChangeError extends Error {}
 export async function updateAdminDoc(
   cfg: UpstashConfig,
   change: (doc: AdminDoc) => AdminDoc,
+  describeChange?: (before: AdminDoc) => ActivityEntry,
 ): Promise<void> {
   for (let attempt = 0; attempt < 25; attempt++) {
     if (attempt > 0) {
@@ -287,7 +303,18 @@ export async function updateAdminDoc(
       }
     }
     const [saved] = await upstashPipeline(cfg, [
-      ["EVAL", COMPARE_AND_SET, 3, DOC_KEY, REV_KEY, HISTORY_KEY, revision, JSON.stringify(next)],
+      [
+        "EVAL",
+        COMPARE_AND_SET,
+        4,
+        DOC_KEY,
+        REV_KEY,
+        HISTORY_KEY,
+        ACTIVITY_KEY,
+        revision,
+        JSON.stringify(next),
+        describeChange ? JSON.stringify(describeChange(doc)) : "",
+      ],
     ]);
     if (Number(saved) > 0) return;
   }

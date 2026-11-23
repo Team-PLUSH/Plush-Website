@@ -1,11 +1,15 @@
-// Password check and signed session cookie for the team's private admin pages.
+// Passwords and signed session cookies for the team's private admin pages.
 //
 // Nothing secret lives in this repo (it is public). Everything comes from
 // Vercel environment variables, set in the dashboard for Production:
 //
-//   ADMIN_PASSWORD         the password the team types on /admin/inventory
+//   ADMIN_PASSWORD         the built-in "owner" sign-in (username: owner), used
+//                          to create everyone's personal accounts
 //   ADMIN_SESSION_SECRET   a long random string (32+ chars) used to sign the
 //                          session cookie, e.g. `openssl rand -base64 48`
+//
+// Personal accounts' passwords are stored in Redis as PBKDF2-SHA256 hashes
+// (210,000 rounds, random salt per password), never in plain text.
 //
 // The session cookie is HttpOnly + Secure + SameSite=Strict and carries only an
 // expiry time, a random session id and an HMAC over both — no data. The id is
@@ -91,4 +95,60 @@ export async function readSessionToken(
   const expected = await sign(`${expires}.${id}`, cfg);
   if (!equalBytes(encoder.encode(signature), encoder.encode(expected))) return null;
   return { id, expires: Number(expires) };
+}
+
+// ---- Personal account passwords ------------------------------------------
+
+const PBKDF2_ROUNDS = 210_000;
+
+async function pbkdf2(
+  password: string,
+  salt: Uint8Array<ArrayBuffer>,
+  rounds: number,
+): Promise<Uint8Array> {
+  const key = await crypto.subtle.importKey("raw", encoder.encode(password), "PBKDF2", false, [
+    "deriveBits",
+  ]);
+  const bits = await crypto.subtle.deriveBits(
+    { name: "PBKDF2", hash: "SHA-256", salt, iterations: rounds },
+    key,
+    256,
+  );
+  return new Uint8Array(bits);
+}
+
+function fromBase64Url(text: string): Uint8Array<ArrayBuffer> {
+  const binary = atob(text.replace(/-/g, "+").replace(/_/g, "/"));
+  return Uint8Array.from(binary, (c) => c.charCodeAt(0));
+}
+
+/** `pbkdf2$<rounds>$<salt>$<hash>`, safe to store. */
+export async function hashPassword(password: string): Promise<string> {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const hash = await pbkdf2(password, salt, PBKDF2_ROUNDS);
+  return `pbkdf2$${PBKDF2_ROUNDS}$${toBase64Url(salt)}$${toBase64Url(hash)}`;
+}
+
+/**
+ * Checks a password against a stored hash in constant time. With no stored
+ * hash (unknown username) it still does the same work, so response time
+ * doesn't reveal which usernames exist.
+ */
+export async function verifyPassword(password: string, stored: string | null): Promise<boolean> {
+  const parts = stored?.split("$") ?? [];
+  const valid = parts.length === 4 && parts[0] === "pbkdf2" && /^\d{5,7}$/.test(parts[1]);
+  const rounds = valid ? Number(parts[1]) : PBKDF2_ROUNDS;
+  const salt = valid ? fromBase64Url(parts[2]) : new Uint8Array(16);
+  const expected = valid ? fromBase64Url(parts[3]) : new Uint8Array(32);
+  const actual = await pbkdf2(password, salt, rounds);
+  return equalBytes(actual, expected) && valid;
+}
+
+const TEMP_ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789"; // no 0/o, 1/l/i
+
+/** A random one-time password like `k7mq-x2fh-9tnp-c4wr` (~79 bits). */
+export function temporaryPassword(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  const chars = [...bytes].map((b) => TEMP_ALPHABET[b % TEMP_ALPHABET.length]);
+  return [0, 4, 8, 12].map((i) => chars.slice(i, i + 4).join("")).join("-");
 }

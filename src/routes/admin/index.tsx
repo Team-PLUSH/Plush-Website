@@ -1,14 +1,16 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
-import { adminLogout, getAdminData, type AdminDoc } from "@/plush/admin.functions";
+import { adminLogout, getAdminData, type AdminResult } from "@/plush/admin.functions";
+import { AccountsPanel, ActivityPanel, ChangePasswordForm } from "@/plush/admin/AccountPanels";
 import { ImportPanel, LoginForm, Overview } from "@/plush/admin/Panels";
 import { ExpensesTab, IncomeTab, ItemsTab, MembersTab, OrdersTab } from "@/plush/admin/sections";
 
 // Private team admin: inventory, orders, expenses, grants & sponsorships, and
-// membership fees. The sign-in check and all data live server-side (see
-// src/plush/admin.functions.ts); this page only renders what a signed-in
-// session is sent. Kept out of search engines with noindex.
+// membership fees, with a personal account per person. Sign-in, roles and all
+// data live server-side (see src/plush/admin.functions.ts); this page only
+// renders what the signed-in person is allowed to see. Kept out of search
+// engines with noindex.
 
 export const Route = createFileRoute("/admin/")({
   head: () => ({
@@ -35,8 +37,12 @@ const TABS = [
   { id: "expenses", label: "Expenses" },
   { id: "income", label: "Grants & sponsors" },
   { id: "members", label: "Member fees" },
+  { id: "activity", label: "Activity" },
   { id: "import", label: "Import / backup" },
+  { id: "accounts", label: "Accounts" },
 ] as const;
+
+const ROLE_NAME = { owner: "Owner", editor: "Editor", viewer: "Viewer" } as const;
 type TabId = (typeof TABS)[number]["id"];
 
 function AdminPage() {
@@ -50,15 +56,16 @@ function AdminPage() {
             <ThemeToggle />
           </div>
         )}
-        {result.status === "ok" && <Dashboard doc={result.doc} />}
+        {result.status === "ok" && <Dashboard data={result} />}
         {result.status === "signed-out" && <LoginForm />}
+        {result.status === "change-password" && <ChangePasswordForm me={result.me} forced />}
         {result.status === "not-configured" && (
           <Notice title="Not set up yet">
             {result.missing.includes("password") && (
               <>
-                Set <code>ADMIN_PASSWORD</code> (12+ characters) and{" "}
-                <code>ADMIN_SESSION_SECRET</code> (32+ characters) in the Vercel project&apos;s
-                environment variables.{" "}
+                Set <code>ADMIN_PASSWORD</code> (12+ characters; the built-in <code>owner</code>{" "}
+                sign-in) and <code>ADMIN_SESSION_SECRET</code> (32+ characters) in the Vercel
+                project&apos;s environment variables.{" "}
               </>
             )}
             {result.missing.includes("database") && (
@@ -86,11 +93,17 @@ function Notice({ title, children }: { title: string; children: React.ReactNode 
   );
 }
 
-function Dashboard({ doc }: { doc: AdminDoc }) {
+function Dashboard({ data }: { data: Extract<AdminResult, { status: "ok" }> }) {
+  const { doc, me, activity, accounts, contactsHidden } = data;
   const router = useRouter();
   const [tab, setTab] = useState<TabId>("overview");
-
   const [confirmAll, setConfirmAll] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const canEdit = me.role !== "viewer";
+  const isOwner = me.role === "owner";
+  const tabs = TABS.filter(
+    (t) => (t.id !== "accounts" || isOwner) && (t.id !== "import" || canEdit),
+  );
 
   async function signOut(everywhere = false) {
     await adminLogout({ data: { everywhere } });
@@ -103,6 +116,7 @@ function Dashboard({ doc }: { doc: AdminDoc }) {
     expenses: doc.expenses.length,
     income: doc.income.length,
     members: doc.members.length,
+    accounts: accounts?.length,
   };
 
   return (
@@ -117,21 +131,43 @@ function Dashboard({ doc }: { doc: AdminDoc }) {
             members
           </p>
           <p className="text-xs text-muted-foreground">
+            Signed in as <strong>{me.name}</strong> · {ROLE_NAME[me.role]}
+            {" · "}
             {doc.updatedAt
-              ? `Last change ${new Date(doc.updatedAt).toLocaleString("en-CA")}`
-              : "Nothing saved yet"}
+              ? `last change ${new Date(doc.updatedAt).toLocaleString("en-CA")}`
+              : "nothing saved yet"}
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <ThemeToggle />
+          {!me.builtin && (
+            <button
+              type="button"
+              onClick={() => setShowPassword((v) => !v)}
+              aria-expanded={showPassword}
+              className="pa-btn is-light text-sm"
+            >
+              My password
+            </button>
+          )}
           <button
             type="button"
             onClick={() => (confirmAll ? signOut(true) : setConfirmAll(true))}
             onBlur={() => setConfirmAll(false)}
             className="pa-btn is-light text-sm"
-            title="Ends every signed-in session, on every device"
+            title={
+              isOwner
+                ? "Ends every signed-in session for the whole team"
+                : "Ends your sessions on every device"
+            }
           >
-            {confirmAll ? "Sure? Sign out all" : "Sign out everywhere"}
+            {confirmAll
+              ? isOwner
+                ? "Sure? Sign out the whole team"
+                : "Sure? Sign out all my devices"
+              : isOwner
+                ? "Sign out everyone"
+                : "Sign out everywhere"}
           </button>
           <button type="button" onClick={() => signOut()} className="pa-btn is-light text-sm">
             Sign out
@@ -139,8 +175,19 @@ function Dashboard({ doc }: { doc: AdminDoc }) {
         </div>
       </header>
 
+      {showPassword && (
+        <div className="mt-4">
+          <ChangePasswordForm me={me} forced={false} onDone={() => setShowPassword(false)} />
+        </div>
+      )}
+      {contactsHidden && (
+        <p className="pa-hand mt-3 text-muted-foreground">
+          view-only account <span className="pa-star">✦</span> member contact details are hidden
+        </p>
+      )}
+
       <nav role="tablist" aria-label="Admin sections" className="pa-tabs mt-6">
-        {TABS.map((t) => (
+        {tabs.map((t) => (
           <button
             key={t.id}
             type="button"
@@ -157,12 +204,16 @@ function Dashboard({ doc }: { doc: AdminDoc }) {
 
       <div className="mt-6" role="tabpanel">
         {tab === "overview" && <Overview doc={doc} />}
-        {tab === "items" && <ItemsTab doc={doc} />}
-        {tab === "orders" && <OrdersTab doc={doc} />}
-        {tab === "expenses" && <ExpensesTab doc={doc} />}
-        {tab === "income" && <IncomeTab doc={doc} />}
-        {tab === "members" && <MembersTab doc={doc} />}
-        {tab === "import" && <ImportPanel doc={doc} />}
+        {tab === "items" && <ItemsTab doc={doc} canEdit={canEdit} />}
+        {tab === "orders" && <OrdersTab doc={doc} canEdit={canEdit} />}
+        {tab === "expenses" && <ExpensesTab doc={doc} canEdit={canEdit} />}
+        {tab === "income" && <IncomeTab doc={doc} canEdit={canEdit} />}
+        {tab === "members" && (
+          <MembersTab doc={doc} canEdit={canEdit} contactsHidden={contactsHidden} />
+        )}
+        {tab === "activity" && <ActivityPanel entries={activity} />}
+        {tab === "import" && canEdit && <ImportPanel doc={doc} isOwner={isOwner} />}
+        {tab === "accounts" && accounts && <AccountsPanel accounts={accounts} me={me} />}
       </div>
     </>
   );

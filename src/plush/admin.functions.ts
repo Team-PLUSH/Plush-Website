@@ -9,12 +9,36 @@ import {
 import { z } from "zod";
 
 import {
+  activity,
+  BUILTIN_OWNER,
+  endSession,
+  endSessionsFor,
+  findByUsername,
+  getAccount,
+  listAccounts,
+  logActivity,
+  putAccount,
+  readActivity,
+  removeAccount,
+  ROLES,
+  sessionAccountId,
+  startSession,
+  toPublic,
+  type Account,
+  type ActivityEntry,
+  type PublicAccount,
+  type Role,
+} from "./admin-accounts";
+import {
   ADMIN_COOKIE,
   ADMIN_SESSION_SECONDS,
   adminConfig,
   createSession,
+  hashPassword,
   passwordMatches,
   readSessionToken,
+  temporaryPassword,
+  verifyPassword,
 } from "./admin-auth";
 import {
   AdminChangeError,
@@ -25,58 +49,58 @@ import {
   newId,
   updateAdminDoc,
   type AdminDoc,
+  type Collection,
 } from "./admin-store";
 import { isRateLimited } from "./rate-limit";
-import { upstashConfig, upstashPipeline } from "./upstash";
+import { upstashConfig, type UpstashConfig } from "./upstash";
 
-// Team admin (inventory, orders, expenses, income, membership fees). None of this data is in the
-// repo (the repo is public): it lives in the project's Upstash Redis and is only
-// sent to a browser holding a valid signed session cookie. See
-// src/plush/admin-auth.ts for the env vars the sign-in needs.
+// Team admin (inventory, orders, expenses, income, membership fees). None of
+// this data is in the repo (the repo is public): it lives in the project's
+// Upstash Redis and is only sent to a browser holding a live session. Every
+// call checks the caller's role here, on the server. See admin-auth.ts for the
+// env vars and admin-accounts.ts for the roles.
 
 export type { AdminDoc, Collection, Expense, Income, Item, Member, Order } from "./admin-store";
+export type { ActivityEntry, PublicAccount, Role } from "./admin-accounts";
+
+export type Me = Pick<PublicAccount, "id" | "name" | "username" | "role"> & { builtin: boolean };
 
 export type AdminResult =
-  | { status: "ok"; doc: AdminDoc }
+  | {
+      status: "ok";
+      doc: AdminDoc;
+      me: Me;
+      activity: ActivityEntry[];
+      accounts: PublicAccount[] | null;
+      contactsHidden: boolean;
+    }
   | { status: "signed-out" }
+  | { status: "change-password"; me: Me }
   | { status: "not-configured"; missing: ("password" | "database")[] }
   | { status: "storage-error" };
 
 export type LoginResult =
   { ok: true } | { ok: false; reason: "wrong" | "limited" | "not-configured" };
 
-export type MutationResult =
-  | { ok: true; added?: number }
-  | {
-      ok: false;
-      reason: "signed-out" | "not-configured" | "invalid" | "storage-error";
-      message?: string;
-    };
+type Failure = {
+  ok: false;
+  reason: "signed-out" | "not-configured" | "forbidden" | "invalid" | "storage-error";
+  message?: string;
+};
+export type MutationResult = { ok: true; added?: number } | Failure;
+export type AccountResult = { ok: true; temporaryPassword?: string } | Failure;
 
-const LOGIN_LIMITS = { bucket: "admin-login", max: 10, windowMs: 15 * 60 * 1000 };
+const LOGIN_LIMITS_IP = { bucket: "admin-login", max: 10, windowMs: 15 * 60 * 1000 };
+// Per-username cap on top of the per-IP one, against guessing from many IPs.
+// Set well above the per-IP cap so one person can't lock someone else out
+// (the built-in username "owner" is public).
+const LOGIN_LIMITS_USER = { bucket: "admin-login-user", max: 50, windowMs: 15 * 60 * 1000 };
+const MIN_PASSWORD = 12;
 
 /** Admin responses carry private data: never cache them anywhere. */
 function noStore() {
   setResponseHeader("Cache-Control", "no-store, private");
   setResponseHeader("X-Robots-Tag", "noindex, nofollow");
-}
-
-// Live sessions: id → expiry (ms). A cookie only counts if its id is here, so
-// signing out (or "sign out everywhere") ends a session for good.
-const SESSIONS_KEY = "plush:admin:sessions";
-
-async function signedIn(): Promise<boolean> {
-  const cfg = adminConfig();
-  const db = upstashConfig();
-  if (!cfg || !db) return false;
-  const session = await readSessionToken(getCookie(ADMIN_COOKIE), cfg);
-  if (!session) return false;
-  try {
-    const [live] = await upstashPipeline(db, [["HEXISTS", SESSIONS_KEY, session.id]]);
-    return Number(live) === 1;
-  } catch {
-    return false; // can't check: treat as signed out
-  }
 }
 
 function missingConfig(): ("password" | "database")[] {
@@ -86,14 +110,69 @@ function missingConfig(): ("password" | "database")[] {
   return missing;
 }
 
+type Caller = { account: PublicAccount; sessionId: string; db: UpstashConfig };
+
+/** Who is calling, from a live session; null if signed out or disabled. */
+async function caller(): Promise<Caller | null> {
+  const cfg = adminConfig();
+  const db = upstashConfig();
+  if (!cfg || !db) return null;
+  const session = await readSessionToken(getCookie(ADMIN_COOKIE), cfg);
+  if (!session) return null;
+  try {
+    const accountId = await sessionAccountId(db, session.id);
+    if (!accountId) return null;
+    if (accountId === BUILTIN_OWNER.id)
+      return { account: BUILTIN_OWNER, sessionId: session.id, db };
+    const account = await getAccount(db, accountId);
+    if (!account || account.disabled) return null;
+    return { account: toPublic(account), sessionId: session.id, db };
+  } catch {
+    return null; // can't check: treat as signed out
+  }
+}
+
+const RANK: Record<Role, number> = { viewer: 0, editor: 1, owner: 2 };
+const can = (who: PublicAccount, role: Role) => RANK[who.role] >= RANK[role];
+
+function me(account: PublicAccount): Me {
+  return {
+    id: account.id,
+    name: account.name,
+    username: account.username,
+    role: account.role,
+    builtin: account.id === BUILTIN_OWNER.id,
+  };
+}
+
+/** Member contact emails are only sent to owners and editors. */
+function forRole(doc: AdminDoc, who: PublicAccount): AdminDoc {
+  if (can(who, "editor")) return doc;
+  return { ...doc, members: doc.members.map((m) => ({ ...m, contactEmail: null })) };
+}
+
 export const getAdminData = createServerFn({ method: "GET" }).handler(
   async (): Promise<AdminResult> => {
     noStore();
     const missing = missingConfig();
     if (missing.length > 0) return { status: "not-configured", missing };
-    if (!(await signedIn())) return { status: "signed-out" };
+    const who = await caller();
+    if (!who) return { status: "signed-out" };
+    if (who.account.mustChangePassword) return { status: "change-password", me: me(who.account) };
     try {
-      return { status: "ok", doc: await loadAdminDoc(upstashConfig()!) };
+      const [doc, log, accounts] = await Promise.all([
+        loadAdminDoc(who.db),
+        readActivity(who.db),
+        can(who.account, "owner") ? listAccounts(who.db) : Promise.resolve(null),
+      ]);
+      return {
+        status: "ok",
+        doc: forRole(doc, who.account),
+        me: me(who.account),
+        activity: log,
+        accounts: accounts ? [BUILTIN_OWNER, ...accounts.map(toPublic)] : null,
+        contactsHidden: !can(who.account, "editor"),
+      };
     } catch (error) {
       console.error(`admin: load failed (${String(error).slice(0, 300)})`);
       return { status: "storage-error" };
@@ -102,7 +181,14 @@ export const getAdminData = createServerFn({ method: "GET" }).handler(
 );
 
 export const adminLogin = createServerFn({ method: "POST" })
-  .validator((data: unknown) => z.object({ password: z.string().max(200) }).parse(data))
+  .validator((data: unknown) =>
+    z
+      .object({
+        username: z.string().trim().toLowerCase().max(60),
+        password: z.string().max(200),
+      })
+      .parse(data),
+  )
   .handler(async ({ data }): Promise<LoginResult> => {
     noStore();
     const cfg = adminConfig();
@@ -110,26 +196,31 @@ export const adminLogin = createServerFn({ method: "POST" })
     if (!cfg || !db) return { ok: false, reason: "not-configured" };
 
     const ip = getRequestIP({ xForwardedFor: true }) ?? "unknown";
-    if (await isRateLimited(ip, LOGIN_LIMITS)) return { ok: false, reason: "limited" };
+    if (
+      (await isRateLimited(ip, LOGIN_LIMITS_IP)) ||
+      (await isRateLimited(data.username || "(blank)", LOGIN_LIMITS_USER))
+    ) {
+      return { ok: false, reason: "limited" };
+    }
 
-    if (!(await passwordMatches(data.password, cfg))) {
+    let account: PublicAccount | null = null;
+    if (data.username === BUILTIN_OWNER.username) {
+      if (await passwordMatches(data.password, cfg)) account = BUILTIN_OWNER;
+    } else {
+      const found = await findByUsername(db, data.username);
+      // verifyPassword does the same work for unknown users (no timing hint).
+      const okPassword = await verifyPassword(data.password, found?.hash ?? null);
+      if (found && okPassword && !found.disabled) account = toPublic(found);
+    }
+
+    if (!account) {
       console.warn(JSON.stringify({ event: "admin-login-failed", at: new Date().toISOString() }));
       return { ok: false, reason: "wrong" };
     }
 
     const session = await createSession(cfg);
-    const now = Date.now();
-    const [existing] = await upstashPipeline(db, [["HGETALL", SESSIONS_KEY]]);
-    const expired: string[] = [];
-    if (Array.isArray(existing)) {
-      for (let i = 0; i + 1 < existing.length; i += 2) {
-        if (Number(existing[i + 1]) <= now) expired.push(String(existing[i]));
-      }
-    }
-    await upstashPipeline(db, [
-      ...(expired.length ? [["HDEL", SESSIONS_KEY, ...expired]] : []),
-      ["HSET", SESSIONS_KEY, session.id, session.expires],
-    ]);
+    await startSession(db, session.id, account.id, session.expires);
+    await logActivity(db, activity(account, "signed in", ""));
     setCookie(ADMIN_COOKIE, session.token, {
       httpOnly: true,
       secure: true,
@@ -149,19 +240,174 @@ export const adminLogout = createServerFn({ method: "POST" })
   )
   .handler(async ({ data }) => {
     noStore();
-    const cfg = adminConfig();
-    const db = upstashConfig();
-    if (cfg && db) {
-      const session = await readSessionToken(getCookie(ADMIN_COOKIE), cfg);
-      // Only a live session can end sessions, so a stranger can't sign the team out.
-      if (session && (await signedIn())) {
-        await upstashPipeline(db, [
-          data.everywhere ? ["DEL", SESSIONS_KEY] : ["HDEL", SESSIONS_KEY, session.id],
-        ]).catch(() => undefined);
+    const who = await caller();
+    if (who) {
+      try {
+        if (!data.everywhere) {
+          await endSession(who.db, who.sessionId);
+        } else if (can(who.account, "owner")) {
+          // An owner's "everywhere" signs the whole team out.
+          await endSessionsFor(who.db, null);
+          await logActivity(who.db, activity(who.account, "signed everyone out", ""));
+        } else {
+          await endSessionsFor(who.db, who.account.id);
+        }
+      } catch {
+        // cookie is still cleared below
       }
     }
     deleteCookie(ADMIN_COOKIE, { httpOnly: true, secure: true, sameSite: "strict", path: "/" });
     return { ok: true as const };
+  });
+
+export const changeMyPassword = createServerFn({ method: "POST" })
+  .validator((data: unknown) =>
+    z.object({ current: z.string().max(200), next: z.string().max(200) }).parse(data),
+  )
+  .handler(async ({ data }): Promise<AccountResult> => {
+    noStore();
+    const who = await caller();
+    if (!who) return { ok: false, reason: "signed-out" };
+    if (who.account.id === BUILTIN_OWNER.id) {
+      return {
+        ok: false,
+        reason: "invalid",
+        message: "The shared owner password is changed in Vercel (ADMIN_PASSWORD).",
+      };
+    }
+    const account = await getAccount(who.db, who.account.id);
+    if (!account || !(await verifyPassword(data.current, account.hash))) {
+      return { ok: false, reason: "invalid", message: "Your current password isn't right." };
+    }
+    if (data.next.length < MIN_PASSWORD) {
+      return {
+        ok: false,
+        reason: "invalid",
+        message: `Use at least ${MIN_PASSWORD} characters.`,
+      };
+    }
+    if (data.next === data.current) {
+      return { ok: false, reason: "invalid", message: "Pick a new password." };
+    }
+    await putAccount(who.db, {
+      ...account,
+      hash: await hashPassword(data.next),
+      mustChangePassword: false,
+    });
+    await endSessionsFor(who.db, account.id, who.sessionId); // other devices signed out
+    await logActivity(who.db, activity(who.account, "changed their password", ""));
+    return { ok: true };
+  });
+
+const usernameSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^[a-z0-9._-]{3,40}$/, "3–40 letters, numbers, dots, dashes or underscores");
+
+const accountOpSchema = z.discriminatedUnion("op", [
+  z.object({
+    op: z.literal("create"),
+    name: z.string().trim().min(1, "Required").max(80),
+    username: usernameSchema,
+    role: z.enum(ROLES),
+  }),
+  z.object({ op: z.literal("resetPassword"), id: z.string().max(64) }),
+  z.object({ op: z.literal("setRole"), id: z.string().max(64), role: z.enum(ROLES) }),
+  z.object({ op: z.literal("setDisabled"), id: z.string().max(64), disabled: z.boolean() }),
+  z.object({ op: z.literal("delete"), id: z.string().max(64) }),
+]);
+export type AccountOp = z.input<typeof accountOpSchema>;
+
+export const manageAccounts = createServerFn({ method: "POST" })
+  .validator((data: unknown) => z.object({ op: z.string() }).passthrough().parse(data))
+  .handler(async ({ data }): Promise<AccountResult> => {
+    noStore();
+    const who = await caller();
+    if (!who) return { ok: false, reason: "signed-out" };
+    if (!can(who.account, "owner") || who.account.mustChangePassword) {
+      return { ok: false, reason: "forbidden", message: "Only owners can manage accounts." };
+    }
+    const parsed = accountOpSchema.safeParse(data);
+    if (!parsed.success) return { ok: false, reason: "invalid", message: describe(parsed.error) };
+    const op = parsed.data;
+    const { db } = who;
+
+    if (op.op === "create") {
+      if (op.username === BUILTIN_OWNER.username || (await findByUsername(db, op.username))) {
+        return { ok: false, reason: "invalid", message: "That username is taken." };
+      }
+      const password = temporaryPassword();
+      const account: Account = {
+        id: newId(),
+        username: op.username,
+        name: op.name,
+        role: op.role,
+        hash: await hashPassword(password),
+        disabled: false,
+        mustChangePassword: true,
+        createdAt: new Date().toISOString(),
+        createdBy: who.account.name,
+      };
+      await putAccount(db, account);
+      await logActivity(db, activity(who.account, "created account", `${op.name} (${op.role})`));
+      return { ok: true, temporaryPassword: password };
+    }
+
+    if (op.id === BUILTIN_OWNER.id) {
+      return {
+        ok: false,
+        reason: "invalid",
+        message: "The built-in owner is managed in Vercel (ADMIN_PASSWORD).",
+      };
+    }
+    if (op.id === who.account.id && op.op !== "resetPassword") {
+      return {
+        ok: false,
+        reason: "invalid",
+        message: "You can't change your own role or access. Ask another owner.",
+      };
+    }
+    const target = await getAccount(db, op.id);
+    if (!target) return { ok: false, reason: "invalid", message: "That account no longer exists." };
+
+    switch (op.op) {
+      case "resetPassword": {
+        const password = temporaryPassword();
+        await putAccount(db, {
+          ...target,
+          hash: await hashPassword(password),
+          mustChangePassword: true,
+        });
+        await endSessionsFor(db, target.id);
+        await logActivity(db, activity(who.account, "reset password for", target.name));
+        return { ok: true, temporaryPassword: password };
+      }
+      case "setRole":
+        await putAccount(db, { ...target, role: op.role });
+        await logActivity(
+          db,
+          activity(who.account, "changed role", `${target.name}: ${target.role} → ${op.role}`),
+        );
+        return { ok: true };
+      case "setDisabled":
+        await putAccount(db, { ...target, disabled: op.disabled });
+        if (op.disabled) await endSessionsFor(db, target.id);
+        await logActivity(
+          db,
+          activity(
+            who.account,
+            op.disabled ? "turned off account" : "turned on account",
+            target.name,
+          ),
+        );
+        return { ok: true };
+      case "delete":
+        await removeAccount(db, target.id);
+        await endSessionsFor(db, target.id);
+        await logActivity(db, activity(who.account, "deleted account", target.name));
+        return { ok: true };
+    }
   });
 
 const collection = z.enum(["items", "orders", "expenses", "income", "members"]);
@@ -201,13 +447,37 @@ const importSchema = z
   })
   .passthrough();
 
+const NOUN: Record<Collection, string> = {
+  items: "item",
+  orders: "order",
+  expenses: "expense",
+  income: "grant/sponsor entry",
+  members: "member",
+};
+
+/** A short, readable name for a row, for the activity log. */
+function label(collection: Collection, row: Record<string, unknown> | undefined): string {
+  if (!row) return NOUN[collection];
+  const name =
+    row.item ?? row.description ?? row.name ?? row.source ?? row.supplier ?? NOUN[collection];
+  return `${NOUN[collection]}: ${String(name).slice(0, 80)}`;
+}
+
 export const mutateAdminData = createServerFn({ method: "POST" })
   .validator((data: unknown) => mutationSchema.parse(data))
   .handler(async ({ data }): Promise<MutationResult> => {
     noStore();
     if (missingConfig().length > 0) return { ok: false, reason: "not-configured" };
-    if (!(await signedIn())) return { ok: false, reason: "signed-out" };
-    const db = upstashConfig()!;
+    const who = await caller();
+    if (!who) return { ok: false, reason: "signed-out" };
+    if (!can(who.account, "editor") || who.account.mustChangePassword) {
+      return { ok: false, reason: "forbidden", message: "Your account can only view." };
+    }
+    if (data.op === "import" && data.mode === "replace" && !can(who.account, "owner")) {
+      return { ok: false, reason: "forbidden", message: "Only owners can replace whole lists." };
+    }
+    const { db, account } = who;
+    const now = new Date().toISOString();
 
     try {
       if (data.op === "save") {
@@ -215,25 +485,58 @@ export const mutateAdminData = createServerFn({ method: "POST" })
         if (!parsed.success) {
           return { ok: false, reason: "invalid", message: describe(parsed.error) };
         }
-        await updateAdminDoc(db, (doc) => {
-          const rows = doc[data.collection] as { id: string }[];
-          if (data.id === null) {
-            rows.push({ ...parsed.data, id: newId() });
-          } else {
-            const index = rows.findIndex((r) => r.id === data.id);
-            if (index < 0) throw new AdminChangeError("Someone else deleted that row.");
-            rows[index] = { ...parsed.data, id: data.id };
-          }
-          return doc;
-        });
+        await updateAdminDoc(
+          db,
+          (doc) => {
+            const rows = doc[data.collection] as Record<string, unknown>[];
+            if (data.id === null) {
+              rows.push({ ...parsed.data, id: newId(), createdBy: account.name, createdAt: now });
+            } else {
+              const index = rows.findIndex((r) => r.id === data.id);
+              if (index < 0) throw new AdminChangeError("Someone else deleted that row.");
+              const before = rows[index];
+              rows[index] = {
+                ...parsed.data,
+                id: data.id,
+                createdBy: before.createdBy,
+                createdAt: before.createdAt,
+                updatedBy: account.name,
+                updatedAt: now,
+              };
+            }
+            return doc;
+          },
+          () =>
+            activity(
+              account,
+              data.id === null ? "added" : "edited",
+              label(data.collection, parsed.data as Record<string, unknown>),
+            ),
+        );
         return { ok: true };
       }
 
       if (data.op === "delete") {
-        await updateAdminDoc(db, (doc) => {
-          const rows = doc[data.collection] as { id: string }[];
-          return { ...doc, [data.collection]: rows.filter((r) => r.id !== data.id) };
-        });
+        let removed: Record<string, unknown> | undefined;
+        await updateAdminDoc(
+          db,
+          (doc) => {
+            const rows = doc[data.collection] as Record<string, unknown>[];
+            removed = rows.find((r) => r.id === data.id);
+            return { ...doc, [data.collection]: rows.filter((r) => r.id !== data.id) };
+          },
+          (before) =>
+            activity(
+              account,
+              "deleted",
+              label(
+                data.collection,
+                (before[data.collection] as Record<string, unknown>[]).find(
+                  (r) => r.id === data.id,
+                ) ?? removed,
+              ),
+            ),
+        );
         return { ok: true };
       }
 
@@ -248,21 +551,34 @@ export const mutateAdminData = createServerFn({ method: "POST" })
       const incoming = Object.fromEntries(
         COLLECTIONS.map((c) => [
           c,
-          (parsed.data[c] as object[]).map((r) => ({ ...r, id: newId() })),
+          (parsed.data[c] as object[]).map((r) => ({
+            ...r,
+            id: newId(),
+            createdBy: account.name,
+            createdAt: now,
+          })),
         ]),
-      ) as Record<(typeof COLLECTIONS)[number], { id: string }[]>;
+      ) as unknown as Record<(typeof COLLECTIONS)[number], { id: string }[]>;
       const added = COLLECTIONS.reduce((n, c) => n + incoming[c].length, 0);
       if (added === 0) return { ok: false, reason: "invalid", message: "Nothing to import." };
+      const summary = COLLECTIONS.filter((c) => incoming[c].length)
+        .map((c) => `${incoming[c].length} ${c}`)
+        .join(", ");
 
-      await updateAdminDoc(db, (doc) => {
-        const next = { ...doc };
-        for (const c of COLLECTIONS) {
-          // Replace only swaps the lists the import actually contains.
-          const keep = data.mode === "replace" && incoming[c].length > 0 ? [] : doc[c];
-          (next as Record<string, unknown>)[c] = [...keep, ...incoming[c]];
-        }
-        return next;
-      });
+      await updateAdminDoc(
+        db,
+        (doc) => {
+          const next = { ...doc };
+          for (const c of COLLECTIONS) {
+            // Replace only swaps the lists the import actually contains.
+            const keep = data.mode === "replace" && incoming[c].length > 0 ? [] : doc[c];
+            (next as Record<string, unknown>)[c] = [...keep, ...incoming[c]];
+          }
+          return next;
+        },
+        () =>
+          activity(account, data.mode === "replace" ? "replaced with import" : "imported", summary),
+      );
       return { ok: true, added };
     } catch (error) {
       if (error instanceof AdminChangeError) {

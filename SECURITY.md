@@ -22,13 +22,24 @@ and membership fees (member names, payment status and optional contact emails).
 None of that data is in this repository: it lives in the project's Upstash
 Redis store and is only sent to a signed-in browser.
 
-- One shared password (`ADMIN_PASSWORD`, 12+ characters), checked in constant
-  time; sign-in is limited to 10 attempts per IP per 15 minutes, counted in
-  Redis.
+- Personal accounts with roles, checked on the server for every request:
+  **owner** (everything, including accounts), **editor** (add / edit / delete
+  records), **viewer** (read only). Member contact emails are withheld from
+  viewers' server replies, not just hidden on the page. Passwords are PBKDF2-
+  SHA256 hashes (210,000 rounds, per-password salt); new people get a one-time
+  password and must choose their own at first sign-in. The built-in `owner`
+  sign-in uses `ADMIN_PASSWORD` so the team can't lock itself out.
+- Sign-in is limited to 10 attempts per IP and 50 per username per 15 minutes,
+  counted in Redis; unknown usernames take the same time and get the same
+  message as wrong passwords.
 - Sessions are an HMAC-signed `__Host-` cookie (HttpOnly, Secure,
   SameSite=Strict, 12 h) whose random id must also be live in Redis, so signing
-  out really ends a session and "Sign out everywhere" ends all of them.
-  Rotating `ADMIN_PASSWORD` or `ADMIN_SESSION_SECRET` also signs everyone out.
+  out, resetting a password, or turning an account off ends sessions at once;
+  an owner's "Sign out everyone" ends all of them. Rotating `ADMIN_PASSWORD` or
+  `ADMIN_SESSION_SECRET` also signs everyone out.
+- Every change, sign-in and account action is recorded with the person's name
+  in an activity log (last 1,000 entries), written in the same atomic step as
+  the change itself; rows also carry who added and last edited them.
 - Every write is schema-validated (zod; unknown fields dropped, sizes capped)
   and saved with an atomic compare-and-set; the last 50 versions are kept as
   backups under `plush:admin:v1:history`.

@@ -18,6 +18,8 @@ import { itemSavings, memberOwing, memberStatus } from "./calc";
 import { mixedMoney, money, round2, todayIso, totalsByCurrency } from "./format";
 import { RecordTab, type Field, type FormValues } from "./RecordTab";
 
+export type SectionProps = { doc: AdminDoc; canEdit: boolean; contactsHidden?: boolean };
+
 const num = (v: unknown) => (typeof v === "number" ? v : 0);
 const byDateDesc = (a: { date?: string | null }, b: { date?: string | null }) =>
   (b.date ?? "").localeCompare(a.date ?? "");
@@ -130,10 +132,11 @@ const itemFields: Field[] = [
   { key: "note", label: "Notes", kind: "textarea" },
 ];
 
-export function ItemsTab({ doc }: { doc: AdminDoc }) {
+export function ItemsTab({ doc, canEdit }: SectionProps) {
   return (
     <RecordTab<Item>
       collection="items"
+      canEdit={canEdit}
       title="Inventory"
       noun="item"
       rows={doc.items}
@@ -262,10 +265,11 @@ const orderFields: Field[] = [
   { key: "notes", label: "Notes", kind: "textarea" },
 ];
 
-export function OrdersTab({ doc }: { doc: AdminDoc }) {
+export function OrdersTab({ doc, canEdit }: SectionProps) {
   return (
     <RecordTab<Order>
       collection="orders"
+      canEdit={canEdit}
       title="Orders & receipts"
       noun="order"
       rows={doc.orders}
@@ -360,10 +364,11 @@ const expenseFields: Field[] = [
   { key: "notes", label: "Notes", kind: "textarea" },
 ];
 
-export function ExpensesTab({ doc }: { doc: AdminDoc }) {
+export function ExpensesTab({ doc, canEdit }: SectionProps) {
   return (
     <RecordTab<Expense>
       collection="expenses"
+      canEdit={canEdit}
       title="Expenses"
       noun="expense"
       rows={doc.expenses}
@@ -498,10 +503,11 @@ const incomeFields: Field[] = [
   { key: "notes", label: "Notes", kind: "textarea" },
 ];
 
-export function IncomeTab({ doc }: { doc: AdminDoc }) {
+export function IncomeTab({ doc, canEdit }: SectionProps) {
   return (
     <RecordTab<Income>
       collection="income"
+      canEdit={canEdit}
       title="Grants & sponsorships"
       noun="entry"
       rows={doc.income}
@@ -617,12 +623,13 @@ const memberFields: Field[] = [
   { key: "notes", label: "Notes", kind: "textarea" },
 ];
 
-export function MembersTab({ doc }: { doc: AdminDoc }) {
+export function MembersTab({ doc, canEdit, contactsHidden }: SectionProps) {
   const seasons = [...new Set(doc.members.map((m) => m.season))].sort().reverse();
   const latestSeason = seasons[0] ?? "";
   return (
     <RecordTab<Member>
       collection="members"
+      canEdit={canEdit}
       title="Membership fees"
       noun="member"
       rows={doc.members}
@@ -678,7 +685,11 @@ export function MembersTab({ doc }: { doc: AdminDoc }) {
           render: (m) => (
             <>
               <div>{m.name}</div>
-              {small([m.role, m.contactEmail].filter(Boolean).join(" · "))}
+              {small(
+                [m.role, contactsHidden ? "contact hidden for viewers" : m.contactEmail]
+                  .filter(Boolean)
+                  .join(" · "),
+              )}
             </>
           ),
         },
