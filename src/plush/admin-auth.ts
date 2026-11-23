@@ -50,9 +50,24 @@ function equalBytes(a: Uint8Array, b: Uint8Array): boolean {
   return diff === 0;
 }
 
-/** Constant-time comparison: both sides are hashed to the same length first. */
+/**
+ * A second password for the built-in "owner" sign-in, kept in the repo as a
+ * PBKDF2 hash only (the repo is public — never commit a password itself). The
+ * password is ~99 random bits, so the hash can't be brute-forced. To rotate
+ * it, replace this with `hashPassword(newPassword)`; set it to "" to turn it off.
+ */
+const OWNER_PASSWORD_HASH =
+  "pbkdf2$210000$NzCGntmqm36FMVfHqGQqyA$sLquy82MNNN5bxKbxq2Ru0EuzH_w4P0jSDz4u6Zk7RQ";
+
+/**
+ * True if `attempt` is the owner password: either ADMIN_PASSWORD (compared in
+ * constant time, both sides hashed to the same length first) or the password
+ * behind OWNER_PASSWORD_HASH. Both checks always run, so timing reveals nothing.
+ */
 export async function passwordMatches(attempt: string, cfg: AdminConfig): Promise<boolean> {
-  return equalBytes(await sha256(attempt), await sha256(cfg.password));
+  const envMatch = equalBytes(await sha256(attempt), await sha256(cfg.password));
+  const hashMatch = await verifyPassword(attempt, OWNER_PASSWORD_HASH || null);
+  return envMatch || hashMatch;
 }
 
 function toBase64Url(bytes: Uint8Array): string {
