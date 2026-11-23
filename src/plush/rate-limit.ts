@@ -1,4 +1,4 @@
-// Rate limiting for the newsletter server function.
+// Rate limiting for server functions (newsletter signup, admin login).
 //
 // Two tiers, picked automatically at call time:
 //
@@ -27,16 +27,16 @@ const MAX_HITS = 5; // per IP per window
 
 const hits = new Map<string, number[]>();
 
-function isRateLimitedInMemory(key: string): boolean {
+function isRateLimitedInMemory(key: string, limits: RateLimitOptions): boolean {
   const now = Date.now();
-  const recent = (hits.get(key) ?? []).filter((t) => now - t < WINDOW_MS);
+  const recent = (hits.get(key) ?? []).filter((t) => now - t < limits.windowMs);
   recent.push(now);
   hits.set(key, recent);
   if (hits.size > 5000) {
     // Bound memory: drop the oldest keys.
     for (const k of [...hits.keys()].slice(0, 1000)) hits.delete(k);
   }
-  return recent.length > MAX_HITS;
+  return recent.length > limits.max;
 }
 
 // ---- Tier 1: Upstash Redis fixed window -----------------------------------
@@ -67,9 +67,10 @@ function upstashConfig(): { url: string; token: string } | null {
 async function isRateLimitedUpstash(
   key: string,
   cfg: { url: string; token: string },
+  limits: RateLimitOptions,
 ): Promise<boolean> {
-  const windowSec = Math.ceil(WINDOW_MS / 1000);
-  const redisKey = `ratelimit:newsletter:${key}`;
+  const windowSec = Math.ceil(limits.windowMs / 1000);
+  const redisKey = `ratelimit:${limits.bucket}:${key}`;
 
   // Pipeline: INCR the counter, then set a TTL only if one isn't set yet, so the
   // window is fixed from the first hit.
@@ -89,24 +90,42 @@ async function isRateLimitedUpstash(
   if (!res.ok) throw new Error(`Upstash ${res.status}`);
   const parsed = (await res.json()) as Array<{ result?: number; error?: string }>;
   const count = parsed[0]?.result ?? 0;
-  return count > MAX_HITS;
+  return count > limits.max;
 }
 
 // ---- Public API ----------------------------------------------------------
 
+export type RateLimitOptions = {
+  /** Namespace for the counter, so separate features don't share a budget. */
+  bucket: string;
+  /** Hits allowed per window. */
+  max: number;
+  windowMs: number;
+};
+
+const NEWSLETTER_LIMITS: RateLimitOptions = {
+  bucket: "newsletter",
+  max: MAX_HITS,
+  windowMs: WINDOW_MS,
+};
+
 /**
- * Returns true if `key` (an IP) has exceeded the signup rate limit. Uses Upstash
- * when configured; on any Upstash error, falls back to the in-memory limiter so
- * a Redis outage can't take signups down.
+ * Returns true if `key` (an IP) has exceeded the rate limit — the newsletter
+ * signup limit unless `limits` names another bucket. Uses Upstash when
+ * configured; on any Upstash error, falls back to the in-memory limiter so a
+ * Redis outage can't take signups down.
  */
-export async function isRateLimited(key: string): Promise<boolean> {
+export async function isRateLimited(
+  key: string,
+  limits: RateLimitOptions = NEWSLETTER_LIMITS,
+): Promise<boolean> {
   const cfg = upstashConfig();
   if (cfg) {
     try {
-      return await isRateLimitedUpstash(key, cfg);
+      return await isRateLimitedUpstash(key, cfg, limits);
     } catch (error) {
       console.warn(`rate-limit: Upstash unavailable, using in-memory fallback (${String(error)})`);
     }
   }
-  return isRateLimitedInMemory(key);
+  return isRateLimitedInMemory(`${limits.bucket}:${key}`, limits);
 }
