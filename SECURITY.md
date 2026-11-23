@@ -44,6 +44,9 @@ Redis store and is only sent to a signed-in browser.
   and saved with an atomic compare-and-set; the last 50 versions are kept as
   backups under `plush:admin:v1:history`.
 - Admin responses are `Cache-Control: no-store` and `noindex`.
+- "Import an order" (Inventory tab) reads CSV / PDF files in the browser with
+  pdf.js — files are never uploaded. Only the rows a person reviews and
+  confirms are sent, through the same validated, editor-only import.
 
 See also [`/.well-known/security.txt`](public/.well-known/security.txt) and the
 operational hardening checklist in

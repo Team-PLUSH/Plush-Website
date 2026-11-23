@@ -225,6 +225,27 @@ html.dark .plush-admin {
   outline: 3px solid var(--pa-purple);
   outline-offset: 2px;
 }
+/* Order import: guessed values (check them) and values that must be fixed. */
+.plush-admin input.pa-guess:not([type="checkbox"]):not([type="radio"]) {
+  background: color-mix(in srgb, #f5d76e 38%, var(--pa-paper));
+  border-style: dashed;
+}
+.plush-admin input.pa-bad:not([type="checkbox"]):not([type="radio"]) {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 1px #c0392b;
+}
+.plush-admin .pa-guess-key {
+  background: color-mix(in srgb, #f5d76e 38%, var(--pa-paper));
+  border: 1.5px dashed var(--input);
+  border-radius: 6px;
+  padding: 0 0.3rem;
+}
+.plush-admin .pa-bad-key {
+  border: 2px solid #c0392b;
+  border-radius: 6px;
+  padding: 0 0.3rem;
+}
+
 .plush-admin input[type="checkbox"],
 .plush-admin input[type="radio"] {
   accent-color: #8b6bb8;

@@ -16,6 +16,7 @@ import {
 
 import { itemSavings, memberOwing, memberStatus } from "./calc";
 import { mixedMoney, money, round2, todayIso, totalsByCurrency } from "./format";
+import { OrderImport } from "./OrderImport";
 import { RecordTab, type Field, type FormValues } from "./RecordTab";
 
 export type SectionProps = { doc: AdminDoc; canEdit: boolean; contactsHidden?: boolean };
@@ -134,110 +135,115 @@ const itemFields: Field[] = [
 
 export function ItemsTab({ doc, canEdit }: SectionProps) {
   return (
-    <RecordTab<Item>
-      collection="items"
-      canEdit={canEdit}
-      title="Inventory"
-      noun="item"
-      rows={doc.items}
-      fields={itemFields}
-      defaults={(): FormValues => ({
-        category: "Other",
-        currency: "CAD",
-        source: "retail",
-        quantity: "1",
-        date: todayIso(),
-        reimbursed: false,
-      })}
-      searchText={(i) =>
-        [i.item, i.category, i.partNumber, i.supplier, i.orderNumber, i.location, i.note].join(" ")
-      }
-      sort={byDateDesc}
-      filters={[
-        {
-          label: "Source",
-          options: [
-            { label: "All", test: () => true },
-            { label: "Retail", test: (i) => i.source === "retail" },
-            { label: "Another team", test: (i) => i.source === "team" },
-          ],
-        },
-        {
-          label: "Category",
-          options: [
-            { label: "All", test: () => true },
-            ...ITEM_CATEGORIES.map((c) => ({ label: c, test: (i: Item) => i.category === c })),
-          ],
-        },
-      ]}
-      summary={(rows) => {
-        const spent = totalsByCurrency(rows, (i) => i.total);
-        const saved = totalsByCurrency(rows, itemSavings);
-        return (
-          <>
-            {rows.length} items · {mixedMoney(spent)} before tax
-            {(saved.CAD || saved.USD) > 0 && <> · saved {mixedMoney(saved)} buying from teams</>}
-          </>
-        );
-      }}
-      columns={[
-        {
-          label: "Item",
-          render: (i) => (
+    <div className="space-y-4">
+      {canEdit && <OrderImport />}
+      <RecordTab<Item>
+        collection="items"
+        canEdit={canEdit}
+        title="Inventory"
+        noun="item"
+        rows={doc.items}
+        fields={itemFields}
+        defaults={(): FormValues => ({
+          category: "Other",
+          currency: "CAD",
+          source: "retail",
+          quantity: "1",
+          date: todayIso(),
+          reimbursed: false,
+        })}
+        searchText={(i) =>
+          [i.item, i.category, i.partNumber, i.supplier, i.orderNumber, i.location, i.note].join(
+            " ",
+          )
+        }
+        sort={byDateDesc}
+        filters={[
+          {
+            label: "Source",
+            options: [
+              { label: "All", test: () => true },
+              { label: "Retail", test: (i) => i.source === "retail" },
+              { label: "Another team", test: (i) => i.source === "team" },
+            ],
+          },
+          {
+            label: "Category",
+            options: [
+              { label: "All", test: () => true },
+              ...ITEM_CATEGORIES.map((c) => ({ label: c, test: (i: Item) => i.category === c })),
+            ],
+          },
+        ]}
+        summary={(rows) => {
+          const spent = totalsByCurrency(rows, (i) => i.total);
+          const saved = totalsByCurrency(rows, itemSavings);
+          return (
             <>
-              <div>{i.item}</div>
-              {small(
-                [i.category, i.partNumber, i.condition, i.location && `@ ${i.location}`]
-                  .filter(Boolean)
-                  .join(" · "),
-              )}
-              {small(i.note)}
+              {rows.length} items · {mixedMoney(spent)} before tax
+              {(saved.CAD || saved.USD) > 0 && <> · saved {mixedMoney(saved)} buying from teams</>}
             </>
-          ),
-        },
-        { label: "Qty", align: "right", render: (i) => i.quantity },
-        { label: "Paid / unit", align: "right", render: (i) => money(i.cost, i.currency) },
-        { label: "Total", align: "right", render: (i) => money(i.total, i.currency) },
-        {
-          label: "From",
-          render: (i) => (
-            <>
-              <div>{i.supplier}</div>
-              <Badge tone={i.source === "team" ? "blue" : "gray"}>
-                {ITEM_SOURCE_LABELS[i.source]}
-              </Badge>
-            </>
-          ),
-        },
-        {
-          label: "Retail / saved",
-          align: "right",
-          render: (i) =>
-            i.source === "team" && i.retailPrice !== null ? (
+          );
+        }}
+        columns={[
+          {
+            label: "Item",
+            render: (i) => (
               <>
-                <div>{money(i.retailPrice, i.currency)}</div>
-                <div className="text-xs text-green-700 dark:text-green-400">
-                  saved {money(itemSavings(i), i.currency)}
-                  {i.retailPrice > 0 && ` (${Math.round((1 - i.cost / i.retailPrice) * 100)}%)`}
-                </div>
+                <div>{i.item}</div>
+                {small(
+                  [i.category, i.partNumber, i.condition, i.location && `@ ${i.location}`]
+                    .filter(Boolean)
+                    .join(" · "),
+                )}
+                {small(i.note)}
               </>
-            ) : (
-              "—"
             ),
-        },
-        {
-          label: "Bought",
-          render: (i) => (
-            <>
-              <div className="whitespace-nowrap">{i.date ?? "—"}</div>
-              {small(i.orderNumber && `#${i.orderNumber}`)}
-              {i.purchasedBy && small(`by ${i.purchasedBy}`)}
-              {reimburseBadge(i)}
-            </>
-          ),
-        },
-      ]}
-    />
+          },
+          { label: "Qty", align: "right", render: (i) => i.quantity },
+          { label: "Paid / unit", align: "right", render: (i) => money(i.cost, i.currency) },
+          { label: "Total", align: "right", render: (i) => money(i.total, i.currency) },
+          {
+            label: "From",
+            render: (i) => (
+              <>
+                <div>{i.supplier}</div>
+                <Badge tone={i.source === "team" ? "blue" : "gray"}>
+                  {ITEM_SOURCE_LABELS[i.source]}
+                </Badge>
+              </>
+            ),
+          },
+          {
+            label: "Retail / saved",
+            align: "right",
+            render: (i) =>
+              i.source === "team" && i.retailPrice !== null ? (
+                <>
+                  <div>{money(i.retailPrice, i.currency)}</div>
+                  <div className="text-xs text-green-700 dark:text-green-400">
+                    saved {money(itemSavings(i), i.currency)}
+                    {i.retailPrice > 0 && ` (${Math.round((1 - i.cost / i.retailPrice) * 100)}%)`}
+                  </div>
+                </>
+              ) : (
+                "—"
+              ),
+          },
+          {
+            label: "Bought",
+            render: (i) => (
+              <>
+                <div className="whitespace-nowrap">{i.date ?? "—"}</div>
+                {small(i.orderNumber && `#${i.orderNumber}`)}
+                {i.purchasedBy && small(`by ${i.purchasedBy}`)}
+                {reimburseBadge(i)}
+              </>
+            ),
+          },
+        ]}
+      />
+    </div>
   );
 }
 
