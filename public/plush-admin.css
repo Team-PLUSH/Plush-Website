@@ -1,0 +1,278 @@
+/* ═══════════════════════════════════════
+   TEAM PLUSH — admin pages
+   Same "Scribble Jam" look as the homepage (plush-scribble-jam.css):
+   cream dotted paper, navy ink outlines with hard offset shadows,
+   pastel purple / blue / green, Space Grotesk + Nunito + Caveat.
+   Scoped to .plush-admin so nothing else on the site changes.
+   It also re-points the shadcn colour tokens (bg-primary, border-border,
+   text-muted-foreground, ...) at the brand palette inside the admin.
+   ═══════════════════════════════════════ */
+
+.plush-admin {
+  --pa-ink: #1f2342;
+  --pa-cream: #f3ede0;
+  --pa-cream-2: #ece3d0;
+  --pa-blue: #a8bede;
+  --pa-green: #a4c9b0;
+  --pa-purple: #bfa8d8;
+  --pa-purple-tint: #e2d4f0;
+  --pa-blue-tint: #d4e3f5;
+  --pa-shadow: var(--pa-ink);
+  --pa-paper: #fff;
+
+  --background: var(--pa-cream);
+  --foreground: var(--pa-ink);
+  --card: var(--pa-paper);
+  --card-foreground: var(--pa-ink);
+  --primary: var(--pa-purple);
+  --primary-foreground: var(--pa-ink);
+  --muted: var(--pa-cream-2);
+  --muted-foreground: #575c6b;
+  --accent: var(--pa-purple-tint);
+  --accent-foreground: var(--pa-ink);
+  --destructive: #b42318;
+  --destructive-foreground: #fff;
+  --border: rgba(31, 35, 66, 0.16);
+  --input: var(--pa-ink);
+  --ring: var(--pa-purple);
+
+  font-family: "Nunito", sans-serif;
+  background-color: var(--pa-cream);
+  background-image: radial-gradient(rgba(31, 35, 66, 0.05) 1px, transparent 1px);
+  background-size: 15px 15px;
+  color: var(--pa-ink);
+}
+
+html.dark .plush-admin {
+  --pa-ink: #dce6f5;
+  --pa-shadow: #000;
+  --pa-paper: #1a2235;
+  --pa-purple-tint: rgba(191, 168, 216, 0.18);
+
+  --background: #0d1120;
+  --foreground: #dce6f5;
+  --card: var(--pa-paper);
+  --card-foreground: #dce6f5;
+  --primary: var(--pa-purple);
+  --primary-foreground: #1f2342;
+  --muted: #131e30;
+  --muted-foreground: #a7b2c8;
+  --accent: rgba(191, 168, 216, 0.18);
+  --accent-foreground: #dce6f5;
+  --destructive: #ff8a80;
+  --destructive-foreground: #1f2342;
+  --border: rgba(168, 190, 222, 0.22);
+  --input: rgba(168, 190, 222, 0.55);
+
+  background-color: #0d1120;
+  background-image: radial-gradient(rgba(168, 190, 222, 0.07) 1px, transparent 1px);
+}
+
+/* ── type ── */
+.plush-admin .pa-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.plush-admin .pa-hand {
+  font-family: "Caveat", cursive;
+  font-size: 1.25rem;
+  line-height: 1.1;
+}
+.plush-admin .pa-hand .pa-star {
+  color: var(--pa-purple);
+  margin: 0 0.3em;
+}
+
+/* ── sticker cards ── */
+.plush-admin .pa-card {
+  background: var(--pa-paper);
+  border: 2.5px solid var(--pa-ink);
+  border-radius: 14px;
+  box-shadow: 4px 4px 0 var(--pa-shadow);
+}
+.plush-admin .pa-card.is-blue {
+  border-color: var(--pa-blue);
+}
+.plush-admin .pa-card.is-purple {
+  border-color: var(--pa-purple);
+}
+.plush-admin .pa-card.is-green {
+  border-color: var(--pa-green);
+}
+.plush-admin .pa-stat {
+  transform: rotate(var(--pa-rot, 0deg));
+  transition: transform 0.18s;
+}
+.plush-admin .pa-stat:hover {
+  transform: rotate(0deg) translateY(-2px);
+}
+.plush-admin .pa-stat:nth-child(1) {
+  --pa-rot: -1deg;
+}
+.plush-admin .pa-stat:nth-child(2) {
+  --pa-rot: 0.8deg;
+}
+.plush-admin .pa-stat:nth-child(3) {
+  --pa-rot: -0.6deg;
+}
+.plush-admin .pa-stat:nth-child(4) {
+  --pa-rot: 1deg;
+}
+
+/* ── pill buttons ── */
+.plush-admin .pa-btn {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  background: var(--pa-purple);
+  color: #1f2342;
+  border: 2.5px solid var(--pa-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--pa-shadow);
+  padding: 0.45rem 1.15rem;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+.plush-admin .pa-btn:hover:not(:disabled) {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--pa-shadow);
+}
+.plush-admin .pa-btn:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--pa-shadow);
+}
+.plush-admin .pa-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.plush-admin .pa-btn.is-light {
+  background: var(--pa-paper);
+  color: var(--pa-ink);
+}
+.plush-admin .pa-btn.is-danger {
+  background: #ffd9d4;
+  color: #7a1a10;
+}
+
+/* ── tabs ── */
+.plush-admin .pa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.plush-admin .pa-tab {
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 999px;
+  border: 2px solid var(--border);
+  background: var(--pa-paper);
+  color: var(--pa-ink);
+  transition:
+    transform 0.15s,
+    border-color 0.15s;
+}
+.plush-admin .pa-tab:hover {
+  border-color: var(--pa-purple);
+  transform: translateY(-1px);
+}
+.plush-admin .pa-tab[aria-selected="true"] {
+  background: var(--pa-purple);
+  color: #1f2342;
+  border-color: var(--pa-ink);
+  box-shadow: 3px 3px 0 var(--pa-shadow);
+}
+.plush-admin .pa-tab .pa-count {
+  font-size: 0.72rem;
+  opacity: 0.65;
+  margin-left: 0.35rem;
+}
+
+/* ── tables ── */
+.plush-admin .pa-table {
+  overflow: hidden;
+}
+.plush-admin .pa-table table {
+  border-collapse: collapse;
+}
+.plush-admin .pa-table thead {
+  background: var(--pa-purple-tint);
+}
+.plush-admin .pa-table thead th {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.plush-admin .pa-table tbody tr:hover {
+  background: color-mix(in srgb, var(--pa-blue) 14%, transparent);
+}
+
+/* ── form fields ── */
+.plush-admin input:not([type="checkbox"]):not([type="radio"]),
+.plush-admin select,
+.plush-admin textarea {
+  background: var(--pa-paper);
+  color: var(--pa-ink);
+  border: 2px solid var(--input);
+  border-radius: 10px;
+}
+.plush-admin input:focus-visible,
+.plush-admin select:focus-visible,
+.plush-admin textarea:focus-visible,
+.plush-admin button:focus-visible {
+  outline: 3px solid var(--pa-purple);
+  outline-offset: 2px;
+}
+.plush-admin input[type="checkbox"],
+.plush-admin input[type="radio"] {
+  accent-color: #8b6bb8;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ── sign-in mascots ── */
+.plush-admin .pa-mascots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 1.6rem;
+}
+.plush-admin .pa-mascots span {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  background: var(--pa-paper);
+  border: 2px solid var(--pa-blue);
+  box-shadow: 2px 2px 0 var(--pa-shadow);
+}
+.plush-admin .pa-mascots span:nth-child(2) {
+  border-color: var(--pa-purple);
+  transform: translateY(-4px);
+}
+.plush-admin .pa-mascots span:nth-child(3) {
+  border-color: var(--pa-green);
+}
+
+/* ── theme toggle ── */
+.plush-admin .pa-theme {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  border: 2px solid var(--pa-blue);
+  background: var(--pa-paper);
+  display: inline-grid;
+  place-items: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plush-admin .pa-stat,
+  .plush-admin .pa-btn,
+  .plush-admin .pa-tab {
+    transition: none;
+    transform: none !important;
+  }
+}

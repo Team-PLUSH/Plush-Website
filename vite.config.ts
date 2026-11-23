@@ -42,6 +42,22 @@ const securityConfig = {
           "Cache-Control": "public, max-age=604800",
         },
       },
+      // The private admin pages: never cached by the CDN or the browser (so
+      // Back after signing out can't show the data again), never indexed.
+      "/admin": {
+        headers: {
+          ...STATIC_ASSET_SECURITY_HEADERS,
+          "Cache-Control": "no-store, private",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      },
+      "/admin/**": {
+        headers: {
+          ...STATIC_ASSET_SECURITY_HEADERS,
+          "Cache-Control": "no-store, private",
+          "X-Robots-Tag": "noindex, nofollow",
+        },
+      },
       // The sponsorship PDF is embedded in a same-origin <iframe> on the
       // sponsors page, so allow same-origin framing but block cross-origin
       // sites from embedding it, and ask the browser to render it inline.

@@ -4,7 +4,7 @@
 //
 //   1. Durable (preferred) — a fixed-window counter in Upstash Redis, shared
 //      across every function instance and cold start. Active as soon as a REST
-//      URL + token pair is present in the env (see URL_VARS / TOKEN_VARS below
+//      URL + token pair is present in the env (see URL_VARS / TOKEN_VARS in upstash.ts
 //      for the accepted variable names).
 //   2. In-memory fallback — a per-instance sliding window. Best-effort; resets
 //      on cold start and isn't shared between instances.
@@ -19,6 +19,8 @@
 // A Vercel Firewall rate-limit rule on the _serverFn path is still worth adding
 // on top (it blocks abuse before it ever reaches the function) — see
 // docs/security-operations.md.
+
+import { upstashConfig, type UpstashConfig } from "./upstash";
 
 const WINDOW_MS = 60 * 60 * 1000; // 1 hour
 const MAX_HITS = 5; // per IP per window
@@ -41,32 +43,9 @@ function isRateLimitedInMemory(key: string, limits: RateLimitOptions): boolean {
 
 // ---- Tier 1: Upstash Redis fixed window -----------------------------------
 
-// The Upstash/Vercel Marketplace integration names its REST vars differently
-// depending on how it was added — accept every spelling seen in the wild.
-const URL_VARS = [
-  "UPSTASH_REDIS_REST_URL",
-  "KV_REST_API_URL",
-  "REDIS_REST_URL",
-  "STORAGE_REST_URL",
-];
-const TOKEN_VARS = [
-  "UPSTASH_REDIS_REST_TOKEN",
-  "KV_REST_API_TOKEN",
-  "REDIS_REST_TOKEN",
-  "STORAGE_REST_TOKEN",
-];
-
-function upstashConfig(): { url: string; token: string } | null {
-  const env = typeof process !== "undefined" ? (process.env ?? {}) : {};
-  const pick = (names: string[]) => names.map((n) => env[n]).find((v) => v && v.trim() !== "");
-  const url = pick(URL_VARS);
-  const token = pick(TOKEN_VARS);
-  return url && token ? { url: url.replace(/\/$/, ""), token } : null;
-}
-
 async function isRateLimitedUpstash(
   key: string,
-  cfg: { url: string; token: string },
+  cfg: UpstashConfig,
   limits: RateLimitOptions,
 ): Promise<boolean> {
   const windowSec = Math.ceil(limits.windowMs / 1000);

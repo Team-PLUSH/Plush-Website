@@ -8,8 +8,10 @@
 //                          session cookie, e.g. `openssl rand -base64 48`
 //
 // The session cookie is HttpOnly + Secure + SameSite=Strict and carries only an
-// expiry time and an HMAC over it — no data. Changing ADMIN_PASSWORD or
-// ADMIN_SESSION_SECRET signs everyone out, because both feed the signing key.
+// expiry time, a random session id and an HMAC over both — no data. The id is
+// also recorded in Redis (see admin.functions.ts), so signing out really ends
+// the session, even if someone had copied the cookie. Changing ADMIN_PASSWORD
+// or ADMIN_SESSION_SECRET signs everyone out, because both feed the signing key.
 //
 // Only import this from inside server-function handlers.
 
@@ -67,20 +69,26 @@ async function sign(payload: string, cfg: AdminConfig): Promise<string> {
   return toBase64Url(new Uint8Array(mac));
 }
 
-/** A fresh session token: `<expiry ms>.<signature>`. */
-export async function createSessionToken(cfg: AdminConfig): Promise<string> {
-  const expires = String(Date.now() + ADMIN_SESSION_SECONDS * 1000);
-  return `${expires}.${await sign(expires, cfg)}`;
+export type Session = { id: string; expires: number };
+
+/** A fresh session and its token: `<expiry ms>.<session id>.<signature>`. */
+export async function createSession(cfg: AdminConfig): Promise<Session & { token: string }> {
+  const expires = Date.now() + ADMIN_SESSION_SECONDS * 1000;
+  const id = toBase64Url(crypto.getRandomValues(new Uint8Array(18)));
+  return { id, expires, token: `${expires}.${id}.${await sign(`${expires}.${id}`, cfg)}` };
 }
 
-export async function isValidSessionToken(
+/** The session a token names, if its signature is right and it hasn't expired. */
+export async function readSessionToken(
   token: string | undefined,
   cfg: AdminConfig,
-): Promise<boolean> {
-  if (!token) return false;
-  const [expires, signature, ...rest] = token.split(".");
-  if (!expires || !signature || rest.length > 0 || !/^\d{1,16}$/.test(expires)) return false;
-  if (Number(expires) <= Date.now()) return false;
-  const expected = await sign(expires, cfg);
-  return equalBytes(encoder.encode(signature), encoder.encode(expected));
+): Promise<Session | null> {
+  if (!token || token.length > 200) return null;
+  const [expires, id, signature, ...rest] = token.split(".");
+  if (!expires || !id || !signature || rest.length > 0) return null;
+  if (!/^\d{1,16}$/.test(expires) || !/^[A-Za-z0-9_-]{24}$/.test(id)) return null;
+  if (Number(expires) <= Date.now()) return null;
+  const expected = await sign(`${expires}.${id}`, cfg);
+  if (!equalBytes(encoder.encode(signature), encoder.encode(expected))) return null;
+  return { id, expires: Number(expires) };
 }
