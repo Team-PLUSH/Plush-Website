@@ -32,6 +32,15 @@ const securityConfig = {
   },
   // Forwarded verbatim to nitro() from nitro/vite by the Lovable wrapper.
   nitro: {
+    rolldownConfig: {
+      // React libraries mark their files "use client" for React Server
+      // Components. This app doesn't use RSC, so dropping the directive while
+      // bundling the server is expected — hide the ~35 identical warnings.
+      onwarn(warning: { code?: string }, warn: (w: unknown) => void) {
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") return;
+        warn(warning);
+      },
+    },
     routeRules: {
       "/**": { headers: { ...STATIC_ASSET_SECURITY_HEADERS } },
       // Self-hosted webfonts: unhashed filenames, so cache a week (not
