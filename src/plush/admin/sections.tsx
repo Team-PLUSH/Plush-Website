@@ -14,7 +14,7 @@ import {
   RECURRENCE,
 } from "@/plush/admin-options";
 
-import { itemSavings, memberOwing, memberStatus } from "./calc";
+import { isBundleItem, itemSavings, memberOwing, memberStatus } from "./calc";
 import { mixedMoney, money, round2, todayIso, totalsByCurrency } from "./format";
 import { RecordTab, type Field, type FormValues } from "./RecordTab";
 
@@ -216,10 +216,14 @@ export function ItemsTab({ doc, canEdit }: SectionProps) {
             i.source === "team" && i.retailPrice !== null ? (
               <>
                 <div>{money(i.retailPrice, i.currency)}</div>
-                <div className="text-xs text-green-700 dark:text-green-400">
-                  saved {money(itemSavings(i), i.currency)}
-                  {i.retailPrice > 0 && ` (${Math.round((1 - i.cost / i.retailPrice) * 100)}%)`}
-                </div>
+                {isBundleItem(i) ? (
+                  <div className="text-xs text-muted-foreground">part of a bundle</div>
+                ) : (
+                  <div className="text-xs text-green-700 dark:text-green-400">
+                    saved {money(itemSavings(i), i.currency)}
+                    {i.retailPrice > 0 && ` (${Math.round((1 - i.cost / i.retailPrice) * 100)}%)`}
+                  </div>
+                )}
               </>
             ) : (
               "—"

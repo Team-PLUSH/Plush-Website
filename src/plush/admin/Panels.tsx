@@ -10,7 +10,7 @@ import {
 import { EXPENSE_CATEGORIES } from "@/plush/admin-options";
 
 import { mixedMoney, money, round2, todayIso, totalsByCurrency, type Currency } from "./format";
-import { itemSavings, memberOwing } from "./calc";
+import { memberOwing, teamSavings, teamSupplierSet } from "./calc";
 
 // ---- Overview ------------------------------------------------------------
 
@@ -61,12 +61,27 @@ export function Overview({ doc }: { doc: AdminDoc }) {
   // Store purchases are counted from their order/receipt (which includes tax
   // and shipping); purchases from other teams have no order, so count those
   // straight from the inventory.
-  const storeOrders = totalsByCurrency(doc.orders, (o) => o.total);
-  const fromTeams = totalsByCurrency(
+  // A purchase from another team can be logged either as items with their own
+  // prices, or as one bundle order (items at $0, the price on the order). An
+  // order whose supplier is a team we bought items from counts as "from teams".
+  const teamSuppliers = teamSupplierSet(doc.items);
+  const isTeamOrder = (o: AdminDoc["orders"][number]) =>
+    teamSuppliers.has(o.supplier.trim().toLowerCase());
+  const storeOrders = totalsByCurrency(
+    doc.orders,
+    (o) => o.total,
+    (o) => !isTeamOrder(o),
+  );
+  const teamItems = totalsByCurrency(
     doc.items,
     (i) => i.total,
     (i) => i.source === "team",
   );
+  const teamOrders = totalsByCurrency(doc.orders, (o) => o.total, isTeamOrder);
+  const fromTeams = {
+    CAD: round2(teamItems.CAD + teamOrders.CAD),
+    USD: round2(teamItems.USD + teamOrders.USD),
+  };
   const parts = {
     CAD: round2(storeOrders.CAD + fromTeams.CAD),
     USD: round2(storeOrders.USD + fromTeams.USD),
@@ -80,7 +95,26 @@ export function Overview({ doc }: { doc: AdminDoc }) {
   };
 
   const owing = doc.members.filter((m) => memberOwing(m) > 0);
-  const saved = totalsByCurrency(doc.items, itemSavings);
+  const saved = teamSavings(doc.items, doc.orders);
+  const owedFees = round2(owing.reduce((t, m) => t + memberOwing(m), 0));
+  const projected = {
+    CAD: round2(net.CAD + owedFees + pledged.CAD),
+    USD: round2(net.USD + pledged.USD),
+  };
+  const pnl: { label: string; sub?: string; v: Record<Currency, number> }[] = [
+    {
+      label: "Parts & tools",
+      sub: "store orders + team purchases",
+      v: { CAD: -parts.CAD, USD: -parts.USD },
+    },
+    {
+      label: "Expenses",
+      sub: "rent, registration, etc.",
+      v: { CAD: -expenses.CAD, USD: -expenses.USD },
+    },
+    { label: "Grants & sponsors", sub: "received", v: received },
+    { label: "Member fees", sub: "paid", v: { CAD: fees, USD: 0 } },
+  ];
 
   const outOfPocket = [
     ...doc.orders.map((o) => ({
@@ -203,6 +237,77 @@ export function Overview({ doc }: { doc: AdminDoc }) {
               ))}
             </ul>
           )}
+        </Card>
+
+        <Card title="Profit & loss">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-muted-foreground">
+                <th className="text-left font-normal" />
+                {currencies.map((c) => (
+                  <th key={c} className="text-right font-normal">
+                    {c}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {pnl.map((r) => (
+                <tr key={r.label}>
+                  <td className="py-0.5">
+                    {r.label}
+                    {r.sub && <span className="text-muted-foreground"> · {r.sub}</span>}
+                  </td>
+                  {currencies.map((c) => (
+                    <td
+                      key={c}
+                      className={`text-right tabular-nums ${r.v[c] < 0 ? "text-destructive" : ""}`}
+                    >
+                      {money(r.v[c], c)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+              <tr className="border-t font-semibold">
+                <td className="py-1">Net result</td>
+                {currencies.map((c) => (
+                  <td
+                    key={c}
+                    className={`text-right tabular-nums ${net[c] < 0 ? "text-destructive" : ""}`}
+                  >
+                    {money(net[c], c)}
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="py-0.5 text-muted-foreground">+ member fees still owed</td>
+                {currencies.map((c) => (
+                  <td key={c} className="text-right tabular-nums text-muted-foreground">
+                    {money(c === "CAD" ? owedFees : 0, c)}
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="py-0.5 text-muted-foreground">+ grants & sponsors pledged</td>
+                {currencies.map((c) => (
+                  <td key={c} className="text-right tabular-nums text-muted-foreground">
+                    {money(pledged[c], c)}
+                  </td>
+                ))}
+              </tr>
+              <tr className="border-t font-semibold">
+                <td className="py-1">Projected once those come in</td>
+                {currencies.map((c) => (
+                  <td
+                    key={c}
+                    className={`text-right tabular-nums ${projected[c] < 0 ? "text-destructive" : ""}`}
+                  >
+                    {money(projected[c], c)}
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
         </Card>
 
         <Card title="Where the money went">
