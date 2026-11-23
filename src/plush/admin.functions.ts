@@ -588,3 +588,58 @@ export const mutateAdminData = createServerFn({ method: "POST" })
       return { ok: false, reason: "storage-error" };
     }
   });
+
+// ---- USD → CAD exchange rates ----------------------------------------------
+
+/** One Bank of Canada daily rate: [YYYY-MM-DD, CAD per 1 USD]. */
+export type FxRate = [string, number];
+export type FxResult =
+  { ok: true; rates: FxRate[] } | { ok: false; reason: "signed-out" | "unavailable" };
+
+// The Bank of Canada's FXUSDCAD series starts on 2017-01-03.
+const FX_FIRST_DATE = "2017-01-03";
+const FX_CACHE_MS = 6 * 60 * 60 * 1000;
+const fxCache = new Map<string, { at: number; rates: FxRate[] }>();
+
+/**
+ * Daily USD→CAD rates from the Bank of Canada (official, free, no key) from
+ * `start` to today, for the admin's "Show in CAD" view. Fetched server-side —
+ * the page's CSP allows no third-party connections — and cached per instance.
+ */
+export const getUsdCadRates = createServerFn({ method: "GET" })
+  .validator((data: unknown) =>
+    z.object({ start: z.string().regex(/^\d{4}-\d{2}-\d{2}$/) }).parse(data),
+  )
+  .handler(async ({ data }): Promise<FxResult> => {
+    noStore();
+    if (!(await caller())) return { ok: false, reason: "signed-out" };
+
+    // Start a week early so a weekend / holiday purchase has a prior rate.
+    const wanted = new Date(`${data.start}T00:00:00Z`);
+    wanted.setUTCDate(wanted.getUTCDate() - 7);
+    const start = [wanted.toISOString().slice(0, 10), FX_FIRST_DATE].sort()[1];
+
+    const cached = fxCache.get(start);
+    if (cached && Date.now() - cached.at < FX_CACHE_MS) return { ok: true, rates: cached.rates };
+
+    try {
+      const res = await fetch(
+        `https://www.bankofcanada.ca/valet/observations/FXUSDCAD/json?start_date=${start}`,
+        { signal: AbortSignal.timeout(8_000) },
+      );
+      if (!res.ok) throw new Error(`Bank of Canada ${res.status}`);
+      const body = (await res.json()) as {
+        observations?: { d?: string; FXUSDCAD?: { v?: string } }[];
+      };
+      const rates: FxRate[] = (body.observations ?? [])
+        .map((o): FxRate => [o.d ?? "", Number(o.FXUSDCAD?.v)])
+        .filter(([d, v]) => /^\d{4}-\d{2}-\d{2}$/.test(d) && v > 0.5 && v < 3)
+        .sort((a, b) => (a[0] < b[0] ? -1 : 1));
+      if (rates.length === 0) throw new Error("Bank of Canada returned no rates");
+      fxCache.set(start, { at: Date.now(), rates });
+      return { ok: true, rates };
+    } catch (error) {
+      console.warn(`admin: exchange rates unavailable (${String(error).slice(0, 200)})`);
+      return { ok: false, reason: "unavailable" };
+    }
+  });

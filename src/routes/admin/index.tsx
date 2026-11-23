@@ -1,9 +1,18 @@
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-import { adminLogout, getAdminData, type AdminResult } from "@/plush/admin.functions";
+import {
+  adminLogout,
+  getAdminData,
+  getUsdCadRates,
+  type AdminDoc,
+  type AdminResult,
+  type FxRate,
+} from "@/plush/admin.functions";
 import { AccountsPanel, ActivityPanel, ChangePasswordForm } from "@/plush/admin/AccountPanels";
 import { ImportPanel, LoginForm, Overview } from "@/plush/admin/Panels";
+import { todayIso } from "@/plush/admin/format";
+import { earliestUsdDate, hasUsd, rateOn, toCad } from "@/plush/admin/fx";
 import { ExpensesTab, IncomeTab, ItemsTab, MembersTab, OrdersTab } from "@/plush/admin/sections";
 
 // Private team admin: inventory, orders, expenses, grants & sponsorships, and
@@ -99,10 +108,14 @@ function Dashboard({ data }: { data: Extract<AdminResult, { status: "ok" }> }) {
   const [tab, setTab] = useState<TabId>("overview");
   const [confirmAll, setConfirmAll] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const canEdit = me.role !== "viewer";
   const isOwner = me.role === "owner";
+  const cad = useCadView(doc);
+  // Converted numbers are display-only: no editing while the CAD view is on.
+  const roleCanEdit = me.role !== "viewer";
+  const canEdit = roleCanEdit && !cad.on;
+  const view = cad.doc;
   const tabs = TABS.filter(
-    (t) => (t.id !== "accounts" || isOwner) && (t.id !== "import" || canEdit),
+    (t) => (t.id !== "accounts" || isOwner) && (t.id !== "import" || roleCanEdit),
   );
 
   async function signOut(everywhere = false) {
@@ -140,6 +153,18 @@ function Dashboard({ data }: { data: Extract<AdminResult, { status: "ok" }> }) {
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <ThemeToggle />
+          {cad.available && (
+            <button
+              type="button"
+              onClick={cad.toggle}
+              aria-pressed={cad.on}
+              disabled={cad.loading}
+              className={`pa-btn text-sm ${cad.on ? "" : "is-light"}`}
+              title="Convert every USD amount to CAD at the Bank of Canada rate for its date"
+            >
+              {cad.loading ? "Getting rates…" : cad.on ? "Showing all in CAD" : "Show all in CAD"}
+            </button>
+          )}
           {!me.builtin && (
             <button
               type="button"
@@ -186,6 +211,23 @@ function Dashboard({ data }: { data: Extract<AdminResult, { status: "ok" }> }) {
         </p>
       )}
 
+      {cad.error && (
+        <p role="alert" className="mt-3 text-sm text-destructive">
+          {cad.error}
+        </p>
+      )}
+      {cad.on && cad.latest && (
+        <p className="pa-card mt-4 px-4 py-2 text-sm" role="status">
+          <strong>All amounts in CAD.</strong> USD amounts are converted at the Bank of Canada daily
+          rate for each row&apos;s date (latest: 1 USD = {cad.latest[1].toFixed(4)} CAD on{" "}
+          {cad.latest[0]}). Editing is off in this view —{" "}
+          <button type="button" className="underline" onClick={cad.toggle}>
+            show original currencies
+          </button>{" "}
+          to make changes.
+        </p>
+      )}
+
       <nav role="tablist" aria-label="Admin sections" className="pa-tabs mt-6">
         {tabs.map((t) => (
           <button
@@ -203,16 +245,16 @@ function Dashboard({ data }: { data: Extract<AdminResult, { status: "ok" }> }) {
       </nav>
 
       <div className="mt-6" role="tabpanel">
-        {tab === "overview" && <Overview doc={doc} />}
-        {tab === "items" && <ItemsTab doc={doc} canEdit={canEdit} />}
-        {tab === "orders" && <OrdersTab doc={doc} canEdit={canEdit} />}
-        {tab === "expenses" && <ExpensesTab doc={doc} canEdit={canEdit} />}
-        {tab === "income" && <IncomeTab doc={doc} canEdit={canEdit} />}
+        {tab === "overview" && <Overview doc={view} />}
+        {tab === "items" && <ItemsTab doc={view} canEdit={canEdit} />}
+        {tab === "orders" && <OrdersTab doc={view} canEdit={canEdit} />}
+        {tab === "expenses" && <ExpensesTab doc={view} canEdit={canEdit} />}
+        {tab === "income" && <IncomeTab doc={view} canEdit={canEdit} />}
         {tab === "members" && (
-          <MembersTab doc={doc} canEdit={canEdit} contactsHidden={contactsHidden} />
+          <MembersTab doc={view} canEdit={canEdit} contactsHidden={contactsHidden} />
         )}
         {tab === "activity" && <ActivityPanel entries={activity} />}
-        {tab === "import" && canEdit && <ImportPanel doc={doc} isOwner={isOwner} />}
+        {tab === "import" && roleCanEdit && <ImportPanel doc={doc} isOwner={isOwner} />}
         {tab === "accounts" && accounts && <AccountsPanel accounts={accounts} me={me} />}
       </div>
     </>
@@ -258,4 +300,71 @@ function ThemeToggle() {
       {dark ? "☀️" : "🌙"}
     </button>
   );
+}
+
+const CAD_VIEW_KEY = "plush-admin:cad-view";
+
+/**
+ * "Show all in CAD": fetches Bank of Canada USD→CAD rates (once per page load)
+ * and returns a converted copy of the data. Remembers the choice per browser.
+ */
+function useCadView(doc: AdminDoc) {
+  const available = hasUsd(doc);
+  const [on, setOn] = useState(false);
+  const [rates, setRates] = useState<FxRate[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function load(): Promise<boolean> {
+    if (rates) return true;
+    setLoading(true);
+    setError(null);
+    try {
+      const start = earliestUsdDate(doc, todayIso()) ?? todayIso();
+      const result = await getUsdCadRates({ data: { start } });
+      if (!result.ok) {
+        setError("Couldn't get exchange rates from the Bank of Canada. Try again in a minute.");
+        return false;
+      }
+      setRates(result.rates);
+      return true;
+    } catch {
+      setError("Couldn't get exchange rates. Check your connection and try again.");
+      return false;
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function toggle() {
+    const next = !on;
+    if (next && !(await load())) return;
+    setOn(next);
+    try {
+      localStorage.setItem(CAD_VIEW_KEY, next ? "1" : "0");
+    } catch {
+      // Private mode / blocked storage: the choice just isn't remembered.
+    }
+  }
+
+  // Restore the last choice once the page is in the browser.
+  useEffect(() => {
+    let saved = false;
+    try {
+      saved = localStorage.getItem(CAD_VIEW_KEY) === "1";
+    } catch {
+      saved = false;
+    }
+    if (saved && available) void load().then((ok) => ok && setOn(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [available]);
+
+  const active = on && available && rates !== null;
+  const converted = useMemo(
+    () => (active && rates ? toCad(doc, rates) : doc),
+    [active, rates, doc],
+  );
+  const latest: FxRate | null =
+    rates && rates.length > 0 ? [rates[rates.length - 1][0], rateOn(rates, null)] : null;
+  return { available, on: active, loading, error, toggle, doc: converted, latest };
 }
