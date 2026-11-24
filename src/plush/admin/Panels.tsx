@@ -105,12 +105,12 @@ export function Overview({ doc }: { doc: AdminDoc }) {
     {
       label: "Parts & tools",
       sub: "store orders + team purchases",
-      v: { CAD: -parts.CAD, USD: -parts.USD },
+      v: { CAD: -parts.CAD || 0, USD: -parts.USD || 0 },
     },
     {
       label: "Expenses",
       sub: "rent, registration, etc.",
-      v: { CAD: -expenses.CAD, USD: -expenses.USD },
+      v: { CAD: -expenses.CAD || 0, USD: -expenses.USD || 0 },
     },
     { label: "Grants & sponsors", sub: "received", v: received },
     { label: "Member fees", sub: "paid", v: { CAD: fees, USD: 0 } },
