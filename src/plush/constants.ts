@@ -43,7 +43,7 @@ export const NEWSLETTER = {
  * MUST be bumped (keep it date-stamped) whenever that sentence changes.
  * Mirrored in the `.newsletter-consent-box[data-consent-version]` attribute.
  */
-export const CONSENT_TEXT_VERSION = "2026-08-30";
+export const CONSENT_TEXT_VERSION = "2026-11-23";
 
 export const BUDDY_LINES = [
   "psst — try the arrow keys on the mascots ↔",
