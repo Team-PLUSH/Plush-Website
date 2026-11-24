@@ -202,7 +202,12 @@ export function ItemsTab({ doc, canEdit }: SectionProps) {
           },
           { label: "Qty", align: "right", render: (i) => i.quantity },
           { label: "Paid / unit", align: "right", render: (i) => money(i.cost, i.currency) },
-          { label: "Total", align: "right", render: (i) => money(i.total, i.currency) },
+          {
+            label: "Total",
+            align: "right",
+            render: (i) => money(i.total, i.currency),
+            total: (rows) => mixedMoney(totalsByCurrency(rows, (i) => i.total)),
+          },
           {
             label: "From",
             render: (i) => (
@@ -306,14 +311,35 @@ export function OrdersTab({ doc, canEdit }: SectionProps) {
           label: "Date",
           render: (o) => <span className="whitespace-nowrap">{o.date ?? "—"}</span>,
         },
-        { label: "Subtotal", align: "right", render: (o) => money(o.subtotal, o.currency) },
-        { label: "Shipping", align: "right", render: (o) => money(o.shipping, o.currency) },
-        { label: "Tax", align: "right", render: (o) => money(o.tax, o.currency) },
-        { label: "Fees", align: "right", render: (o) => money(o.otherFees, o.currency) },
+        {
+          label: "Subtotal",
+          align: "right",
+          render: (o) => money(o.subtotal, o.currency),
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (o) => o.subtotal)),
+        },
+        {
+          label: "Shipping",
+          align: "right",
+          render: (o) => money(o.shipping, o.currency),
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (o) => num(o.shipping))),
+        },
+        {
+          label: "Tax",
+          align: "right",
+          render: (o) => money(o.tax, o.currency),
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (o) => num(o.tax))),
+        },
+        {
+          label: "Fees",
+          align: "right",
+          render: (o) => money(o.otherFees, o.currency),
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (o) => num(o.otherFees))),
+        },
         {
           label: "Total",
           align: "right",
           render: (o) => <span className="font-medium">{money(o.total, o.currency)}</span>,
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (o) => o.total)),
         },
         {
           label: "Paid with",
@@ -439,12 +465,23 @@ export function ExpensesTab({ doc, canEdit }: SectionProps) {
             </>
           ),
         },
-        { label: "Amount", align: "right", render: (e) => money(e.amount, e.currency) },
-        { label: "Tax", align: "right", render: (e) => money(e.tax, e.currency) },
+        {
+          label: "Amount",
+          align: "right",
+          render: (e) => money(e.amount, e.currency),
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (e) => e.amount)),
+        },
+        {
+          label: "Tax",
+          align: "right",
+          render: (e) => money(e.tax, e.currency),
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (e) => num(e.tax))),
+        },
         {
           label: "Total",
           align: "right",
           render: (e) => <span className="font-medium">{money(e.total, e.currency)}</span>,
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (e) => e.total)),
         },
         {
           label: "Paid with",
@@ -580,6 +617,7 @@ export function IncomeTab({ doc, canEdit }: SectionProps) {
           label: "Amount",
           align: "right",
           render: (r) => <span className="font-medium">{money(r.amount, r.currency)}</span>,
+          total: (rows) => mixedMoney(totalsByCurrency(rows, (r) => r.amount)),
         },
         {
           label: "Dates",
@@ -708,8 +746,18 @@ export function MembersTab({ doc, canEdit, contactsHidden }: SectionProps) {
           label: "Status",
           render: (m) => <Badge tone={memberTone[memberStatus(m)]}>{memberStatus(m)}</Badge>,
         },
-        { label: "Due", align: "right", render: (m) => money(m.amountDue) },
-        { label: "Paid", align: "right", render: (m) => money(m.amountPaid) },
+        {
+          label: "Due",
+          align: "right",
+          render: (m) => money(m.amountDue),
+          total: (rows) => money(rows.reduce((t, m) => t + m.amountDue, 0)),
+        },
+        {
+          label: "Paid",
+          align: "right",
+          render: (m) => money(m.amountPaid),
+          total: (rows) => money(rows.reduce((t, m) => t + m.amountPaid, 0)),
+        },
         {
           label: "Owing",
           align: "right",
@@ -719,6 +767,7 @@ export function MembersTab({ doc, canEdit, contactsHidden }: SectionProps) {
             ) : (
               "—"
             ),
+          total: (rows) => money(rows.reduce((t, m) => t + memberOwing(m), 0)),
         },
         {
           label: "Payment",

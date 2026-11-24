@@ -28,6 +28,8 @@ export type Column<T> = {
   label: string;
   render: (row: T) => ReactNode;
   align?: "right";
+  /** Footer total for this column, worked out over the visible (filtered) rows. */
+  total?: (rows: T[]) => ReactNode;
 };
 
 export type Filter<T> = {
@@ -345,6 +347,21 @@ export function RecordTab<T extends { id: string }>(props: Props<T>) {
               </tr>
             )}
           </tbody>
+          {visible.length > 0 && props.columns.some((c) => c.total) && (
+            <tfoot>
+              <tr className="border-t-2 border-border font-medium">
+                {props.columns.map((c, i) => (
+                  <td
+                    key={c.label}
+                    className={`px-3 py-2 ${c.align === "right" ? "text-right tabular-nums" : ""}`}
+                  >
+                    {i === 0 ? "Total" : c.total ? c.total(visible) : null}
+                  </td>
+                ))}
+                {props.canEdit && <td className="px-3 py-2" />}
+              </tr>
+            </tfoot>
+          )}
         </table>
       </div>
     </section>
