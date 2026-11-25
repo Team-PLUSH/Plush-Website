@@ -1,6 +1,6 @@
 # Plush Website
 
-Website for FRC Team 11740 (PLUSH), a robotics nonprofit.
+Website for FRC Team 11005 (PLUSH), a robotics nonprofit.
 
 - **Live:** https://frc11740.ca
 - **Stack:** Vite + React 19, TanStack Start (SSR), Tailwind CSS 4

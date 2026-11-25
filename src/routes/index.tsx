@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       // Renders as <script type="application/ld+json">. Tells Google that
-      // frc11740.ca, "Team PLUSH", "FRC 11740" and the six social accounts are
+      // frc11740.ca, "Team PLUSH", "FRC 11005" and the six social accounts are
       // all one organization rather than unrelated strings.
       { "script:ld+json": ORGANIZATION_JSON_LD },
     ],

@@ -1,7 +1,7 @@
 // Single source of truth for the site's search and social metadata.
 //
 // Two rules drive the copy below:
-//   1. "11740" appears in the title, the description and the <h1>. "Team PLUSH"
+//   1. "11005" appears in the title, the description and the <h1>. "Team PLUSH"
 //      on its own is ambiguous to a search engine; the number is what makes the
 //      team unique, and it is what people type when they already know us.
 //   2. Absolute URLs everywhere. Crawlers and link-preview bots resolve og:image
@@ -14,10 +14,10 @@ export const SITE_ORIGIN = "https://frc11740.ca";
 /** Canonical address of the home page. */
 export const SITE_URL = `${SITE_ORIGIN}/`;
 
-export const SITE_TITLE = "Team PLUSH — FRC 11740 Robotics Team | Ottawa, Ontario";
+export const SITE_TITLE = "Team PLUSH — FRC 11005 Robotics Team | Ottawa, Ontario";
 
 export const SITE_DESCRIPTION =
-  "Team PLUSH (FRC 11740) is a student-run FIRST Robotics Competition team in Ottawa, " +
+  "Team PLUSH (FRC 11005) is a student-run FIRST Robotics Competition team in Ottawa, " +
   "Ontario building bold, pastel robots. Meet the crew, our robots, values, season " +
   "schedule, and sponsors.";
 
@@ -43,7 +43,7 @@ export const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "SportsOrganization",
   name: "Team PLUSH",
-  alternateName: ["FRC 11740", "PLUSH Robotics", "FRC Team 11740"],
+  alternateName: ["FRC 11005", "PLUSH Robotics", "FRC Team 11005"],
   url: SITE_URL,
   logo: `${SITE_ORIGIN}/plush-logo.png`,
   image: OG_IMAGE_URL,

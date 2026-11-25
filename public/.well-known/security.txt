@@ -1,4 +1,4 @@
-# Team PLUSH / FRC 11740 — security contact
+# Team PLUSH / FRC 11005 — security contact
 # https://securitytxt.org/
 
 Contact: mailto:teamplushrobotics@gmail.com
