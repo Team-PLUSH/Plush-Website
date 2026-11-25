@@ -2195,6 +2195,18 @@ html.dark .newsletter-status[data-kind="err"] {
   object-fit: contain;
   display: block;
 }
+/* Square avatar-style logos that should fill the whole box edge to edge. */
+.sponsor-logo--fill {
+  padding: 0;
+}
+.sponsor-logo--fill img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: top;
+}
 .sponsor-name {
   font-weight: 900;
   font-size: 0.92rem;
