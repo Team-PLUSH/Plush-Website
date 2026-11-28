@@ -8,7 +8,7 @@ export function mountBuddy(): Cleanup {
   const buddy = document.createElement("div");
   buddy.id = "plush-buddy";
   buddy.setAttribute("role", "button");
-  buddy.setAttribute("aria-label", "Plush buddy — click for a fact");
+  buddy.setAttribute("aria-label", "Plush buddy: click for a fact");
   buddy.innerHTML = `
     <svg viewBox="0 0 100 100" width="78" height="78" xmlns="http://www.w3.org/2000/svg">
       <ellipse cx="50" cy="92" rx="24" ry="4" fill="#0d1120" opacity=".2"/>

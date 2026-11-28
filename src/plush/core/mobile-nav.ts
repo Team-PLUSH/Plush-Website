@@ -1,6 +1,7 @@
 import type { Cleanup } from "../types";
 
-const DESKTOP_BREAKPOINT = 720;
+/** Must match the `max-width: 1080px` nav media query in public/plush.css. */
+const DESKTOP_BREAKPOINT = 1080;
 
 /** Wires the mobile hamburger menu: toggle, outside-click, Escape, and resize. */
 export function mountMobileNav(): Cleanup {

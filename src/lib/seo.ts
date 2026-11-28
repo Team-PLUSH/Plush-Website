@@ -14,7 +14,7 @@ export const SITE_ORIGIN = "https://frc11740.ca";
 /** Canonical address of the home page. */
 export const SITE_URL = `${SITE_ORIGIN}/`;
 
-export const SITE_TITLE = "Team PLUSH — FRC 11005 Robotics Team | Ottawa, Ontario";
+export const SITE_TITLE = "Team PLUSH | FRC 11005 Robotics Team in Ottawa, Ontario";
 
 export const SITE_DESCRIPTION =
   "Team PLUSH (FRC 11005) is a student-run FIRST Robotics Competition team in Ottawa, " +

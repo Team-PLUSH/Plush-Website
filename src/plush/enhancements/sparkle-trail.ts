@@ -1,6 +1,9 @@
 import type { Cleanup } from "../types";
 
+/** A light trail of pastel sparkles follows the pointer (off for reduced motion). */
 export function mountSparkleTrail(): Cleanup {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
+
   const canvas = document.createElement("canvas");
   canvas.id = "plush-sparkle-canvas";
   // Purely decorative cursor-trail effect — keep it out of the a11y tree.

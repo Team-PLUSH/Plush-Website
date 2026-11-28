@@ -1,9 +1,10 @@
 import type { Cleanup } from "../types";
 
-const BUTTON_SELECTOR =
-  ".cta-dark, .cta-light, .btn-inv, .btn-ghost, .nav-pill, .playground-btn, .newsletter-btn, .social-btn";
+const BUTTON_SELECTOR = ".btn, .newsletter-btn";
 
 export function mountRipples(): Cleanup {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
+
   const onClick = (event: MouseEvent) => {
     const btn = (event.target as HTMLElement).closest<HTMLElement>(BUTTON_SELECTOR);
     if (!btn) return;

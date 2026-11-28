@@ -1,8 +1,8 @@
 /** Update this when the next competition date is known. isoDate must include a timezone offset (e.g. "Z" or "-05:00") so it parses the same for every visitor. */
 export const NEXT_COMPETITION = {
   isoDate: "2027-01-09T12:00:00-05:00",
-  eventLabel: "Kickoff — 2026/27 Game Reveal",
-  expiredLabel: "Off-season — see you at kickoff!",
+  eventLabel: "Kickoff: 2026/27 Game Reveal",
+  expiredLabel: "Off-season: see you at kickoff!",
 } as const;
 
 /**
@@ -43,15 +43,15 @@ export const NEWSLETTER = {
  * MUST be bumped (keep it date-stamped) whenever that sentence changes.
  * Mirrored in the `.newsletter-consent-box[data-consent-version]` attribute.
  */
-export const CONSENT_TEXT_VERSION = "2026-11-23";
+export const CONSENT_TEXT_VERSION = "2026-11-27";
 
 export const BUDDY_LINES = [
-  "psst — try the arrow keys on the mascots ↔",
+  "psst, try the arrow keys on the mascots ↔",
   "we live for pastel robots 💜",
-  "scroll down for the playground 👇",
+  "scroll down to meet the mascots 👇",
   "hint: there's a konami code somewhere…",
   "swerve drive supremacy 🔧",
   "have you met Stuffing yet? he never hits walls.",
   "if it compiles, it ships ✨",
-  "click me again for another fact 🐰",
+  "pat us again for another one 🐰",
 ] as const;

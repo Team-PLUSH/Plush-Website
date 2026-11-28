@@ -9,11 +9,11 @@ function setCountdownValue(id: string, value: string) {
 }
 
 function showExpiredState() {
-  COUNTDOWN_IDS.forEach((id) => setCountdownValue(id, "—"));
+  COUNTDOWN_IDS.forEach((id) => setCountdownValue(id, "--"));
 
   const label = document.querySelector<HTMLElement>(".countdown-label");
   const event = document.querySelector<HTMLElement>(".countdown-event");
-  if (label) label.textContent = "⏱ season status";
+  if (label) label.textContent = "Season status";
   if (event) event.textContent = NEXT_COMPETITION.expiredLabel;
 }
 
@@ -27,7 +27,7 @@ function updateCountdown() {
   }
 
   const event = document.querySelector<HTMLElement>(".countdown-event");
-  if (event) event.textContent = `🏟 ${NEXT_COMPETITION.eventLabel}`;
+  if (event) event.textContent = NEXT_COMPETITION.eventLabel;
 
   setCountdownValue("cdDays", String(Math.floor(diff / 86_400_000)).padStart(2, "0"));
   setCountdownValue(

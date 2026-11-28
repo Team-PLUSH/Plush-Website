@@ -7,7 +7,25 @@ function setArrowColor(color: string) {
   });
 }
 
+/**
+ * Draws the mascots wherever the page asks for one: every
+ * `[data-mascot="<index>"]` gets that mascot's illustration, and every
+ * `[data-mascot-fact="<index>"]` gets its fun fact. Keeps the art and the facts
+ * in one place (data/mascots.ts) however many pages the mascots appear on.
+ */
+function drawMascotArt() {
+  document.querySelectorAll<HTMLElement>("[data-mascot]").forEach((el) => {
+    const mascot = MASCOTS[Number(el.dataset.mascot)];
+    if (mascot && !el.childElementCount) el.innerHTML = mascot.svg;
+  });
+  document.querySelectorAll<HTMLElement>("[data-mascot-fact]").forEach((el) => {
+    const mascot = MASCOTS[Number(el.dataset.mascotFact)];
+    if (mascot) el.textContent = mascot.fact;
+  });
+}
+
 export function mountMascots(): Cleanup {
+  drawMascotArt();
   let currentMascot = 0;
   let transitioning = false;
 

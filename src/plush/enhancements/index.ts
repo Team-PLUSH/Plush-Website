@@ -5,6 +5,7 @@ import { mountKonami } from "./konami";
 import { mountPatInteractions } from "./pat";
 import { mountRipples } from "./ripples";
 import { mountSparkleTrail } from "./sparkle-trail";
+import { mountStickerChat } from "./sticker-chat";
 import { mountTrackRoadmap } from "./track-roadmap";
 
 /** Layered polish on top of the ported Team PLUSH markup. */
@@ -17,6 +18,7 @@ export function initPlushEnhancements(): Cleanup {
     mountHeroParallax(),
     mountPatInteractions(),
     mountTrackRoadmap(),
+    mountStickerChat(),
   ];
 
   return () => cleanups.forEach((cleanup) => cleanup());
