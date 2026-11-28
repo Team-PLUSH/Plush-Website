@@ -1,29 +1,55 @@
-<div id="custom-cursor">🐱</div>
+<div id="custom-cursor" aria-hidden="true">🐱</div>
 
 <a class="skip-link" href="#site-main">Skip to content</a>
 
 <header class="site-topbar">
   <nav aria-label="Primary">
-    <div class="nav-mark" data-page="home">Team PLUSH</div>
+    <a class="brand" href="#home" data-page="home" aria-label="Team PLUSH, home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <ellipse class="brand-ear" cx="11" cy="7.5" rx="3.2" ry="5.5" />
+        <ellipse class="brand-ear" cx="21" cy="7.5" rx="3.2" ry="5.5" />
+        <circle class="brand-gear" cx="16" cy="19" r="9.5" />
+        <circle class="brand-hub" cx="16" cy="19" r="3.4" />
+      </svg>
+      <span class="brand-word">PLUSH</span>
+      <span class="brand-num">FRC 11005</span>
+    </a>
     <ul class="nav-links" id="primaryNav">
-      <li><a data-page="about">about</a></li>
-      <li><a data-page="team">team</a></li>
-      <li><a data-page="robots">robots</a></li>
-      <li><a data-page="schedule">schedule</a></li>
-      <li><a data-page="values">values</a></li>
-      <li><a data-page="socials">socials</a></li>
-      <li><a data-page="sponsors">sponsors</a></li>
+      <li><a href="#about" data-page="about">About</a></li>
+      <li><a href="#team" data-page="team">Team</a></li>
+      <li><a href="#robots" data-page="robots">Robots</a></li>
+      <li><a href="#schedule" data-page="schedule">Schedule</a></li>
+      <li><a href="#values" data-page="values">Values</a></li>
+      <li><a href="#socials" data-page="socials">Socials</a></li>
+      <li><a href="#sponsors" data-page="sponsors">Sponsors</a></li>
       <li class="nav-links-join">
-        <a href="https://forms.gle/GsqnqVu716S4S4QTA" target="_blank" rel="noopener noreferrer">join us 💜</a>
+        <a href="https://forms.gle/GsqnqVu716S4S4QTA" target="_blank" rel="noopener noreferrer"
+          >join us 💜
+          <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M5 11 11 5M6 5h5v5" /></svg
+        ></a>
       </li>
     </ul>
     <div class="nav-actions">
-      <a class="nav-pill" href="https://forms.gle/GsqnqVu716S4S4QTA" target="_blank" rel="noopener noreferrer"
-        >join us 💜</a
-      >
+      <a
+        class="btn btn-ink btn-sm nav-pill"
+        href="https://forms.gle/GsqnqVu716S4S4QTA"
+        target="_blank"
+        rel="noopener noreferrer"
+        >join us 💜
+        <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+      ></a>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
-        <span class="icon-moon" aria-hidden="true">🌙</span
-        ><span class="icon-sun" aria-hidden="true">☀️</span>
+        <svg class="icon-moon" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M16.5 12.6A7 7 0 0 1 7.4 3.5a7 7 0 1 0 9.1 9.1Z" />
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="10" cy="10" r="3.6" />
+          <path
+            d="M10 1.8v2.1M10 16.1v2.1M1.8 10h2.1M16.1 10h2.1M4.2 4.2l1.5 1.5M14.3 14.3l1.5 1.5M4.2 15.8l1.5-1.5M14.3 5.7l1.5-1.5"
+          />
+        </svg>
       </button>
       <button
         class="nav-toggle"
@@ -39,31 +65,22 @@
       </button>
     </div>
   </nav>
-  <div class="jam-marquee-wrap">
-    <div class="jam-marquee-track">
-      <p class="hero-eyebrow">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-      <p class="hero-eyebrow" aria-hidden="true">✦ FRC Robotics · Team #PLUSH ✦</p>
-    </div>
-  </div>
 </header>
 
 <main id="site-main" tabindex="-1">
   <h1 class="visually-hidden">
-    Team PLUSH — FRC 11005, a student-run FIRST Robotics Competition team in Ottawa,
-    Ontario
+    Team PLUSH (FRC 11005), a student-run FIRST Robotics Competition team in Ottawa, Ontario
   </h1>
-  <!-- HOME PAGE -->
+
+  <!-- ═════════════════════════ HOME ═════════════════════════ -->
   <div class="page active" id="page-home">
-    <div class="hero">
-      <svg class="hero-bg-svg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+    <section class="hero" aria-labelledby="hero-title">
+      <svg
+        class="hero-doodles"
+        aria-hidden="true"
+        viewBox="0 0 1200 800"
+        preserveAspectRatio="xMidYMid slice"
+      >
         <g opacity=".55">
           <path
             d="M80 120 L83 113 L86 120 L93 123 L86 126 L83 133 L80 126 L73 123 Z"
@@ -235,138 +252,535 @@
           <circle cx="-28" cy="12" r="2" fill="#a8bede" opacity=".7" />
         </g>
       </svg>
-      <div class="hero-wordmark">
-        <div class="smear smear-1"></div>
-        <div class="smear smear-2"></div>
-        <div class="smear smear-3"></div>
-        <span class="jam-doodle jam-doodle-star1" aria-hidden="true">✦</span>
-        <span class="jam-doodle jam-doodle-star2" aria-hidden="true">★</span>
-        <svg
-          class="jam-doodle jam-doodle-arrow"
-          aria-hidden="true"
-          viewBox="0 0 70 50"
-          width="70"
-          height="50"
-          fill="none"
-        >
-          <path
-            d="M4 4c14 2 34 4 40 20 3 8-2 14-10 12"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M25 32l9 4-3 10"
-            stroke="currentColor"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        <span class="word">PLUSH</span>
+      <div class="wrap hero-mast">
+        <p class="chip fade">
+          <span class="live-dot" aria-hidden="true"></span>FRC Team 11005 · Ottawa, Ontario
+        </p>
+        <div class="hero-wordmark fade" aria-hidden="true">
+          <span class="smear smear-1" data-parallax="10"></span>
+          <span class="smear smear-2" data-parallax="16"></span>
+          <span class="smear smear-3" data-parallax="22"></span>
+          <span class="jam-doodle jam-doodle-star1">✦</span>
+          <span class="jam-doodle jam-doodle-star2">★</span>
+          <svg
+            class="jam-doodle jam-doodle-arrow"
+            viewBox="0 0 70 50"
+            width="70"
+            height="50"
+            fill="none"
+          >
+            <path
+              d="M4 4c14 2 34 4 40 20 3 8-2 14-10 12"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M25 32l9 4-3 10"
+              stroke="currentColor"
+              stroke-width="3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <p class="hero-word" data-parallax="6">PLUSH</p>
+        </div>
+        <p class="hero-tagline fade">
+          live <span class="dot">✦</span> laugh <span class="dot">✦</span> love
+          <span class="dot">✦</span> robotics
+        </p>
+        <p class="hero-subtagline fade">
+          100% Student-Led Community Team <span class="sep">|</span> Est. April 2026
+        </p>
       </div>
-      <p class="hero-tagline">
-        live <span class="dot">✦</span> laugh <span class="dot">✦</span> love
-        <span class="dot">✦</span> robotics
-      </p>
-      <p class="hero-subtagline">
-        100% Student-Led Community Team <span class="hero-sub-sep">|</span> Est. April 2026
-      </p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num is-sm is-blue">Rookie</div>
-          <div class="hero-stat-label">year</div>
+
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h2 class="hero-title fade" id="hero-title">
+            Hard engineering. <span class="hero-title-soft">Soft landing.</span>
+          </h2>
+          <p class="hero-lede fade">
+            Team PLUSH is a student-founded, student-led <em>FIRST</em> Robotics Competition team in
+            Canada's capital. We design, build and code a competition robot in under three months,
+            and we make sure everyone who walks into the shop feels at home.
+          </p>
+          <div class="hero-ctas fade">
+            <a
+              class="btn btn-ink"
+              href="https://forms.gle/GsqnqVu716S4S4QTA"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Join the team 💜</a
+            >
+            <a class="btn btn-line" href="#team" data-page="team">Meet the team</a>
+            <a class="btn btn-line" href="#robots" data-page="robots">See our robots</a>
+          </div>
+          <div class="hero-crew fade">
+            <p class="bubble hero-bubble" aria-live="polite">
+              psst, try the arrow keys on the mascots ↔
+            </p>
+            <div class="sticker-row">
+              <button type="button" class="sticker sticker-blue" aria-label="Pat Pal">
+                <span class="sticker-art" aria-hidden="true">🐱</span
+                ><span class="sticker-label">Pal</span>
+              </button>
+              <button type="button" class="sticker sticker-purple" aria-label="Pat Xaivian">
+                <span class="sticker-art" aria-hidden="true">🐰</span
+                ><span class="sticker-label">Xaivian</span>
+              </button>
+              <button type="button" class="sticker sticker-green" aria-label="Pat Stuffing">
+                <span class="sticker-art" aria-hidden="true">🐻</span
+                ><span class="sticker-label">Stuffing</span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num is-sm is-purple">≈45</div>
-          <div class="hero-stat-label">members</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num is-sm is-green">🏆 Goal</div>
-          <div class="hero-stat-label">Rookie All-Star</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num is-sm is-blue">∞</div>
-          <div class="hero-stat-label">Jolliness</div>
+
+        <div class="hero-visual">
+          <div class="polaroids">
+            <figure class="polaroid polaroid-blue fade" data-parallax="6">
+              <div class="ph">
+                <img
+                  src="/team/eason-yang.jpg"
+                  alt="Eason Yang, co-founder"
+                  width="800"
+                  height="800"
+                  fetchpriority="high"
+                />
+              </div>
+              <figcaption>Eason :)</figcaption>
+            </figure>
+            <figure class="polaroid polaroid-purple fade" data-parallax="12">
+              <div class="ph">
+                <img
+                  src="/team/sarmistha-pal.jpg"
+                  alt="Sarmistha Pal, co-founder"
+                  width="800"
+                  height="800"
+                  fetchpriority="high"
+                />
+              </div>
+              <figcaption>Sarmistha</figcaption>
+            </figure>
+            <figure class="polaroid polaroid-green fade" data-parallax="8">
+              <div class="ph">
+                <img
+                  src="/team/alvin-ren.jpg"
+                  alt="Alvin Ren, co-founder"
+                  width="800"
+                  height="800"
+                  fetchpriority="high"
+                />
+              </div>
+              <figcaption>Alvin</figcaption>
+            </figure>
+          </div>
+          <p class="hand-note hand-note-hero" aria-hidden="true">
+            the founders :)
+            <svg viewBox="0 0 60 40" fill="none">
+              <path d="M4 6c18 0 36 6 44 24" />
+              <path d="M40 26l8 5 2-9" />
+            </svg>
+          </p>
+          <a class="now-building fade" href="#robots" data-page="robots">
+            <span class="now-building-label"
+              ><span class="live-dot" aria-hidden="true"></span>Now building</span
+            >
+            <span class="now-building-name">Droplet</span>
+            <span class="now-building-meta">2026 offseason robot · swerve drive</span>
+            <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M2.5 8h11M9.5 4l4 4-4 4" />
+            </svg>
+          </a>
         </div>
       </div>
-      <div class="hero-ctas">
-        <button class="cta-dark" data-page="team">meet the team</button>
-        <button class="cta-light" data-page="robots">see our robots</button>
-        <button class="cta-light" data-page="schedule">season schedule</button>
+
+      <div class="wrap">
+        <dl class="hero-stats fade">
+          <div>
+            <dt>Year</dt>
+            <dd class="is-blue">Rookie</dd>
+          </div>
+          <div>
+            <dt>Member goal</dt>
+            <dd class="is-purple">≈45</dd>
+          </div>
+          <div>
+            <dt>Rookie All-Star</dt>
+            <dd class="is-green">🏆 Goal</dd>
+          </div>
+          <div>
+            <dt>Jolliness</dt>
+            <dd class="is-blue">∞</dd>
+          </div>
+        </dl>
       </div>
-      <div class="sticker-row">
-        <div class="sticker jam-pop">
-          <div class="sticker-art">🐱</div>
-          <div class="sticker-label">Pal</div>
-        </div>
-        <div class="sticker jam-pop">
-          <div class="sticker-art">🐰</div>
-          <div class="sticker-label">Xaivian</div>
-        </div>
-        <div class="sticker jam-pop">
-          <div class="sticker-art">🐻</div>
-          <div class="sticker-label">Stuffing</div>
-        </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Live</span><i>✦</i><span>Laugh</span><i>✦</i><span>Love</span><i>✦</i
+        ><span>Robotics</span>
       </div>
     </div>
 
-    <!-- FOUNDERS MISSION -->
-    <section class="founders-mission-section">
+    <!-- 01 · WHO WE ARE -->
+    <section class="sec sec-jam" aria-labelledby="home-about-title">
       <div class="wrap">
-        <div class="ruled-title center">
-          <div class="rule"></div>
-          <h2>founders' mission</h2>
-          <div class="rule"></div>
+        <div class="split split-wide">
+          <div>
+            <p class="kicker fade"><span class="kicker-idx">01</span>Who we are</p>
+            <h2 class="display fade" id="home-about-title">
+              Ambitious missions always begin with a <mark class="hl">simple idea.</mark>
+            </h2>
+          </div>
+          <div class="prose prose-lg fade">
+            <p>
+              For Team PLUSH, it began with three high school students who believed that STEM could
+              be more than just innovation: a secondary home where young engineers feel welcomed,
+              supported, and inspired one day at a time.
+            </p>
+            <p>
+              Team PLUSH will <strong>always</strong> operate on a student-led basis, with our
+              oldest mentor being 18 years of age.
+            </p>
+            <a class="link-arrow" href="#about" data-page="about"
+              >Read our story
+              <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+            ></a>
+          </div>
         </div>
-        <p class="fade founders-mission-text">
-          Ambitious missions always begin with a simple idea.
-        </p>
-        <p class="fade founders-mission-text">
-          For Team PLUSH, it began with three high school students who believed that STEM could be
-          more than just innovation, but rather a secondary home where young engineers feel
-          welcomed, supported, and inspired one day at a time. Team PLUSH will ALWAYS operate on a
-          student-led basis, with our oldest mentor being 18 years of age.
-        </p>
-        <div class="founders-row fade">
-          <figure class="founder-card">
-            <div class="founder-photo">
-              <img src="/team/eason-yang.png" alt="Eason Yang" loading="lazy" />
+        <dl class="facts fade">
+          <div>
+            <dt>Founded</dt>
+            <dd>Apr 2026</dd>
+          </div>
+          <div>
+            <dt>High-school co-founders</dt>
+            <dd>3</dd>
+          </div>
+          <div>
+            <dt>Sub-teams</dt>
+            <dd>4</dd>
+          </div>
+          <div>
+            <dt>Oldest mentor</dt>
+            <dd>18</dd>
+          </div>
+          <div>
+            <dt>Member goal</dt>
+            <dd>≈45</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 02 · ROBOTS -->
+    <section class="sec sec-purple dots" aria-labelledby="home-robots-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker fade"><span class="kicker-idx">02</span>The machines</p>
+          <h2 class="display fade" id="home-robots-title">
+            Built in the shop. <mark class="hl hl-green">Tested until it breaks.</mark>
+          </h2>
+        </div>
+        <div class="robot-spread">
+          <div class="robot-copy">
+            <p class="tag tag-live fade">
+              <span class="live-dot" aria-hidden="true"></span>Current robot
+            </p>
+            <h3 class="robot-name fade">Droplet</h3>
+            <p class="robot-sub fade">
+              2026 offseason robot, and the first machine to carry the PLUSH name.
+            </p>
+            <a class="link-arrow fade" href="#robots" data-page="robots"
+              >See the robots
+              <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+            ></a>
+          </div>
+          <div class="robot-data">
+            <dl class="specs fade">
+              <div>
+                <dt>Drivetrain</dt>
+                <dd>Swerve drive</dd>
+              </div>
+              <div>
+                <dt>Vision</dt>
+                <dd>Limelight 3</dd>
+              </div>
+              <div>
+                <dt>Intake</dt>
+                <dd>Roller intake</dd>
+              </div>
+              <div>
+                <dt>Targeting</dt>
+                <dd>Auto aim</dd>
+              </div>
+            </dl>
+            <div class="next-bot fade">
+              <p class="next-bot-label">Next up · 2027 season robot</p>
+              <p class="next-bot-name">
+                Name <span class="redact" aria-label="to be announced"></span>
+              </p>
+              <p class="next-bot-meta">Coming January 2027, after kickoff.</p>
             </div>
-            <figcaption>
-              <span class="founder-name">Eason Yang</span>
-              <span class="founder-school">Merivale HS</span>
-              <span class="founder-class">Class of &rsquo;27</span>
-            </figcaption>
-          </figure>
-          <figure class="founder-card">
-            <div class="founder-photo">
-              <img src="/team/sarmistha-pal.png" alt="Sarmistha Pal" loading="lazy" />
-            </div>
-            <figcaption>
-              <span class="founder-name">Sarmistha Pal</span>
-              <span class="founder-school">John McRae SS</span>
-              <span class="founder-class">Class of &rsquo;27</span>
-            </figcaption>
-          </figure>
-          <figure class="founder-card">
-            <div class="founder-photo">
-              <img src="/team/alvin-ren.png" alt="Alvin Ren" loading="lazy" />
-            </div>
-            <figcaption>
-              <span class="founder-name">Alvin Ren</span>
-              <span class="founder-school">Earl of March SS</span>
-              <span class="founder-class">Class of &rsquo;27</span>
-            </figcaption>
-          </figure>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- MASCOT CHOOSER -->
-    <section class="mascot-section">
-      <svg class="mascot-bg-svg" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice">
+    <!-- 03 · SEASON JOURNEY -->
+    <section class="sec season-plans" aria-labelledby="home-season-title">
+      <div class="wrap">
+        <div class="sec-head sec-head-row">
+          <div>
+            <p class="kicker fade"><span class="kicker-idx">03</span>The season</p>
+            <h2 class="display fade" id="home-season-title">
+              From first meeting to the <mark class="hl hl-blue">provincial stage.</mark>
+            </h2>
+          </div>
+          <a class="link-arrow fade" href="#schedule" data-page="schedule"
+            >Full schedule
+            <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+          ></a>
+        </div>
+        <div class="season-path fade">
+          <svg
+            class="season-trail"
+            viewBox="0 0 1000 4"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path id="trackPath" class="season-track-path" d="M0 2H1000" pathLength="1" />
+          </svg>
+          <ol class="season-stops">
+            <li class="season-stop" data-stage="1">
+              <span class="season-node">1</span>
+              <span class="season-now" aria-hidden="true">we're here</span>
+              <p class="season-tag">Sep–Dec · Offseason</p>
+              <h3 class="season-title">Offseason &amp; preseason</h3>
+              <p class="season-desc">
+                Before the game drops, we recruit new members, train on tools, CAD, and code, run
+                fundraising and outreach, and prototype ideas so the team is ready to move on day
+                one.
+              </p>
+            </li>
+            <li class="season-stop" data-stage="2">
+              <span class="season-node">2</span>
+              <span class="season-now" aria-hidden="true">we're here</span>
+              <p class="season-tag">January · Kickoff</p>
+              <h3 class="season-title">Kickoff &amp; strategy</h3>
+              <p class="season-desc">
+                The season opens with FIRST's global game reveal. We read the manual together, break
+                down the field, and decide what kind of robot a rookie PLUSH team can build well.
+              </p>
+            </li>
+            <li class="season-stop" data-stage="3">
+              <span class="season-node">3</span>
+              <span class="season-now" aria-hidden="true">we're here</span>
+              <p class="season-tag">Weeks 1–2 · Design</p>
+              <h3 class="season-title">Design &amp; prototype</h3>
+              <p class="season-desc">
+                CAD in Onshape, cardboard-and-wood prototypes, and fast tests. We lock in a design
+                that is simple enough to finish and sturdy enough to compete.
+              </p>
+            </li>
+            <li class="season-stop" data-stage="4">
+              <span class="season-node">4</span>
+              <span class="season-now" aria-hidden="true">we're here</span>
+              <p class="season-tag">Weeks 3–6 · Build</p>
+              <h3 class="season-title">Build &amp; program</h3>
+              <p class="season-desc">
+                Fabrication, wiring, and code come together on one robot. Drive practice starts the
+                minute it can move, and every subsystem gets tested until it breaks.
+              </p>
+            </li>
+            <li class="season-stop" data-stage="5">
+              <span class="season-node">5</span>
+              <span class="season-now" aria-hidden="true">we're here</span>
+              <p class="season-tag">March · Districts</p>
+              <h3 class="season-title">District competitions</h3>
+              <p class="season-desc">
+                Our first competitions: qualification matches, pit repairs between rounds, scouting
+                alliance partners, and earning the ranking points that decide who advances.
+              </p>
+            </li>
+            <li class="season-stop" data-stage="6">
+              <span class="season-node">6</span>
+              <span class="season-now" aria-hidden="true">we're here</span>
+              <p class="season-tag">April · Provincials <em>(if qualified)</em></p>
+              <h3 class="season-title">Ontario Provincial Championship</h3>
+              <p class="season-desc">
+                The top district teams meet for the provincial title in front of a crowd of
+                thousands, with a shot at qualifying for the FIRST Championship.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · PEOPLE -->
+    <section class="sec sec-green dots" aria-labelledby="home-team-title">
+      <div class="wrap">
+        <div class="sec-head sec-head-row">
+          <div>
+            <p class="kicker fade"><span class="kicker-idx">04</span>The people</p>
+            <h2 class="display fade" id="home-team-title">
+              Student-founded. Student-led. All the way down.
+            </h2>
+          </div>
+          <a class="link-arrow fade" href="#team" data-page="team"
+            >Meet the whole team
+            <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+          ></a>
+        </div>
+        <ul class="people people-strip">
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/dorothy-zhou.jpg"
+                alt="Dorothy Zhou"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Dorothy Zhou</p>
+            <p class="person-role">Business lead</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/sean-nie.jpg"
+                alt="Sean Nie"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Sean Nie</p>
+            <p class="person-role">Software lead</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/varun-gokul.jpg"
+                alt="Varun Gokul"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Varun Gokul</p>
+            <p class="person-role">Software</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/abigail-martin.jpg"
+                alt="Abigail Martin"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Abigail Martin</p>
+            <p class="person-role">Mechanical</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/ryan-zhao.jpg"
+                alt="Ryan Zhao"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Ryan Zhao</p>
+            <p class="person-role">Mentor · FRC alum</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/henry-cai.jpg"
+                alt="Henry Cai"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Henry Cai</p>
+            <p class="person-role">Mentor · FRC alum</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 05 · REACH -->
+    <section class="sec sec-blue dots reach" aria-labelledby="home-reach-title">
+      <div class="wrap">
+        <div class="sec-head sec-head-row">
+          <div>
+            <p class="kicker fade"><span class="kicker-idx">05</span>Our reach</p>
+            <h2 class="display fade" id="home-reach-title">
+              Stitched across the city, <mark class="hl hl-blue">and the province.</mark>
+            </h2>
+            <p class="sec-note reach-intro fade">
+              Our students come from schools all over Ottawa, and our mentors study well beyond it.
+              Pick a view to see how far one little plush gets.
+            </p>
+          </div>
+          <div class="reach-toggle fade" role="group" aria-label="Map view">
+            <button
+              type="button"
+              class="btn btn-line btn-sm"
+              data-reach-view="ottawa"
+              aria-pressed="true"
+            >
+              Students across Ottawa
+            </button>
+            <button
+              type="button"
+              class="btn btn-line btn-sm"
+              data-reach-view="ontario"
+              aria-pressed="false"
+            >
+              Mentors across Ontario
+            </button>
+          </div>
+        </div>
+        <div class="reach-frame fade">
+          <div
+            class="reach-map"
+            role="region"
+            aria-label="Map of the schools our members and mentors attend"
+          ></div>
+          <div class="reach-card" aria-live="polite">
+            <p class="reach-stat">
+              <span class="reach-value">--</span> <span class="reach-unit"></span>
+            </p>
+            <p class="reach-caption"></p>
+          </div>
+        </div>
+        <ul class="reach-list fade" aria-label="Schools shown on the map"></ul>
+      </div>
+    </section>
+
+    <!-- 05 · MASCOTS -->
+    <section class="sec sec-violet mascot-section" aria-labelledby="home-mascots-title">
+      <svg
+        class="mascot-bg-svg"
+        aria-hidden="true"
+        viewBox="0 0 1200 500"
+        preserveAspectRatio="xMidYMid slice"
+      >
         <g opacity=".3">
           <path d="M80 80 L82 74 L84 80 L90 82 L84 84 L82 90 L80 84 L74 82 Z" fill="#a8bede" />
           <path
@@ -381,17 +795,30 @@
           <circle cx="1050" cy="280" r="3" fill="#a8bede" />
         </g>
       </svg>
-      <div class="wrap layer-2">
-        <div class="ruled-title center">
-          <div class="rule"></div>
-          <h2 class="on-dark">meet the mascots</h2>
-          <div class="rule"></div>
+      <div class="wrap mascot-layout">
+        <div class="mascot-intro">
+          <p class="kicker kicker-light fade"><span class="kicker-idx">06</span>The mascots</p>
+          <h2 class="display fade" id="home-mascots-title">Every team needs a soft side.</h2>
+          <p class="fade">
+            Meet Pal, Xaivian and Stuffing, the team's three mascots. Flip through them with the
+            arrows (or your keyboard's arrow keys), and give them a pat while you're at it.
+          </p>
+          <div class="cursor-chooser fade">
+            <p class="cursor-chooser-label">Use one as your cursor</p>
+            <div class="cursor-btns">
+              <button type="button" class="cursor-btn" id="cursorCat">🐱 Pal</button>
+              <button type="button" class="cursor-btn" id="cursorBunny">🐰 Xaivian</button>
+              <button type="button" class="cursor-btn" id="cursorBear">🐻 Stuffing</button>
+              <button type="button" class="cursor-btn-off">Default cursor</button>
+            </div>
+          </div>
         </div>
-        <div class="mascot-picker">
+        <div class="mascot-picker fade">
           <button class="mascot-arrow" id="mascotLeft" type="button" aria-label="Previous mascot">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path
                 d="M26 8 L14 20 L26 32"
+                stroke="#a8bede"
                 stroke-width="4"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -406,12 +833,14 @@
               <div class="mascot-name" id="mascotName"></div>
               <div class="mascot-role" id="mascotRole"></div>
             </div>
-            <div class="mascot-fact" id="mascotFact"></div>
+            <div class="mascot-fact" id="mascotFact" aria-live="polite"></div>
+            <div class="mascot-dots" id="mascotDots"></div>
           </div>
           <button class="mascot-arrow" id="mascotRight" type="button" aria-label="Next mascot">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 40 40" fill="none" aria-hidden="true">
               <path
                 d="M14 8 L26 20 L14 32"
+                stroke="#a8bede"
                 stroke-width="4"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -419,125 +848,87 @@
             </svg>
           </button>
         </div>
-        <div class="mascot-dots" id="mascotDots"></div>
-        <div class="cursor-chooser">
-          <p>✦ use as your cursor ✦</p>
-          <div class="cursor-btns">
-            <button type="button" class="cursor-btn" id="cursorCat">🐱 Pal</button>
-            <button type="button" class="cursor-btn" id="cursorBunny">🐰 Xaivian</button>
-            <button type="button" class="cursor-btn" id="cursorBear">🐻 Stuffing</button>
-            <button type="button" class="cursor-btn-off">✕ default cursor</button>
+      </div>
+    </section>
+
+    <!-- 06 · PARTNERS -->
+    <section class="sec" aria-labelledby="home-sponsors-title">
+      <div class="wrap">
+        <div class="sec-head sec-head-row">
+          <div>
+            <p class="kicker fade"><span class="kicker-idx">07</span>Our partners</p>
+            <h2 class="display fade" id="home-sponsors-title">
+              The organizations building with us.
+            </h2>
+          </div>
+          <a class="link-arrow fade" href="#sponsors" data-page="sponsors"
+            >Become a sponsor
+            <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+          ></a>
+        </div>
+        <div class="logo-wall fade">
+          <div class="logo-wall-row logo-wall-title">
+            <p class="logo-wall-tier">Title</p>
+            <div class="logo-cell logo-cell-lg">
+              <img src="/sponsors/collab-space.svg" alt="Collab Space" loading="lazy" />
+            </div>
+          </div>
+          <div class="logo-wall-row">
+            <p class="logo-wall-tier">Diamond</p>
+            <div class="logo-cell">
+              <img src="/sponsors/robotics-centre.svg" alt="Robotics Centre" loading="lazy" />
+            </div>
+            <div class="logo-cell">
+              <img src="/sponsors/argosy-foundation.svg" alt="Argosy Foundation" loading="lazy" />
+            </div>
+            <div class="logo-cell">
+              <img
+                src="/sponsors/makers-making-change.svg"
+                alt="Makers Making Change, a Neil Squire program"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="logo-wall-row">
+            <p class="logo-wall-tier">Gold</p>
+            <div class="logo-cell">
+              <img src="/sponsors/lockheed-martin.svg" alt="Lockheed Martin" loading="lazy" />
+            </div>
+            <div class="logo-cell logo-cell-fill">
+              <img src="/sponsors/frc-10015-bubbles.png" alt="FRC 10015 Bubbles" loading="lazy" />
+            </div>
+          </div>
+          <div class="logo-wall-row">
+            <p class="logo-wall-tier">Silver</p>
+            <div class="logo-cell">
+              <img src="/sponsors/dr-joseph-nebre.svg" alt="Dr. Joseph Nebre" loading="lazy" />
+            </div>
+          </div>
+          <div class="logo-wall-row">
+            <p class="logo-wall-tier">In-kind</p>
+            <div class="logo-cell">
+              <img src="/sponsors/canus-plastics.svg" alt="Canus Plastics Inc." loading="lazy" />
+            </div>
+            <div class="logo-cell">
+              <img src="/sponsors/sable-metal.svg" alt="Sable Metal Fabrication" loading="lazy" />
+            </div>
+            <div class="logo-cell">
+              <img src="/sponsors/frctees.svg" alt="FRCtees" loading="lazy" />
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="track-journey-section season-plans">
-      <div class="wrap">
-        <div class="ruled-title center">
-          <div class="rule"></div>
-          <h2 class="on-dark">season plans</h2>
-          <div class="rule"></div>
-        </div>
-        <div class="season-path fade">
-          <span class="season-marker season-start" aria-hidden="true">▲ start</span>
-          <ol class="season-stops">
-            <svg
-              class="season-trail"
-              viewBox="0 0 400 1000"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <defs>
-                <linearGradient id="trackGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="#a8bede" />
-                  <stop offset="50%" stop-color="#bfa8d8" />
-                  <stop offset="100%" stop-color="#a4c9b0" />
-                </linearGradient>
-              </defs>
-              <path
-                id="trackPath"
-                class="season-track-path"
-                d="M200 0 C 120 40 48 60 48 125 C 48 240 352 260 352 375 C 352 490 48 510 48 625 C 48 740 352 760 352 875 C 352 950 260 1000 200 1000"
-              />
-            </svg>
-            <li class="season-stop stop-a">
-              <span class="season-node">1</span>
-              <article class="track-card season-card">
-                <span class="track-tag">September–December · Offseason</span>
-                <h3 class="track-card-title">Offseason &amp; Preseason</h3>
-                <p class="track-card-desc">
-                  Before the game drops, we recruit new members, train on tools, CAD, and code, run
-                  fundraising and outreach, and prototype ideas so the team is ready to move on day
-                  one.
-                </p>
-              </article>
-            </li>
-            <li class="season-stop stop-b">
-              <span class="season-node">2</span>
-              <article class="track-card season-card">
-                <span class="track-tag">January · Kickoff</span>
-                <h3 class="track-card-title">Kickoff &amp; Strategy</h3>
-                <p class="track-card-desc">
-                  The season opens with FIRST's global game reveal. We read the manual together,
-                  break down the field, and decide what kind of robot a rookie PLUSH team can build
-                  well.
-                </p>
-              </article>
-            </li>
-            <li class="season-stop stop-a">
-              <span class="season-node">3</span>
-              <article class="track-card season-card">
-                <span class="track-tag">Weeks 1–2 · Design</span>
-                <h3 class="track-card-title">Design &amp; Prototype</h3>
-                <p class="track-card-desc">
-                  CAD in Onshape, cardboard-and-wood prototypes, and fast tests. We lock in a design
-                  that is simple enough to finish and sturdy enough to compete.
-                </p>
-              </article>
-            </li>
-            <li class="season-stop stop-b">
-              <span class="season-node">4</span>
-              <article class="track-card season-card">
-                <span class="track-tag">Weeks 3–6 · Build</span>
-                <h3 class="track-card-title">Build &amp; Program</h3>
-                <p class="track-card-desc">
-                  Fabrication, wiring, and code come together on one robot. Drive practice starts
-                  the minute it can move, and every subsystem gets tested until it breaks.
-                </p>
-              </article>
-            </li>
-            <li class="season-stop stop-a">
-              <span class="season-node">5</span>
-              <article class="track-card season-card">
-                <span class="track-tag">March · Districts</span>
-                <h3 class="track-card-title">District Competitions</h3>
-                <p class="track-card-desc">
-                  Our first competitions: qualification matches, pit repairs between rounds,
-                  scouting alliance partners, and earning the ranking points that decide who
-                  advances.
-                </p>
-              </article>
-            </li>
-            <li class="season-stop stop-b">
-              <span class="season-node">6</span>
-              <article class="track-card season-card">
-                <span class="track-tag">April · Provincials <em>(if qualified)</em></span>
-                <h3 class="track-card-title">Ontario Provincial Championship</h3>
-                <p class="track-card-desc">
-                  The top district teams meet for the provincial title in front of a crowd of
-                  thousands, with a shot at qualifying for the FIRST Championship.
-                </p>
-              </article>
-            </li>
-          </ol>
-          <span class="season-marker season-end" aria-hidden="true">🏆</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="join-section">
-      <svg class="join-bg-svg" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice">
+    <!-- JOIN -->
+    <section class="join-section join-jam" aria-labelledby="home-join-title">
+      <svg
+        class="join-bg-svg"
+        aria-hidden="true"
+        viewBox="0 0 1200 400"
+        preserveAspectRatio="xMidYMid slice"
+      >
         <g fill="white">
           <path d="M80 80 L83 72 L86 80 L94 83 L86 86 L83 94 L80 86 L72 83 Z" />
           <path
@@ -556,943 +947,927 @@
           />
         </g>
       </svg>
-      <div class="wrap">
-        <div class="join-inner">
-          <span class="join-sticker">no experience needed</span>
-          <h2 class="join-h">come build<br />with <em>us</em></h2>
-          <p class="join-sub">
-            We meet every week. We eat snacks. We argue about the best way to attach a gear — and
+      <div class="wrap join-inner">
+        <span class="join-sticker fade">no experience needed</span>
+        <h2 class="join-h fade" id="home-join-title">come build<br />with <em>us</em></h2>
+        <div class="join-foot">
+          <p class="join-sub fade">
+            We meet every week. We eat snacks. We argue about the best way to attach a gear, and
             somehow it always works out.
           </p>
-          <div class="join-btns">
+          <div class="join-btns fade">
             <a
-              class="btn-inv"
+              class="btn btn-ink"
               href="https://forms.gle/GsqnqVu716S4S4QTA"
               target="_blank"
               rel="noopener noreferrer"
-              >apply to join</a
-            >
-            <button class="btn-ghost" data-page="sponsors">sponsor us</button>
+              >apply to join
+              <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+            ></a>
+            <a class="btn btn-line" href="#sponsors" data-page="sponsors">sponsor us</a>
           </div>
+        </div>
+        <div class="mascot-peek" aria-hidden="true">
+          <div class="mascot-art" data-mascot="0"></div>
+          <div class="mascot-art" data-mascot="1"></div>
+          <div class="mascot-art" data-mascot="2"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═════════════════════════ ABOUT ═════════════════════════ -->
+  <div class="page page-about" id="page-about">
+    <header class="page-head page-head-blue dots">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">About</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">About</span>What's Team PLUSH?</p>
+        <h2 class="page-title fade">A second home for young engineers.</h2>
+        <p class="page-lede fade">
+          Team PLUSH is a community <em>FIRST</em> Robotics Competition team, assembled from a group
+          of passionate high school students building a functioning robot in under three months.
+        </p>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">hi, I'm Pal! I keep this team organized.</p>
+          <div class="mascot-art" data-mascot="0"></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="sec sec-tight">
+      <div class="wrap split">
+        <div class="split-label">
+          <p class="kicker fade">The founding mission</p>
+        </div>
+        <div class="prose prose-lg prose-dropcap fade">
+          <p>
+            Ambitious missions always begin with a simple idea. For Team PLUSH, it began with three
+            high school students who believed that STEM could be more than just innovation, but
+            rather a secondary home where young engineers feel welcomed, supported, and inspired one
+            day at a time.
+          </p>
+          <p>
+            Our philosophy is to empower students to design, build, and test physical hardware
+            without judgement, with mentorship from industry professionals. Team PLUSH will always
+            operate on a student-led basis, with our oldest mentor being 18 years of age.
+          </p>
+          <p>
+            As a student-founded team in Ottawa, Team PLUSH is pioneering locally in Canada's
+            Capital, leaving a trail of future engineers for years to come. :)
+          </p>
         </div>
       </div>
     </section>
 
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-        <li><a data-page="robots">robots</a></li>
-        <li><a data-page="socials">socials</a></li>
-        <li><a data-page="sponsors">sponsors</a></li>
-      </ul>
-    </footer>
-  </div>
-
-  <!-- ABOUT PAGE -->
-  <div class="page page-about" id="page-about">
-    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> about</div>
-    <div class="inner-page">
-      <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice">
-        <g opacity=".06">
-          <path d="M50 80 L52 74 L54 80 L60 82 L54 84 L52 90 L50 84 L44 82 Z" fill="#a8bede" />
-          <path
-            d="M980 120 L982 114 L984 120 L990 122 L984 124 L982 130 L980 124 L974 122 Z"
-            fill="#bfa8d8"
-          />
-          <circle cx="500" cy="30" r="5" fill="#a4c9b0" />
-          <path
-            d="M100 500 C100 500 85 488 85 480 C85 474 90 472 94 476 C96.5 478.5 100 482 100 482 C100 482 103.5 478.5 106 476 C110 472 115 474 115 480 C115 488 100 500 100 500Z"
-            fill="#bfa8d8"
-          />
-        </g>
-      </svg>
-      <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>what's... Team Plush?</h2>
-          <div class="rule"></div>
+    <section class="filmstrip-section" aria-labelledby="founders-title">
+      <div class="wrap split">
+        <div class="split-label">
+          <p class="kicker fade" id="founders-title">The founders</p>
+          <p class="split-note fade">
+            Three high-school students from three Ottawa schools, all class of &rsquo;27.
+          </p>
         </div>
-        <div class="about-layout">
-          <div class="about-copy fade">
-            <p>
-              Team PLUSH is a community <em>FIRST Robotics Competition</em> team, assembled from a
-              group of passionate high school students building a functioning robot in under three
-              months.
-            </p>
-            <p>
-              Our philosophy is to empower students to design, build, and test physical hardware
-              without judgement, with mentorship from industry professionals.
-            </p>
-            <p>
-              As a student-founded team in Ottawa, Team PLUSH is pioneering locally in Canada's
-              Capital, leaving a trail of future engineers for years to come. :)
-            </p>
-            <h3>our sub-teams</h3>
-            <div class="subteam-grid">
-              <div class="subteam-card fade">
-                <div class="subteam-icon">💻</div>
-                <div class="subteam-name">Software</div>
-                <div class="subteam-desc">
-                  Java robot code, vision with Limelight, path planning with PathPlanner, and driver
-                  dashboards.
-                </div>
-              </div>
-              <div class="subteam-card fade">
-                <div class="subteam-icon">🔧</div>
-                <div class="subteam-name">Mechanical</div>
-                <div class="subteam-desc">
-                  CAD in Onshape, fabrication with CNC router and lathe, intake systems, shooter
-                  mechanisms.
-                </div>
-              </div>
-              <div class="subteam-card fade">
-                <div class="subteam-icon">📣</div>
-                <div class="subteam-name">Business & Outreach</div>
-                <div class="subteam-desc">
-                  Sponsorship decks, community demos, social media, branding, and elementary school
-                  workshops.
-                </div>
-              </div>
-              <div class="subteam-card fade">
-                <div class="subteam-icon">🎮</div>
-                <div class="subteam-name">Drive Team</div>
-                <div class="subteam-desc">
-                  Two drivers, one human player, one coach — all running on positive vibes :)
-                </div>
-              </div>
+        <ul class="founders">
+          <li class="founder fade">
+            <div class="ph">
+              <img
+                src="/team/eason-yang.jpg"
+                alt="Eason Yang"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
             </div>
+            <p class="person-name">Eason Yang</p>
+            <p class="person-role">Co-founder · Merivale HS · Class of &rsquo;27</p>
+          </li>
+          <li class="founder fade">
+            <div class="ph">
+              <img
+                src="/team/sarmistha-pal.jpg"
+                alt="Sarmistha Pal"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Sarmistha Pal</p>
+            <p class="person-role">Co-founder · John McRae SS · Class of &rsquo;27</p>
+          </li>
+          <li class="founder fade">
+            <div class="ph">
+              <img
+                src="/team/alvin-ren.jpg"
+                alt="Alvin Ren"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Alvin Ren</p>
+            <p class="person-role">Co-founder · Earl of March SS · Class of &rsquo;27</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec sec-tight">
+      <div class="wrap">
+        <dl class="facts fade">
+          <div>
+            <dt>Founded</dt>
+            <dd>Apr 2026</dd>
           </div>
           <div>
-            <div class="fact-stack fade">
-              <div class="fact-card">
-                <div class="fact-num">2026</div>
-                <div class="fact-label">founded<br />april 2026</div>
-              </div>
-              <div class="fact-card">
-                <div class="fact-num">3</div>
-                <div class="fact-label">high-school<br />co-founders</div>
-              </div>
-              <div class="fact-card">
-                <div class="fact-num">4</div>
-                <div class="fact-label">sub-teams, software<br />to scouting</div>
-              </div>
-              <div class="fact-card">
-                <div class="fact-num">🌱</div>
-                <div class="fact-label">regional impact<br />to ottawa</div>
-              </div>
-              <div class="fact-card">
-                <div class="fact-num">≈45</div>
-                <div class="fact-label">member goal</div>
-              </div>
-            </div>
-            <div class="fade u-mt-2">
-              <div class="ruled-title">
-                <h2>our journey</h2>
-                <div class="rule"></div>
-              </div>
-              <div class="timeline">
-                <div class="tl-item">
-                  <div class="tl-dot is-blue"></div>
-                  <div class="tl-year">Apr 2026</div>
-                  <div class="tl-title">Team Founded</div>
-                  <div class="tl-desc">
-                    Three ambitious high-school students co-founded Team PLUSH to expand the FIRST
-                    community in the Greater Ottawa region.
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot is-purple"></div>
-                  <div class="tl-year">Summer 2026</div>
-                  <div class="tl-title">Building the Team</div>
-                  <div class="tl-desc">
-                    Managing logistics and our legal entity, onboarding mentors, talking with
-                    sponsors, and planning out our offseason robot, <em>Droplet</em>.
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot is-green"></div>
-                  <div class="tl-year">Fall 2026</div>
-                  <div class="tl-title">Preseason</div>
-                  <div class="tl-desc">
-                    Publicly recruiting members, running elementary and middle-school STEM
-                    workshops, and planning Makers Making Change projects.
-                  </div>
-                </div>
-                <div class="tl-item">
-                  <div class="tl-dot is-blue"></div>
-                  <div class="tl-year">Jan 2027</div>
-                  <div class="tl-title">Rookie Season</div>
-                  <div class="tl-desc">
-                    Building the robot for the 2027 season and competing at events across Ontario —
-                    and, if we qualify, at the Ontario Provincial Championship.
-                  </div>
-                </div>
-              </div>
-            </div>
+            <dt>High-school co-founders</dt>
+            <dd>3</dd>
           </div>
-        </div>
+          <div>
+            <dt>Sub-teams, software to scouting</dt>
+            <dd>4</dd>
+          </div>
+          <div>
+            <dt>Regional impact</dt>
+            <dd>Ottawa</dd>
+          </div>
+          <div>
+            <dt>Member goal</dt>
+            <dd>≈45</dd>
+          </div>
+        </dl>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="team">team</a></li>
-        <li><a data-page="robots">robots</a></li>
-        <li><a data-page="values">values</a></li>
-      </ul>
-    </footer>
+    </section>
+
+    <section class="sec sec-alt" aria-labelledby="subteams-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker fade"><span class="kicker-idx">01</span>How the work splits up</p>
+          <h3 class="display fade" id="subteams-title">Our sub-teams</h3>
+        </div>
+        <ol class="subteams">
+          <li class="subteam fade subteam-blue">
+            <span class="subteam-idx">01</span>
+            <svg class="subteam-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M11 9 4 16l7 7M21 9l7 7-7 7M18 6l-4 20" />
+            </svg>
+            <h4 class="subteam-name">Software</h4>
+            <p class="subteam-desc">
+              Java robot code, vision with Limelight, path planning with PathPlanner, and driver
+              dashboards.
+            </p>
+          </li>
+          <li class="subteam fade subteam-green">
+            <span class="subteam-idx">02</span>
+            <svg class="subteam-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <circle cx="16" cy="16" r="5" />
+              <path
+                d="M16 3v5M16 24v5M3 16h5M24 16h5M6.8 6.8l3.5 3.5M21.7 21.7l3.5 3.5M6.8 25.2l3.5-3.5M21.7 10.3l3.5-3.5"
+              />
+            </svg>
+            <h4 class="subteam-name">Mechanical</h4>
+            <p class="subteam-desc">
+              CAD in Onshape, fabrication with CNC router and lathe, intake systems, shooter
+              mechanisms.
+            </p>
+          </li>
+          <li class="subteam fade subteam-purple">
+            <span class="subteam-idx">03</span>
+            <svg class="subteam-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M5 13v6h4l9 6V7l-9 6H5ZM23 11a7 7 0 0 1 0 10M26 7a12 12 0 0 1 0 18" />
+            </svg>
+            <h4 class="subteam-name">Business &amp; Outreach</h4>
+            <p class="subteam-desc">
+              Sponsorship decks, community demos, social media, branding, and elementary school
+              workshops.
+            </p>
+          </li>
+          <li class="subteam fade subteam-blue">
+            <span class="subteam-idx">04</span>
+            <svg class="subteam-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="3" y="10" width="26" height="14" rx="7" />
+              <path d="M10 14v6M7 17h6" />
+              <circle cx="21" cy="15.5" r="1.4" />
+              <circle cx="24" cy="18.5" r="1.4" />
+            </svg>
+            <h4 class="subteam-name">Drive Team</h4>
+            <p class="subteam-desc">
+              Two drivers, one human player, one coach, all running on positive vibes :)
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="journey-title">
+      <div class="wrap split">
+        <div class="split-label">
+          <p class="kicker fade"><span class="kicker-idx">02</span>Our journey</p>
+          <h3 class="display display-sm fade" id="journey-title">Year zero, so far.</h3>
+        </div>
+        <ol class="ledger fade">
+          <li>
+            <p class="ledger-date">Apr 2026</p>
+            <div>
+              <h4 class="ledger-title">Team founded</h4>
+              <p class="ledger-desc">
+                Three ambitious high-school students co-founded Team PLUSH to expand the FIRST
+                community in the Greater Ottawa region.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Summer 2026</p>
+            <div>
+              <h4 class="ledger-title">Building the team</h4>
+              <p class="ledger-desc">
+                Managing logistics and our legal entity, onboarding mentors, talking with sponsors,
+                and planning out our offseason robot, <em>Droplet</em>.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Fall 2026</p>
+            <div>
+              <h4 class="ledger-title">Preseason</h4>
+              <p class="ledger-desc">
+                Publicly recruiting members, running elementary and middle-school STEM workshops,
+                and planning Makers Making Change projects.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Jan 2027</p>
+            <div>
+              <h4 class="ledger-title">Rookie season</h4>
+              <p class="ledger-desc">
+                Building the robot for the 2027 season and competing at events across Ontario and,
+                if we qualify, at the Ontario Provincial Championship.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="next-band">
+      <div class="wrap next-band-inner">
+        <p class="kicker">Keep reading</p>
+        <a class="next-link" href="#team" data-page="team"
+          >Meet the team
+          <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+        ></a>
+      </div>
+    </section>
   </div>
 
-  <!-- TEAM PAGE -->
+  <!-- ═════════════════════════ TEAM ═════════════════════════ -->
   <div class="page page-team" id="page-team">
-    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> team</div>
-    <div class="inner-page">
-      <svg class="section-bg-svg" viewBox="0 0 1060 600" preserveAspectRatio="xMidYMid slice">
-        <g opacity=".09">
-          <g transform="translate(40,80)">
-            <ellipse cx="12" cy="18" rx="7" ry="9" fill="#bfa8d8" />
-            <ellipse cx="4" cy="8" rx="4" ry="5" fill="#bfa8d8" />
-            <ellipse cx="20" cy="8" rx="4" ry="5" fill="#bfa8d8" />
-            <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#bfa8d8" />
-            <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#bfa8d8" />
-          </g>
-          <g transform="translate(950,100) rotate(20)">
-            <ellipse cx="12" cy="18" rx="7" ry="9" fill="#a8bede" />
-            <ellipse cx="4" cy="8" rx="4" ry="5" fill="#a8bede" />
-            <ellipse cx="20" cy="8" rx="4" ry="5" fill="#a8bede" />
-            <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#a8bede" />
-            <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#a8bede" />
-          </g>
-          <g transform="translate(80,500) rotate(-15)">
-            <ellipse cx="12" cy="18" rx="7" ry="9" fill="#a4c9b0" />
-            <ellipse cx="4" cy="8" rx="4" ry="5" fill="#a4c9b0" />
-            <ellipse cx="20" cy="8" rx="4" ry="5" fill="#a4c9b0" />
-            <ellipse cx="0" cy="14" rx="3.5" ry="4.5" fill="#a4c9b0" />
-            <ellipse cx="24" cy="14" rx="3.5" ry="4.5" fill="#a4c9b0" />
-          </g>
-        </g>
-      </svg>
+    <header class="page-head page-head-green dots">
       <div class="wrap">
-        <div class="ruled-title fade u-mb-1-2">
-          <h2 class="is-sm">Co-Captains</h2>
-          <div class="rule"></div>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Team</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">Team</span>The 2026–27 roster</p>
+        <h2 class="page-title fade">The people behind the robot.</h2>
+        <p class="page-lede fade">
+          Student-founded and student-led from top to bottom. Our oldest official mentor is 18.
+        </p>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">I love meeting new people!</p>
+          <div class="mascot-art" data-mascot="1"></div>
         </div>
-        <div class="team-grid u-mb-2-5">
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava">
-              <img src="/team/eason-yang.png" alt="Eason Yang" loading="lazy" />
+      </div>
+    </header>
+
+    <section class="sec sec-tight" aria-labelledby="captains-title">
+      <div class="wrap">
+        <div class="group-head fade">
+          <h3 class="group-title" id="captains-title">Co-captains</h3>
+          <span class="group-count">03</span>
+        </div>
+        <ul class="people people-lg">
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/eason-yang.jpg"
+                alt="Eason Yang"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
             </div>
-            <div class="tc-name">Eason Yang</div>
-            <div class="tc-role">co-captain</div>
-            <details class="tc-fact">
-              <summary>fun fact</summary>
+            <p class="person-name">Eason Yang</p>
+            <p class="person-role">Co-captain</p>
+            <details class="fact-toggle">
+              <summary>Fun fact</summary>
               <p>He loves watching F1 and yapping in the FIRST Canada Community :)</p>
             </details>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava">
-              <img src="/team/sarmistha-pal.png" alt="Sarmistha Pal" loading="lazy" />
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/sarmistha-pal.jpg"
+                alt="Sarmistha Pal"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
             </div>
-            <div class="tc-name">Sarmistha Pal</div>
-            <div class="tc-role">co-captain</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava">
-              <img src="/team/alvin-ren.png" alt="Alvin Ren" loading="lazy" />
+            <p class="person-name">Sarmistha Pal</p>
+            <p class="person-role">Co-captain</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/alvin-ren.jpg"
+                alt="Alvin Ren"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
             </div>
-            <div class="tc-name">Alvin Ren</div>
-            <div class="tc-role">co-captain</div>
-          </div>
-        </div>
+            <p class="person-name">Alvin Ren</p>
+            <p class="person-role">Co-captain</p>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-        <div class="ruled-title fade u-mb-1-2">
-          <h2 class="is-sm">Leads</h2>
-          <div class="rule"></div>
+    <section class="sec sec-tight" aria-labelledby="leads-title">
+      <div class="wrap">
+        <div class="group-head fade">
+          <h3 class="group-title" id="leads-title">Leads</h3>
+          <span class="group-count">04 + open seats</span>
         </div>
-        <div class="team-grid u-mb-2-5">
-          <div class="team-card fade">
-            <div class="tc-stripe tc-purple"></div>
-            <div class="tc-ava is-purple">📣</div>
-            <div class="tc-name">Olivia Shen</div>
-            <div class="tc-role">business lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-purple"></div>
-            <div class="tc-ava">
-              <img src="/team/dorothy-zhou.jpg" alt="Dorothy Zhou" loading="lazy" />
+        <ul class="people">
+          <li class="person fade">
+            <div class="ph ph-initials ph-purple" aria-hidden="true"><span>OS</span></div>
+            <p class="person-name">Olivia Shen</p>
+            <p class="person-role">Business lead</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/dorothy-zhou.jpg"
+                alt="Dorothy Zhou"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
             </div>
-            <div class="tc-name">Dorothy Zhou</div>
-            <div class="tc-role">business lead</div>
-            <details class="tc-fact">
-              <summary>fun fact</summary>
+            <p class="person-name">Dorothy Zhou</p>
+            <p class="person-role">Business lead</p>
+            <details class="fact-toggle">
+              <summary>Fun fact</summary>
               <p>In my free time, I like learning how to play different musical instruments!</p>
             </details>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-purple"></div>
-            <div class="tc-ava is-purple">📣</div>
-            <div class="tc-name">Anthony Cui</div>
-            <div class="tc-role">business lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava">
-              <img src="/team/sean-nie.jpg" alt="Sean Nie" loading="lazy" />
+          </li>
+          <li class="person fade">
+            <div class="ph ph-initials ph-purple" aria-hidden="true"><span>AC</span></div>
+            <p class="person-name">Anthony Cui</p>
+            <p class="person-role">Business lead</p>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/sean-nie.jpg"
+                alt="Sean Nie"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
             </div>
-            <div class="tc-name">Sean Nie</div>
-            <div class="tc-role">software lead</div>
-            <details class="tc-fact">
-              <summary>fun fact</summary>
+            <p class="person-name">Sean Nie</p>
+            <p class="person-role">Software lead</p>
+            <details class="fact-toggle">
+              <summary>Fun fact</summary>
               <p>I love K-dramas and C-dramas!</p>
             </details>
+          </li>
+        </ul>
+        <div class="open-seats fade">
+          <div>
+            <p class="open-seats-label">Open lead roles</p>
+            <ul class="open-seats-list">
+              <li><span>Software lead</span><b>×2</b></li>
+              <li><span>Mechanical lead</span><b>×4</b></li>
+            </ul>
           </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava is-blue">💻</div>
-            <div class="tc-name">TBD</div>
-            <div class="tc-role">software lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava is-blue">💻</div>
-            <div class="tc-name">TBD</div>
-            <div class="tc-role">software lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-green"></div>
-            <div class="tc-ava is-green">🔧</div>
-            <div class="tc-name">TBD</div>
-            <div class="tc-role">mechanical lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-green"></div>
-            <div class="tc-ava is-green">🔧</div>
-            <div class="tc-name">TBD</div>
-            <div class="tc-role">mechanical lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-green"></div>
-            <div class="tc-ava is-green">🔧</div>
-            <div class="tc-name">TBD</div>
-            <div class="tc-role">mechanical lead</div>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-green"></div>
-            <div class="tc-ava is-green">🔧</div>
-            <div class="tc-name">TBD</div>
-            <div class="tc-role">mechanical lead</div>
-          </div>
+          <a
+            class="btn btn-line btn-sm"
+            href="https://forms.gle/GsqnqVu716S4S4QTA"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Apply to join
+            <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M5 11 11 5M6 5h5v5" /></svg
+          ></a>
         </div>
+      </div>
+    </section>
 
-        <div class="ruled-title fade u-mb-1-2">
-          <h2 class="is-sm">Members</h2>
-          <div class="rule"></div>
+    <section class="sec sec-tight" aria-labelledby="members-title">
+      <div class="wrap">
+        <div class="group-head fade">
+          <h3 class="group-title" id="members-title">Members</h3>
+          <span class="group-count">03 + recruiting</span>
         </div>
-        <div class="team-grid">
-          <div class="team-card fade">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava">
-              <img src="/team/varun-gokul.jpg" alt="Varun Gokul" loading="lazy" />
+        <ul class="people">
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/varun-gokul.jpg"
+                alt="Varun Gokul"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
             </div>
-            <div class="tc-name">Varun Gokul</div>
-            <div class="tc-role">software</div>
-            <details class="tc-fact">
-              <summary>fun fact</summary>
+            <p class="person-name">Varun Gokul</p>
+            <p class="person-role">Software</p>
+            <details class="fact-toggle">
+              <summary>Fun fact</summary>
               <p>
                 I'm a Grade 12 student who loves meeting people, making friends, and learning new
                 things!
               </p>
             </details>
-          </div>
-          <div class="team-card fade">
-            <div class="tc-stripe tc-green"></div>
-            <div class="tc-ava">
-              <img src="/team/abigail-martin.jpg" alt="Abigail Martin" loading="lazy" />
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img src="/team/nimansh.jpg" alt="Nimansh" width="760" height="760" loading="lazy" />
             </div>
-            <div class="tc-name">Abigail Martin</div>
-            <div class="tc-role">mechanical</div>
-            <details class="tc-fact">
-              <summary>fun fact</summary>
+            <p class="person-name">Nimansh</p>
+            <p class="person-role">Software</p>
+            <details class="fact-toggle">
+              <summary>Fun fact</summary>
+              <p>
+                I'm a Grade 11 student, and in my free time, I enjoy playing the guitar and
+                badminton!
+              </p>
+            </details>
+          </li>
+          <li class="person fade">
+            <div class="ph">
+              <img
+                src="/team/abigail-martin.jpg"
+                alt="Abigail Martin"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </div>
+            <p class="person-name">Abigail Martin</p>
+            <p class="person-role">Mechanical</p>
+            <details class="fact-toggle">
+              <summary>Fun fact</summary>
               <p>I've played tennis since I was six years old!</p>
             </details>
-          </div>
-          <div class="team-card fade is-muted">
-            <div class="tc-stripe tc-purple"></div>
-            <div class="tc-ava is-purple">📣</div>
-            <div class="tc-name">Business</div>
-            <div class="tc-role">TBD</div>
-          </div>
-          <div class="team-card fade is-muted">
-            <div class="tc-stripe tc-blue"></div>
-            <div class="tc-ava is-blue">💻</div>
-            <div class="tc-name">Software</div>
-            <div class="tc-role">TBD</div>
-          </div>
-          <div class="team-card fade is-muted">
-            <div class="tc-stripe tc-green"></div>
-            <div class="tc-ava is-green">🔧</div>
-            <div class="tc-name">Mechanical</div>
-            <div class="tc-role">TBD</div>
-          </div>
+          </li>
+          <li class="person person-open fade">
+            <div class="ph ph-open"><span>Business</span></div>
+            <p class="person-name">Your name here</p>
+            <p class="person-role">Business · TBD</p>
+          </li>
+          <li class="person person-open fade">
+            <div class="ph ph-open"><span>Software</span></div>
+            <p class="person-name">Your name here</p>
+            <p class="person-role">Software · TBD</p>
+          </li>
+          <li class="person person-open fade">
+            <div class="ph ph-open"><span>Mechanical</span></div>
+            <p class="person-name">Your name here</p>
+            <p class="person-role">Mechanical · TBD</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec sec-tight" aria-labelledby="honorary-title">
+      <div class="wrap">
+        <div class="group-head fade">
+          <h3 class="group-title" id="honorary-title">Honorary members</h3>
+          <span class="group-count">03 plushies</span>
         </div>
-        <div class="fade u-mt-3">
-          <div class="ruled-title u-mb-1-2">
-            <h2 class="is-sm">Mentors</h2>
-            <div class="rule"></div>
-          </div>
-          <div class="mentor-row">
-            <div class="mentor-card">
-              <div class="mentor-top">
-                <div class="mentor-ava">
-                  <img src="/team/ryan-zhao.png" alt="Ryan Zhao" loading="lazy" />
-                </div>
-                <div>
-                  <div class="mentor-name">Ryan Zhao</div>
-                  <div class="mentor-role">First Year University · FRC Alumni</div>
-                </div>
-              </div>
-              <details class="mentor-fact">
-                <summary>fun fact</summary>
+        <ul class="honorary">
+          <li class="honorary-card honorary-blue fade">
+            <div class="mascot-art" data-mascot="0" aria-hidden="true"></div>
+            <p class="person-name">Pal</p>
+            <p class="person-role">Mascot · sponsors to mechanical</p>
+            <p class="honorary-fact" data-mascot-fact="0"></p>
+          </li>
+          <li class="honorary-card honorary-purple fade">
+            <div class="mascot-art" data-mascot="1" aria-hidden="true"></div>
+            <p class="person-name">Xaivian</p>
+            <p class="person-role">Mascot · software &amp; electrical</p>
+            <p class="honorary-fact" data-mascot-fact="1"></p>
+          </li>
+          <li class="honorary-card honorary-green fade">
+            <div class="mascot-art" data-mascot="2" aria-hidden="true"></div>
+            <p class="person-name">Stuffing</p>
+            <p class="person-role">Mascot · mechanical &amp; drive team</p>
+            <p class="honorary-fact" data-mascot-fact="2"></p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sec sec-alt" aria-labelledby="mentors-title">
+      <div class="wrap split">
+        <div class="split-label">
+          <p class="kicker fade"><span class="kicker-idx">Mentors</span>FRC alumni</p>
+          <h3 class="display display-sm fade" id="mentors-title">Mentors who were just here.</h3>
+          <p class="split-note fade">
+            Every mentor is a first-year university student and FRC alum.
+          </p>
+        </div>
+        <ul class="mentors">
+          <li class="mentor fade">
+            <div class="ph ph-sm">
+              <img
+                src="/team/ryan-zhao.jpg"
+                alt="Ryan Zhao"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="mentor-name">Ryan Zhao</p>
+              <p class="person-role">First-year university · FRC alumni</p>
+              <details class="fact-toggle">
+                <summary>Fun fact</summary>
                 <p>
                   I'm an FRC alum, currently at Carleton University for Computer Systems
                   Engineering.
                 </p>
               </details>
             </div>
-            <div class="mentor-card">
-              <div class="mentor-top">
-                <div class="mentor-ava is-purple">🎓</div>
-                <div>
-                  <div class="mentor-name">Owen Chen</div>
-                  <div class="mentor-role">First Year University · FRC Alumni</div>
-                </div>
-              </div>
+          </li>
+          <li class="mentor fade">
+            <div class="ph ph-sm ph-initials ph-purple" aria-hidden="true"><span>OC</span></div>
+            <div>
+              <p class="mentor-name">Owen Chen</p>
+              <p class="person-role">First-year university · FRC alumni</p>
             </div>
-            <div class="mentor-card">
-              <div class="mentor-top">
-                <div class="mentor-ava is-blue">🎓</div>
-                <div>
-                  <div class="mentor-name">Neo Zheng</div>
-                  <div class="mentor-role">First Year University · FRC Alumni</div>
-                </div>
-              </div>
+          </li>
+          <li class="mentor fade">
+            <div class="ph ph-sm ph-initials ph-blue" aria-hidden="true"><span>NZ</span></div>
+            <div>
+              <p class="mentor-name">Neo Zheng</p>
+              <p class="person-role">First-year university · FRC alumni</p>
             </div>
-            <div class="mentor-card">
-              <div class="mentor-top">
-                <div class="mentor-ava">
-                  <img src="/team/henry-cai.png" alt="Henry Cai" loading="lazy" />
-                </div>
-                <div>
-                  <div class="mentor-name">Henry Cai</div>
-                  <div class="mentor-role">First Year University · FRC Alumni</div>
-                </div>
-              </div>
-              <details class="mentor-fact">
-                <summary>fun fact</summary>
+          </li>
+          <li class="mentor fade">
+            <div class="ph ph-sm">
+              <img
+                src="/team/henry-cai.jpg"
+                alt="Henry Cai"
+                width="800"
+                height="800"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <p class="mentor-name">Henry Cai</p>
+              <p class="person-role">First-year university · FRC alumni</p>
+              <details class="fact-toggle">
+                <summary>Fun fact</summary>
                 <p>
-                  Team 8729 alum, now at Waterloo for Computer Engineering — and I had a 95%
-                  shooting percentage as human player for Reefscape.
+                  Team 8729 alum, now at Waterloo for Computer Engineering, and I had a 95% shooting
+                  percentage as human player for Reefscape.
                 </p>
               </details>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="robots">robots</a></li>
-        <li><a data-page="values">values</a></li>
-      </ul>
-    </footer>
+    </section>
+
+    <section class="next-band">
+      <div class="wrap next-band-inner">
+        <p class="kicker">Keep reading</p>
+        <a class="next-link" href="#robots" data-page="robots"
+          >See what we build
+          <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+        ></a>
+      </div>
+    </section>
   </div>
 
-  <!-- ROBOTS PAGE -->
+  <!-- ═════════════════════════ ROBOTS ═════════════════════════ -->
   <div class="page page-robots" id="page-robots">
-    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> robots</div>
-    <div class="inner-page">
+    <header class="page-head page-head-purple dots">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>our robots</h2>
-          <div class="rule"></div>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Robots</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">Robots</span>Our machines</p>
+        <h2 class="page-title fade">Six weeks. Thousands of decisions. One robot.</h2>
+        <p class="page-lede fade">Here's what we're building, and what comes next.</p>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">40+ hours in the build space and counting!</p>
+          <div class="mascot-art" data-mascot="2"></div>
         </div>
-        <p class="fade section-intro">
-          Six weeks. Thousands of decisions. One robot. Here's what we're building — and what comes
-          next.
-        </p>
-        <div class="robots-grid">
-          <div class="robot-card fade">
-            <div class="robot-thumb rt-blue">
-              <svg viewBox="0 0 120 120" width="120" height="120">
-                <line
-                  x1="60"
-                  y1="18"
-                  x2="60"
-                  y2="32"
-                  stroke="#383162"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <circle cx="60" cy="15" r="4" fill="#bfa8d8" stroke="#383162" stroke-width="1.5" />
-                <rect
-                  x="36"
-                  y="32"
-                  width="48"
-                  height="36"
-                  rx="8"
-                  fill="#dde6f5"
-                  stroke="#383162"
-                  stroke-width="2"
-                />
-                <circle cx="50" cy="50" r="6" fill="#fff" stroke="#383162" stroke-width="1.5" />
-                <circle cx="70" cy="50" r="6" fill="#fff" stroke="#383162" stroke-width="1.5" />
-                <circle cx="51" cy="50" r="3" fill="#383162" />
-                <circle cx="71" cy="50" r="3" fill="#383162" />
-                <circle cx="52" cy="49" r="1" fill="#fff" />
-                <circle cx="72" cy="49" r="1" fill="#fff" />
-                <path
-                  d="M50 62 Q60 68 70 62"
-                  stroke="#383162"
-                  stroke-width="1.8"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="30"
-                  y="72"
-                  width="60"
-                  height="34"
-                  rx="8"
-                  fill="#a8bede"
-                  stroke="#383162"
-                  stroke-width="2"
-                />
-                <rect
-                  x="40"
-                  y="80"
-                  width="40"
-                  height="18"
-                  rx="4"
-                  fill="#dde6f5"
-                  stroke="#383162"
-                  stroke-width="1.2"
-                />
-                <circle cx="50" cy="89" r="4" fill="#bfa8d8" stroke="#383162" stroke-width="1" />
-                <circle cx="60" cy="89" r="4" fill="#a4c9b0" stroke="#383162" stroke-width="1" />
-                <circle cx="70" cy="89" r="4" fill="#a8bede" stroke="#383162" stroke-width="1" />
-                <rect
-                  x="12"
-                  y="74"
-                  width="16"
-                  height="26"
-                  rx="6"
-                  fill="#a8bede"
-                  stroke="#383162"
-                  stroke-width="1.8"
-                />
-                <rect
-                  x="92"
-                  y="74"
-                  width="16"
-                  height="26"
-                  rx="6"
-                  fill="#a8bede"
-                  stroke="#383162"
-                  stroke-width="1.8"
-                />
-                <rect
-                  x="38"
-                  y="107"
-                  width="16"
-                  height="10"
-                  rx="4"
-                  fill="#a8bede"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                />
-                <rect
-                  x="66"
-                  y="107"
-                  width="16"
-                  height="10"
-                  rx="4"
-                  fill="#a8bede"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                />
-              </svg>
-            </div>
-            <div class="robot-body">
-              <div class="robot-header">
-                <div>
-                  <div class="robot-year">2027 · Season Bot</div>
-                  <div class="robot-name">TBD</div>
-                </div>
-                <span class="tag tag-blue">upcoming</span>
-              </div>
-              <div class="robot-desc">Coming Soon in January 2027!!!</div>
-              <div class="robot-specs">
-                <span class="robot-spec">🦾 Pneumatic Claw</span
-                ><span class="robot-spec">📐 Articulated Arm</span
-                ><span class="robot-spec">🧗 Chain Climber</span
-                ><span class="robot-spec">👁 Vision Tracking</span>
-              </div>
-            </div>
-          </div>
-          <div class="robot-card fade">
-            <div class="robot-thumb rt-green">
-              <svg viewBox="0 0 120 120" width="120" height="120">
-                <line
-                  x1="60"
-                  y1="20"
-                  x2="60"
-                  y2="34"
-                  stroke="#383162"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M60 20 C55 10 44 8 44 18 C44 24 52 22 60 20Z"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                />
-                <path
-                  d="M60 20 C65 10 76 8 76 18 C76 24 68 22 60 20Z"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                />
-                <rect
-                  x="36"
-                  y="34"
-                  width="48"
-                  height="34"
-                  rx="8"
-                  fill="#d9ece4"
-                  stroke="#383162"
-                  stroke-width="2"
-                />
-                <rect x="42" y="44" width="36" height="14" rx="5" fill="#383162" />
-                <rect x="44" y="46" width="14" height="10" rx="3" fill="#a4c9b0" opacity=".7" />
-                <rect x="62" y="46" width="14" height="10" rx="3" fill="#a4c9b0" opacity=".7" />
-                <path
-                  d="M50 62 Q60 67 70 62"
-                  stroke="#383162"
-                  stroke-width="1.8"
-                  fill="none"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="28"
-                  y="72"
-                  width="64"
-                  height="36"
-                  rx="8"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="2"
-                />
-                <rect
-                  x="8"
-                  y="76"
-                  width="18"
-                  height="12"
-                  rx="5"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.8"
-                />
-                <path
-                  d="M8 78 C2 74 2 88 8 86"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-                <rect
-                  x="94"
-                  y="76"
-                  width="18"
-                  height="22"
-                  rx="6"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.8"
-                />
-                <rect
-                  x="38"
-                  y="80"
-                  width="44"
-                  height="20"
-                  rx="4"
-                  fill="#d9ece4"
-                  stroke="#383162"
-                  stroke-width="1.2"
-                />
-                <rect
-                  x="38"
-                  y="108"
-                  width="16"
-                  height="10"
-                  rx="4"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                />
-                <rect
-                  x="66"
-                  y="108"
-                  width="16"
-                  height="10"
-                  rx="4"
-                  fill="#a4c9b0"
-                  stroke="#383162"
-                  stroke-width="1.5"
-                />
-              </svg>
-            </div>
-            <div class="robot-body">
-              <div class="robot-header">
-                <div>
-                  <div class="robot-year">2026 · Offseason Bot</div>
-                  <div class="robot-name">Droplet</div>
-                </div>
-                <span class="tag tag-green">current</span>
-              </div>
-              <div class="robot-specs">
-                <span class="robot-spec">⚡ Swerve Drive</span
-                ><span class="robot-spec">📷 Limelight 3</span
-                ><span class="robot-spec">🦾 Roller Intake</span
-                ><span class="robot-spec">🎯 Auto Aim</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="u-mt-3">
-          <div class="ruled-title fade">
-            <h2>the rookie all-star plan</h2>
-            <div class="rule"></div>
-          </div>
-          <p class="fade section-intro is-lead">
-            The <em>Rookie All-Star Award</em> is the biggest award a first-year FRC team can win.
-            It goes to the rookie team that's already running like an established one, and the
-            winner moves on to the FIRST Championship. Outside of the robot itself, this is our main
-            goal for the season. Here's the plan.
+      </div>
+    </header>
+
+    <section class="sec sec-purple dots" aria-labelledby="droplet-title">
+      <div class="wrap robot-spread">
+        <div class="robot-copy">
+          <p class="tag tag-live fade">
+            <span class="live-dot" aria-hidden="true"></span>Current · 2026 offseason bot
           </p>
+          <h3 class="robot-name fade" id="droplet-title">Droplet</h3>
+          <p class="robot-sub fade">
+            Our offseason robot, planned over the summer of 2026, and the first machine to carry the
+            PLUSH name.
+          </p>
+        </div>
+        <div class="robot-data">
+          <dl class="specs fade">
+            <div>
+              <dt>Season</dt>
+              <dd>2026 offseason</dd>
+            </div>
+            <div>
+              <dt>Drivetrain</dt>
+              <dd>Swerve drive</dd>
+            </div>
+            <div>
+              <dt>Vision</dt>
+              <dd>Limelight 3</dd>
+            </div>
+            <div>
+              <dt>Intake</dt>
+              <dd>Roller intake</dd>
+            </div>
+            <div>
+              <dt>Targeting</dt>
+              <dd>Auto aim</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
 
-          <div class="ruled-title fade u-mt-2">
-            <h3>what judges look for, and what we're doing about it</h3>
-            <div class="rule"></div>
+    <section class="sec sec-tight" aria-labelledby="bot27-title">
+      <div class="wrap">
+        <article class="classified fade">
+          <div class="classified-main">
+            <p class="tag">Upcoming · 2027 season bot</p>
+            <h3 class="classified-name" id="bot27-title">
+              <span class="visually-hidden">2027 season robot, name </span>TBD
+            </h3>
+            <p class="classified-desc">
+              Coming soon in January 2027!!! The game is revealed at kickoff, and the build starts
+              that day.
+            </p>
           </div>
-          <div class="awards-grid u-mt-1">
-            <div class="award-card fade">
-              <div class="award-icon">🤝</div>
-              <div class="award-name">Sponsor &amp; Mentor Partnerships</div>
-              <div class="award-event">support network</div>
-              <div class="award-desc">
-                We're going for 20 sponsors across six tiers, with industry mentors working directly
-                with each sub-team. Partners can host a private robot demo at their office.
-              </div>
-            </div>
-            <div class="award-card fade">
-              <div class="award-icon">📣</div>
-              <div class="award-name">Community Outreach</div>
-              <div class="award-event">spreading FIRST</div>
-              <div class="award-desc">
-                At least 6 STEM workshops at local elementary and middle schools, plus 2 or more
-                public robot demos with partners. Most of this happens before our first competition.
-              </div>
-            </div>
-            <div class="award-card fade">
-              <div class="award-icon">♿</div>
-              <div class="award-name">Makers Making Change</div>
-              <div class="award-event">real-world impact</div>
-              <div class="award-desc">
-                20 or more assistive-technology builds for people with disabilities. Each one gets
-                logged and shared back to the Makers Making Change network.
-              </div>
-            </div>
-            <div class="award-card fade">
-              <div class="award-icon">🌍</div>
-              <div class="award-name">Diversity, Equity &amp; Inclusion</div>
-              <div class="award-event">access &amp; culture</div>
-              <div class="award-desc">
-                We want a roster that actually looks like Ottawa, so we recruit underrepresented
-                students into STEM and keep track of how representation changes each year.
-              </div>
-            </div>
-            <div class="award-card fade">
-              <div class="award-icon">♻️</div>
-              <div class="award-name">Sustainability Plan</div>
-              <div class="award-event">long-term plan</div>
-              <div class="award-desc">
-                A written plan for recruiting, funding, and mentoring so the team keeps going after
-                the founders graduate. We're aiming for 45 students by 2027.
-              </div>
-            </div>
-            <div class="award-card fade">
-              <div class="award-icon">🏆</div>
-              <div class="award-name">Robot &amp; FIRST Values</div>
-              <div class="award-event">on the field</div>
-              <div class="award-desc">
-                A working competition robot built in under three months, and a team that treats
-                other teams well in the pits.
-              </div>
-            </div>
+          <div class="classified-side">
+            <p class="classified-label">Planned features</p>
+            <ul class="chips">
+              <li>Pneumatic claw</li>
+              <li>Articulated arm</li>
+              <li>Chain climber</li>
+              <li>Vision tracking</li>
+            </ul>
           </div>
+        </article>
+      </div>
+    </section>
 
-          <div class="ruled-title fade u-mt-2-5">
-            <h3>our timeline</h3>
-            <div class="rule"></div>
+    <section class="sec sec-alt" aria-labelledby="ras-title">
+      <div class="wrap">
+        <div class="split">
+          <div class="split-label">
+            <p class="kicker fade"><span class="kicker-idx">01</span>The Rookie All-Star plan</p>
+            <h3 class="display display-sm fade" id="ras-title">
+              Our main goal, outside the robot itself.
+            </h3>
           </div>
-          <div class="timeline fade">
-            <div class="tl-item">
-              <div class="tl-dot is-blue"></div>
-              <div class="tl-year">Apr–Sep 2026</div>
-              <div class="tl-title">Team &amp; Sponsor Launch</div>
-              <div class="tl-desc">
-                Release the sponsorship package, lock in founding partners, and finalize FRC 11005
-                registration.
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot is-purple"></div>
-              <div class="tl-year">Oct–Dec 2026</div>
-              <div class="tl-title">Outreach Plan</div>
-              <div class="tl-desc">
-                First classroom workshops and community demos, Makers Making Change builds begin,
-                and bi-monthly newsletter #1 goes out.
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot is-green"></div>
-              <div class="tl-year">Jan 2027</div>
-              <div class="tl-title">Kickoff</div>
-              <div class="tl-desc">
-                Game reveal, design reviews with our mentors, and the start of a build that runs
-                under three months.
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot is-blue"></div>
-              <div class="tl-year">Feb 2027</div>
-              <div class="tl-title">Build &amp; Document</div>
-              <div class="tl-desc">
-                Weekly build days that sponsors can sit in on. We keep records for the judges:
-                photos, numbers, and an impact log.
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot is-purple"></div>
-              <div class="tl-year">Mar 2027</div>
-              <div class="tl-title">First Districts</div>
-              <div class="tl-desc">
-                Hand in the Rookie All-Star materials, give the judge presentation, and aim for a
-                top-half robot finish.
-              </div>
-            </div>
-            <div class="tl-item">
-              <div class="tl-dot is-green"></div>
-              <div class="tl-year">Apr 2027</div>
-              <div class="tl-title">Provincials</div>
-              <div class="tl-desc">
-                Winning Rookie All-Star sends us here, in front of 4,000+ people and 100 Ontario
-                teams.
-              </div>
-            </div>
-          </div>
-
-          <div class="ruled-title fade u-mt-2-5">
-            <h3>what we're tracking</h3>
-            <div class="rule"></div>
-          </div>
-          <div class="fade metric-grid">
-            <div class="fact-card">
-              <div class="fact-num">20+</div>
-              <div class="fact-label">founding sponsors<br />across six tiers</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">6+</div>
-              <div class="fact-label">school STEM<br />workshops</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">2+</div>
-              <div class="fact-label">public robot<br />demo events</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">20+</div>
-              <div class="fact-label">Makers Making Change<br />assistive builds</div>
-            </div>
-            <div class="fact-card">
-              <div class="fact-num">3 🏆</div>
-              <div class="fact-label">awards targeted<br />in year one</div>
-            </div>
-          </div>
-
-          <div class="fade accent-card">
-            <div class="accent-card__title">🌱 want your logo on a Rookie All-Star robot?</div>
-            <p class="accent-card__body">
-              We can't do any of this without founding partners. Email
-              <a href="mailto:teamplushrobotics@gmail.com" class="t-link"
-                >teamplushrobotics@gmail.com</a
-              >, find us at <span class="t-b">@frc11740</span>, or
-              <a data-page="sponsors" class="t-link">check out the sponsorship tiers</a>.
+          <div class="prose prose-lg fade">
+            <p>
+              The <em>Rookie All-Star Award</em> is the biggest award a first-year FRC team can win.
+              It goes to the rookie team that's already running like an established one, and the
+              winner moves on to the FIRST Championship. Outside of the robot itself, this is our
+              main goal for the season. Here's the plan.
             </p>
           </div>
         </div>
+
+        <h4 class="sub-head fade">What judges look for, and what we're doing about it</h4>
+        <ol class="pillars">
+          <li class="pillar fade">
+            <span class="pillar-idx">01</span>
+            <p class="pillar-event">Support network</p>
+            <h5 class="pillar-name">Sponsor &amp; mentor partnerships</h5>
+            <p class="pillar-desc">
+              We're going for 20 sponsors across six tiers, with industry mentors working directly
+              with each sub-team. Partners can host a private robot demo at their office.
+            </p>
+          </li>
+          <li class="pillar fade">
+            <span class="pillar-idx">02</span>
+            <p class="pillar-event">Spreading FIRST</p>
+            <h5 class="pillar-name">Community outreach</h5>
+            <p class="pillar-desc">
+              At least 6 STEM workshops at local elementary and middle schools, plus 2 or more
+              public robot demos with partners. Most of this happens before our first competition.
+            </p>
+          </li>
+          <li class="pillar fade">
+            <span class="pillar-idx">03</span>
+            <p class="pillar-event">Real-world impact</p>
+            <h5 class="pillar-name">Makers Making Change</h5>
+            <p class="pillar-desc">
+              20 or more assistive-technology builds for people with disabilities. Each one gets
+              logged and shared back to the Makers Making Change network.
+            </p>
+          </li>
+          <li class="pillar fade">
+            <span class="pillar-idx">04</span>
+            <p class="pillar-event">Access &amp; culture</p>
+            <h5 class="pillar-name">Diversity, equity &amp; inclusion</h5>
+            <p class="pillar-desc">
+              We want a roster that actually looks like Ottawa, so we recruit underrepresented
+              students into STEM and keep track of how representation changes each year.
+            </p>
+          </li>
+          <li class="pillar fade">
+            <span class="pillar-idx">05</span>
+            <p class="pillar-event">Long-term plan</p>
+            <h5 class="pillar-name">Sustainability plan</h5>
+            <p class="pillar-desc">
+              A written plan for recruiting, funding, and mentoring so the team keeps going after
+              the founders graduate. We're aiming for 45 students by 2027.
+            </p>
+          </li>
+          <li class="pillar fade">
+            <span class="pillar-idx">06</span>
+            <p class="pillar-event">On the field</p>
+            <h5 class="pillar-name">Robot &amp; FIRST values</h5>
+            <p class="pillar-desc">
+              A working competition robot built in under three months, and a team that treats other
+              teams well in the pits.
+            </p>
+          </li>
+        </ol>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-        <li><a data-page="schedule">schedule</a></li>
-      </ul>
-    </footer>
+    </section>
+
+    <section class="sec" aria-labelledby="ras-timeline-title">
+      <div class="wrap split">
+        <div class="split-label">
+          <p class="kicker fade"><span class="kicker-idx">02</span>Our timeline</p>
+          <h3 class="display display-sm fade" id="ras-timeline-title">April to April.</h3>
+        </div>
+        <ol class="ledger fade">
+          <li>
+            <p class="ledger-date">Apr–Sep 2026</p>
+            <div>
+              <h4 class="ledger-title">Team &amp; sponsor launch</h4>
+              <p class="ledger-desc">
+                Release the sponsorship package, lock in founding partners, and finalize FRC 11005
+                registration.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Oct–Dec 2026</p>
+            <div>
+              <h4 class="ledger-title">Outreach plan</h4>
+              <p class="ledger-desc">
+                First classroom workshops and community demos, Makers Making Change builds begin,
+                and bi-monthly newsletter #1 goes out.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Jan 2027</p>
+            <div>
+              <h4 class="ledger-title">Kickoff</h4>
+              <p class="ledger-desc">
+                Game reveal, design reviews with our mentors, and the start of a build that runs
+                under three months.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Feb 2027</p>
+            <div>
+              <h4 class="ledger-title">Build &amp; document</h4>
+              <p class="ledger-desc">
+                Weekly build days that sponsors can sit in on. We keep records for the judges:
+                photos, numbers, and an impact log.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Mar 2027</p>
+            <div>
+              <h4 class="ledger-title">First districts</h4>
+              <p class="ledger-desc">
+                Hand in the Rookie All-Star materials, give the judge presentation, and aim for a
+                top-half robot finish.
+              </p>
+            </div>
+          </li>
+          <li>
+            <p class="ledger-date">Apr 2027</p>
+            <div>
+              <h4 class="ledger-title">Provincials</h4>
+              <p class="ledger-desc">
+                Winning Rookie All-Star sends us here, in front of 4,000+ people and 100 Ontario
+                teams.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec sec-tight" aria-labelledby="metrics-title">
+      <div class="wrap">
+        <h3 class="sub-head fade" id="metrics-title">What we're tracking</h3>
+        <dl class="metrics fade">
+          <div>
+            <dd>20+</dd>
+            <dt>Founding sponsors across six tiers</dt>
+          </div>
+          <div>
+            <dd>6+</dd>
+            <dt>School STEM workshops</dt>
+          </div>
+          <div>
+            <dd>2+</dd>
+            <dt>Public robot demo events</dt>
+          </div>
+          <div>
+            <dd>20+</dd>
+            <dt>Makers Making Change assistive builds</dt>
+          </div>
+          <div>
+            <dd>3</dd>
+            <dt>Awards targeted in year one</dt>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sec sec-tight">
+      <div class="wrap">
+        <div class="callout fade">
+          <h3 class="callout-title">Want your logo on a Rookie All-Star robot?</h3>
+          <p class="callout-body">
+            We can't do any of this without founding partners. Email
+            <a href="mailto:teamplushrobotics@gmail.com" class="t-link"
+              >teamplushrobotics@gmail.com</a
+            >, find us at <span class="t-b">@frc11740</span>, or
+            <a href="#sponsors" data-page="sponsors" class="t-link"
+              >check out the sponsorship tiers</a
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- SCHEDULE PAGE -->
+  <!-- ═════════════════════════ SCHEDULE ═════════════════════════ -->
   <div class="page page-schedule" id="page-schedule">
-    <div class="page-bar">
-      <a data-page="home">home</a><span aria-hidden="true">›</span> schedule
-    </div>
-    <div class="inner-page">
+    <header class="page-head page-head-blue dots">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>2026/27 season</h2>
-          <div class="rule"></div>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Schedule</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">Schedule</span>2026/27 season</p>
+        <h2 class="page-title fade">The road to competition.</h2>
+        <p class="page-lede fade">
+          Kickoff, two district events and, if we qualify, the provincial and world championships.
+        </p>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">see you at kickoff!</p>
+          <div class="mascot-art" data-mascot="2"></div>
         </div>
+      </div>
+    </header>
+
+    <section class="sec sec-tight">
+      <div class="wrap">
         <div class="countdown-box fade">
-          <div class="countdown-label">⏱ next event</div>
-          <div class="countdown-event">🏟 Kickoff — 2026/27 Game Reveal</div>
+          <div class="countdown-head">
+            <p class="countdown-label">Next event</p>
+            <p class="countdown-event">Kickoff: 2026/27 Game Reveal</p>
+          </div>
           <div class="countdown-nums">
             <div class="cnum">
               <div class="cnum-val" id="cdDays">--</div>
@@ -1512,285 +1887,311 @@
             </div>
           </div>
         </div>
-        <div class="schedule-grid fade">
-          <div class="sched-card current">
-            <div class="sched-date">
-              <div class="sched-month">Jan</div>
-              <div class="sched-day">9</div>
+
+        <ol class="events fade">
+          <li class="event is-next">
+            <p class="event-date">
+              <span class="event-month">Jan</span><span class="event-day">9</span>
+            </p>
+            <div class="event-info">
+              <h3 class="event-name">Kickoff: game reveal</h3>
+              <p class="event-loc">School lab · All hands on deck · Start of the build season</p>
             </div>
-            <div class="sched-info">
-              <div class="sched-name">Kickoff — Game reveal</div>
-              <div class="sched-loc">
-                🏠 School Lab · All hands on deck · start of the build season
-              </div>
+            <span class="badge badge-next">Next up</span>
+          </li>
+          <li class="event">
+            <p class="event-date">
+              <span class="event-month">Mar</span><span class="event-day">TBA</span>
+            </p>
+            <div class="event-info">
+              <h3 class="event-name">District Competition #1</h3>
+              <p class="event-loc">Ontario District event · 2.5 days of matches</p>
             </div>
-            <span class="sched-badge badge-current">next up!</span>
-          </div>
-          <div class="sched-card upcoming">
-            <div class="sched-date">
-              <div class="sched-month">Mar</div>
-              <div class="sched-day">🏟</div>
+            <span class="badge">Upcoming</span>
+          </li>
+          <li class="event">
+            <p class="event-date">
+              <span class="event-month">Mar</span><span class="event-day">TBA</span>
+            </p>
+            <div class="event-info">
+              <h3 class="event-name">District Competition #2</h3>
+              <p class="event-loc">Ontario District event · 2.5 days of matches</p>
             </div>
-            <div class="sched-info">
-              <div class="sched-name">District Competition #1</div>
-              <div class="sched-loc">📍 Ontario District event · 2.5 days of matches</div>
+            <span class="badge">Upcoming</span>
+          </li>
+          <li class="event">
+            <p class="event-date">
+              <span class="event-month">Apr</span><span class="event-day">TBA</span>
+            </p>
+            <div class="event-info">
+              <h3 class="event-name">Provincials: FIRST Ontario Championship</h3>
+              <p class="event-loc">Provincial Championship · If qualified</p>
             </div>
-            <span class="sched-badge badge-upcoming">upcoming</span>
-          </div>
-          <div class="sched-card upcoming">
-            <div class="sched-date">
-              <div class="sched-month">Mar</div>
-              <div class="sched-day">🏟</div>
+            <span class="badge">Upcoming</span>
+          </li>
+          <li class="event">
+            <p class="event-date">
+              <span class="event-month">Apr</span><span class="event-day">TBA</span>
+            </p>
+            <div class="event-info">
+              <h3 class="event-name">Worlds: FIRST Championship</h3>
+              <p class="event-loc">Houston, TX · If qualified</p>
             </div>
-            <div class="sched-info">
-              <div class="sched-name">District Competition #2</div>
-              <div class="sched-loc">📍 Ontario District event · 2.5 days of matches</div>
-            </div>
-            <span class="sched-badge badge-upcoming">upcoming</span>
-          </div>
-          <div class="sched-card upcoming">
-            <div class="sched-date">
-              <div class="sched-month">Apr</div>
-              <div class="sched-day">🍁</div>
-            </div>
-            <div class="sched-info">
-              <div class="sched-name">Provincials — FIRST Ontario Championship</div>
-              <div class="sched-loc">📍 Provincial Championship · if qualified</div>
-            </div>
-            <span class="sched-badge badge-upcoming">upcoming</span>
-          </div>
-          <div class="sched-card upcoming">
-            <div class="sched-date">
-              <div class="sched-month">Apr</div>
-              <div class="sched-day">🌍</div>
-            </div>
-            <div class="sched-info">
-              <div class="sched-name">Worlds — FIRST Championship</div>
-              <div class="sched-loc">📍 Houston, TX · if qualified</div>
-            </div>
-            <span class="sched-badge badge-upcoming">upcoming</span>
-          </div>
-        </div>
-        <div class="fade accent-card is-tight">
-          <div class="accent-card__title">📅 come watch us compete!</div>
-          <p class="accent-card__body">
+            <span class="badge">Upcoming</span>
+          </li>
+        </ol>
+
+        <div class="callout fade">
+          <h3 class="callout-title">Come watch us compete!</h3>
+          <p class="callout-body">
             FRC events are free and open to the public. There is nothing quite like watching 150
             robots compete in a convention center at full speed. We promise you'll have strong
             opinions about swerve drive by the end of the day.
           </p>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="robots">robots</a></li>
-        <li><a data-page="socials">socials</a></li>
-        <li><a data-page="about">about</a></li>
-      </ul>
-    </footer>
+    </section>
   </div>
 
-  <!-- VALUES PAGE -->
+  <!-- ═════════════════════════ VALUES ═════════════════════════ -->
   <div class="page page-values" id="page-values">
-    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> values</div>
-    <div class="inner-page">
+    <header class="page-head page-head-green dots">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>what we value</h2>
-          <div class="rule"></div>
-        </div>
-        <p class="fade section-intro">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Values</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">Values</span>What we value</p>
+        <h2 class="page-title fade">The most important machine we build.</h2>
+        <p class="page-lede fade">
           Every season we build a robot, but the most important machine we build is the way we work
           together. These values keep our team moving forward on and off the field.
         </p>
-        <div class="notebook fade">
-          <div class="notebook-tab">team notebook</div>
-          <div class="notebook-body">
-            <div class="value-row">
-              <div>
-                <div class="value-title">Have Fun</div>
-                <div class="value-desc">Learning &amp; larping around with friends :)</div>
-              </div>
-            </div>
-            <div class="value-row">
-              <div>
-                <div class="value-title">Balance</div>
-                <div class="value-desc">
-                  Balance academics, extracurriculars, and mental/physical health!
-                </div>
-              </div>
-            </div>
-            <div class="value-row">
-              <div>
-                <div class="value-title">Grow FIRST in Ottawa</div>
-                <div class="value-desc">
-                  Grow FIRST in Ottawa, while being a fully student-driven team! (Our oldest official
-                  mentor is 18 years old.)
-                </div>
-              </div>
-            </div>
-            <div class="value-row">
-              <div>
-                <div class="value-title">Sustainable</div>
-                <div class="value-desc">
-                  Be a multi-year competitive and sustainable team in Ottawa for future years!
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">balance is important :)</p>
+          <div class="mascot-art" data-mascot="0"></div>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="home">home</a></li>
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-      </ul>
-    </footer>
+    </header>
+
+    <section class="sec sec-tight">
+      <div class="wrap">
+        <div class="notebook fade">
+          <p class="notebook-tab">team notebook</p>
+          <ol class="manifesto">
+            <li class="value value-blue fade">
+              <span class="value-idx">01</span>
+              <h3 class="value-title">Have fun</h3>
+              <p class="value-desc">Learning &amp; larping around with friends :)</p>
+            </li>
+            <li class="value value-purple fade">
+              <span class="value-idx">02</span>
+              <h3 class="value-title">Balance</h3>
+              <p class="value-desc">
+                Balance academics, extracurriculars, and mental/physical health!
+              </p>
+            </li>
+            <li class="value value-green fade">
+              <span class="value-idx">03</span>
+              <h3 class="value-title">Grow FIRST in Ottawa</h3>
+              <p class="value-desc">
+                Grow FIRST in Ottawa, while being a fully student-driven team! (Our oldest official
+                mentor is 18 years old.)
+              </p>
+            </li>
+            <li class="value value-blue fade">
+              <span class="value-idx">04</span>
+              <h3 class="value-title">Sustainable</h3>
+              <p class="value-desc">
+                Be a multi-year competitive and sustainable team in Ottawa for future years!
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="next-band">
+      <div class="wrap next-band-inner">
+        <p class="kicker">Like what you see?</p>
+        <a
+          class="next-link"
+          href="https://forms.gle/GsqnqVu716S4S4QTA"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Join the team
+          <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+        ></a>
+      </div>
+    </section>
   </div>
 
-  <!-- SOCIALS PAGE -->
+  <!-- ═════════════════════════ SOCIALS ═════════════════════════ -->
   <div class="page page-socials" id="page-socials">
-    <div class="page-bar">
-      <a data-page="home">home</a><span aria-hidden="true">›</span> socials
-    </div>
-    <div class="inner-page">
+    <header class="page-head page-head-purple dots">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>connect with us!</h2>
-          <div class="rule"></div>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Socials</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">Socials</span>@frc11740 everywhere</p>
+        <h2 class="page-title fade">Follow the build.</h2>
+        <p class="page-lede fade">Find us along our offseason to build season journey here.</p>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">come say hi online!</p>
+          <div class="mascot-art" data-mascot="1"></div>
         </div>
-        <p class="fade section-intro">Find us along our offseason to build season journey here:</p>
-        <div class="social-grid">
-          <div class="social-card fade sc-instagram">
-            <div class="social-icon">
-              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Instagram">
+      </div>
+    </header>
+
+    <section class="sec sec-tight">
+      <div class="wrap">
+        <ul class="social-list">
+          <li class="fade">
+            <a
+              class="social-row"
+              href="https://instagram.com/frc11740"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <svg class="social-glyph" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill="currentColor"
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
                 />
               </svg>
-            </div>
-            <div class="social-name">Instagram</div>
-            <div class="social-handle">@frc11740</div>
-            <div class="social-desc">Build updates, reveal teasers, and photos from the shop.</div>
+              <span class="social-name">Instagram</span>
+              <span class="social-desc"
+                >Build updates, reveal teasers, and photos from the shop.</span
+              >
+              <span class="social-action"
+                >Follow
+                <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M5 11 11 5M6 5h5v5" /></svg
+              ></span>
+            </a>
+          </li>
+          <li class="fade">
             <a
-              class="social-btn"
-              href="https://instagram.com/frc11740"
+              class="social-row"
+              href="https://youtube.com/@frc11740"
               target="_blank"
               rel="noopener noreferrer"
-              >follow</a
             >
-          </div>
-          <div class="social-card fade sc-youtube">
-            <div class="social-icon">
-              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="YouTube">
+              <svg class="social-glyph" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill="currentColor"
                   d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
                 />
               </svg>
-            </div>
-            <div class="social-name">YouTube</div>
-            <div class="social-handle">@frc11740</div>
-            <div class="social-desc">Robot reveals, match footage, and season recaps.</div>
+              <span class="social-name">YouTube</span>
+              <span class="social-desc">Robot reveals, match footage, and season recaps.</span>
+              <span class="social-action"
+                >Watch
+                <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M5 11 11 5M6 5h5v5" /></svg
+              ></span>
+            </a>
+          </li>
+          <li class="fade">
             <a
-              class="social-btn"
-              href="https://youtube.com/@frc11740"
+              class="social-row"
+              href="https://linkedin.com/company/frc11740"
               target="_blank"
               rel="noopener noreferrer"
-              >watch</a
             >
-          </div>
-          <div class="social-card fade sc-linkedin">
-            <div class="social-icon">
-              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="LinkedIn">
+              <svg class="social-glyph" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill="currentColor"
                   d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
                 />
               </svg>
-            </div>
-            <div class="social-name">LinkedIn</div>
-            <div class="social-handle">@frc11740</div>
-            <div class="social-desc">Team news and updates for sponsors and mentors.</div>
+              <span class="social-name">LinkedIn</span>
+              <span class="social-desc">Team news and updates for sponsors and mentors.</span>
+              <span class="social-action"
+                >Connect
+                <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M5 11 11 5M6 5h5v5" /></svg
+              ></span>
+            </a>
+          </li>
+          <li class="fade">
             <a
-              class="social-btn"
-              href="https://linkedin.com/company/frc11740"
+              class="social-row"
+              href="https://tiktok.com/@frc11740"
               target="_blank"
               rel="noopener noreferrer"
-              >connect</a
             >
-          </div>
-          <div class="social-card fade sc-tiktok">
-            <div class="social-icon">
-              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="TikTok">
+              <svg class="social-glyph" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill="currentColor"
                   d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
                 />
               </svg>
-            </div>
-            <div class="social-name">TikTok</div>
-            <div class="social-handle">@frc11740</div>
-            <div class="social-desc">Short clips from build days, the pit, and competitions.</div>
-            <a class="social-btn" href="https://tiktok.com/@frc11740" target="_blank" rel="noopener noreferrer"
-              >watch</a
+              <span class="social-name">TikTok</span>
+              <span class="social-desc"
+                >Short clips from build days, the pit, and competitions.</span
+              >
+              <span class="social-action"
+                >Watch
+                <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M5 11 11 5M6 5h5v5" /></svg
+              ></span>
+            </a>
+          </li>
+          <li class="fade">
+            <a
+              class="social-row"
+              href="https://facebook.com/frc11740"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-          </div>
-          <div class="social-card fade sc-facebook">
-            <div class="social-icon">
-              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="Facebook">
+              <svg class="social-glyph" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill="currentColor"
                   d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"
                 />
               </svg>
-            </div>
-            <div class="social-name">Facebook</div>
-            <div class="social-handle">@frc11740</div>
-            <div class="social-desc">Event announcements and posts for the wider community.</div>
+              <span class="social-name">Facebook</span>
+              <span class="social-desc"
+                >Event announcements and posts for the wider community.</span
+              >
+              <span class="social-action"
+                >Follow
+                <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M5 11 11 5M6 5h5v5" /></svg
+              ></span>
+            </a>
+          </li>
+          <li class="fade">
             <a
-              class="social-btn"
-              href="https://facebook.com/frc11740"
+              class="social-row"
+              href="https://x.com/frc11740"
               target="_blank"
               rel="noopener noreferrer"
-              >follow</a
             >
-          </div>
-          <div class="social-card fade sc-twitter">
-            <div class="social-icon">
-              <svg class="social-glyph" viewBox="0 0 24 24" role="img" aria-label="X">
+              <svg class="social-glyph" viewBox="0 0 24 24" aria-hidden="true">
                 <path
                   fill="currentColor"
                   d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
                 />
               </svg>
-            </div>
-            <div class="social-name">X</div>
-            <div class="social-handle">@frc11740</div>
-            <div class="social-desc">Quick updates during build season and match days.</div>
-            <a class="social-btn" href="https://x.com/frc11740" target="_blank" rel="noopener noreferrer"
-              >follow</a
-            >
-          </div>
-        </div>
+              <span class="social-name">X</span>
+              <span class="social-desc">Quick updates during build season and match days.</span>
+              <span class="social-action"
+                >Follow
+                <svg class="i-ext" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M5 11 11 5M6 5h5v5" /></svg
+              ></span>
+            </a>
+          </li>
+        </ul>
+
         <div class="newsletter-box fade">
           <div class="newsletter-text">
-            <h3>stay in the loop</h3>
+            <p class="kicker kicker-light">Newsletter</p>
+            <h3>Stay in the loop.</h3>
             <p>
               Get the latest build updates, event invites, and sponsor shout-outs delivered straight
               to your inbox.
@@ -1811,186 +2212,121 @@
               <input
                 class="newsletter-input"
                 type="email"
-                placeholder="your email"
+                placeholder="your@email.com"
                 aria-label="Email address"
                 autocomplete="email"
               />
-              <button class="newsletter-btn" type="submit">subscribe</button>
+              <button class="newsletter-btn" type="submit">Subscribe</button>
             </div>
             <label class="newsletter-consent">
               <input
                 class="newsletter-consent-box"
                 type="checkbox"
-                data-consent-version="2026-11-23"
+                data-consent-version="2026-11-27"
               />
               <span
-                >I agree to receive occasional email updates from Team&nbsp;Plush &mdash; PLUSH
-                Robotics (FRC&nbsp;#11005), Ottawa, Ontario. I can unsubscribe at any time using the
-                link in every email.</span
+                >I agree to receive occasional email updates from Team&nbsp;Plush (PLUSH Robotics,
+                FRC&nbsp;#11005), Ottawa, Ontario. I can unsubscribe at any time using the link in
+                every email.</span
               >
             </label>
           </form>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="home">home</a></li>
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-      </ul>
-    </footer>
+    </section>
   </div>
 
-  <!-- SPONSORS PAGE -->
+  <!-- ═════════════════════════ SPONSORS ═════════════════════════ -->
   <div class="page page-sponsors" id="page-sponsors">
-    <div class="page-bar">
-      <a data-page="home">home</a><span aria-hidden="true">›</span> sponsors
-    </div>
-    <div class="inner-page">
+    <header class="page-head page-head-jam dots">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>our sponsors</h2>
-          <div class="rule"></div>
-        </div>
-        <p class="fade section-intro">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Sponsors</span>
+        </nav>
+        <p class="kicker fade"><span class="kicker-idx">Sponsors</span>Our sponsors</p>
+        <h2 class="page-title fade">Partners in the build.</h2>
+        <p class="page-lede fade">
           Team PLUSH is a student-founded FRC team in Ottawa on a mission to make hands-on STEM
-          reachable for students who would otherwise never get the chance. Your sponsorship builds a
-          pipeline of young engineers, puts your brand in front of thousands at the Ontario
-          Provincial Championship, and powers the classroom workshops, community demos, and Makers
-          Making Change projects we run all season.
+          reachable for students who would otherwise never get the chance.
         </p>
-        <p class="fade section-intro">
-          Every tier puts your logo on our website, robot, competition banner, and team merch — and
-          every dollar goes straight into the parts, tools, and students building with them. If you
-          believe in bold, community-first STEM, we would love to talk.
-        </p>
+        <div class="page-host" aria-hidden="true">
+          <p class="bubble">let's build something together!</p>
+          <div class="mascot-art" data-mascot="1"></div>
+        </div>
+      </div>
+    </header>
 
-        <div class="ruled-title fade u-mt-2">
-          <h3>sponsorship package</h3>
-          <div class="rule"></div>
+    <section class="sec sec-tight">
+      <div class="wrap split">
+        <div class="split-label">
+          <p class="kicker fade">Why sponsor</p>
         </div>
-        <div class="pdf-pages fade" aria-label="Team PLUSH sponsorship package">
-          <img
-            src="/sponsorship-package/page-1.jpg"
-            alt="Sponsorship package, page 1"
-            width="1224"
-            height="1584"
-          />
-          <img
-            src="/sponsorship-package/page-2.jpg"
-            alt="Sponsorship package, page 2"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-3.jpg"
-            alt="Sponsorship package, page 3"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-4.jpg"
-            alt="Sponsorship package, page 4"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-5.jpg"
-            alt="Sponsorship package, page 5"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-6.jpg"
-            alt="Sponsorship package, page 6"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-7.jpg"
-            alt="Sponsorship package, page 7"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-8.jpg"
-            alt="Sponsorship package, page 8"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
-          <img
-            src="/sponsorship-package/page-9.jpg"
-            alt="Sponsorship package, page 9"
-            width="1224"
-            height="1584"
-            loading="lazy"
-          />
+        <div class="prose prose-lg fade">
+          <p>
+            Your sponsorship builds a pipeline of young engineers, puts your brand in front of
+            thousands at the Ontario Provincial Championship, and powers the classroom workshops,
+            community demos, and Makers Making Change projects we run all season.
+          </p>
+          <p>
+            Every tier puts your logo on our website, robot, competition banner, and team merch, and
+            every dollar goes straight into the parts, tools, and students building with them. If
+            you believe in bold, community-first STEM, we would love to talk.
+          </p>
+          <div class="prose-actions">
+            <a class="btn btn-ink" href="mailto:teamplushrobotics@gmail.com">Email the team</a>
+            <a
+              class="btn btn-line"
+              href="/sponsorship-package.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Sponsorship package (PDF)</a
+            >
+          </div>
         </div>
-        <p class="fade section-note pdf-download">
-          <a href="/sponsorship-package.pdf" target="_blank" rel="noopener noreferrer" class="t-link"
-            >Download the PDF</a
-          >
-        </p>
+      </div>
+    </section>
 
-        <div class="ruled-title fade u-mt-2-5">
-          <h3>sponsorship tiers</h3>
-          <div class="rule"></div>
+    <section class="sec sec-alt" aria-labelledby="tiers-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="kicker fade"><span class="kicker-idx">01</span>Sponsorship tiers</p>
+          <h3 class="display fade" id="tiers-title">Pick the level that fits.</h3>
+          <p class="sec-note fade">Further perks can always be worked out over email.</p>
         </div>
-        <p class="fade section-note has-gap">
-          Pick the level that fits your organization. Further perks can always be worked out over
-          email.
-        </p>
-        <div class="sponsor-tier tier-title fade">
+
+        <div class="tier tier-title fade">
           <div class="tier-label">
-            <h3>Title Sponsor</h3>
-            <span class="tier-amount">$5,000+</span>
-            <div class="tier-rule"></div>
+            <h4>Title</h4>
+            <p class="tier-amount">$5,000+</p>
           </div>
           <div class="tier-slots">
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/collab-space.svg" alt="Collab Space" loading="lazy" />
               </div>
-              <div class="sponsor-name">Collab Space</div>
+              <p class="sponsor-name">Collab Space</p>
             </div>
           </div>
         </div>
-        <div class="sponsor-tier tier-diamond fade">
+
+        <div class="tier tier-diamond fade">
           <div class="tier-label">
-            <h3>Diamond Sponsor</h3>
-            <span class="tier-amount">$2,500–$4,999</span>
-            <div class="tier-rule"></div>
+            <h4>Diamond</h4>
+            <p class="tier-amount">$2,500–$4,999</p>
           </div>
           <div class="tier-slots">
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/robotics-centre.svg" alt="Robotics Centre" loading="lazy" />
               </div>
-              <div class="sponsor-name">Robotics Centre</div>
+              <p class="sponsor-name">Robotics Centre</p>
             </div>
             <div class="sponsor-card">
               <div class="sponsor-logo">
-                <img
-                  src="/sponsors/argosy-foundation.svg"
-                  alt="Argosy Foundation"
-                  loading="lazy"
-                />
+                <img src="/sponsors/argosy-foundation.svg" alt="Argosy Foundation" loading="lazy" />
               </div>
-              <div class="sponsor-name">Argosy Foundation</div>
+              <p class="sponsor-name">Argosy Foundation</p>
             </div>
             <div class="sponsor-card">
               <div class="sponsor-logo">
@@ -2000,155 +2336,240 @@
                   loading="lazy"
                 />
               </div>
-              <div class="sponsor-name">Makers Making Change</div>
+              <p class="sponsor-name">Makers Making Change</p>
             </div>
             <div class="sponsor-card open">
-              <div class="sponsor-logo-placeholder">✨</div>
-              <div class="sponsor-name">your logo here</div>
-              <div class="slot-label">Open</div>
+              <div class="sponsor-logo"><span>Your logo here</span></div>
+              <p class="sponsor-name">Open</p>
             </div>
           </div>
         </div>
-        <div class="sponsor-tier tier-gold fade">
+
+        <div class="tier tier-gold fade">
           <div class="tier-label">
-            <h3>Gold Sponsor</h3>
-            <span class="tier-amount">$1,000–$2,499</span>
-            <div class="tier-rule"></div>
+            <h4>Gold</h4>
+            <p class="tier-amount">$1,000–$2,499</p>
           </div>
           <div class="tier-slots">
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/lockheed-martin.svg" alt="Lockheed Martin" loading="lazy" />
               </div>
-              <div class="sponsor-name">Lockheed Martin</div>
+              <p class="sponsor-name">Lockheed Martin</p>
             </div>
             <div class="sponsor-card">
               <div class="sponsor-logo sponsor-logo--fill">
                 <img src="/sponsors/frc-10015-bubbles.png" alt="FRC 10015 Bubbles" loading="lazy" />
               </div>
-              <div class="sponsor-name">FRC 10015 Bubbles</div>
-              <div class="sponsor-desc">
-                Thank you for the heavily discounted electronics parts!
-              </div>
+              <p class="sponsor-name">FRC 10015 Bubbles</p>
+              <p class="sponsor-desc">Thank you for the heavily discounted electronics parts!</p>
             </div>
             <div class="sponsor-card open">
-              <div class="sponsor-logo-placeholder sm">✨</div>
-              <div class="sponsor-name">your logo here</div>
-              <div class="slot-label">Open</div>
+              <div class="sponsor-logo"><span>Your logo here</span></div>
+              <p class="sponsor-name">Open</p>
             </div>
           </div>
         </div>
-        <div class="sponsor-tier tier-silver fade">
+
+        <div class="tier tier-silver fade">
           <div class="tier-label">
-            <h3>Silver Sponsor</h3>
-            <span class="tier-amount">$500–$999</span>
-            <div class="tier-rule"></div>
+            <h4>Silver</h4>
+            <p class="tier-amount">$500–$999</p>
           </div>
           <div class="tier-slots">
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/dr-joseph-nebre.svg" alt="Dr. Joseph Nebre" loading="lazy" />
               </div>
-              <div class="sponsor-name">Dr. Joseph Nebre</div>
+              <p class="sponsor-name">Dr. Joseph Nebre</p>
             </div>
             <div class="sponsor-card open">
-              <div class="sponsor-logo-placeholder sm">✨</div>
-              <div class="sponsor-name">your logo here</div>
-              <div class="slot-label">Open</div>
+              <div class="sponsor-logo"><span>Your logo here</span></div>
+              <p class="sponsor-name">Open</p>
             </div>
           </div>
         </div>
-        <div class="sponsor-tier tier-bronze fade">
+
+        <div class="tier tier-bronze fade">
           <div class="tier-label">
-            <h3>Bronze Sponsor</h3>
-            <span class="tier-amount">$300–$499</span>
-            <div class="tier-rule"></div>
+            <h4>Bronze</h4>
+            <p class="tier-amount">$300–$499</p>
           </div>
           <div class="tier-slots">
             <div class="sponsor-card open">
-              <div class="sponsor-logo-placeholder sm">✨</div>
-              <div class="sponsor-name">your logo here</div>
-              <div class="slot-label">Open</div>
+              <div class="sponsor-logo"><span>Your logo here</span></div>
+              <p class="sponsor-name">Open</p>
             </div>
           </div>
         </div>
-        <div class="sponsor-tier tier-inkind fade">
+
+        <div class="tier tier-inkind fade">
           <div class="tier-label">
-            <h3>In-Kind Sponsor</h3>
-            <span class="tier-amount">tools · parts · space · services</span>
-            <div class="tier-rule"></div>
+            <h4>In-kind</h4>
+            <p class="tier-amount">Tools · parts · space · services</p>
           </div>
           <div class="tier-slots">
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/canus-plastics.svg" alt="Canus Plastics Inc." loading="lazy" />
               </div>
-              <div class="sponsor-name">Canus Plastics</div>
-              <div class="sponsor-desc">
-                Our founding in-kind sponsor — supplies plastic stock and fabrication support for
+              <p class="sponsor-name">Canus Plastics</p>
+              <p class="sponsor-desc">
+                Our founding in-kind sponsor, supplying plastic stock and fabrication support for
                 the build.
-              </div>
+              </p>
             </div>
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/sable-metal.svg" alt="Sable Metal Fabrication" loading="lazy" />
               </div>
-              <div class="sponsor-name">Sable Metal Fabrication</div>
+              <p class="sponsor-name">Sable Metal Fabrication</p>
             </div>
             <div class="sponsor-card">
               <div class="sponsor-logo">
                 <img src="/sponsors/frctees.svg" alt="FRCtees" loading="lazy" />
               </div>
-              <div class="sponsor-name">FRCtees</div>
+              <p class="sponsor-name">FRCtees</p>
             </div>
             <div class="sponsor-card open">
-              <div class="sponsor-logo-placeholder sm">✨</div>
-              <div class="sponsor-name">your logo here</div>
-              <div class="slot-label">Open</div>
+              <div class="sponsor-logo"><span>Your logo here</span></div>
+              <p class="sponsor-name">Open</p>
             </div>
           </div>
         </div>
-        <div class="sponsor-cta fade">
-          <h3>become part of the story</h3>
-          <p>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="package-title">
+      <div class="wrap">
+        <div class="sec-head sec-head-row">
+          <div>
+            <p class="kicker fade"><span class="kicker-idx">02</span>Sponsorship package</p>
+            <h3 class="display fade" id="package-title">The full deck, nine pages.</h3>
+          </div>
+          <a
+            class="link-arrow fade"
+            href="/sponsorship-package.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Download the PDF
+            <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+          ></a>
+        </div>
+      </div>
+      <div
+        class="pdf-pages fade"
+        role="region"
+        tabindex="0"
+        aria-label="Team PLUSH sponsorship package, scroll sideways for all nine pages"
+      >
+        <img
+          src="/sponsorship-package/page-1.jpg"
+          alt="Sponsorship package, page 1"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-2.jpg"
+          alt="Sponsorship package, page 2"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-3.jpg"
+          alt="Sponsorship package, page 3"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-4.jpg"
+          alt="Sponsorship package, page 4"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-5.jpg"
+          alt="Sponsorship package, page 5"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-6.jpg"
+          alt="Sponsorship package, page 6"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-7.jpg"
+          alt="Sponsorship package, page 7"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-8.jpg"
+          alt="Sponsorship package, page 8"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+        <img
+          src="/sponsorship-package/page-9.jpg"
+          alt="Sponsorship package, page 9"
+          width="1224"
+          height="1584"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="join-section join-jam sponsor-cta" aria-labelledby="sponsor-cta-title">
+      <div class="wrap join-inner">
+        <h3 class="join-h join-h-sm fade" id="sponsor-cta-title">Become part<br />of the story.</h3>
+        <div class="join-foot">
+          <p class="join-sub fade">
             Want your organization listed here? Email
-            <a href="mailto:teamplushrobotics@gmail.com" class="t-link-light"
+            <a href="mailto:teamplushrobotics@gmail.com" class="t-link"
               >teamplushrobotics@gmail.com</a
             >
             or find us <span class="t-b">@frc11740</span> everywhere. Sponsor Team PLUSH and join a
             collaborative robotics journey with youth, innovation, and community at its core.
           </p>
+          <div class="join-btns fade">
+            <a class="btn btn-ink" href="mailto:teamplushrobotics@gmail.com"
+              >Start a conversation
+              <svg class="i-arr" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M2.5 8h11M9.5 4l4 4-4 4" /></svg
+            ></a>
+          </div>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="home">home</a></li>
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-      </ul>
-    </footer>
+    </section>
   </div>
 
-  <!-- PRIVACY POLICY PAGE -->
+  <!-- ═════════════════════════ PRIVACY ═════════════════════════ -->
   <div class="page page-privacy" id="page-privacy">
-    <div class="page-bar">
-      <a data-page="home">home</a><span aria-hidden="true">›</span> privacy
-    </div>
-    <div class="inner-page">
+    <header class="page-head page-head-legal">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>privacy policy</h2>
-          <div class="rule"></div>
-        </div>
-        <div class="legal-prose fade">
-          <p class="legal-updated">Last updated: August 28, 2026</p>
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Privacy</span>
+        </nav>
+        <p class="kicker"><span class="kicker-idx">Legal</span>Last updated November 27, 2026</p>
+        <h2 class="page-title">Privacy policy</h2>
+      </div>
+    </header>
+    <section class="sec sec-tight">
+      <div class="wrap">
+        <div class="legal-prose">
+          <p class="legal-updated">Last updated: November 27, 2026</p>
 
           <p>
             Team&nbsp;Plush ("PLUSH Robotics", "we", "us", "our") is a student-led, registered
@@ -2170,7 +2591,7 @@
             <li>
               <strong>Information you give us directly.</strong> If you email us or complete a form
               we link to (for example our "Join&nbsp;Us" form, hosted on Google&nbsp;Forms), we
-              receive what you provide — typically your name, email address, school, and your
+              receive what you provide: typically your name, email address, school, and your
               message.
             </li>
             <li>
@@ -2189,7 +2610,7 @@
             We do not knowingly collect personal information from children through this Site.
             Information about our student members and event participants (including minors) is
             collected offline through registration and media-release forms, with parent or guardian
-            consent where required — not through this Site.
+            consent where required, not through this Site.
           </p>
 
           <h3>How we use your information</h3>
@@ -2214,6 +2635,11 @@
               use (teamplushrobotics@gmail.com). Information you submit through those tools is also
               handled under Google's privacy policy.
             </li>
+            <li>
+              <strong>OpenStreetMap</strong> serves the map tiles on our home page. When you scroll
+              to that map, your browser requests the tiles directly from OpenStreetMap's servers,
+              which receive your IP address under the OpenStreetMap Foundation's privacy policy.
+            </li>
           </ul>
           <p>
             We ask our providers to protect personal information in a manner consistent with this
@@ -2228,7 +2654,8 @@
             <a href="mailto:teamplushrobotics@gmail.com">teamplushrobotics@gmail.com</a> and we will
             respond within a reasonable time. If you are not satisfied with our response, you may
             contact the Office of the Privacy Commissioner of Canada at
-            <a href="https://www.priv.gc.ca" target="_blank" rel="noopener noreferrer">priv.gc.ca</a>.
+            <a href="https://www.priv.gc.ca" target="_blank" rel="noopener noreferrer">priv.gc.ca</a
+            >.
           </p>
 
           <h3>Retention</h3>
@@ -2246,7 +2673,7 @@
 
           <h3>Contact</h3>
           <p>
-            Team&nbsp;Plush — PLUSH Robotics (FRC&nbsp;#11005)<br />Ottawa, Ontario, Canada<br /><a
+            Team&nbsp;Plush, PLUSH Robotics (FRC&nbsp;#11005)<br />Ottawa, Ontario, Canada<br /><a
               href="mailto:teamplushrobotics@gmail.com"
               >teamplushrobotics@gmail.com</a
             >
@@ -2254,37 +2681,29 @@
           </p>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="home">home</a></li>
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-      </ul>
-    </footer>
+    </section>
   </div>
 
-  <!-- TERMS OF USE PAGE -->
+  <!-- ═════════════════════════ TERMS ═════════════════════════ -->
   <div class="page page-terms" id="page-terms">
-    <div class="page-bar"><a data-page="home">home</a><span aria-hidden="true">›</span> terms</div>
-    <div class="inner-page">
+    <header class="page-head page-head-legal">
       <div class="wrap">
-        <div class="ruled-title fade">
-          <h2>terms of use</h2>
-          <div class="rule"></div>
-        </div>
-        <div class="legal-prose fade">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#home" data-page="home">Home</a><span aria-hidden="true">/</span
+          ><span aria-current="page">Terms</span>
+        </nav>
+        <p class="kicker"><span class="kicker-idx">Legal</span>Last updated August 28, 2026</p>
+        <h2 class="page-title">Terms of use</h2>
+      </div>
+    </header>
+    <section class="sec sec-tight">
+      <div class="wrap">
+        <div class="legal-prose">
           <p class="legal-updated">Last updated: August 28, 2026</p>
 
           <p>
             These Terms of Use govern your use of <strong>frc11740.ca</strong> (the "Site"),
-            operated by Team&nbsp;Plush — PLUSH Robotics, a student-led registered non-profit
+            operated by Team&nbsp;Plush (PLUSH Robotics), a student-led registered non-profit
             <em>FIRST</em>&nbsp;Robotics Competition team (FRC&nbsp;#11005) in Ottawa, Ontario. By
             using the Site you agree to these terms. If you do not agree, please do not use the
             Site.
@@ -2369,19 +2788,65 @@
           </p>
         </div>
       </div>
-    </div>
-    <footer>
-      <div class="footer-logo" data-page="home">team plush ⚙️</div>
-      <div class="footer-slogan">live · laugh · love · robotics</div>
-      <nav class="footer-legal" aria-label="Legal">
-        <a data-page="privacy">Privacy</a><span aria-hidden="true">·</span
-        ><a data-page="terms">Terms</a>
-      </nav>
-      <ul class="footer-links">
-        <li><a data-page="home">home</a></li>
-        <li><a data-page="about">about</a></li>
-        <li><a data-page="team">team</a></li>
-      </ul>
-    </footer>
+    </section>
   </div>
 </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="footer-logo">team plush ⚙️</p>
+        <p class="footer-tagline">live · laugh · love · robotics</p>
+        <p class="footer-meta">FRC 11005 · Ottawa, Ontario · Est. April 2026</p>
+        <a class="footer-mail" href="mailto:teamplushrobotics@gmail.com"
+          >teamplushrobotics@gmail.com</a
+        >
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <div>
+          <p class="footer-head">Team</p>
+          <ul>
+            <li><a href="#about" data-page="about">About</a></li>
+            <li><a href="#team" data-page="team">Team</a></li>
+            <li><a href="#values" data-page="values">Values</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Season</p>
+          <ul>
+            <li><a href="#robots" data-page="robots">Robots</a></li>
+            <li><a href="#schedule" data-page="schedule">Schedule</a></li>
+            <li><a href="#sponsors" data-page="sponsors">Sponsors</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer-head">Connect</p>
+          <ul>
+            <li><a href="#socials" data-page="socials">Socials</a></li>
+            <li>
+              <a href="https://instagram.com/frc11740" target="_blank" rel="noopener noreferrer"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://forms.gle/GsqnqVu716S4S4QTA"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Join us</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Team PLUSH · Student-founded, student-led</p>
+      <nav class="footer-legal" aria-label="Legal">
+        <a href="#privacy" data-page="privacy">Privacy</a
+        ><a href="#terms" data-page="terms">Terms</a>
+      </nav>
+    </div>
+  </div>
+</footer>

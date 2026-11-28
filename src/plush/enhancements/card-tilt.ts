@@ -1,9 +1,11 @@
 import type { Cleanup } from "../types";
 
-const CARD_SELECTOR =
-  ".team-card, .robot-card, .subteam-card, .award-card, .pillar-card, .track-card, .fact-card, .sticker, .social-card, .sponsor-card";
+// Only the scrapbook bits wobble: mascot stickers and the hero polaroids.
+const CARD_SELECTOR = ".sticker, .polaroid";
 
 export function mountCardTilt(): Cleanup {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return () => {};
+
   const nodes = Array.from(document.querySelectorAll<HTMLElement>(CARD_SELECTOR));
   nodes.forEach((node) => node.classList.add("tilt-shine"));
 
@@ -24,9 +26,9 @@ export function mountCardTilt(): Cleanup {
     el.style.setProperty("--mx", `${px * 100}%`);
     el.style.setProperty("--my", `${py * 100}%`);
 
-    const rotateX = (0.5 - py) * 8;
-    const rotateY = (px - 0.5) * 8;
-    el.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    const rotateX = (0.5 - py) * 16;
+    const rotateY = (px - 0.5) * 16;
+    el.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
   };
 
   const onLeave = (event: MouseEvent) => {

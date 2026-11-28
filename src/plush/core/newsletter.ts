@@ -60,12 +60,12 @@ function wireForm(form: HTMLFormElement): () => void {
         form.reset();
         setStatus("You're on the list! 💜", "ok");
       } else if (result.reason === "not-configured") {
-        setStatus("Newsletter signup isn't switched on yet — check back soon! 💜", "err");
+        setStatus("Newsletter signup isn't switched on yet. Check back soon! 💜", "err");
       } else {
-        setStatus("That didn't go through — please try again in a bit.", "err");
+        setStatus("That didn't go through. Please try again in a bit.", "err");
       }
     } catch {
-      setStatus("Couldn't reach the server — check your connection and try again.", "err");
+      setStatus("Couldn't reach the server. Check your connection and try again.", "err");
     } finally {
       if (button) button.disabled = false;
     }

@@ -1,6 +1,6 @@
 import type { Cleanup } from "../types";
 
-const PAT_TARGET_SELECTOR = ".sticker, #mascotFigure";
+const PAT_TARGET_SELECTOR = ".sticker, #mascotFigure, .mascot-art";
 const HEART_SYMBOLS = ["💜", "✨", "💫"];
 const MILESTONE_EVERY = 10;
 

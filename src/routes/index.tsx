@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import leafletCss from "leaflet/dist/leaflet.css?url";
 import { PlushSite } from "@/plush/components/PlushSite";
 import { ORGANIZATION_JSON_LD, SITE_DESCRIPTION, SITE_TITLE } from "@/lib/seo";
 
@@ -17,9 +18,9 @@ export const Route = createFileRoute("/")({
       { "script:ld+json": ORGANIZATION_JSON_LD },
     ],
     links: [
+      // Leaflet's own styles for the home page "reach" map, served from our origin.
+      { rel: "stylesheet", href: leafletCss },
       { rel: "stylesheet", href: "/plush.css" },
-      { rel: "stylesheet", href: "/plush-extras.css" },
-      { rel: "stylesheet", href: "/plush-scribble-jam.css" },
       // Self-hosted webfonts — no third-party request, no fonts.googleapis.com.
       { rel: "stylesheet", href: "/fonts.css" },
       {
@@ -33,7 +34,7 @@ export const Route = createFileRoute("/")({
         rel: "preload",
         as: "font",
         type: "font/woff2",
-        href: "/fonts/caveat-latin.woff2",
+        href: "/fonts/space-grotesk-latin.woff2",
         crossOrigin: "anonymous",
       },
     ],

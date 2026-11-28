@@ -111,7 +111,9 @@ export function buildContentSecurityPolicy(nonce: string): string {
     "form-action 'self' https://docs.google.com",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
     "style-src 'self'",
-    "img-src 'self' data: blob:",
+    // OpenStreetMap tiles for the home page "reach" map. Requested only once
+    // that section scrolls near the viewport (see src/plush/core/reach-map.ts).
+    "img-src 'self' data: blob: https://tile.openstreetmap.org",
     "font-src 'self'",
     "connect-src 'self' https://docs.google.com",
     "media-src 'self'",

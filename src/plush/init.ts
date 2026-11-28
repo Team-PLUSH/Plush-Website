@@ -3,6 +3,7 @@ import { mountCursor } from "./core/cursor";
 import { mountMascots } from "./core/mascots";
 import { mountMobileNav } from "./core/mobile-nav";
 import { mountNewsletter } from "./core/newsletter";
+import { mountReachMap } from "./core/reach-map";
 import { mountRouting } from "./core/routing";
 import { mountTheme } from "./core/theme";
 import { initPlushEnhancements } from "./enhancements";
@@ -18,6 +19,7 @@ export function initPlushSite(): Cleanup {
     mountCursor(),
     mountMascots(),
     mountCountdown(),
+    mountReachMap(),
     initPlushEnhancements(),
   ];
 
